@@ -8,4 +8,4 @@ class Bus.Routes extends Backbone.Router
 
   index: ->
     map = new Bus.Views.Map()
-    @view.$('#content').html(map.render().el)
+    map.render()
