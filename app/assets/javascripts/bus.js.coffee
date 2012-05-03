@@ -3,7 +3,10 @@ window.Bus =
   Collections: {}
   Views: {}
   Routers: {}
-  init: -> alert 'Hello from Backbone!'
+  init: ->
+    Bus.events = _.extend({}, Backbone.Events)
+    Bus.routes = new Bus.Routes
+    Backbone.history.start(pushState: true)
 
 $(document).ready ->
   Bus.init()
