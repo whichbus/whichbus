@@ -3,7 +3,9 @@
 #= require spine
 #= require spine/manager
 #= require spine/ajax
+#= require spine/local
 #= require spine/route
+#= require spine/list
 
 #= require_tree ./lib
 #= require_self
@@ -16,7 +18,7 @@ class App extends Spine.Controller
     super
     
     # Initialize controllers:
-    #  @append(@items = new App.Items)
+    @append(@stops = new App.Stops)
     #  ...
     
     Spine.Route.setup()    

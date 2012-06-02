@@ -1,5 +1,8 @@
 WhichbusSpine::Application.routes.draw do
 
+  get "pages/index"
+  root :to => "pages#index"
+
   match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
   # The priority is based upon order of creation:
   # first created -> highest priority.
