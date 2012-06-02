@@ -18,7 +18,9 @@ class App extends Spine.Controller
     super
     
     # Initialize controllers:
-    @append(@stops = new App.Stops)
+    @stops = new App.Stops
+    window.stops = @stops
+    @append(@stops)
     #  ...
     
     Spine.Route.setup()    
