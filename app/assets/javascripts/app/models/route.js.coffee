@@ -3,6 +3,7 @@ class App.Route extends Spine.Model
 	# @extend Spine.Model.Ajax
 	
 	@hasMany 'stops', 'App.Stop'
+	@belongsTo 'stop', 'App.Stop'
 
 	@filter: (query) ->
 		return @all() unless query

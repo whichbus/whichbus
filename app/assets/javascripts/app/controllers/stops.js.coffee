@@ -1,11 +1,12 @@
 class App.Stops extends Spine.Controller
 	className: 'stops'
-		
+
 	elements:
 		'.stop-list': 'items'
+		'.filter.stops': 'queryText'
 	# 
 	events:
-		'click body': 'filter'
+		'keyup .filter.stops': 'filter'
 
 	constructor: ->
 		super
@@ -19,11 +20,9 @@ class App.Stops extends Spine.Controller
 		@active @filter
 
 	filter: ->
-		@query = '' #@search.val()
+		@query = @queryText.val()
 		@render()
 
 	render: ->
-		console.log 'rendering App.Stops'
-		# Render a template, replacing the
-		# controller's HTML
+		# Render a template, replacing the controller's HTML
 		@list.render(App.Stop.filter(@query))

@@ -23,6 +23,7 @@ class App.WhichBus extends Spine.Controller
 
 		@append @main
 
+# controller stack for stops and routes
 class App.Main extends Spine.Stack
 	controllers:
 		stops: App.Stops

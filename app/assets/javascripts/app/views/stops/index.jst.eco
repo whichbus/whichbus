@@ -1,4 +1,5 @@
 <div class="index">
+	<input type="text" name="filter" class="filter stops"></input>
 	<ul class="stop-list">
 	</ul>
 </div>

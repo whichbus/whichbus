@@ -1,7 +1,8 @@
 class App.Stop extends Spine.Model
 	@configure 'Stop', 'name', 'code', 'latitude', 'longitude', 'direction'
 	
-	@belongsTo 'route', 'App.Route'
+	@belongsTo 'routes', 'App.Route'
+	@hasMany 'routes', 'App.Route'
 
 	# @extend Spine.Model.Ajax
 	# @url '/stop'

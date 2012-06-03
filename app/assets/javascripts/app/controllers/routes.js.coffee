@@ -1,11 +1,12 @@
 class App.Routes extends Spine.Controller
 	className: 'routes'
-		
+
 	elements:
 		'.route-list': 'items'
+		'.filter.routes': 'queryText'
 	# 
 	events:
-		'click body': 'filter'
+		'keyup .filter.routes': 'filter'
 
 	constructor: ->
 		super
@@ -19,11 +20,9 @@ class App.Routes extends Spine.Controller
 		@active @filter
 
 	filter: ->
-		@query = '' #@search.val()
+		@query = @queryText.val()
 		@render()
 
 	render: ->
-		console.log 'rendering App.Routes'
-		# Render a template, replacing the
-		# controller's HTML
+		# Render a template, replacing the controller's HTML
 		@list.render(App.Route.filter(@query))
