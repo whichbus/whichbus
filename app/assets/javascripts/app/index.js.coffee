@@ -6,6 +6,7 @@
 #= require spine/local
 #= require spine/route
 #= require spine/list
+#= require spine/relation
 
 #= require_tree ./lib
 #= require_self
@@ -18,11 +19,10 @@ class App extends Spine.Controller
     super
     
     # Initialize controllers:
-    @stops = new App.Stops
-    window.stops = @stops
-    @append(@stops)
-    #  ...
+    @whichbus = new App.WhichBus
+    window.whichbus = @whichbus
+    @append(@whichbus)
     
-    Spine.Route.setup()    
+    Spine.Route.setup()
 
 window.App = App

@@ -1,19 +1,15 @@
-class App.Stop extends Spine.Model
-	@configure 'Stop', 'name', 'code', 'latitude', 'longitude', 'direction'
-	
-	@belongsTo 'route', 'App.Route'
-
+class App.Route extends Spine.Model
+	@configure 'Route', 'shortName', 'description', 'type', 'url', 'polylines'
 	# @extend Spine.Model.Ajax
-	# @url '/stop'
-
-	# @extend Spine.Model.Local
+	
+	@hasMany 'stops', 'App.Stop'
 
 	@filter: (query) ->
 		return @all() unless query
 		query = query.toLowerCase()
 		@select (item) ->
-			item.name?.toLowerCase().indexOf(query) isnt -1 or
-				item.code?.toLowerCase().indexOf(query) isnt -1
+			item.shortName?.toLowerCase().indexOf(query) isnt -1 or
+				item.description?.toLowerCase().indexOf(query) isnt -1
 
 	@fromJSON: (objects) ->
 		return unless objects

@@ -1,0 +1,6 @@
+<% for item in @: %>
+<li class="stop">
+	<strong><%= item.name %></strong> <%= item.code %>:
+	(<%= item.latitude%>, <%= item.longitude %>) <%= item.direction %>
+</li>
+<% end %>

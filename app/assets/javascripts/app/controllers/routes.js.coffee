@@ -1,8 +1,8 @@
-class App.Stops extends Spine.Controller
-	className: 'stops'
+class App.Routes extends Spine.Controller
+	className: 'routes'
 		
 	elements:
-		'.stop-list': 'items'
+		'.route-list': 'items'
 	# 
 	events:
 		'click body': 'filter'
@@ -10,11 +10,11 @@ class App.Stops extends Spine.Controller
 	constructor: ->
 		super
 
-		@html @view('stops/index')
+		@html @view('routes/index')
 
 		@list = new Spine.List
 			el: @items
-			template: @view('stops/list')
+			template: @view('routes/list')
 
 		@active @filter
 
@@ -23,7 +23,7 @@ class App.Stops extends Spine.Controller
 		@render()
 
 	render: ->
-		console.log 'rendering App.Stops'
+		console.log 'rendering App.Routes'
 		# Render a template, replacing the
 		# controller's HTML
-		@list.render(App.Stop.filter(@query))
+		@list.render(App.Route.filter(@query))

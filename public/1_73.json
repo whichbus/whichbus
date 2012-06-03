@@ -1,1 +1,2742 @@
-{"id":"1_73","textColor":"","color":"","description":"Jackson Park","longName":"","agency":{"privateService":false,"id":"1","timezone":"America/Los_Angeles","phone":"206-553-3000","disclaimer":"Transit scheduling, geographic, and real-time data provided by permission of King County.  Some real-time info provided by UW Intelligent Transportation Systems.","name":"Metro Transit","lang":"en","url":"http://metro.kingcounty.gov"},"type":3,"shortName":"73","url":"http://metro.kingcounty.gov/tops/bus/schedules/s073_0_.html","name":null,"distance":null,"stopGroups":[{"name":{"names":["DOWNTOWN SEATTLE - Express"],"name":"DOWNTOWN SEATTLE - Express","type":"destination"},"stops":[{"id":"1_38770","lon":-122.307411,"direction":"E","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"38770","lat":47.7283401,"name":"NE 137TH ST & 20TH AVE NE","distance":null},{"id":"1_38780","lon":-122.30719,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"38780","lat":47.7301254,"name":"20TH AVE NE & NE 140TH ST","distance":null},{"id":"1_38790","lon":-122.307205,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"38790","lat":47.7319527,"name":"20TH AVE NE & NE 143RD ST","distance":null},{"id":"1_38810","lon":-122.308693,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_308"],"code":"38810","lat":47.7339821,"name":"NE 145TH ST & 19TH AVE NE","distance":null},{"id":"1_38830","lon":-122.312843,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"38830","lat":47.7335167,"name":"15TH AVE NE & NE 145TH ST","distance":null},{"id":"1_38840","lon":-122.31282,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"38840","lat":47.7318497,"name":"15TH AVE NE & NE 143RD ST","distance":null},{"id":"1_38850","lon":-122.312805,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348"],"code":"38850","lat":47.7300568,"name":"15TH AVE NE & NE 140TH ST","distance":null},{"id":"1_38870","lon":-122.312752,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"38870","lat":47.7268715,"name":"15TH AVE NE & NE 135TH ST","distance":null},{"id":"1_38890","lon":-122.312767,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348"],"code":"38890","lat":47.7228928,"name":"15TH AVE NE & NE 130TH ST","distance":null},{"id":"1_38900","lon":-122.312775,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_347","1_348"],"code":"38900","lat":47.7209702,"name":"15TH AVE NE & NE 127TH ST","distance":null},{"id":"1_38910","lon":-122.312767,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"38910","lat":47.718998,"name":"15TH AVE NE & NE 125TH ST","distance":null},{"id":"1_38930","lon":-122.312637,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"38930","lat":47.7154732,"name":"15TH AVE NE & NE 120TH ST","distance":null},{"id":"1_38950","lon":-122.312546,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"38950","lat":47.712471,"name":"15TH AVE NE & NE 115TH ST","distance":null},{"id":"1_38970","lon":-122.312531,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"38970","lat":47.7083092,"name":"15TH AVE NE & NE NORTHGATE WAY","distance":null},{"id":"1_38990","lon":-122.312477,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77"],"code":"38990","lat":47.7037811,"name":"15TH AVE NE & NE 104TH ST","distance":null},{"id":"1_39010","lon":-122.312302,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"39010","lat":47.7001495,"name":"15TH AVE NE & NE 98TH ST","distance":null},{"id":"1_39030","lon":-122.312202,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77"],"code":"39030","lat":47.6965446,"name":"15TH AVE NE & NE 94TH ST","distance":null},{"id":"1_39050","lon":-122.312286,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"39050","lat":47.692852,"name":"15TH AVE NE & NE 89TH ST","distance":null},{"id":"1_39070","lon":-122.312286,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77"],"code":"39070","lat":47.6882744,"name":"15TH AVE NE & NE 82ND ST","distance":null},{"id":"1_38330","lon":-122.312256,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_72","1_73","1_79","1_373"],"code":"38330","lat":47.6864014,"name":"15TH AVE NE & NE 80TH ST","distance":null},{"id":"1_38350","lon":-122.311981,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_72","1_73","1_79"],"code":"38350","lat":47.682579,"name":"15TH AVE NE & NE 75TH ST","distance":null},{"id":"1_23540","lon":-122.315567,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_66","1_67","1_73"],"code":"23540","lat":47.6726532,"name":"12TH AVE NE & NE 61ST ST","distance":null},{"id":"1_38370","lon":-122.312096,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_72","1_73","1_79"],"code":"38370","lat":47.6789131,"name":"15TH AVE NE & NE 70TH ST","distance":null},{"id":"1_35740","lon":-122.315369,"direction":"E","locationType":0,"wheelchairBoarding":null,"routeIds":["1_48","1_73","1_76","1_79"],"code":"35740","lat":47.6757469,"name":"NE 65TH ST & 12TH AVE NE","distance":null},{"id":"1_35741","lon":-122.312027,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_48","1_71","1_72","1_73","1_83","1_373"],"code":"35741","lat":47.6754723,"name":"15TH AVE NE & NE 65TH ST","distance":null},{"id":"1_38022","lon":-122.313133,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_71","1_72","1_73","1_83"],"code":"38022","lat":47.6707535,"name":"UNIVERSITY WAY NE & NE RAVENNA BLVD","distance":null},{"id":"1_38024","lon":-122.313118,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_71","1_72","1_73","1_83"],"code":"38024","lat":47.6683121,"name":"UNIVERSITY WAY NE & NE 55TH ST","distance":null},{"id":"1_9132","lon":-122.313187,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_71","1_72","1_73","1_74","1_83","1_373"],"code":"9132","lat":47.6641388,"name":"UNIVERSITY WAY NE & NE 50TH ST","distance":null},{"id":"1_9133","lon":-122.313217,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_71","1_72","1_73","1_74","1_83","1_373"],"code":"9133","lat":47.6622772,"name":"UNIVERSITY WAY NE & NE 45TH ST","distance":null},{"id":"1_9134","lon":-122.313271,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_71","1_72","1_73","1_74","1_83","1_373"],"code":"9134","lat":47.6598549,"name":"UNIVERSITY WAY NE & NE 43RD ST","distance":null},{"id":"1_9142","lon":-122.313354,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_71","1_72","1_73","1_74","1_83","1_373"],"code":"9142","lat":47.656868,"name":"UNIVERSITY WAY NE & NE 41ST ST","distance":null},{"id":"1_9138","lon":-122.315453,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_31","1_49","1_70","1_71","1_72","1_73","1_74","1_83"],"code":"9138","lat":47.6563034,"name":"NE Campus Pkwy & 12th Ave NE - Bay 4","distance":null},{"id":"1_9140","lon":-122.318512,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_49","1_70","1_71","1_72","1_73","1_83"],"code":"9140","lat":47.6557617,"name":"UNIVERSITY BRIDGE & NE 40TH ST","distance":null},{"id":"1_26365","lon":-122.320793,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_31","1_71","1_72","1_73","1_74"],"code":"26365","lat":47.6559639,"name":"NE 40TH ST & 7TH AVE NE","distance":null},{"id":"1_9141","lon":-122.322151,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_66","1_70","1_71","1_72","1_73","1_83"],"code":"9141","lat":47.6506004,"name":"EASTLAKE AVE E & HARVARD AVE E","distance":null},{"id":"1_9150","lon":-122.323692,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9150","lat":47.6486092,"name":"EASTLAKE AVE E & E ALLISON ST","distance":null},{"id":"1_9170","lon":-122.32592,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9170","lat":47.6457329,"name":"EASTLAKE AVE E & E HAMLIN ST","distance":null},{"id":"1_9190","lon":-122.325989,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9190","lat":47.6418648,"name":"EASTLAKE AVE E & E LOUISA ST","distance":null},{"id":"1_9200","lon":-122.325996,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_66","1_70","1_71","1_72","1_73","1_83"],"code":"9200","lat":47.6394691,"name":"EASTLAKE AVE E & E LYNN ST","distance":null},{"id":"1_9220","lon":-122.325935,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9220","lat":47.6365433,"name":"EASTLAKE AVE E & E NEWTON ST","distance":null},{"id":"1_9240","lon":-122.325836,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_66","1_70","1_71","1_72","1_73","1_83"],"code":"9240","lat":47.6333885,"name":"EASTLAKE AVE E & E GARFIELD ST","distance":null},{"id":"1_10170","lon":-122.328636,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"10170","lat":47.6306038,"name":"FAIRVIEW AVE E & E NELSON PL","distance":null},{"id":"1_10180","lon":-122.33152,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"10180","lat":47.6283493,"name":"FAIRVIEW AVE N & YALE AVE N","distance":null},{"id":"1_26700","lon":-122.332382,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","23_98"],"code":"26700","lat":47.6276741,"name":"FAIRVIEW AVE N & WARD ST","distance":null},{"id":"1_10190","lon":-122.332939,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"10190","lat":47.627224,"name":"FAIRVIEW AVE N & MINOR AVE N","distance":null},{"id":"1_10210","lon":-122.334427,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83","1_309"],"code":"10210","lat":47.6239929,"name":"FAIRVIEW AVE N & MERCER ST","distance":null},{"id":"1_10220","lon":-122.334427,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83","1_309"],"code":"10220","lat":47.6217766,"name":"FAIRVIEW AVE N & HARRISON ST","distance":null},{"id":"1_10230","lon":-122.334404,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83","1_309"],"code":"10230","lat":47.6197701,"name":"FAIRVIEW AVE N & JOHN ST","distance":null},{"id":"1_10240","lon":-122.333817,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83","1_309"],"code":"10240","lat":47.6175041,"name":"BOREN AVE & VIRGINIA ST","distance":null},{"id":"1_940","lon":-122.334457,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_25","1_37","1_41","1_64","1_66","1_70","1_71","1_72","1_73","1_79","1_83","1_106","1_190","1_192","1_250","1_252","1_255","1_257","1_260","1_265","1_268","1_304","1_308","1_311","1_355","29_402","29_405","29_410","29_412","29_413","29_415","29_416","29_417","29_421","29_422","29_424","29_425","29_435","40_510","29_510","40_511","29_511","40_512","29_512","40_513","29_513","40_545","40_590","40_592","40_593","40_594","40_595"],"code":"940","lat":47.6157036,"name":"STEWART ST & 9TH AVE","distance":null},{"id":"1_1082","lon":-122.331726,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_301","1_316"],"code":"1082","lat":47.6141167,"name":"Convention Place Station - Bay I","distance":null},{"id":"1_1108","lon":-122.337502,"direction":"SW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"1108","lat":47.6113968,"name":"Westlake Station - Bay C","distance":null},{"id":"1_431","lon":-122.337952,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_5","1_11","1_15","1_18","1_21","1_22","1_41","1_54","1_55","1_56","1_57","1_71","1_72","1_73","1_79","1_81","1_84","1_113","1_116","1_118","1_119","1_120","1_121","1_122","1_123","1_125","1_304","1_308","1_355","1_358"],"code":"431","lat":47.609787,"name":"3RD AVE & PIKE ST","distance":null},{"id":"1_455","lon":-122.335754,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"455","lat":47.6072502,"name":"University St Station - Bay C","distance":null},{"id":"1_468","lon":-122.33493,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_5","1_11","1_15","1_18","1_21","1_22","1_41","1_54","1_55","1_56","1_57","1_71","1_72","1_73","1_79","1_84","1_85","1_113","1_116","1_118","1_119","1_120","1_121","1_122","1_123","1_125","1_304","1_308","1_355","1_358","1_994"],"code":"468","lat":47.6065025,"name":"3RD AVE & SENECA ST","distance":null},{"id":"1_490","lon":-122.332458,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_5","1_11","1_15","1_18","1_21","1_22","1_41","1_56","1_57","1_71","1_72","1_73","1_79","1_84","1_85","1_116","1_118","1_119","1_121","1_122","1_123","1_304","1_308","1_355","1_358","1_994"],"code":"490","lat":47.6037979,"name":"3RD AVE & COLUMBIA ST","distance":null},{"id":"1_501","lon":-122.33107,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"501","lat":47.6021461,"name":"Pioneer Sq Station - Bay C","distance":null},{"id":"1_1710","lon":-122.328064,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_79","1_304","1_308","1_355","1_358","29_412","29_413","29_416","29_421","29_425","29_435"],"code":"1710","lat":47.6021156,"name":"TERRACE ST & 5TH AVE","distance":null},{"id":"1_843","lon":-122.327774,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_111","1_114","1_210","1_211","1_214","1_215","1_250","1_252","1_255","1_257","1_260","1_268","1_311","40_510","29_510","40_511","29_511","40_512","29_512","40_513","29_513","40_545","40_554"],"code":"843","lat":47.5989799,"name":"5TH AVE S & S JACKSON ST","distance":null},{"id":"1_623","lon":-122.328217,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"623","lat":47.5976601,"name":"Intl District Station - Bay C","distance":null}],"polylines":[{"levels":"","length":282,"points":"axhbHjtoiVuD@BmGBoG}G@qA@_A?cGBg@?kC@yDAQ@I?K?ApGClGEnO?LH?F?zIEjJE`EAjD?@?vIEP?D?|G?tC?xA@~D?hJ?dJBB?hJMhJI|EIt@?XDVHLIVIhJKdD?`E?nJ?jJ?v@?rH?tDKtDGrDEtDIxACzACxAEzACxACzAExA?zAGtDBtDBtDBrDDtD@tD@vDDrDBlJIfEAdBA`A?hJIxA?xAC|A?xACn@KjAm@LE\\KdEEh@?\\DXLf@ZLFPFPD@?hDCnCA`CAxA?vEEpCCtB?rAAJ?fA?hA?p@?nHAR?z@jA`BxBLPHDNBX?h@?jGArD?D?~KBpHDhJDjJDfHFfHFfHBzBFAbFAtBApB?bFA`D@`@BT@RBLDRHTFNLLHFHDJ@PARCRAN?H@HBH@LBHFl@`@dBnAFDJFd@\\NLb@ZTLv@l@TNDB`@V~@r@FDnBtAFB~@r@PJTR^VTRzDlCfAx@p@b@f@`@^VRNdCdBjClBdCfBrBxApFvD`F?bG@hF?jM?fH?`H?PA`Dw@jEkAhEjAlFdARD~@PF~@JVhA~A|@lAfGrIrG`JX`@rD`FfBbCRXbDrEr@x@b@r@NQJMLGTArA?N?bB?\\?Z?zD?V?N?|E?hF?hFE`F?`C?DIZm@xCeGFJx@hAbAtA`AtA`AvA|@lAdA|AdAtA|@rAbAtA`AtA`ArAJNp@`AFH|@nAbAtAJLHL~@pAl@~@pDqDl@k@vCiCfEsDdEwDlCaCnCaClCaClCcCnCaCnBgB\\YdCyBFGLKzBsBDCXUR]JUHW?Q?e@?uBCkAQQi@cBm@kB`@]LGVEZAH?fD@"},{"levels":"","length":29,"points":"{l~aH`zqiV\\]l@i@`@_@hBaB^a@nCcCTWLYJq@`A{Gv@uFFWi@m@c@ScAEkA?iB?eD?cD?aD?C?@sC?qB?wB@yB@wB?}A?["},{"levels":"","length":190,"points":"myzaHdhqiVFTJTLT\\j@G^GjAE~@?XE~@?nC{GAi@@Hx@HZHTj@p@\\R`@^\\V`@Z\\VF@VJb@LT?hA?B?X?bA?|A?LBbC@bADxB?tA@z@?`@?t@?r@B~@DdDBb@?l@?\\?|@Bv@?n@?f@@??z@?rABfDDD?|@D~ADvRRl@?L?T?fA@jA@`@?hA@tEFnC?nABpMHt@D~@D^D`CRrARx@R~A\\j@P`FxAz@Z|@\\b@Tn@\\fAx@tApANPdAnAfDzD~AjBb@h@j@j@b@\\^ZTJl@Zd@N`@Pd@L`@Ld@Dd@Hx@@zAFlHEbICfEKtACtCCbB?bGd@`Ev@n@JJBXFbC^p@LvB^^F`ARPBRDPFrCx@dAjB^t@P\\Td@p@rBZfAPd@DJFRJXHTLVTb@LRPRVZP\\Xf@LXn@pBzA|EPh@jArD|AzEL^JZBDL\\Xd@DFFFLJLBPBP?VGXKPKzAwAfEsDhAeAzBqBPMp@m@hAeAnCaClCaCnCcCjCaClCcC^[lBgBhC{BXURYT_@Xg@PYpBeDv@uAz@mAT]VS\\Qp@MdBA@?B?|HH"},{"levels":"","length":56,"points":"m`paH|bsiVzC?J?jC?L?L?dD?hDBfD?@?pB@v@DPa@JW`BaEt@iBj@uAPSPSVQj@[xCgBzA}@ZSFEPKPMZQ`BaAnC{ANIDCb@OTGRIXGXOTMFG`Au@l@]v@e@@A~A}@h@Y^UXIPCZ?@\\@fK?lF?xA?dDsJ?k@?"},{"levels":"","length":17,"points":"q|raHhmtiVl@sALWxAwCn@uANSRQiAiDEWESAU?SBQHSVUFG\\]"},{"levels":"","length":43,"points":"qdvaH|xriVbA`@NF`A\\fDfFJHrGvGTRVJXDb@@H?nD?lDEtB?b@?R?VBZ?^?l@?b@CNAFANIv@BtA@~AAbC?fF?dFCzE?PRtAlB`@l@z@nAn@|@j@v@~@pAbAxAbAtAx@jAFF"},{"levels":"","length":28,"points":"{koaHvesiVHBJFNDN@L@~BAR@PJVF`@BpA?d@GjAQhHsBhBo@t@GzAB?i@?mF?eA?]?i@?}@?_BA{@AYC]"}]},{"name":{"names":["JACKSON PARK - Express"],"name":"JACKSON PARK - Express","type":"destination"},"stops":[{"id":"1_621","lon":-122.32782,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"621","lat":47.5984535,"name":"Intl District Station - Bay A","distance":null},{"id":"1_1530","lon":-122.328377,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_1","1_2","1_3","1_4","1_7","1_10","1_13","1_14","1_36","1_49","1_70","1_71","1_72","1_73","1_99","1_358"],"code":"1530","lat":47.5992661,"name":"S JACKSON ST & 5TH AVE S","distance":null},{"id":"1_531","lon":-122.331177,"direction":"NW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_5","1_16","1_23","1_26","1_28","1_41","1_66","1_71","1_72","1_73","1_79","1_116","1_118","1_119","1_123","1_124","1_304","1_306","1_308","1_312","1_355","1_358","40_522"],"code":"531","lat":47.6026421,"name":"3RD AVE & JAMES ST","distance":null},{"id":"1_532","lon":-122.331573,"direction":"NW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"532","lat":47.6031952,"name":"Pioneer Sq Station - Bay A","distance":null},{"id":"1_548","lon":-122.333824,"direction":"NW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_5","1_16","1_23","1_26","1_28","1_41","1_66","1_71","1_72","1_73","1_79","1_116","1_118","1_119","1_123","1_124","1_304","1_306","1_308","1_312","1_355","1_358","40_522"],"code":"548","lat":47.605545,"name":"3RD AVE & MADISON ST","distance":null},{"id":"1_565","lon":-122.336166,"direction":"NW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"565","lat":47.6082497,"name":"University St Station - Bay A","distance":null},{"id":"1_570","lon":-122.336708,"direction":"NW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_5","1_16","1_23","1_26","1_28","1_41","1_54","1_55","1_66","1_71","1_72","1_73","1_79","1_116","1_118","1_119","1_120","1_123","1_124","1_304","1_306","1_308","1_312","1_355","1_358","40_522","1_994"],"code":"570","lat":47.6086884,"name":"3RD AVE & UNION ST","distance":null},{"id":"1_590","lon":-122.338974,"direction":"NW","locationType":0,"wheelchairBoarding":null,"routeIds":["1_5","1_16","1_26","1_28","1_41","1_54","1_55","1_66","1_71","1_72","1_73","1_79","1_116","1_118","1_119","1_120","1_123","1_124","1_304","1_355","1_358"],"code":"590","lat":47.6111336,"name":"3RD AVE & PINE ST","distance":null},{"id":"1_1121","lon":-122.335823,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_LINK"],"code":"1121","lat":47.6118011,"name":"Westlake Station - Bay A","distance":null},{"id":"1_1030","lon":-122.33857,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_25","1_41","1_66","1_71","1_72","1_73","1_79","1_123","1_355"],"code":"1030","lat":47.6120911,"name":"OLIVE WAY & 4TH AVE","distance":null},{"id":"1_1040","lon":-122.336327,"direction":"E","locationType":0,"wheelchairBoarding":null,"routeIds":["1_25","1_41","1_66","1_71","1_72","1_73","1_79","1_83","1_111","1_114","1_123","1_210","1_214","1_215","1_355","40_578","40_590","40_592","40_593","40_594","40_595"],"code":"1040","lat":47.6130295,"name":"OLIVE WAY & 6TH AVE","distance":null},{"id":"1_1192","lon":-122.33152,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_41","1_71","1_72","1_73","1_74","1_76","1_77","1_101","1_102","1_106","1_150","1_301","1_316","40_550"],"code":"1192","lat":47.6139412,"name":"Convention Place Station - Bay A","distance":null},{"id":"1_992","lon":-122.333267,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_25","1_66","1_71","1_72","1_73","1_83","1_111","1_114","1_123","29_402","29_405","29_410","29_415","29_417","29_422","40_510","40_511","40_513","29_513"],"code":"992","lat":47.6146393,"name":"HOWELL ST & 9TH AVE","distance":null},{"id":"1_10280","lon":-122.334198,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83","1_309"],"code":"10280","lat":47.6184235,"name":"FAIRVIEW AVE & DENNY WAY","distance":null},{"id":"1_10305","lon":-122.334236,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83","1_309"],"code":"10305","lat":47.6222801,"name":"FAIRVIEW AVE N & HARRISON ST","distance":null},{"id":"1_10325","lon":-122.333542,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"10325","lat":47.6265526,"name":"FAIRVIEW AVE N & VALLEY ST","distance":null},{"id":"1_10340","lon":-122.330589,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"10340","lat":47.6288795,"name":"FAIRVIEW AVE N & YALE AVE N","distance":null},{"id":"1_10350","lon":-122.328545,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"10350","lat":47.6304703,"name":"FAIRVIEW AVE E & YALE AVE N","distance":null},{"id":"1_9460","lon":-122.325386,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_66","1_70","1_71","1_72","1_73","1_83"],"code":"9460","lat":47.6341095,"name":"EASTLAKE AVE E & E GARFIELD ST","distance":null},{"id":"1_9480","lon":-122.325577,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9480","lat":47.636158,"name":"EASTLAKE AVE E & E HOWE ST","distance":null},{"id":"1_9500","lon":-122.325798,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_66","1_70","1_71","1_72","1_73","1_83"],"code":"9500","lat":47.6399384,"name":"EASTLAKE AVE E & E LYNN ST","distance":null},{"id":"1_9510","lon":-122.325783,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9510","lat":47.6422844,"name":"EASTLAKE AVE E & E LOUISA ST","distance":null},{"id":"1_9530","lon":-122.325508,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9530","lat":47.6459579,"name":"EASTLAKE AVE E & E HAMLIN ST","distance":null},{"id":"1_9550","lon":-122.323196,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_70","1_71","1_72","1_73","1_83"],"code":"9550","lat":47.6489487,"name":"EASTLAKE AVE E & E ALLISON ST","distance":null},{"id":"1_9560","lon":-122.322052,"direction":"NE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_66","1_70","1_71","1_72","1_73","1_83"],"code":"9560","lat":47.6504288,"name":"EASTLAKE AVE E & HARVARD AVE E","distance":null},{"id":"1_9612","lon":-122.319389,"direction":"E","locationType":0,"wheelchairBoarding":null,"routeIds":["1_71","1_72","1_73","1_74","1_79"],"code":"9612","lat":47.6574516,"name":"NE 42ND ST & 8TH AVE NE","distance":null},{"id":"1_9570","lon":-122.316849,"direction":"E","locationType":0,"wheelchairBoarding":null,"routeIds":["1_49","1_65","1_70","1_71","1_72","1_73","1_83"],"code":"9570","lat":47.6559639,"name":"NE CAMPUS PKWY & 11TH AVE NE","distance":null},{"id":"1_9578","lon":-122.314514,"direction":"","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_49","1_65","1_70","1_71","1_72","1_73","1_74","1_75","1_83"],"code":"9578","lat":47.6559372,"name":"NE CAMPUS PKWY & BROOKLYN AVE NE","distance":null},{"id":"1_9581","lon":-122.313133,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_71","1_72","1_73","1_74","1_83","1_373"],"code":"9581","lat":47.6573868,"name":"UNIVERSITY WAY NE & NE 41ST ST","distance":null},{"id":"1_9582","lon":-122.313065,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_71","1_72","1_73","1_74","1_83","1_373"],"code":"9582","lat":47.6597672,"name":"UNIVERSITY WAY NE & NE 43RD ST","distance":null},{"id":"1_9584","lon":-122.313026,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_30","1_71","1_72","1_73","1_74","1_83","1_373"],"code":"9584","lat":47.6620712,"name":"UNIVERSITY WAY NE & NE 45TH ST","distance":null},{"id":"1_37350","lon":-122.312965,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_71","1_72","1_73","1_83","1_373"],"code":"37350","lat":47.665184,"name":"UNIVERSITY WAY NE & NE 50TH ST","distance":null},{"id":"1_37352","lon":-122.312912,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_71","1_72","1_73","1_83"],"code":"37352","lat":47.668766,"name":"UNIVERSITY WAY NE & NE 55TH ST","distance":null},{"id":"1_37353","lon":-122.312927,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_71","1_72","1_73","1_83"],"code":"37353","lat":47.6708794,"name":"UNIVERSITY WAY NE & NE RAVENNA BLVD","distance":null},{"id":"1_38390","lon":-122.311836,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_48","1_72","1_73","1_79","1_83","1_373"],"code":"38390","lat":47.6760902,"name":"15TH AVE NE & NE 65TH ST","distance":null},{"id":"1_38410","lon":-122.311905,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_72","1_73","1_79","1_83"],"code":"38410","lat":47.6796227,"name":"15TH AVE NE & NE 70TH ST","distance":null},{"id":"1_38430","lon":-122.311981,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_72","1_73","1_79","1_83"],"code":"38430","lat":47.6832962,"name":"15TH AVE NE & NE 75TH ST","distance":null},{"id":"1_39080","lon":-122.312065,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"39080","lat":47.6869507,"name":"15TH AVE NE & NE 80TH ST","distance":null},{"id":"1_39100","lon":-122.312119,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77"],"code":"39100","lat":47.6905861,"name":"15TH AVE NE & NE 85TH ST","distance":null},{"id":"1_39120","lon":-122.31205,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"39120","lat":47.6941681,"name":"15TH AVE NE & NE 90TH ST","distance":null},{"id":"1_39140","lon":-122.311981,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77"],"code":"39140","lat":47.6978149,"name":"15TH AVE NE & NE 95TH ST","distance":null},{"id":"1_39160","lon":-122.312149,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"39160","lat":47.7011337,"name":"15TH AVE NE & NE 100TH ST","distance":null},{"id":"1_39170","lon":-122.312256,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77"],"code":"39170","lat":47.7032814,"name":"15TH AVE NE & NE 103RD ST","distance":null},{"id":"1_39190","lon":-122.312325,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"39190","lat":47.7087784,"name":"15TH AVE NE & NE NORTHGATE WAY","distance":null},{"id":"1_39210","lon":-122.31234,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_373"],"code":"39210","lat":47.7123871,"name":"15TH AVE NE & NE 115TH ST","distance":null},{"id":"1_39230","lon":-122.312462,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"39230","lat":47.7160149,"name":"15TH AVE NE & NE 120TH ST","distance":null},{"id":"1_39250","lon":-122.312569,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"39250","lat":47.7199402,"name":"15TH AVE NE & NE 125TH ST","distance":null},{"id":"1_39260","lon":-122.312569,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348"],"code":"39260","lat":47.7212257,"name":"15TH AVE NE & NE 127TH ST","distance":null},{"id":"1_39270","lon":-122.312561,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348"],"code":"39270","lat":47.7230339,"name":"15TH AVE NE & NE 130TH ST","distance":null},{"id":"1_39290","lon":-122.312561,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"39290","lat":47.7268829,"name":"15TH AVE NE & NE 135TH ST","distance":null},{"id":"1_39310","lon":-122.312599,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348"],"code":"39310","lat":47.7301941,"name":"15TH AVE NE & NE 140TH ST","distance":null},{"id":"1_39320","lon":-122.31263,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_77","1_347","1_348","1_373"],"code":"39320","lat":47.7320175,"name":"15TH AVE NE & NE 143RD ST","distance":null},{"id":"1_82230","lon":-122.311455,"direction":"E","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_308"],"code":"82230","lat":47.7338753,"name":"NE 145TH ST & 15TH AVE NE","distance":null},{"id":"1_39350","lon":-122.307625,"direction":"E","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73","1_308"],"code":"39350","lat":47.7338257,"name":"NE 145TH ST & 20TH AVE NE","distance":null},{"id":"1_36930","lon":-122.312546,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_48","1_64","1_73","1_76","1_79"],"code":"36930","lat":47.6758614,"name":"NE 65TH ST & 15TH AVE NE","distance":null},{"id":"1_39360","lon":-122.307411,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"39360","lat":47.7318344,"name":"20TH AVE NE & NE 143RD ST","distance":null},{"id":"1_36940","lon":-122.315536,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_48","1_73","1_76","1_79"],"code":"36940","lat":47.6758842,"name":"NE 65TH ST & 12TH AVE NE","distance":null},{"id":"1_39370","lon":-122.307396,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"39370","lat":47.7300301,"name":"20TH AVE NE & NE 140TH ST","distance":null},{"id":"1_36950","lon":-122.317734,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_48","1_73","1_76"],"code":"36950","lat":47.6759033,"name":"NE 65TH ST & ROOSEVELT WAY NE","distance":null},{"id":"1_39380","lon":-122.307365,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"39380","lat":47.7285385,"name":"20TH AVE NE & NE 137TH ST","distance":null},{"id":"1_39390","lon":-122.307724,"direction":"S","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"39390","lat":47.7266579,"name":"NE 135TH ST & 20TH AVE NE","distance":null},{"id":"1_36960","lon":-122.321167,"direction":"W","locationType":0,"wheelchairBoarding":null,"routeIds":["1_48","1_64","1_73","1_76","1_242","40_542"],"code":"36960","lat":47.67593,"name":"NE 65TH ST & OSWEGO PL NE","distance":null},{"id":"1_16409","lon":-122.321434,"direction":"SE","locationType":0,"wheelchairBoarding":null,"routeIds":["1_64","1_73","1_76","1_242","1_316"],"code":"16409","lat":47.6747437,"name":"NE RAVENNA BLVD & I-5","distance":null},{"id":"1_38750","lon":-122.309868,"direction":"N","locationType":0,"wheelchairBoarding":null,"routeIds":["1_73"],"code":"38750","lat":47.7272987,"name":"17TH AVE NE & NE 136TH ST","distance":null}],"polylines":[{"levels":"","length":302,"points":"cqoaHpdsiVuC?C?kBBY@SFa@N[TW\\w@jAu@nA}BvD[l@QRY^c@`@iC|BoBfB_@ZmC~BoCbCmC`CoC~BmCbCkC~BURgB|AiAdAgErD{ArA]T[HY?WIQSMUKS]gAk@kBo@sBiAqDQk@}A{Em@mBKYO[Sa@IKY[Y]Ya@S_@Se@I[Ws@_@mA_@iAKaAIe@K]S[QQMGICI?EDEDCHAJ?F@HF\\FTBN@PALCJEXMXM^Od@MXKTsAnA}CzF{CbGaAuAOSIEiAAaC?aF?iFDiF?}E?O?W?{D?[?]?cB?O?sA?SESC{@?s@y@cDsESYgBcCsDaFYa@sGaJgGsI}@mAiA_BKWG_A_AQSEmFeAiEkAkEjAaDv@Q@aH?gH?kM?iF?cGAaF?qFwDsByAeCgBkCmBeCeBSO_@Wg@a@q@c@gAy@{DmCUS_@WUSQK_As@GCoBuAGE_As@a@WECUOw@m@UMc@[OMe@]KGGEeBoAm@a@IGWS]UgBcABcB?eC@cF@eF@sB@qBm@?{BGgHCgHGgHGkJEiJEqHE_LCE?sD?kG@i@?Y?OCIEMQaByB{@kAS?oH@q@?iA?gA?K?sA@uB?qCBwEDyA?aC@oC@iDBA?QEQGMGg@[YM]Ei@?eED]JMDkAl@o@JyAB}A?yAByA?iJHaA?eB@gE@mJHsDCwDEuDAuDAsDEuDCuDCuDC{AFyA?{ADyAB{AByAD{AByABuDHsDDuDFuDJsH?w@?kJ?oJ?aE?eD?iJJWHMHWIYEu@?}EHiJHiJLC?eJCiJ?_E?yAAuC?}G?E?Q?wIDA?kD?aE@kJD{IDG?I??MDoOBmG@qGJ?H?PAxD@jCAf@?bGC~@?pAA|GArDCxBA|@C?H?fJCnDE?sDB"},{"levels":"","length":122,"points":"msraH`ysiVy@_CYc@KMIMWUi@e@sCy@QGSEQCaAS_@GwB_@q@McC_@YGKCo@KaEw@cGe@cB?uCBuABgEJcIBmHD{AGy@Ae@Ie@Ea@Me@Ma@Qe@Om@[UK_@[c@]k@k@c@i@_BkBgD{DeAoAOQuAqAgAy@o@]c@U}@]{@[aFyAk@Q_B]y@SsASaCS_@E_AEu@EqMIoACoC?uEGiAAa@?kAAgAAU?M?m@?wRS_BE}@EE?gDEsAC{@???g@Ao@?w@?}@C]?m@?c@?eDC_AEs@Cu@?a@?{@?uAAyB?cAEcCAMC}A?cA?Y?C?iA?U?c@MWKGA]Wa@[]Wa@_@]Sk@q@IUI[Iy@?oE@gE?gEzB@hBBJ?r@H"},{"levels":"","length":32,"points":"st~aHp`piV?Z?|AAvBAxB?vB?pBArCCtI?bCAfC?`CAlC?v@?R?@Ap@?dA?T?Z?r@?v@PLPFN@H?HAZKj@g@x@u@\\]^]"},{"levels":"","length":71,"points":"m~maHjxriVo@?aJ?E?G?wK?Q?u@?UGu@hBaB`EKVQ`@w@EqBAA?gD?iDCeD??r@?Z?xDyACmA?oC?W?yAxAOT}@pCIVKTS\\YTEB{BrBMJGFeCxB]XoBfBoC`CmCbCmC`CoC`CmC`CeEvDgErDwChCm@j@qDpDm@_A_AsCk@gBk@iBKWK_@mAwDm@mBm@mBm@sBm@kBsAaBmAuAw@kAcAyAeA}AcAsAyC`GyCdG[l@EH"},{"levels":"","length":44,"points":"a`saHlzsiVaAwAcAsAaAwAaAsAYa@g@s@SIKE{AK_@ImEHO?{E?eFBgF?cC?_B@uAAw@COHG@O@c@Bm@?_@?[?WCS?c@?uB?mDDoD?I?c@AYEWKUSsGwGKIgDgFaA]OGcAa@"},{"levels":"","length":155,"points":"kwraHxysiVGDIDC@KDK@M?MAM]m@mBm@iBo@oBCIQi@K[Qg@Oe@Y{@MSSOcA]]Eo@AoDM}@CA?u@A[AgACsKE}BRM?}CBcB?qC@M?K?K?mBAO?i@?M?S?aA@_A?o@?qBAw@Iy@Im@Mq@Oq@S_A]c@Ww@c@aAs@aCaCaBeBsFyFk@e@m@g@iAk@kGqBWIk@S{Ac@mCg@gBY{AQSAiAIkCG{FEwCE_@Cc@?mHCiCB{@A{@?m@AaACk@A_FK_B?kEEyB?qA?{@?iBCsCC}@AC?c@?q@?aA?_B@e@?[AmA?yBCwA?i@?c@?w@?A?{B?A?gB?M?O???s@?iBCO?O?W?g@?c@Ao@?Y?A?gA?qAEkAGu@Qk@ImAGs@E_D[uDY[EUGUKOQSWYc@_@k@WW[Ki@IcA?WD?eC?kA?i@?uB@g@?gA?yCZLdGBnA@vEDjDD"}]}],"polylines":[{"levels":"","length":256,"points":"{l~aH`zqiV\\]l@i@`@_@hBaB^a@nCcCTWLYJq@`A{Gv@uFFWi@m@c@ScAEkA?iB?eD?cD?aD?C?@sC?qB?wB@yB@wB?}A?[tB?rAAJ?fA?hA?p@?nHAR?z@jA`BxBLPHDNBX?h@?jGArD?D?~KBpHDhJDjJDfHFfHFfHBzBFAbFAtBApB?bFA`D@`@BT@RBLDRHTFNFTJTLT\\j@G^GjAE~@?XE~@?nC{GAi@@Hx@HZHTj@p@\\R`@^\\V`@Z\\VF@VJb@LT?hA?B?X?bA?|A?LBbC@bADxB?tA@z@?`@?t@?r@B~@DdDBb@?l@?\\?|@Bv@?n@?f@@??z@?rABfDDD?|@D~ADvRRl@?L?T?fA@jA@`@?hA@tEFnC?nABpMHt@D~@D^D`CRrARx@R~A\\j@P`FxAz@Z|@\\b@Tn@\\fAx@tApANPdAnAfDzD~AjBb@h@j@j@b@\\^ZTJl@Zd@N`@Pd@L`@Ld@Dd@Hx@@zAFlHEbICfEKtACtCCbB?bGd@`Ev@n@JJBXFbC^p@LvB^^F`ARPBRDPFrCx@dAjB^t@P\\Td@p@rBZfAPd@DJFRJXHTLVTb@LRPRVZP\\Xf@LXn@pBzA|EPh@jArD|AzEL^JZBDL\\Xd@DFFFLJLBPBP?VGXKPKzAwAfEsDhAeAzBqBPMp@m@hAeAnCaClCaCnCcCjCaClCcC^[lBgBhC{BXURYT_@Xg@PYpBeDv@uAz@mAT]VS\\Qp@MdBA@?B?|HH"},{"levels":"","length":98,"points":"axhbHjtoiVuD@BmGBoG}G@qA@_A?cGBg@?kC@yDAQ@I?K?ApGClGEnO?LH?F?zIEjJE`EAjD?@?vIEP?D?|G?tC?xA@~D?hJ?dJBB?hJMhJI|EIt@?XDVHLIVIhJKdD?`E?nJ?jJ?v@?rH?tDKtDGrDEtDIxACzACxAEzACxACzAExA?zAGtDBtDBtDBrDDtD@tD@vDDrDBlJIfEAdBA`A?hJIxA?xAC|A?xACn@KjAm@LE\\KdEEh@?\\DXLf@ZLFPFPD@?hDCnCA`CAxA?vEEpCC"},{"levels":"","length":113,"points":"myzaHdhqiVLLHFHDJ@PARCRAN?H@HBH@LBHFl@`@dBnAFDJFd@\\NLb@ZTLv@l@TNDB`@V~@r@FDnBtAFB~@r@PJTR^VTRzDlCfAx@p@b@f@`@^VRNdCdBjClBdCfBrBxApFvD`F?bG@hF?jM?fH?`H?PA`Dw@jEkAhEjAlFdARD~@PF~@JVhA~A|@lAfGrIrG`JX`@rD`FfBbCRXbDrEr@x@b@r@NQJMLGTArA?N?bB?\\?Z?zD?V?N?|E?hF?hFE`F?`C?DIZm@xCeGFJx@hAbAtA`AtA`AvAl@sALWxAwCn@uANSRQiAiDEWESAU?SBQHSVUFG\\]"},{"levels":"","length":63,"points":"cqoaHpdsiVuC?C?kBBY@SFa@N[TW\\w@jAu@nA}BvD[l@QRY^c@`@iC|BoBfB_@ZmC~BoCbCmC`CoC~BmCbCkC~BURgB|AiAdAgErD{ArA]T[HY?WIQSMUKS]gAk@kBo@sBiAqDQk@}A{Em@mBKYO[Sa@IKY[Y]Ya@S_@Se@I[Ws@_@mA_@iAy@_CYc@KMIMWUi@e@"},{"levels":"","length":15,"points":"ob{aHhxqiV?oE@gE?gEzB@hBBJ?r@HBcB?eC@cF@eF@sB@qBm@?"},{"levels":"","length":25,"points":"yt~aHzwpiVCtI?bCAfC?`CAlC?v@?R?@Ap@?dA?T?Z?r@?v@PLPFN@H?HAZKj@g@x@u@\\]^]"},{"levels":"","length":68,"points":"m~maHjxriVo@?aJ?E?G?wK?Q?u@?UGu@hBaB`EKVQ`@w@EqBAA?gD?iDCeD??r@?Z?xDyACmA?oC?W?yAxAOT}@pCIVKTS\\YTEB{BrBMJGFeCxB]XoBfBoC`CmCbCmC`CoC`CmC`CeEvDgErDwChCm@j@qDpDm@_A_AsCk@gBk@iBKWK_@mAwDm@mBm@mBm@sBm@kBsAaBmAuAw@kAcAyAeA}AcAsAyC`G"},{"levels":"","length":4,"points":"sztaHrltiVSESC{@?"},{"levels":"","length":4,"points":"itzaHfiqiVWS]UgBcA"},{"levels":"","length":9,"points":"o}hbHncoiVrDCxBA|@C?H?fJCnDE?sDB"},{"levels":"","length":28,"points":"msraH`ysiVKaAIe@K]S[QQMGICI?EDEDCHAJ?F@HF\\FTBN@PALCJEXMXM^Od@MXKTsAnA"},{"levels":"","length":44,"points":"a`saHlzsiVaAwAcAsAaAwAaAsAYa@g@s@SIKE{AK_@ImEHO?{E?eFBgF?cC?_B@uAAw@COHG@O@c@Bm@?_@?[?WCS?c@?uB?mDDoD?I?c@AYEWKUSsGwGKIgDgFaA]OGcAa@"},{"levels":"","length":155,"points":"kwraHxysiVGDIDC@KDK@M?MAM]m@mBm@iBo@oBCIQi@K[Qg@Oe@Y{@MSSOcA]]Eo@AoDM}@CA?u@A[AgACsKE}BRM?}CBcB?qC@M?K?K?mBAO?i@?M?S?aA@_A?o@?qBAw@Iy@Im@Mq@Oq@S_A]c@Ww@c@aAs@aCaCaBeBsFyFk@e@m@g@iAk@kGqBWIk@S{Ac@mCg@gBY{AQSAiAIkCG{FEwCE_@Cc@?mHCiCB{@A{@?m@AaACk@A_FK_B?kEEyB?qA?{@?iBCsCC}@AC?c@?q@?aA?_B@e@?[AmA?yBCwA?i@?c@?w@?A?{B?A?gB?M?O???s@?iBCO?O?W?g@?c@Ao@?Y?A?gA?qAEkAGu@Qk@ImAGs@E_D[uDY[EUGUKOQSWYc@_@k@WW[Ki@IcA?WD?eC?kA?i@?uB@g@?gA?yCZLdGBnA@vEDjDD"},{"levels":"","length":12,"points":"gvsaHblsiVPRtAlB`@l@z@nAn@|@j@v@~@pAbAxAbAtAx@jAFF"},{"levels":"","length":16,"points":"q|raHhmtiV|@lAdA|AdAtA|@rAbAtA`AtA`ArAJNp@`AFH|@nAbAtAJLHL~@pA"},{"levels":"","length":14,"points":"uepaHdssiV?Q?e@?uBCkAQQi@cBm@kB`@]LGVEZAH?fD@"},{"levels":"","length":6,"points":"m`paH|bsiVzC?J?jC?L?L?"},{"levels":"","length":41,"points":"c{naHbxriVj@uAPSPSVQj@[xCgBzA}@ZSFEPKPMZQ`BaAnC{ANIDCb@OTGRIXGXOTMFG`Au@l@]v@e@@A~A}@h@Y^UXIPCZ?@\\@fK?lF?xA?dDsJ?k@?"},{"levels":"","length":7,"points":"w{raH~_tiV}CzF{CbGaAuAOSIEiAA"},{"levels":"","length":28,"points":"{koaHvesiVHBJFNDN@L@~BAR@PJVF`@BpA?d@GjAQhHsBhBo@t@GzAB?i@?mF?eA?]?i@?}@?_BA{@AYC]"}]}
+{
+    "agency": {
+        "disclaimer": "Transit scheduling, geographic, and real-time data provided by permission of King County.  Some real-time info provided by UW Intelligent Transportation Systems.",
+        "id": "1",
+        "lang": "en",
+        "name": "Metro Transit",
+        "phone": "206-553-3000",
+        "privateService": false,
+        "timezone": "America/Los_Angeles",
+        "url": "http://metro.kingcounty.gov"
+    },
+    "color": "",
+    "description": "Jackson Park",
+    "distance": null,
+    "id": "1_73",
+    "longName": "",
+    "name": null,
+    "polylines": [
+        {
+            "length": 256,
+            "levels": "",
+            "points": "{l~aH`zqiV\\]l@i@`@_@hBaB^a@nCcCTWLYJq@`A{Gv@uFFWi@m@c@ScAEkA?iB?eD?cD?aD?C?@sC?qB?wB@yB@wB?}A?[tB?rAAJ?fA?hA?p@?nHAR?z@jA`BxBLPHDNBX?h@?jGArD?D?~KBpHDhJDjJDfHFfHFfHBzBFAbFAtBApB?bFA`D@`@BT@RBLDRHTFNFTJTLT\\j@G^GjAE~@?XE~@?nC{GAi@@Hx@HZHTj@p@\\R`@^\\V`@Z\\VF@VJb@LT?hA?B?X?bA?|A?LBbC@bADxB?tA@z@?`@?t@?r@B~@DdDBb@?l@?\\?|@Bv@?n@?f@@??z@?rABfDDD?|@D~ADvRRl@?L?T?fA@jA@`@?hA@tEFnC?nABpMHt@D~@D^D`CRrARx@R~A\\j@P`FxAz@Z|@\\b@Tn@\\fAx@tApANPdAnAfDzD~AjBb@h@j@j@b@\\^ZTJl@Zd@N`@Pd@L`@Ld@Dd@Hx@@zAFlHEbICfEKtACtCCbB?bGd@`Ev@n@JJBXFbC^p@LvB^^F`ARPBRDPFrCx@dAjB^t@P\\Td@p@rBZfAPd@DJFRJXHTLVTb@LRPRVZP\\Xf@LXn@pBzA|EPh@jArD|AzEL^JZBDL\\Xd@DFFFLJLBPBP?VGXKPKzAwAfEsDhAeAzBqBPMp@m@hAeAnCaClCaCnCcCjCaClCcC^[lBgBhC{BXURYT_@Xg@PYpBeDv@uAz@mAT]VS\\Qp@MdBA@?B?|HH"
+        },
+        {
+            "length": 98,
+            "levels": "",
+            "points": "axhbHjtoiVuD@BmGBoG}G@qA@_A?cGBg@?kC@yDAQ@I?K?ApGClGEnO?LH?F?zIEjJE`EAjD?@?vIEP?D?|G?tC?xA@~D?hJ?dJBB?hJMhJI|EIt@?XDVHLIVIhJKdD?`E?nJ?jJ?v@?rH?tDKtDGrDEtDIxACzACxAEzACxACzAExA?zAGtDBtDBtDBrDDtD@tD@vDDrDBlJIfEAdBA`A?hJIxA?xAC|A?xACn@KjAm@LE\\KdEEh@?\\DXLf@ZLFPFPD@?hDCnCA`CAxA?vEEpCC"
+        },
+        {
+            "length": 113,
+            "levels": "",
+            "points": "myzaHdhqiVLLHFHDJ@PARCRAN?H@HBH@LBHFl@`@dBnAFDJFd@\\NLb@ZTLv@l@TNDB`@V~@r@FDnBtAFB~@r@PJTR^VTRzDlCfAx@p@b@f@`@^VRNdCdBjClBdCfBrBxApFvD`F?bG@hF?jM?fH?`H?PA`Dw@jEkAhEjAlFdARD~@PF~@JVhA~A|@lAfGrIrG`JX`@rD`FfBbCRXbDrEr@x@b@r@NQJMLGTArA?N?bB?\\?Z?zD?V?N?|E?hF?hFE`F?`C?DIZm@xCeGFJx@hAbAtA`AtA`AvAl@sALWxAwCn@uANSRQiAiDEWESAU?SBQHSVUFG\\]"
+        },
+        {
+            "length": 63,
+            "levels": "",
+            "points": "cqoaHpdsiVuC?C?kBBY@SFa@N[TW\\w@jAu@nA}BvD[l@QRY^c@`@iC|BoBfB_@ZmC~BoCbCmC`CoC~BmCbCkC~BURgB|AiAdAgErD{ArA]T[HY?WIQSMUKS]gAk@kBo@sBiAqDQk@}A{Em@mBKYO[Sa@IKY[Y]Ya@S_@Se@I[Ws@_@mA_@iAy@_CYc@KMIMWUi@e@"
+        },
+        {
+            "length": 15,
+            "levels": "",
+            "points": "ob{aHhxqiV?oE@gE?gEzB@hBBJ?r@HBcB?eC@cF@eF@sB@qBm@?"
+        },
+        {
+            "length": 25,
+            "levels": "",
+            "points": "yt~aHzwpiVCtI?bCAfC?`CAlC?v@?R?@Ap@?dA?T?Z?r@?v@PLPFN@H?HAZKj@g@x@u@\\]^]"
+        },
+        {
+            "length": 68,
+            "levels": "",
+            "points": "m~maHjxriVo@?aJ?E?G?wK?Q?u@?UGu@hBaB`EKVQ`@w@EqBAA?gD?iDCeD??r@?Z?xDyACmA?oC?W?yAxAOT}@pCIVKTS\\YTEB{BrBMJGFeCxB]XoBfBoC`CmCbCmC`CoC`CmC`CeEvDgErDwChCm@j@qDpDm@_A_AsCk@gBk@iBKWK_@mAwDm@mBm@mBm@sBm@kBsAaBmAuAw@kAcAyAeA}AcAsAyC`G"
+        },
+        {
+            "length": 4,
+            "levels": "",
+            "points": "sztaHrltiVSESC{@?"
+        },
+        {
+            "length": 4,
+            "levels": "",
+            "points": "itzaHfiqiVWS]UgBcA"
+        },
+        {
+            "length": 9,
+            "levels": "",
+            "points": "o}hbHncoiVrDCxBA|@C?H?fJCnDE?sDB"
+        },
+        {
+            "length": 28,
+            "levels": "",
+            "points": "msraH`ysiVKaAIe@K]S[QQMGICI?EDEDCHAJ?F@HF\\FTBN@PALCJEXMXM^Od@MXKTsAnA"
+        },
+        {
+            "length": 44,
+            "levels": "",
+            "points": "a`saHlzsiVaAwAcAsAaAwAaAsAYa@g@s@SIKE{AK_@ImEHO?{E?eFBgF?cC?_B@uAAw@COHG@O@c@Bm@?_@?[?WCS?c@?uB?mDDoD?I?c@AYEWKUSsGwGKIgDgFaA]OGcAa@"
+        },
+        {
+            "length": 155,
+            "levels": "",
+            "points": "kwraHxysiVGDIDC@KDK@M?MAM]m@mBm@iBo@oBCIQi@K[Qg@Oe@Y{@MSSOcA]]Eo@AoDM}@CA?u@A[AgACsKE}BRM?}CBcB?qC@M?K?K?mBAO?i@?M?S?aA@_A?o@?qBAw@Iy@Im@Mq@Oq@S_A]c@Ww@c@aAs@aCaCaBeBsFyFk@e@m@g@iAk@kGqBWIk@S{Ac@mCg@gBY{AQSAiAIkCG{FEwCE_@Cc@?mHCiCB{@A{@?m@AaACk@A_FK_B?kEEyB?qA?{@?iBCsCC}@AC?c@?q@?aA?_B@e@?[AmA?yBCwA?i@?c@?w@?A?{B?A?gB?M?O???s@?iBCO?O?W?g@?c@Ao@?Y?A?gA?qAEkAGu@Qk@ImAGs@E_D[uDY[EUGUKOQSWYc@_@k@WW[Ki@IcA?WD?eC?kA?i@?uB@g@?gA?yCZLdGBnA@vEDjDD"
+        },
+        {
+            "length": 12,
+            "levels": "",
+            "points": "gvsaHblsiVPRtAlB`@l@z@nAn@|@j@v@~@pAbAxAbAtAx@jAFF"
+        },
+        {
+            "length": 16,
+            "levels": "",
+            "points": "q|raHhmtiV|@lAdA|AdAtA|@rAbAtA`AtA`ArAJNp@`AFH|@nAbAtAJLHL~@pA"
+        },
+        {
+            "length": 14,
+            "levels": "",
+            "points": "uepaHdssiV?Q?e@?uBCkAQQi@cBm@kB`@]LGVEZAH?fD@"
+        },
+        {
+            "length": 6,
+            "levels": "",
+            "points": "m`paH|bsiVzC?J?jC?L?L?"
+        },
+        {
+            "length": 41,
+            "levels": "",
+            "points": "c{naHbxriVj@uAPSPSVQj@[xCgBzA}@ZSFEPKPMZQ`BaAnC{ANIDCb@OTGRIXGXOTMFG`Au@l@]v@e@@A~A}@h@Y^UXIPCZ?@\\@fK?lF?xA?dDsJ?k@?"
+        },
+        {
+            "length": 7,
+            "levels": "",
+            "points": "w{raH~_tiV}CzF{CbGaAuAOSIEiAA"
+        },
+        {
+            "length": 28,
+            "levels": "",
+            "points": "{koaHvesiVHBJFNDN@L@~BAR@PJVF`@BpA?d@GjAQhHsBhBo@t@GzAB?i@?mF?eA?]?i@?}@?_BA{@AYC]"
+        }
+    ],
+    "shortName": "73",
+    "stopGroups": [
+        {
+            "name": {
+                "name": "DOWNTOWN SEATTLE - Express",
+                "names": [
+                    "DOWNTOWN SEATTLE - Express"
+                ],
+                "type": "destination"
+            },
+            "polylines": [
+                {
+                    "length": 282,
+                    "levels": "",
+                    "points": "axhbHjtoiVuD@BmGBoG}G@qA@_A?cGBg@?kC@yDAQ@I?K?ApGClGEnO?LH?F?zIEjJE`EAjD?@?vIEP?D?|G?tC?xA@~D?hJ?dJBB?hJMhJI|EIt@?XDVHLIVIhJKdD?`E?nJ?jJ?v@?rH?tDKtDGrDEtDIxACzACxAEzACxACzAExA?zAGtDBtDBtDBrDDtD@tD@vDDrDBlJIfEAdBA`A?hJIxA?xAC|A?xACn@KjAm@LE\\KdEEh@?\\DXLf@ZLFPFPD@?hDCnCA`CAxA?vEEpCCtB?rAAJ?fA?hA?p@?nHAR?z@jA`BxBLPHDNBX?h@?jGArD?D?~KBpHDhJDjJDfHFfHFfHBzBFAbFAtBApB?bFA`D@`@BT@RBLDRHTFNLLHFHDJ@PARCRAN?H@HBH@LBHFl@`@dBnAFDJFd@\\NLb@ZTLv@l@TNDB`@V~@r@FDnBtAFB~@r@PJTR^VTRzDlCfAx@p@b@f@`@^VRNdCdBjClBdCfBrBxApFvD`F?bG@hF?jM?fH?`H?PA`Dw@jEkAhEjAlFdARD~@PF~@JVhA~A|@lAfGrIrG`JX`@rD`FfBbCRXbDrEr@x@b@r@NQJMLGTArA?N?bB?\\?Z?zD?V?N?|E?hF?hFE`F?`C?DIZm@xCeGFJx@hAbAtA`AtA`AvA|@lAdA|AdAtA|@rAbAtA`AtA`ArAJNp@`AFH|@nAbAtAJLHL~@pAl@~@pDqDl@k@vCiCfEsDdEwDlCaCnCaClCaClCcCnCaCnBgB\\YdCyBFGLKzBsBDCXUR]JUHW?Q?e@?uBCkAQQi@cBm@kB`@]LGVEZAH?fD@"
+                },
+                {
+                    "length": 29,
+                    "levels": "",
+                    "points": "{l~aH`zqiV\\]l@i@`@_@hBaB^a@nCcCTWLYJq@`A{Gv@uFFWi@m@c@ScAEkA?iB?eD?cD?aD?C?@sC?qB?wB@yB@wB?}A?["
+                },
+                {
+                    "length": 190,
+                    "levels": "",
+                    "points": "myzaHdhqiVFTJTLT\\j@G^GjAE~@?XE~@?nC{GAi@@Hx@HZHTj@p@\\R`@^\\V`@Z\\VF@VJb@LT?hA?B?X?bA?|A?LBbC@bADxB?tA@z@?`@?t@?r@B~@DdDBb@?l@?\\?|@Bv@?n@?f@@??z@?rABfDDD?|@D~ADvRRl@?L?T?fA@jA@`@?hA@tEFnC?nABpMHt@D~@D^D`CRrARx@R~A\\j@P`FxAz@Z|@\\b@Tn@\\fAx@tApANPdAnAfDzD~AjBb@h@j@j@b@\\^ZTJl@Zd@N`@Pd@L`@Ld@Dd@Hx@@zAFlHEbICfEKtACtCCbB?bGd@`Ev@n@JJBXFbC^p@LvB^^F`ARPBRDPFrCx@dAjB^t@P\\Td@p@rBZfAPd@DJFRJXHTLVTb@LRPRVZP\\Xf@LXn@pBzA|EPh@jArD|AzEL^JZBDL\\Xd@DFFFLJLBPBP?VGXKPKzAwAfEsDhAeAzBqBPMp@m@hAeAnCaClCaCnCcCjCaClCcC^[lBgBhC{BXURYT_@Xg@PYpBeDv@uAz@mAT]VS\\Qp@MdBA@?B?|HH"
+                },
+                {
+                    "length": 56,
+                    "levels": "",
+                    "points": "m`paH|bsiVzC?J?jC?L?L?dD?hDBfD?@?pB@v@DPa@JW`BaEt@iBj@uAPSPSVQj@[xCgBzA}@ZSFEPKPMZQ`BaAnC{ANIDCb@OTGRIXGXOTMFG`Au@l@]v@e@@A~A}@h@Y^UXIPCZ?@\\@fK?lF?xA?dDsJ?k@?"
+                },
+                {
+                    "length": 17,
+                    "levels": "",
+                    "points": "q|raHhmtiVl@sALWxAwCn@uANSRQiAiDEWESAU?SBQHSVUFG\\]"
+                },
+                {
+                    "length": 43,
+                    "levels": "",
+                    "points": "qdvaH|xriVbA`@NF`A\\fDfFJHrGvGTRVJXDb@@H?nD?lDEtB?b@?R?VBZ?^?l@?b@CNAFANIv@BtA@~AAbC?fF?dFCzE?PRtAlB`@l@z@nAn@|@j@v@~@pAbAxAbAtAx@jAFF"
+                },
+                {
+                    "length": 28,
+                    "levels": "",
+                    "points": "{koaHvesiVHBJFNDN@L@~BAR@PJVF`@BpA?d@GjAQhHsBhBo@t@GzAB?i@?mF?eA?]?i@?}@?_BA{@AYC]"
+                }
+            ],
+            "stops": [
+                {
+                    "code": "38770",
+                    "direction": "E",
+                    "distance": null,
+                    "id": "1_38770",
+                    "lat": 47.728340099999997,
+                    "locationType": 0,
+                    "lon": -122.307411,
+                    "name": "NE 137TH ST & 20TH AVE NE",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38780",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_38780",
+                    "lat": 47.730125399999999,
+                    "locationType": 0,
+                    "lon": -122.30719000000001,
+                    "name": "20TH AVE NE & NE 140TH ST",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38790",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_38790",
+                    "lat": 47.731952700000001,
+                    "locationType": 0,
+                    "lon": -122.307205,
+                    "name": "20TH AVE NE & NE 143RD ST",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38810",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_38810",
+                    "lat": 47.733982099999999,
+                    "locationType": 0,
+                    "lon": -122.30869300000001,
+                    "name": "NE 145TH ST & 19TH AVE NE",
+                    "routeIds": [
+                        "1_73",
+                        "1_308"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38830",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38830",
+                    "lat": 47.733516700000003,
+                    "locationType": 0,
+                    "lon": -122.312843,
+                    "name": "15TH AVE NE & NE 145TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38840",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38840",
+                    "lat": 47.731849699999998,
+                    "locationType": 0,
+                    "lon": -122.31282,
+                    "name": "15TH AVE NE & NE 143RD ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38850",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38850",
+                    "lat": 47.7300568,
+                    "locationType": 0,
+                    "lon": -122.312805,
+                    "name": "15TH AVE NE & NE 140TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38870",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38870",
+                    "lat": 47.726871500000001,
+                    "locationType": 0,
+                    "lon": -122.312752,
+                    "name": "15TH AVE NE & NE 135TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38890",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38890",
+                    "lat": 47.722892799999997,
+                    "locationType": 0,
+                    "lon": -122.31276699999999,
+                    "name": "15TH AVE NE & NE 130TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38900",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38900",
+                    "lat": 47.720970199999996,
+                    "locationType": 0,
+                    "lon": -122.312775,
+                    "name": "15TH AVE NE & NE 127TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_347",
+                        "1_348"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38910",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38910",
+                    "lat": 47.718997999999999,
+                    "locationType": 0,
+                    "lon": -122.31276699999999,
+                    "name": "15TH AVE NE & NE 125TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38930",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38930",
+                    "lat": 47.715473199999998,
+                    "locationType": 0,
+                    "lon": -122.312637,
+                    "name": "15TH AVE NE & NE 120TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38950",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38950",
+                    "lat": 47.712471000000001,
+                    "locationType": 0,
+                    "lon": -122.312546,
+                    "name": "15TH AVE NE & NE 115TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38970",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38970",
+                    "lat": 47.708309200000002,
+                    "locationType": 0,
+                    "lon": -122.31253100000001,
+                    "name": "15TH AVE NE & NE NORTHGATE WAY",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38990",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38990",
+                    "lat": 47.7037811,
+                    "locationType": 0,
+                    "lon": -122.312477,
+                    "name": "15TH AVE NE & NE 104TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39010",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39010",
+                    "lat": 47.700149500000002,
+                    "locationType": 0,
+                    "lon": -122.312302,
+                    "name": "15TH AVE NE & NE 98TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39030",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39030",
+                    "lat": 47.696544600000003,
+                    "locationType": 0,
+                    "lon": -122.312202,
+                    "name": "15TH AVE NE & NE 94TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39050",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39050",
+                    "lat": 47.692852000000002,
+                    "locationType": 0,
+                    "lon": -122.312286,
+                    "name": "15TH AVE NE & NE 89TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39070",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39070",
+                    "lat": 47.688274399999997,
+                    "locationType": 0,
+                    "lon": -122.312286,
+                    "name": "15TH AVE NE & NE 82ND ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38330",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38330",
+                    "lat": 47.686401400000001,
+                    "locationType": 0,
+                    "lon": -122.312256,
+                    "name": "15TH AVE NE & NE 80TH ST",
+                    "routeIds": [
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38350",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_38350",
+                    "lat": 47.682578999999997,
+                    "locationType": 0,
+                    "lon": -122.311981,
+                    "name": "15TH AVE NE & NE 75TH ST",
+                    "routeIds": [
+                        "1_72",
+                        "1_73",
+                        "1_79"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "23540",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_23540",
+                    "lat": 47.672653199999999,
+                    "locationType": 0,
+                    "lon": -122.315567,
+                    "name": "12TH AVE NE & NE 61ST ST",
+                    "routeIds": [
+                        "1_66",
+                        "1_67",
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38370",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38370",
+                    "lat": 47.678913100000003,
+                    "locationType": 0,
+                    "lon": -122.312096,
+                    "name": "15TH AVE NE & NE 70TH ST",
+                    "routeIds": [
+                        "1_72",
+                        "1_73",
+                        "1_79"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "35740",
+                    "direction": "E",
+                    "distance": null,
+                    "id": "1_35740",
+                    "lat": 47.6757469,
+                    "locationType": 0,
+                    "lon": -122.315369,
+                    "name": "NE 65TH ST & 12TH AVE NE",
+                    "routeIds": [
+                        "1_48",
+                        "1_73",
+                        "1_76",
+                        "1_79"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "35741",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_35741",
+                    "lat": 47.675472300000003,
+                    "locationType": 0,
+                    "lon": -122.312027,
+                    "name": "15TH AVE NE & NE 65TH ST",
+                    "routeIds": [
+                        "1_48",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38022",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38022",
+                    "lat": 47.670753499999996,
+                    "locationType": 0,
+                    "lon": -122.31313299999999,
+                    "name": "UNIVERSITY WAY NE & NE RAVENNA BLVD",
+                    "routeIds": [
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38024",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_38024",
+                    "lat": 47.668312100000001,
+                    "locationType": 0,
+                    "lon": -122.313118,
+                    "name": "UNIVERSITY WAY NE & NE 55TH ST",
+                    "routeIds": [
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9132",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9132",
+                    "lat": 47.664138800000003,
+                    "locationType": 0,
+                    "lon": -122.313187,
+                    "name": "UNIVERSITY WAY NE & NE 50TH ST",
+                    "routeIds": [
+                        "1_30",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9133",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9133",
+                    "lat": 47.662277199999998,
+                    "locationType": 0,
+                    "lon": -122.31321699999999,
+                    "name": "UNIVERSITY WAY NE & NE 45TH ST",
+                    "routeIds": [
+                        "1_30",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9134",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9134",
+                    "lat": 47.659854899999999,
+                    "locationType": 0,
+                    "lon": -122.313271,
+                    "name": "UNIVERSITY WAY NE & NE 43RD ST",
+                    "routeIds": [
+                        "1_30",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9142",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9142",
+                    "lat": 47.656868000000003,
+                    "locationType": 0,
+                    "lon": -122.313354,
+                    "name": "UNIVERSITY WAY NE & NE 41ST ST",
+                    "routeIds": [
+                        "1_30",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9138",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_9138",
+                    "lat": 47.656303399999999,
+                    "locationType": 0,
+                    "lon": -122.31545300000001,
+                    "name": "NE Campus Pkwy & 12th Ave NE - Bay 4",
+                    "routeIds": [
+                        "1_30",
+                        "1_31",
+                        "1_49",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9140",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9140",
+                    "lat": 47.655761699999999,
+                    "locationType": 0,
+                    "lon": -122.318512,
+                    "name": "UNIVERSITY BRIDGE & NE 40TH ST",
+                    "routeIds": [
+                        "1_49",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "26365",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_26365",
+                    "lat": 47.655963900000003,
+                    "locationType": 0,
+                    "lon": -122.32079299999999,
+                    "name": "NE 40TH ST & 7TH AVE NE",
+                    "routeIds": [
+                        "1_30",
+                        "1_31",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9141",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_9141",
+                    "lat": 47.650600400000002,
+                    "locationType": 0,
+                    "lon": -122.32215100000001,
+                    "name": "EASTLAKE AVE E & HARVARD AVE E",
+                    "routeIds": [
+                        "1_66",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9150",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_9150",
+                    "lat": 47.648609200000003,
+                    "locationType": 0,
+                    "lon": -122.32369199999999,
+                    "name": "EASTLAKE AVE E & E ALLISON ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9170",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_9170",
+                    "lat": 47.645732899999999,
+                    "locationType": 0,
+                    "lon": -122.32592,
+                    "name": "EASTLAKE AVE E & E HAMLIN ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9190",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9190",
+                    "lat": 47.6418648,
+                    "locationType": 0,
+                    "lon": -122.32598900000001,
+                    "name": "EASTLAKE AVE E & E LOUISA ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9200",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9200",
+                    "lat": 47.639469099999999,
+                    "locationType": 0,
+                    "lon": -122.325996,
+                    "name": "EASTLAKE AVE E & E LYNN ST",
+                    "routeIds": [
+                        "1_66",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9220",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9220",
+                    "lat": 47.6365433,
+                    "locationType": 0,
+                    "lon": -122.325935,
+                    "name": "EASTLAKE AVE E & E NEWTON ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9240",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_9240",
+                    "lat": 47.633388500000002,
+                    "locationType": 0,
+                    "lon": -122.325836,
+                    "name": "EASTLAKE AVE E & E GARFIELD ST",
+                    "routeIds": [
+                        "1_66",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10170",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_10170",
+                    "lat": 47.630603800000003,
+                    "locationType": 0,
+                    "lon": -122.328636,
+                    "name": "FAIRVIEW AVE E & E NELSON PL",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10180",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_10180",
+                    "lat": 47.628349300000004,
+                    "locationType": 0,
+                    "lon": -122.33152,
+                    "name": "FAIRVIEW AVE N & YALE AVE N",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "26700",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_26700",
+                    "lat": 47.6276741,
+                    "locationType": 0,
+                    "lon": -122.332382,
+                    "name": "FAIRVIEW AVE N & WARD ST",
+                    "routeIds": [
+                        "1_73",
+                        "23_98"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10190",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_10190",
+                    "lat": 47.627223999999998,
+                    "locationType": 0,
+                    "lon": -122.332939,
+                    "name": "FAIRVIEW AVE N & MINOR AVE N",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10210",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_10210",
+                    "lat": 47.623992899999998,
+                    "locationType": 0,
+                    "lon": -122.33442700000001,
+                    "name": "FAIRVIEW AVE N & MERCER ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_309"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10220",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_10220",
+                    "lat": 47.621776599999997,
+                    "locationType": 0,
+                    "lon": -122.33442700000001,
+                    "name": "FAIRVIEW AVE N & HARRISON ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_309"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10230",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_10230",
+                    "lat": 47.619770099999997,
+                    "locationType": 0,
+                    "lon": -122.33440400000001,
+                    "name": "FAIRVIEW AVE N & JOHN ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_309"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10240",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_10240",
+                    "lat": 47.617504099999998,
+                    "locationType": 0,
+                    "lon": -122.333817,
+                    "name": "BOREN AVE & VIRGINIA ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_309"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "940",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_940",
+                    "lat": 47.615703600000003,
+                    "locationType": 0,
+                    "lon": -122.334457,
+                    "name": "STEWART ST & 9TH AVE",
+                    "routeIds": [
+                        "1_25",
+                        "1_37",
+                        "1_41",
+                        "1_64",
+                        "1_66",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_83",
+                        "1_106",
+                        "1_190",
+                        "1_192",
+                        "1_250",
+                        "1_252",
+                        "1_255",
+                        "1_257",
+                        "1_260",
+                        "1_265",
+                        "1_268",
+                        "1_304",
+                        "1_308",
+                        "1_311",
+                        "1_355",
+                        "29_402",
+                        "29_405",
+                        "29_410",
+                        "29_412",
+                        "29_413",
+                        "29_415",
+                        "29_416",
+                        "29_417",
+                        "29_421",
+                        "29_422",
+                        "29_424",
+                        "29_425",
+                        "29_435",
+                        "40_510",
+                        "29_510",
+                        "40_511",
+                        "29_511",
+                        "40_512",
+                        "29_512",
+                        "40_513",
+                        "29_513",
+                        "40_545",
+                        "40_590",
+                        "40_592",
+                        "40_593",
+                        "40_594",
+                        "40_595"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1082",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_1082",
+                    "lat": 47.614116699999997,
+                    "locationType": 0,
+                    "lon": -122.331726,
+                    "name": "Convention Place Station - Bay I",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_301",
+                        "1_316"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1108",
+                    "direction": "SW",
+                    "distance": null,
+                    "id": "1_1108",
+                    "lat": 47.611396800000001,
+                    "locationType": 0,
+                    "lon": -122.337502,
+                    "name": "Westlake Station - Bay C",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "431",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_431",
+                    "lat": 47.609786999999997,
+                    "locationType": 0,
+                    "lon": -122.337952,
+                    "name": "3RD AVE & PIKE ST",
+                    "routeIds": [
+                        "1_5",
+                        "1_11",
+                        "1_15",
+                        "1_18",
+                        "1_21",
+                        "1_22",
+                        "1_41",
+                        "1_54",
+                        "1_55",
+                        "1_56",
+                        "1_57",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_81",
+                        "1_84",
+                        "1_113",
+                        "1_116",
+                        "1_118",
+                        "1_119",
+                        "1_120",
+                        "1_121",
+                        "1_122",
+                        "1_123",
+                        "1_125",
+                        "1_304",
+                        "1_308",
+                        "1_355",
+                        "1_358"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "455",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_455",
+                    "lat": 47.607250200000003,
+                    "locationType": 0,
+                    "lon": -122.33575399999999,
+                    "name": "University St Station - Bay C",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "468",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_468",
+                    "lat": 47.606502499999998,
+                    "locationType": 0,
+                    "lon": -122.33493,
+                    "name": "3RD AVE & SENECA ST",
+                    "routeIds": [
+                        "1_5",
+                        "1_11",
+                        "1_15",
+                        "1_18",
+                        "1_21",
+                        "1_22",
+                        "1_41",
+                        "1_54",
+                        "1_55",
+                        "1_56",
+                        "1_57",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_84",
+                        "1_85",
+                        "1_113",
+                        "1_116",
+                        "1_118",
+                        "1_119",
+                        "1_120",
+                        "1_121",
+                        "1_122",
+                        "1_123",
+                        "1_125",
+                        "1_304",
+                        "1_308",
+                        "1_355",
+                        "1_358",
+                        "1_994"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "490",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_490",
+                    "lat": 47.603797900000004,
+                    "locationType": 0,
+                    "lon": -122.332458,
+                    "name": "3RD AVE & COLUMBIA ST",
+                    "routeIds": [
+                        "1_5",
+                        "1_11",
+                        "1_15",
+                        "1_18",
+                        "1_21",
+                        "1_22",
+                        "1_41",
+                        "1_56",
+                        "1_57",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_84",
+                        "1_85",
+                        "1_116",
+                        "1_118",
+                        "1_119",
+                        "1_121",
+                        "1_122",
+                        "1_123",
+                        "1_304",
+                        "1_308",
+                        "1_355",
+                        "1_358",
+                        "1_994"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "501",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_501",
+                    "lat": 47.602146099999999,
+                    "locationType": 0,
+                    "lon": -122.33107,
+                    "name": "Pioneer Sq Station - Bay C",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1710",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_1710",
+                    "lat": 47.602115599999998,
+                    "locationType": 0,
+                    "lon": -122.328064,
+                    "name": "TERRACE ST & 5TH AVE",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_304",
+                        "1_308",
+                        "1_355",
+                        "1_358",
+                        "29_412",
+                        "29_413",
+                        "29_416",
+                        "29_421",
+                        "29_425",
+                        "29_435"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "843",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_843",
+                    "lat": 47.598979900000003,
+                    "locationType": 0,
+                    "lon": -122.32777400000001,
+                    "name": "5TH AVE S & S JACKSON ST",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_111",
+                        "1_114",
+                        "1_210",
+                        "1_211",
+                        "1_214",
+                        "1_215",
+                        "1_250",
+                        "1_252",
+                        "1_255",
+                        "1_257",
+                        "1_260",
+                        "1_268",
+                        "1_311",
+                        "40_510",
+                        "29_510",
+                        "40_511",
+                        "29_511",
+                        "40_512",
+                        "29_512",
+                        "40_513",
+                        "29_513",
+                        "40_545",
+                        "40_554"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "623",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_623",
+                    "lat": 47.597660099999999,
+                    "locationType": 0,
+                    "lon": -122.328217,
+                    "name": "Intl District Station - Bay C",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                }
+            ]
+        },
+        {
+            "name": {
+                "name": "JACKSON PARK - Express",
+                "names": [
+                    "JACKSON PARK - Express"
+                ],
+                "type": "destination"
+            },
+            "polylines": [
+                {
+                    "length": 302,
+                    "levels": "",
+                    "points": "cqoaHpdsiVuC?C?kBBY@SFa@N[TW\\w@jAu@nA}BvD[l@QRY^c@`@iC|BoBfB_@ZmC~BoCbCmC`CoC~BmCbCkC~BURgB|AiAdAgErD{ArA]T[HY?WIQSMUKS]gAk@kBo@sBiAqDQk@}A{Em@mBKYO[Sa@IKY[Y]Ya@S_@Se@I[Ws@_@mA_@iAKaAIe@K]S[QQMGICI?EDEDCHAJ?F@HF\\FTBN@PALCJEXMXM^Od@MXKTsAnA}CzF{CbGaAuAOSIEiAAaC?aF?iFDiF?}E?O?W?{D?[?]?cB?O?sA?SESC{@?s@y@cDsESYgBcCsDaFYa@sGaJgGsI}@mAiA_BKWG_A_AQSEmFeAiEkAkEjAaDv@Q@aH?gH?kM?iF?cGAaF?qFwDsByAeCgBkCmBeCeBSO_@Wg@a@q@c@gAy@{DmCUS_@WUSQK_As@GCoBuAGE_As@a@WECUOw@m@UMc@[OMe@]KGGEeBoAm@a@IGWS]UgBcABcB?eC@cF@eF@sB@qBm@?{BGgHCgHGgHGkJEiJEqHE_LCE?sD?kG@i@?Y?OCIEMQaByB{@kAS?oH@q@?iA?gA?K?sA@uB?qCBwEDyA?aC@oC@iDBA?QEQGMGg@[YM]Ei@?eED]JMDkAl@o@JyAB}A?yAByA?iJHaA?eB@gE@mJHsDCwDEuDAuDAsDEuDCuDCuDC{AFyA?{ADyAB{AByAD{AByABuDHsDDuDFuDJsH?w@?kJ?oJ?aE?eD?iJJWHMHWIYEu@?}EHiJHiJLC?eJCiJ?_E?yAAuC?}G?E?Q?wIDA?kD?aE@kJD{IDG?I??MDoOBmG@qGJ?H?PAxD@jCAf@?bGC~@?pAA|GArDCxBA|@C?H?fJCnDE?sDB"
+                },
+                {
+                    "length": 122,
+                    "levels": "",
+                    "points": "msraH`ysiVy@_CYc@KMIMWUi@e@sCy@QGSEQCaAS_@GwB_@q@McC_@YGKCo@KaEw@cGe@cB?uCBuABgEJcIBmHD{AGy@Ae@Ie@Ea@Me@Ma@Qe@Om@[UK_@[c@]k@k@c@i@_BkBgD{DeAoAOQuAqAgAy@o@]c@U}@]{@[aFyAk@Q_B]y@SsASaCS_@E_AEu@EqMIoACoC?uEGiAAa@?kAAgAAU?M?m@?wRS_BE}@EE?gDEsAC{@???g@Ao@?w@?}@C]?m@?c@?eDC_AEs@Cu@?a@?{@?uAAyB?cAEcCAMC}A?cA?Y?C?iA?U?c@MWKGA]Wa@[]Wa@_@]Sk@q@IUI[Iy@?oE@gE?gEzB@hBBJ?r@H"
+                },
+                {
+                    "length": 32,
+                    "levels": "",
+                    "points": "st~aHp`piV?Z?|AAvBAxB?vB?pBArCCtI?bCAfC?`CAlC?v@?R?@Ap@?dA?T?Z?r@?v@PLPFN@H?HAZKj@g@x@u@\\]^]"
+                },
+                {
+                    "length": 71,
+                    "levels": "",
+                    "points": "m~maHjxriVo@?aJ?E?G?wK?Q?u@?UGu@hBaB`EKVQ`@w@EqBAA?gD?iDCeD??r@?Z?xDyACmA?oC?W?yAxAOT}@pCIVKTS\\YTEB{BrBMJGFeCxB]XoBfBoC`CmCbCmC`CoC`CmC`CeEvDgErDwChCm@j@qDpDm@_A_AsCk@gBk@iBKWK_@mAwDm@mBm@mBm@sBm@kBsAaBmAuAw@kAcAyAeA}AcAsAyC`GyCdG[l@EH"
+                },
+                {
+                    "length": 44,
+                    "levels": "",
+                    "points": "a`saHlzsiVaAwAcAsAaAwAaAsAYa@g@s@SIKE{AK_@ImEHO?{E?eFBgF?cC?_B@uAAw@COHG@O@c@Bm@?_@?[?WCS?c@?uB?mDDoD?I?c@AYEWKUSsGwGKIgDgFaA]OGcAa@"
+                },
+                {
+                    "length": 155,
+                    "levels": "",
+                    "points": "kwraHxysiVGDIDC@KDK@M?MAM]m@mBm@iBo@oBCIQi@K[Qg@Oe@Y{@MSSOcA]]Eo@AoDM}@CA?u@A[AgACsKE}BRM?}CBcB?qC@M?K?K?mBAO?i@?M?S?aA@_A?o@?qBAw@Iy@Im@Mq@Oq@S_A]c@Ww@c@aAs@aCaCaBeBsFyFk@e@m@g@iAk@kGqBWIk@S{Ac@mCg@gBY{AQSAiAIkCG{FEwCE_@Cc@?mHCiCB{@A{@?m@AaACk@A_FK_B?kEEyB?qA?{@?iBCsCC}@AC?c@?q@?aA?_B@e@?[AmA?yBCwA?i@?c@?w@?A?{B?A?gB?M?O???s@?iBCO?O?W?g@?c@Ao@?Y?A?gA?qAEkAGu@Qk@ImAGs@E_D[uDY[EUGUKOQSWYc@_@k@WW[Ki@IcA?WD?eC?kA?i@?uB@g@?gA?yCZLdGBnA@vEDjDD"
+                }
+            ],
+            "stops": [
+                {
+                    "code": "621",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_621",
+                    "lat": 47.598453499999998,
+                    "locationType": 0,
+                    "lon": -122.32782,
+                    "name": "Intl District Station - Bay A",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1530",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_1530",
+                    "lat": 47.599266100000001,
+                    "locationType": 0,
+                    "lon": -122.328377,
+                    "name": "S JACKSON ST & 5TH AVE S",
+                    "routeIds": [
+                        "1_1",
+                        "1_2",
+                        "1_3",
+                        "1_4",
+                        "1_7",
+                        "1_10",
+                        "1_13",
+                        "1_14",
+                        "1_36",
+                        "1_49",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_99",
+                        "1_358"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "531",
+                    "direction": "NW",
+                    "distance": null,
+                    "id": "1_531",
+                    "lat": 47.602642099999997,
+                    "locationType": 0,
+                    "lon": -122.331177,
+                    "name": "3RD AVE & JAMES ST",
+                    "routeIds": [
+                        "1_5",
+                        "1_16",
+                        "1_23",
+                        "1_26",
+                        "1_28",
+                        "1_41",
+                        "1_66",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_116",
+                        "1_118",
+                        "1_119",
+                        "1_123",
+                        "1_124",
+                        "1_304",
+                        "1_306",
+                        "1_308",
+                        "1_312",
+                        "1_355",
+                        "1_358",
+                        "40_522"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "532",
+                    "direction": "NW",
+                    "distance": null,
+                    "id": "1_532",
+                    "lat": 47.603195200000002,
+                    "locationType": 0,
+                    "lon": -122.33157300000001,
+                    "name": "Pioneer Sq Station - Bay A",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "548",
+                    "direction": "NW",
+                    "distance": null,
+                    "id": "1_548",
+                    "lat": 47.605544999999999,
+                    "locationType": 0,
+                    "lon": -122.33382400000001,
+                    "name": "3RD AVE & MADISON ST",
+                    "routeIds": [
+                        "1_5",
+                        "1_16",
+                        "1_23",
+                        "1_26",
+                        "1_28",
+                        "1_41",
+                        "1_66",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_116",
+                        "1_118",
+                        "1_119",
+                        "1_123",
+                        "1_124",
+                        "1_304",
+                        "1_306",
+                        "1_308",
+                        "1_312",
+                        "1_355",
+                        "1_358",
+                        "40_522"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "565",
+                    "direction": "NW",
+                    "distance": null,
+                    "id": "1_565",
+                    "lat": 47.608249700000002,
+                    "locationType": 0,
+                    "lon": -122.33616600000001,
+                    "name": "University St Station - Bay A",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "570",
+                    "direction": "NW",
+                    "distance": null,
+                    "id": "1_570",
+                    "lat": 47.608688399999998,
+                    "locationType": 0,
+                    "lon": -122.336708,
+                    "name": "3RD AVE & UNION ST",
+                    "routeIds": [
+                        "1_5",
+                        "1_16",
+                        "1_23",
+                        "1_26",
+                        "1_28",
+                        "1_41",
+                        "1_54",
+                        "1_55",
+                        "1_66",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_116",
+                        "1_118",
+                        "1_119",
+                        "1_120",
+                        "1_123",
+                        "1_124",
+                        "1_304",
+                        "1_306",
+                        "1_308",
+                        "1_312",
+                        "1_355",
+                        "1_358",
+                        "40_522",
+                        "1_994"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "590",
+                    "direction": "NW",
+                    "distance": null,
+                    "id": "1_590",
+                    "lat": 47.611133600000002,
+                    "locationType": 0,
+                    "lon": -122.33897399999999,
+                    "name": "3RD AVE & PINE ST",
+                    "routeIds": [
+                        "1_5",
+                        "1_16",
+                        "1_26",
+                        "1_28",
+                        "1_41",
+                        "1_54",
+                        "1_55",
+                        "1_66",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_116",
+                        "1_118",
+                        "1_119",
+                        "1_120",
+                        "1_123",
+                        "1_124",
+                        "1_304",
+                        "1_355",
+                        "1_358"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1121",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_1121",
+                    "lat": 47.611801100000001,
+                    "locationType": 0,
+                    "lon": -122.335823,
+                    "name": "Westlake Station - Bay A",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_LINK"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1030",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_1030",
+                    "lat": 47.612091100000001,
+                    "locationType": 0,
+                    "lon": -122.33857,
+                    "name": "OLIVE WAY & 4TH AVE",
+                    "routeIds": [
+                        "1_25",
+                        "1_41",
+                        "1_66",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_123",
+                        "1_355"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1040",
+                    "direction": "E",
+                    "distance": null,
+                    "id": "1_1040",
+                    "lat": 47.613029500000003,
+                    "locationType": 0,
+                    "lon": -122.336327,
+                    "name": "OLIVE WAY & 6TH AVE",
+                    "routeIds": [
+                        "1_25",
+                        "1_41",
+                        "1_66",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_83",
+                        "1_111",
+                        "1_114",
+                        "1_123",
+                        "1_210",
+                        "1_214",
+                        "1_215",
+                        "1_355",
+                        "40_578",
+                        "40_590",
+                        "40_592",
+                        "40_593",
+                        "40_594",
+                        "40_595"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "1192",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_1192",
+                    "lat": 47.613941199999999,
+                    "locationType": 0,
+                    "lon": -122.33152,
+                    "name": "Convention Place Station - Bay A",
+                    "routeIds": [
+                        "1_41",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_76",
+                        "1_77",
+                        "1_101",
+                        "1_102",
+                        "1_106",
+                        "1_150",
+                        "1_301",
+                        "1_316",
+                        "40_550"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "992",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_992",
+                    "lat": 47.6146393,
+                    "locationType": 0,
+                    "lon": -122.33326700000001,
+                    "name": "HOWELL ST & 9TH AVE",
+                    "routeIds": [
+                        "1_25",
+                        "1_66",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_111",
+                        "1_114",
+                        "1_123",
+                        "29_402",
+                        "29_405",
+                        "29_410",
+                        "29_415",
+                        "29_417",
+                        "29_422",
+                        "40_510",
+                        "40_511",
+                        "40_513",
+                        "29_513"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10280",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_10280",
+                    "lat": 47.618423499999999,
+                    "locationType": 0,
+                    "lon": -122.334198,
+                    "name": "FAIRVIEW AVE & DENNY WAY",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_309"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10305",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_10305",
+                    "lat": 47.622280099999998,
+                    "locationType": 0,
+                    "lon": -122.334236,
+                    "name": "FAIRVIEW AVE N & HARRISON ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_309"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10325",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_10325",
+                    "lat": 47.626552599999997,
+                    "locationType": 0,
+                    "lon": -122.33354199999999,
+                    "name": "FAIRVIEW AVE N & VALLEY ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10340",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_10340",
+                    "lat": 47.628879499999996,
+                    "locationType": 0,
+                    "lon": -122.330589,
+                    "name": "FAIRVIEW AVE N & YALE AVE N",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "10350",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_10350",
+                    "lat": 47.630470299999999,
+                    "locationType": 0,
+                    "lon": -122.32854500000001,
+                    "name": "FAIRVIEW AVE E & YALE AVE N",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9460",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_9460",
+                    "lat": 47.634109500000001,
+                    "locationType": 0,
+                    "lon": -122.32538599999999,
+                    "name": "EASTLAKE AVE E & E GARFIELD ST",
+                    "routeIds": [
+                        "1_66",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9480",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_9480",
+                    "lat": 47.636158000000002,
+                    "locationType": 0,
+                    "lon": -122.325577,
+                    "name": "EASTLAKE AVE E & E HOWE ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9500",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_9500",
+                    "lat": 47.639938399999998,
+                    "locationType": 0,
+                    "lon": -122.32579800000001,
+                    "name": "EASTLAKE AVE E & E LYNN ST",
+                    "routeIds": [
+                        "1_66",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9510",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_9510",
+                    "lat": 47.642284400000001,
+                    "locationType": 0,
+                    "lon": -122.325783,
+                    "name": "EASTLAKE AVE E & E LOUISA ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9530",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_9530",
+                    "lat": 47.645957899999999,
+                    "locationType": 0,
+                    "lon": -122.325508,
+                    "name": "EASTLAKE AVE E & E HAMLIN ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9550",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_9550",
+                    "lat": 47.648948699999998,
+                    "locationType": 0,
+                    "lon": -122.323196,
+                    "name": "EASTLAKE AVE E & E ALLISON ST",
+                    "routeIds": [
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9560",
+                    "direction": "NE",
+                    "distance": null,
+                    "id": "1_9560",
+                    "lat": 47.6504288,
+                    "locationType": 0,
+                    "lon": -122.322052,
+                    "name": "EASTLAKE AVE E & HARVARD AVE E",
+                    "routeIds": [
+                        "1_66",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9612",
+                    "direction": "E",
+                    "distance": null,
+                    "id": "1_9612",
+                    "lat": 47.657451600000002,
+                    "locationType": 0,
+                    "lon": -122.319389,
+                    "name": "NE 42ND ST & 8TH AVE NE",
+                    "routeIds": [
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_79"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9570",
+                    "direction": "E",
+                    "distance": null,
+                    "id": "1_9570",
+                    "lat": 47.655963900000003,
+                    "locationType": 0,
+                    "lon": -122.316849,
+                    "name": "NE CAMPUS PKWY & 11TH AVE NE",
+                    "routeIds": [
+                        "1_49",
+                        "1_65",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9578",
+                    "direction": "",
+                    "distance": null,
+                    "id": "1_9578",
+                    "lat": 47.655937199999997,
+                    "locationType": 0,
+                    "lon": -122.314514,
+                    "name": "NE CAMPUS PKWY & BROOKLYN AVE NE",
+                    "routeIds": [
+                        "1_30",
+                        "1_49",
+                        "1_65",
+                        "1_70",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_75",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9581",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_9581",
+                    "lat": 47.657386799999998,
+                    "locationType": 0,
+                    "lon": -122.31313299999999,
+                    "name": "UNIVERSITY WAY NE & NE 41ST ST",
+                    "routeIds": [
+                        "1_30",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9582",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_9582",
+                    "lat": 47.659767199999997,
+                    "locationType": 0,
+                    "lon": -122.31306499999999,
+                    "name": "UNIVERSITY WAY NE & NE 43RD ST",
+                    "routeIds": [
+                        "1_30",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "9584",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_9584",
+                    "lat": 47.6620712,
+                    "locationType": 0,
+                    "lon": -122.31302599999999,
+                    "name": "UNIVERSITY WAY NE & NE 45TH ST",
+                    "routeIds": [
+                        "1_30",
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_74",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "37350",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_37350",
+                    "lat": 47.665184000000004,
+                    "locationType": 0,
+                    "lon": -122.31296500000001,
+                    "name": "UNIVERSITY WAY NE & NE 50TH ST",
+                    "routeIds": [
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "37352",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_37352",
+                    "lat": 47.668765999999998,
+                    "locationType": 0,
+                    "lon": -122.312912,
+                    "name": "UNIVERSITY WAY NE & NE 55TH ST",
+                    "routeIds": [
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "37353",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_37353",
+                    "lat": 47.670879399999997,
+                    "locationType": 0,
+                    "lon": -122.312927,
+                    "name": "UNIVERSITY WAY NE & NE RAVENNA BLVD",
+                    "routeIds": [
+                        "1_71",
+                        "1_72",
+                        "1_73",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38390",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_38390",
+                    "lat": 47.676090199999997,
+                    "locationType": 0,
+                    "lon": -122.311836,
+                    "name": "15TH AVE NE & NE 65TH ST",
+                    "routeIds": [
+                        "1_48",
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_83",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38410",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_38410",
+                    "lat": 47.679622700000003,
+                    "locationType": 0,
+                    "lon": -122.311905,
+                    "name": "15TH AVE NE & NE 70TH ST",
+                    "routeIds": [
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38430",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_38430",
+                    "lat": 47.683296200000001,
+                    "locationType": 0,
+                    "lon": -122.311981,
+                    "name": "15TH AVE NE & NE 75TH ST",
+                    "routeIds": [
+                        "1_72",
+                        "1_73",
+                        "1_79",
+                        "1_83"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39080",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39080",
+                    "lat": 47.686950699999997,
+                    "locationType": 0,
+                    "lon": -122.312065,
+                    "name": "15TH AVE NE & NE 80TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39100",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39100",
+                    "lat": 47.690586099999997,
+                    "locationType": 0,
+                    "lon": -122.312119,
+                    "name": "15TH AVE NE & NE 85TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39120",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39120",
+                    "lat": 47.694168099999999,
+                    "locationType": 0,
+                    "lon": -122.31205,
+                    "name": "15TH AVE NE & NE 90TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39140",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39140",
+                    "lat": 47.697814899999997,
+                    "locationType": 0,
+                    "lon": -122.311981,
+                    "name": "15TH AVE NE & NE 95TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39160",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39160",
+                    "lat": 47.7011337,
+                    "locationType": 0,
+                    "lon": -122.31214900000001,
+                    "name": "15TH AVE NE & NE 100TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39170",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39170",
+                    "lat": 47.703281400000002,
+                    "locationType": 0,
+                    "lon": -122.312256,
+                    "name": "15TH AVE NE & NE 103RD ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39190",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39190",
+                    "lat": 47.7087784,
+                    "locationType": 0,
+                    "lon": -122.312325,
+                    "name": "15TH AVE NE & NE NORTHGATE WAY",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39210",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39210",
+                    "lat": 47.712387100000001,
+                    "locationType": 0,
+                    "lon": -122.31234000000001,
+                    "name": "15TH AVE NE & NE 115TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39230",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39230",
+                    "lat": 47.716014899999998,
+                    "locationType": 0,
+                    "lon": -122.312462,
+                    "name": "15TH AVE NE & NE 120TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39250",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39250",
+                    "lat": 47.719940200000003,
+                    "locationType": 0,
+                    "lon": -122.312569,
+                    "name": "15TH AVE NE & NE 125TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39260",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39260",
+                    "lat": 47.721225699999998,
+                    "locationType": 0,
+                    "lon": -122.312569,
+                    "name": "15TH AVE NE & NE 127TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39270",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39270",
+                    "lat": 47.723033899999997,
+                    "locationType": 0,
+                    "lon": -122.312561,
+                    "name": "15TH AVE NE & NE 130TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39290",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39290",
+                    "lat": 47.7268829,
+                    "locationType": 0,
+                    "lon": -122.312561,
+                    "name": "15TH AVE NE & NE 135TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39310",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39310",
+                    "lat": 47.730194099999999,
+                    "locationType": 0,
+                    "lon": -122.31259900000001,
+                    "name": "15TH AVE NE & NE 140TH ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39320",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_39320",
+                    "lat": 47.732017499999998,
+                    "locationType": 0,
+                    "lon": -122.31263,
+                    "name": "15TH AVE NE & NE 143RD ST",
+                    "routeIds": [
+                        "1_73",
+                        "1_77",
+                        "1_347",
+                        "1_348",
+                        "1_373"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "82230",
+                    "direction": "E",
+                    "distance": null,
+                    "id": "1_82230",
+                    "lat": 47.733875300000001,
+                    "locationType": 0,
+                    "lon": -122.311455,
+                    "name": "NE 145TH ST & 15TH AVE NE",
+                    "routeIds": [
+                        "1_73",
+                        "1_308"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39350",
+                    "direction": "E",
+                    "distance": null,
+                    "id": "1_39350",
+                    "lat": 47.733825699999997,
+                    "locationType": 0,
+                    "lon": -122.307625,
+                    "name": "NE 145TH ST & 20TH AVE NE",
+                    "routeIds": [
+                        "1_73",
+                        "1_308"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "36930",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_36930",
+                    "lat": 47.675861400000002,
+                    "locationType": 0,
+                    "lon": -122.312546,
+                    "name": "NE 65TH ST & 15TH AVE NE",
+                    "routeIds": [
+                        "1_48",
+                        "1_64",
+                        "1_73",
+                        "1_76",
+                        "1_79"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39360",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39360",
+                    "lat": 47.731834399999997,
+                    "locationType": 0,
+                    "lon": -122.307411,
+                    "name": "20TH AVE NE & NE 143RD ST",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "36940",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_36940",
+                    "lat": 47.675884199999999,
+                    "locationType": 0,
+                    "lon": -122.31553599999999,
+                    "name": "NE 65TH ST & 12TH AVE NE",
+                    "routeIds": [
+                        "1_48",
+                        "1_73",
+                        "1_76",
+                        "1_79"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39370",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39370",
+                    "lat": 47.7300301,
+                    "locationType": 0,
+                    "lon": -122.307396,
+                    "name": "20TH AVE NE & NE 140TH ST",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "36950",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_36950",
+                    "lat": 47.675903300000002,
+                    "locationType": 0,
+                    "lon": -122.317734,
+                    "name": "NE 65TH ST & ROOSEVELT WAY NE",
+                    "routeIds": [
+                        "1_48",
+                        "1_73",
+                        "1_76"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39380",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39380",
+                    "lat": 47.728538499999999,
+                    "locationType": 0,
+                    "lon": -122.307365,
+                    "name": "20TH AVE NE & NE 137TH ST",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "39390",
+                    "direction": "S",
+                    "distance": null,
+                    "id": "1_39390",
+                    "lat": 47.726657899999999,
+                    "locationType": 0,
+                    "lon": -122.30772399999999,
+                    "name": "NE 135TH ST & 20TH AVE NE",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "36960",
+                    "direction": "W",
+                    "distance": null,
+                    "id": "1_36960",
+                    "lat": 47.675930000000001,
+                    "locationType": 0,
+                    "lon": -122.321167,
+                    "name": "NE 65TH ST & OSWEGO PL NE",
+                    "routeIds": [
+                        "1_48",
+                        "1_64",
+                        "1_73",
+                        "1_76",
+                        "1_242",
+                        "40_542"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "16409",
+                    "direction": "SE",
+                    "distance": null,
+                    "id": "1_16409",
+                    "lat": 47.674743700000001,
+                    "locationType": 0,
+                    "lon": -122.321434,
+                    "name": "NE RAVENNA BLVD & I-5",
+                    "routeIds": [
+                        "1_64",
+                        "1_73",
+                        "1_76",
+                        "1_242",
+                        "1_316"
+                    ],
+                    "wheelchairBoarding": null
+                },
+                {
+                    "code": "38750",
+                    "direction": "N",
+                    "distance": null,
+                    "id": "1_38750",
+                    "lat": 47.727298699999999,
+                    "locationType": 0,
+                    "lon": -122.30986799999999,
+                    "name": "17TH AVE NE & NE 136TH ST",
+                    "routeIds": [
+                        "1_73"
+                    ],
+                    "wheelchairBoarding": null
+                }
+            ]
+        }
+    ],
+    "textColor": "",
+    "type": 3,
+    "url": "http://metro.kingcounty.gov/tops/bus/schedules/s073_0_.html"
+}
