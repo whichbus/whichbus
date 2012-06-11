@@ -13,6 +13,7 @@ class PagesController < ApplicationController
 		@agencies = Agency.where("code like ? OR name like ?", query, query)
 		@routes = Route.where("code like ? OR name like ?", query, query)
 		@stops = Stop.where("code like ? OR name like ?", query, query)
+		render 'splash' if params[:query].nil?
 	end
 
 	def otp

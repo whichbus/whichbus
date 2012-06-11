@@ -11,7 +11,7 @@
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<span class="brand">WhichBus Workshop</span>
+			<a class="brand" href="/search">WhichBus Workshop</a>
 			<ul class="nav">
 				<% %w[agencies routes stops].each do |model| %>
 				<li <%= if model == params[:controller] then 'class=active' end %>>
@@ -22,7 +22,6 @@
 			<form class="navbar-search pull-left" action="/search">
 				<%= text_field_tag 'query', nil, class: "search-query span2", placeholder: 'search' %>
 			</form>
-
 		</div>
 	</div>
 </div>

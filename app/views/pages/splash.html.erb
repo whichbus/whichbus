@@ -1,0 +1,17 @@
+<div class="page-header">
+	<h1>WhichBus WorkShop</em> 
+		<small><%= @agencies.length + @routes.length + @stops.length %> results</small>
+	</h1>
+</div>
+
+<div class="hero-unit">
+	<h1><%= link_to @agencies.length, agencies_path, class: 'btn btn-large btn-info' %> Transit Agencies</h1>
+</div>
+
+<div class="hero-unit">
+	<h1><%= link_to @routes.length, routes_path, class: 'btn btn-large btn-success' %> Bus &amp; Ferry Routes</h1>
+</div>
+
+<div class="hero-unit">
+	<h1><%= link_to @stops.length, stops_path, class: 'btn btn-large btn-warning' %> Stops &amp; Stations</h1>
+</div>
