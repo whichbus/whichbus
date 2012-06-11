@@ -24,5 +24,5 @@ class App.Routes extends Spine.Controller
 		@render()
 
 	render: ->
-		# Render a template, replacing the controller's HTML
+		# Render a list of the filtered items
 		@list.render(App.Route.filter(@query))

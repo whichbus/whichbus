@@ -9,22 +9,23 @@ class App.WhichBus extends Spine.Controller
 	constructor: ->
 		super
 
-		@main = new App.Main
+		# sidebar shows stops or routes
+		@sidebar = new App.Sidebar
 
 		@routes
 			"/stops/:id": (params) ->
 				# show a stop
 			"/stops": (params) ->
-				@main.stops.active(params)
+				@sidebar.stops.active(params)
 			"/routes/:id": (params) ->
 				# show a route
 			"/routes": (params) ->
-				@main.routes.active(params)
+				@sidebar.routes.active(params)
 
-		@append @main
+		@append @sidebar
 
 # controller stack for stops and routes
-class App.Main extends Spine.Stack
+class App.Sidebar extends Spine.Stack
 	controllers:
 		stops: App.Stops
 		routes: App.Routes

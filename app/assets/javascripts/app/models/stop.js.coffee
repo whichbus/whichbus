@@ -20,8 +20,7 @@ class App.Stop extends Spine.Model
 		return unless objects
 		if typeof objects is 'string'
 			objects = JSON.parse(objects)
-		# Do some customization...
-		# Parse single object or array of objects
+		# Create objects from array or single object
 		if Spine.isArray(objects)
 			(@.create(value) for value in objects)
 		else
