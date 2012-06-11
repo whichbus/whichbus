@@ -2,7 +2,7 @@
 	<h1><%= link_to @stop.name, stops_path, class: 'btn btn-large btn-warning' %> 
 		<small><%= @stop.code %></small></h1>
 	(<%= @stop.lat %>, <%= @stop.lon %>), heading <%= @stop.direction %>.
-	Operated by <%= @stop.agency_code %>.
+	Operated by <%= link_to @stop.agency.name, @stop.agency %>.
 </div>
 <h2>Routes</h2>
 

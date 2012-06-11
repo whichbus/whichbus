@@ -8,6 +8,8 @@
 
 require 'open-uri'
 
+@startTime = Time.now
+
 @uppercasers = ['P&R', 'NTC', 'CC', 'SCC', 'C.B.D.', 'NE', 'NW', 'SE', 'SW', 'DART', 'LINK', 'TC' ]
 
 @agency_codes = { '1' => 'KCM', 'KMD' => 'KMD', '40' => 'ST'} #'EOS'
@@ -16,7 +18,7 @@ require 'open-uri'
 @request_count = 0
 def get_json(url)
 	@request_count += 1
-	puts "(get #{@request_count}: #{url})"
+	#puts "(get #{@request_count}: #{url})"
 	JSON.parse(open(url, 'Content-Type' => 'application/json').read)
 end
 
@@ -49,11 +51,11 @@ oba_api("agencies-with-coverage").each do |a|
 					disclaimer: data['disclaimer']
 				})
 	puts "+agency - #{agency.oba_id}: #{agency.name} (#{agency.code})"
+	route_count = 0
 
 	oba_api("routes-for-agency", agency.oba_id)['list'].each do |rte|
 		# create the route record through the agency to build the relationship
-		route = agency.routes.find_or_create_by_oba_id(rte['id'],{
-								#oba_id: rte['id'],
+		route = Route.find_or_create_by_oba_id(rte['id'],{
 								agency_code: agency.code,
 								code: /_([\w\d]+)/.match(rte['id'])[1],
 								name: rte['shortName'].empty? ? proper_case(rte['longName']) : rte['shortName'],
@@ -61,6 +63,7 @@ oba_api("agencies-with-coverage").each do |a|
 								route_type: rte['type'],
 								url: rte['url']
 							})
+		route.agency = agency
 		puts "  +route - #{route.oba_id}: #{route.name} (#{route.code})"
 
 		# load the stops for this route. 
@@ -70,11 +73,12 @@ oba_api("agencies-with-coverage").each do |a|
 		# the polylines for the route are in one part of the route_data
 		route.polylines = route_data['polylines'].map {|line| line['points'] }.join(',')
 		route.save!
+		route_count += 1
 
+		stop_count = 0
 		# and all the stops are in another!
 		route_data['stops'].each do |s|
 			stop = Stop.find_or_create_by_oba_id(s['id'], {
-											#oba_id: s['id'],
 											agency_code: agency.code,
 											code: s['code'],
 											name: proper_case(s['name']),
@@ -83,16 +87,33 @@ oba_api("agencies-with-coverage").each do |a|
 											lon: s['lon'],
 											lat: s['lat']
 									})
+			# create stop relations
 			route.stops << stop
-			puts "    +stop - #{stop.oba_id}: #{stop.name} (#{stop.code})"
+			stop.agency = agency
+
+			stop.save!
+			stop_count += 1
+			puts "    +stops: #{stop_count}..." if stop_count % 25 == 0
+			#puts "    +stop - #{stop.oba_id}: #{stop.name} (#{stop.code})"
 		end
+		puts "    =new stops: #{stop_count}"
 	end
+	puts "  =new routes: #{route_count}"
 end
 
+@totalTime = Time.now - @startTime
+
 puts ""
-puts "====================="
+puts "=========================="
 puts "|| The Grand Totals:"
 puts "||  #{Agency.all.count} agencies"
 puts "||  #{Route.all.count} routes"
 puts "||  #{Stop.all.count} stops"
-puts "====================="
+puts "||------------------------"
+puts "||  #{@request_count} requests"
+puts "||  #{@totalTime} seconds"
+puts "=========================="
+
+# TODO:
+# 1. nice friendly commenting
+# 2. finish proper_case 
