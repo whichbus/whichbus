@@ -1,12 +1,13 @@
 <div class="page-header">
-	<h1><%= @stop.name %> <small><%= @stop.code %></small></h1>
-	 (<%= @stop.lat %>, <%= @stop.lon %>), heading <%= @stop.direction %>.
+	<h1><%= link_to @stop.name, stops_path, class: 'btn btn-large btn-warning' %> 
+		<small><%= @stop.code %></small></h1>
+	(<%= @stop.lat %>, <%= @stop.lon %>), heading <%= @stop.direction %>.
 	Operated by <%= @stop.agency_code %>.
 </div>
 <h2>Routes</h2>
 
 <ul>
-<% @stop.routes.each do |route| %>
+<% @stop.routes.order('code').each do |route| %>
 	<%= raw route_item(route) %>
 <% end %>
 </ul>

@@ -8,3 +8,8 @@
 .right { float: right }
 
 h1 { margin-bottom: 10px; }
+
+h1 .btn, h2 .btn, h3 .btn, h4 .btn, h5 .btn {
+	font: inherit;
+	vertical-align: baseline;
+}

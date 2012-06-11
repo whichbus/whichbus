@@ -1,5 +1,6 @@
 <div class="page-header">
-	<h1><%= @route.name %> <small><%= @route.description %></small></h1>
+	<h1><%= link_to @route.name, route_path, class: 'btn btn-large btn-success' %> 
+		<small><%= @route.description %></small></h1>
 	<div class="details">
 		<%= link_to "Schedule Information", @route.url %>. Operated by <%= link_to @route.agency.name, @route.agency %>
 	</div>

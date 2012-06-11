@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><%=  @agency.name %></h1>
+	<h1><%= link_to @agency.name, agencies_path, class: 'btn btn-large btn-info' %></h1>
 	<div class="details">
 		<%= link_to "Official Site", @agency.url %> | Phone: <%= @agency.phone %> <br />
 		<%= @agency.disclaimer %>
