@@ -12,6 +12,7 @@ require 'open-uri'
 
 @agency_codes = { '1' => 'KCM', 'KMD' => 'KMD', '40' => 'ST'} #'EOS'
 
+# a helper method to load JSON from a url
 @request_count = 0
 def get_json(url)
 	@request_count += 1
@@ -19,18 +20,22 @@ def get_json(url)
 	JSON.parse(open(url, 'Content-Type' => 'application/json').read)
 end
 
+# quick and easy way to query the OneBusAway API
 def oba_api(method, id=nil, params=nil)
-	@query = ""
-	params.each {|key, value| @query += "&#{key}=#{value}"} unless params.nil?
+	@query = params.nil? ? "" : params.map {|key, value| "#{key}=#{value}"}.join('&')
 	method += "/" + ERB::Util.url_encode(id) unless id.nil?
 
 	return get_json("http://api.onebusaway.org/api/where/#{method}.json?key=TEST#{@query}")['data']
 end
 
+# properly cases all the words in a string. WORK IN PROGRESS
 def proper_case(string)
 	string.split(' ').map {|w| @uppercasers.include?(w) ? w.upcase : w.capitalize }.join(' ')
 end
 
+# add each agency
+#   add each route in agency
+#     add each stop on route, link them correctly
 oba_api("agencies-with-coverage").each do |a|
 	data = a['agency']
 	# create the agency!
@@ -45,7 +50,7 @@ oba_api("agencies-with-coverage").each do |a|
 				})
 	puts "+agency - #{agency.oba_id}: #{agency.name} (#{agency.code})"
 
-	oba_api("routes-for-agency/#{agency.oba_id}")['list'].each do |rte|
+	oba_api("routes-for-agency", agency.oba_id)['list'].each do |rte|
 		# create the route record through the agency to build the relationship
 		route = agency.routes.find_or_create_by_oba_id(rte['id'],{
 								#oba_id: rte['id'],
@@ -60,7 +65,7 @@ oba_api("agencies-with-coverage").each do |a|
 
 		# load the stops for this route. 
 		# but this API contains a lot of data so we'll save it and reference individual parts
-		route_data = oba_api("stops-for-route/#{route.oba_id}")
+		route_data = oba_api("stops-for-route", route.oba_id)
 
 		# the polylines for the route are in one part of the route_data
 		route.polylines = route_data['polylines'].map {|line| line['points'] }.join(',')
