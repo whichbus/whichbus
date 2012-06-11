@@ -1,2 +1,9 @@
-<h1>Stops#show</h1>
-<p>Find me in app/views/stops/show.html.erb</p>
+<h1><%= @stop.name %></h1>
+
+<h2>Routes</h2>
+
+<ul>
+<% @stop.routes.each do |route| %>
+	<%= raw route_item(route) %>
+<% end %>
+</ul>

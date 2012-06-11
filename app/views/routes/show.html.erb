@@ -1,2 +1,13 @@
-<h1>Routes#show</h1>
-<p>Find me in app/views/routes/show.html.erb</p>
+<div class="page-header">
+	<h1><%= @route.name %> <em><%= @route.description %></em></h1>
+	<div class="details">
+		<%= link_to "Schedule Information", @route.url %>. Operated by <%= link_to @route.agency.name, @route.agency %>
+	</div>
+</div>
+<h2>Stops</h2>
+
+<ul>
+<% @route.stops.each do |stop| %>
+	<%= raw stop_item(stop) %>
+<% end %>
+</ul>

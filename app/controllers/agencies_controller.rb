@@ -1,6 +1,6 @@
 class AgenciesController < ApplicationController
   def index
-  	@agencies = Agency.all
+  	@agencies = Agency.order("name").all
   end
 
   def show

@@ -1,2 +1,15 @@
-<h1><%= @agency.name %></h1>
-<p>Find me in app/views/agencies/show.html.erb</p>
+<div class="page-header">
+	<h1><%=  @agency.name %></h1>
+	<div class="details">
+		<%= link_to "Official Site", @agency.url %> | Phone: <%= @agency.phone %> <br />
+		<%= @agency.disclaimer %>
+	</div>
+</div>
+
+<h2>Routes</h2>
+
+<ul>
+<% @agency.routes.order('name').each do |route| %>
+	<%= raw route_item(route) %>
+<% end %>
+</ul>

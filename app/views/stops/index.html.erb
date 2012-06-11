@@ -1,2 +1,7 @@
-<h1>Stops#index</h1>
-<p>Find me in app/views/stops/index.html.erb</p>
+<h1>Stops</h1>
+
+<ul>
+<% @stops.each do |stop| %>
+	<%= raw stop_item(stop) %>
+<% end %>
+</ul>
