@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  agency: MyString
+  name: MyString
+  direction: MyString
+  lat: 1.5
+  lon: 1.5
+  stopType: MyString
+
+two:
+  code: MyString
+  agency: MyString
+  name: MyString
+  direction: MyString
+  lat: 1.5
+  lon: 1.5
+  stopType: MyString

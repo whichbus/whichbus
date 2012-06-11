@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  agency: MyString
+  name: MyString
+  longName: MyString
+  description: MyString
+  type: 
+  url: MyString
+  color: MyString
+  polylines: MyText
+
+two:
+  code: MyString
+  agency: MyString
+  name: MyString
+  longName: MyString
+  description: MyString
+  type: 
+  url: MyString
+  color: MyString
+  polylines: MyText
