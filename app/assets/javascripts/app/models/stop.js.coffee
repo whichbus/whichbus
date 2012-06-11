@@ -1,5 +1,5 @@
 class App.Stop extends Spine.Model
-	@configure 'Stop', 'name', 'code', 'latitude', 'longitude', 'direction'
+	@configure 'Stop', 'agency', 'name', 'code', 'lat', 'lon', 'direction'
 	
 	@belongsTo 'routes', 'App.Route'
 	@hasMany 'routes', 'App.Route'
@@ -7,7 +7,9 @@ class App.Stop extends Spine.Model
 	# @extend Spine.Model.Ajax
 	# @url '/stop'
 
-	# @extend Spine.Model.Local
+	#@create: (value) ->
+
+	@extend Spine.Model.Local
 
 	@filter: (query) ->
 		return @all() unless query
@@ -19,10 +21,24 @@ class App.Stop extends Spine.Model
 	@fromJSON: (objects) ->
 		return unless objects
 		if typeof objects is 'string'
-			objects = JSON.parse(objects)
+			window.obj = objects = JSON.parse(objects)
 		# Do some customization...
 		# Parse single object or array of objects
 		if Spine.isArray(objects)
+			console.log "creating #{objects.length} Stops"
 			(@.create(value) for value in objects)
 		else
+			console.log "creating Stop"
 			@.create(objects)
+
+	@nearby: (lat, lon) ->
+		url = OTP_URL + '/stops'
+		$.getJSON url, {lat: lat, lon: lon}, (resp) =>
+			@fromJSON(resp)
+
+	@fetch: ->
+		super
+		geolocate (position) =>
+			console.log "loading stops at (#{position.coords.latitude},#{position.coords.longitude})"
+			@nearby position.coords.latitude, position.coords.longitude
+

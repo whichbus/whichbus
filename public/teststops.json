@@ -2,16 +2,16 @@
 	"id": "0",
 	"name": "stop one",
 	"code": "123",
-	"latitude": 100,
-	"longitude": 200,
+	"lat": 100,
+	"lon": 200,
 	"direction": "N",
 	"route_id": "0"
 },{
 	"id": "1",
 	"name": "stop two",
 	"code": "223",
-	"latitude": 101,
-	"longitude": 201,
+	"lat": 101,
+	"lon": 201,
 	"direction": "E",
 	"route_id": "0"
 }]
