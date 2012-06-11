@@ -13,3 +13,18 @@
 */
 
 .stack > *:not(.active) { display: none; }
+
+body > .container {
+	padding-top: 50px;
+}
+
+li.route, li.agency, li.stop {
+	background: orange;
+	border-radius: 10px;
+	padding: 5px 10px;
+	display: block;
+	float: left;
+	margin: 5px;
+}
+
+h1 { margin-bottom: 10px; }

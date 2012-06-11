@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<span class="brand">WhichBus</span>
+			<ul class="nav">
+				<% %w[agencies routes stops].each do |model| %>
+				<li <%= if model == params[:controller] then 'class=active' end %>>
+					<%= link_to model.capitalize, "/#{model}" %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
 <div class="container">
 <%= yield %>
 </div>
