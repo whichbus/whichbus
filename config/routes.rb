@@ -4,6 +4,13 @@ WhichbusSpine::Application.routes.draw do
   root :to => "pages#index"
 
   match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
+
+  match '/otp/:method/:agency/:id' => 'pages#otp', :format => 'json'
+  match '/otp/:method/:lat,:lon' => 'pages#otp', :format => 'json'
+  match '/otp/:method' => 'pages#otp', :format => 'json'
+
+  match '/api/:method/:agency/:id' => 'pages#api', :format => 'json'
+  match '/api/:method' => 'pages#api', :format => 'json'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
