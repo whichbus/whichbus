@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WhichbusSpine</title>
+  <title>Whichbus Workshop</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,7 +11,7 @@
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<span class="brand">WhichBus</span>
+			<span class="brand">WhichBus Workshop</span>
 			<ul class="nav">
 				<% %w[agencies routes stops].each do |model| %>
 				<li <%= if model == params[:controller] then 'class=active' end %>>
@@ -19,6 +19,10 @@
 				</li>
 				<% end %>
 			</ul>
+			<form class="navbar-search pull-left" action="/search">
+				<%= text_field_tag 'query', nil, class: "search-query span2", placeholder: 'search' %>
+			</form>
+
 		</div>
 	</div>
 </div>

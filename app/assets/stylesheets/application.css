@@ -27,4 +27,4 @@ li.route, li.agency, li.stop {
 	margin: 5px;
 }
 
-h1 { margin-bottom: 10px; }
+ul~h2 { clear: both}

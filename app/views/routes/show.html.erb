@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><%= @route.name %> <em><%= @route.description %></em></h1>
+	<h1><%= @route.name %> <small><%= @route.description %></small></h1>
 	<div class="details">
 		<%= link_to "Schedule Information", @route.url %>. Operated by <%= link_to @route.agency.name, @route.agency %>
 	</div>
