@@ -1,5 +1,7 @@
 WhichbusSpine::Application.routes.draw do
 
+  match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
+
   get "stops/index"
 
   get "stops/show"
@@ -24,8 +26,7 @@ WhichbusSpine::Application.routes.draw do
   resources :agencies
   resources :routes
   resources :stops
-
-  match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
+  match '/search' => 'pages#search'
 
   match '/otp/:method/:agency/:id' => 'pages#otp', :format => 'json'
   match '/otp/:method/:lat,:lon' => 'pages#otp', :format => 'json'

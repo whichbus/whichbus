@@ -8,6 +8,13 @@ class PagesController < ApplicationController
 		render :layout => 'spine-app'
 	end
 
+	def search
+		query = "%#{params[:query]}%"
+		@agencies = Agency.where("code like ? OR name like ?", query, query)
+		@routes = Route.where("code like ? OR name like ?", query, query)
+		@stops = Stop.where("code like ? OR name like ?", query, query)
+	end
+
 	def otp
 		url = "http://otp.whichb.us:8080/opentripplanner-api-webapp/ws/transit/#{params[:method]}"
 		if params.has_key?("agency")

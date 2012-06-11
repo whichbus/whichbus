@@ -1,0 +1,32 @@
+<div class="page-header">
+	<h1>Search Results for <em class="well"><%= params[:query] %></em> 
+		<small><%= @agencies.length + @routes.length + @stops.length %> results</small>
+	</h1>
+</div>
+
+<% if @agencies.length > 0 %>
+	<h2>Agencies <small><%= @agencies.length %></small></h2>
+	<ul>
+	<% @agencies.each do |agency| %>
+		<%= raw agency_item(agency) %>
+	<% end %>
+	</ul>
+<% end %>
+
+<% if @routes.length > 0 %>
+	<h2>Routes <small><%= @routes.length %></small></h2>
+	<ul>
+	<% @routes.each do |route| %>
+		<%= raw route_item(route) %>
+	<% end %>
+	</ul>
+<% end %>
+
+<% if @stops.length > 0 %>
+	<h2>Stops <small><%= @stops.length %></small></h2>
+	<ul>
+	<% @stops.each do |stop| %>
+		<%= raw stop_item(stop) %>
+	<% end %>
+	</ul>
+<% end %>
