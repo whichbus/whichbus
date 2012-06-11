@@ -1,7 +1,29 @@
 WhichbusSpine::Application.routes.draw do
 
+  get "stops/index"
+
+  get "stops/show"
+
+  get "stops/edit"
+
+  get "routes/index"
+
+  get "routes/show"
+
+  get "routes/edit"
+
+  get "agencies/index"
+
+  get "agencies/show"
+
+  get "agencies/edit"
+
   get "pages/index"
   root :to => "pages#index"
+
+  resources :agencies
+  resources :routes
+  resources :stops
 
   match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
 

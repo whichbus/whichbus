@@ -1,0 +1,7 @@
+<h1>Agencies</h1>
+
+<ul>
+	<% @agencies.each do |agency| %>
+	<li><h3><%= link_to agency.name, agency %></h3></li>
+	<% end %>
+</ul>
