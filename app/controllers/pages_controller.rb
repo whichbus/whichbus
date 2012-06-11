@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 	@@data_count = 0
 
 	def index
+		render :layout => 'spine-app'
 	end
 
 	def otp

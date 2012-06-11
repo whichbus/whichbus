@@ -3,14 +3,12 @@
 <head>
   <title>WhichbusSpine</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", "pages" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="container">
 <%= yield %>
-</div>
 
 </body>
 </html>

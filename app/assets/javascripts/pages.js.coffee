@@ -2,6 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+# BOOM PUT THAT SPINE GOODNESS ALL UP IN THERE
+#= require app
+
 window.OTP_URL = 'http://whichbus-api.herokuapp.com' 
 #'http://otp.whichb.us:8080/opentripplanner-api-webapp/ws'
 
