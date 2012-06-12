@@ -13,3 +13,18 @@ h1 .btn, h2 .btn, h3 .btn, h4 .btn, h5 .btn {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+.api.links {
+	font-weight: normal;
+	color: #999;
+	float: right;
+}
+.api.links .id {
+	border: 1px solid dimgray;
+	padding: 2px 4px;
+	line-height: 20px;
+}
+.id span {
+	font-size: 150%;
+	display: inline-block;
+}

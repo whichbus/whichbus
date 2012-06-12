@@ -1,8 +1,10 @@
 <div class="page-header">
-	<h1><%= link_to @stop.name, stops_path, class: 'btn btn-large btn-warning' %> 
-		<small><%= @stop.code %></small></h1>
-	(<%= @stop.lat %>, <%= @stop.lon %>), heading <%= @stop.direction %>.
-	Operated by <%= link_to @stop.agency.name, @stop.agency %>.
+	<h1><%= content_tag :span, @stop.name, class: 'btn btn-large btn-warning' %> 
+		<small><%= @stop.code %></small> <%= raw api_links(@stop) %></h1>
+	<div class="details">
+		(<%= @stop.lat %>, <%= @stop.lon %>), heading <%= @stop.direction %>.
+		Operated by <%= link_to @stop.agency.name, agency_path(@stop.agency.oba_id) %>.
+	</div>
 </div>
 <h2>Routes</h2>
 

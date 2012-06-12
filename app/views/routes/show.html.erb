@@ -1,8 +1,8 @@
 <div class="page-header">
-	<h1><%= link_to @route.name, route_path, class: 'btn btn-large btn-success' %> 
-		<small><%= @route.description %></small></h1>
+	<h1><%= content_tag :span, @route.name, class: 'btn btn-large btn-success' %> 
+		<small><%= @route.description %></small> <%= raw api_links(@route) %></h1>
 	<div class="details">
-		<%= link_to "Schedule Information", @route.url %>. Operated by <%= link_to @route.agency.name, @route.agency %>
+		<%= link_to "Schedule Information", @route.url %>. Route Type <strong><%= @route.route_type %></strong>. Operated by <%= link_to @route.agency.name, route_path(@route.agency.oba_id) %>
 	</div>
 </div>
 <h2>Stops</h2>

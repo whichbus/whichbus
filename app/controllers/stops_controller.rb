@@ -4,7 +4,12 @@ class StopsController < ApplicationController
   end
 
   def show
-  	@stop = Stop.find(params[:id])
+  	@stop = Stop.find_by_oba_id(params[:id])
+  end
+
+  def show_otp
+  	@stop = Stop.find_by_agency_code_and_code(params[:agency], params[:code])
+  	render 'show'
   end
 
   def edit

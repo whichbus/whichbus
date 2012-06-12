@@ -23,17 +23,22 @@ WhichbusSpine::Application.routes.draw do
   get "pages/index"
   root :to => "pages#index"
 
+  match '/agencies/otp/:code' => 'agencies#show_otp'
+  match '/routes/:agency/:code' => 'routes#show_otp'
+  match '/stops/:agency/:code' => 'stops#show_otp'
   resources :agencies
-  resources :routes
+  resources :routes 
   resources :stops
   match '/search' => 'pages#search'
 
+  # API methods, they return json by default
   match '/otp/:method/:agency/:id' => 'pages#otp', :format => 'json'
   match '/otp/:method/:lat,:lon' => 'pages#otp', :format => 'json'
   match '/otp/:method' => 'pages#otp', :format => 'json'
 
   match '/api/:method/:agency/:id' => 'pages#api', :format => 'json'
   match '/api/:method' => 'pages#api', :format => 'json'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
