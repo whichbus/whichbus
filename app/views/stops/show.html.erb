@@ -6,7 +6,7 @@
 		Operated by <%= link_to @stop.agency.name, agency_path(@stop.agency.oba_id) %>.
 	</div>
 </div>
-<h2>Routes <small><%= @stop.routes.count %> results</small></h2>
+<h2>Routes <small><%= @stop.routes.count %></small></h2>
 
 <ul>
 <% @stop.routes.order('code').each do |route| %>

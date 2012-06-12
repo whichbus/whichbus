@@ -5,7 +5,7 @@
 		<%= link_to "Schedule Information", @route.url %>. Route Type <strong><%= @route.route_type %></strong>. Operated by <%= link_to @route.agency.name, route_path(@route.agency.oba_id) %>
 	</div>
 </div>
-<h2>Stops <small><%= @route.stops.count %> results</small></h2>
+<h2>Stops <small><%= @route.stops.count %></small></h2>
 
 <ul>
 <% @route.stops.each do |stop| %>
