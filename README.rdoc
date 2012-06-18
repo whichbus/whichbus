@@ -1,4 +1,5 @@
-== WhichBus on Spine
-2. Real-time Schedules
-3. Multi-Modal Trip Planning
-4. On all your gadgets
+== WhichBus
+
+1. Real-Time Schedules
+2. Multi-Modal Trip Planning
+3. On all your gadgets
