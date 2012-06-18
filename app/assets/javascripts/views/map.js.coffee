@@ -13,17 +13,15 @@ class Bus.Views.Map extends Backbone.View
       maxZoom: 18)
     seattle = new L.LatLng(47.62167,-122.349072)
     @map.setView(seattle, 13).addLayer(cloudmade)
+    @on 'plan_complete', @draw_route
 
   render: =>
     # route
-    points = decodeLine('wzqaHn{tiVAEo@oBk@mBm@mBi@}AEOm@mBm@qB{A}EkAqDQk@o@mBQk@Qg@Sq@qAgEe@wAGUm@oBWw@EQC]@{AaFC?yBAcC?y@?yC?sE?_G?gB?[AiB?]iFDQ?g@@iB?eA?}@?')
-    latlngs = (new L.LatLng(point[0], point[1]) for point in points)
-    polyline = new L.Polyline(latlngs, color: 'red')
-    # zoom the map to the polyline
-    @map.fitBounds(new L.LatLngBounds(latlngs))
-    # add the polyline to the map
-    @map.addLayer(polyline)
-    @plan()
+    from = new L.Marker(new L.LatLng(47.63320158032844, -122.36168296958942))
+    @map.addLayer(from)
+    to = new L.Marker(new L.LatLng(47.618624, -122.320796))
+    @map.addLayer(to)
+    @plan(from, to)
     this
 
 
@@ -37,8 +35,26 @@ class Bus.Views.Map extends Backbone.View
       maxWalkDistance: 840
       date: '2012-06-01'
       routerId: ''
-      toPlace: '47.618624,-122.320796'
-      fromPlace: '47.633202,-122.361823'
     }
+    data.fromPlace = "#{from.getLatLng().lat},#{from.getLatLng().lng}"
+    data.toPlace = "#{to.getLatLng().lat},#{to.getLatLng().lng}"
     $.get '/otp/plan', data, (response) =>
-      console.log response
+      @trigger 'plan_complete', response.plan
+
+
+  draw_route: (plan) =>
+    console.log plan
+    itinerary = plan.itineraries[0]
+    for leg in itinerary.legs
+      @draw_polyline(leg.legGeometry.points, if leg.mode == 'BUS' then 'red' else 'black')
+
+
+  draw_polyline: (points, color) =>
+    points = decodeLine(points)
+    latlngs = (new L.LatLng(point[0], point[1]) for point in points)
+    polyline = new L.Polyline(latlngs, color: color)
+    # zoom the map to the polyline
+    #@map.fitBounds(new L.LatLngBounds(latlngs))
+    # add the polyline to the map
+    @map.addLayer(polyline)
+
