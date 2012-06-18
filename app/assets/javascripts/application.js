@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require leaflet
+//= require decode
 //
 //= require ./bus
 //
