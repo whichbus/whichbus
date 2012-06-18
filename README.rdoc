@@ -1,5 +1,4 @@
-== WhichBus on Spine ==
-1. Transit Database
-2. Real-time Schedule Information
+== WhichBus on Spine
+2. Real-time Schedules
 3. Multi-Modal Trip Planning
-4. In the palm of your hand
+4. On all your gadgets
