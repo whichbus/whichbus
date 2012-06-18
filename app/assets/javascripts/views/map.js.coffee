@@ -14,12 +14,19 @@ class Bus.Views.Map extends Backbone.View
     seattle = new L.LatLng(47.62167,-122.349072)
     @map.setView(seattle, 13).addLayer(cloudmade)
     @on 'plan_complete', @draw_route
+    @marker_icon = L.Icon.extend(
+      iconUrl: 'assets/marker.png'
+      shadowUrl: 'assets/marker-shadow.png')
 
   render: =>
     # route
-    from = new L.Marker(new L.LatLng(47.63320158032844, -122.36168296958942))
+    from = new L.Marker(
+      new L.LatLng(47.63320158032844, -122.36168296958942),
+      icon: new @marker_icon)
     @map.addLayer(from)
-    to = new L.Marker(new L.LatLng(47.618624, -122.320796))
+    to = new L.Marker(
+      new L.LatLng(47.618624, -122.320796),
+      icon: new @marker_icon)
     @map.addLayer(to)
     @plan(from, to)
     this
