@@ -11,8 +11,8 @@
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="/search">WhichBus WorkShop</a>
 			<ul class="nav">
+				<li><%= link_to 'WhichBus WorkShop', '/search', class: 'brand' %></li>
 				<% %w[agencies routes stops].each do |model| %>
 				<li <%= if model == params[:controller] then 'class=active' end %>>
 					<%= link_to model.capitalize, "/#{model}" %>
