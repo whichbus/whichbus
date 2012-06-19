@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(:version => 20120611053145) do
     t.string   "oba_id"
   end
 
+  create_table "route_stops", :force => true do |t|
+    t.integer "route_id"
+    t.integer "stop_id"
+    t.integer "index"
+    t.integer "group"
+  end
+
   create_table "routes", :force => true do |t|
     t.string   "code"
     t.string   "agency_code"
@@ -38,12 +45,6 @@ ActiveRecord::Schema.define(:version => 20120611053145) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "oba_id"
-  end
-
-  create_table "routes_stops", :force => true do |t|
-    t.integer "route_id"
-    t.integer "stop_id"
-    t.integer "index"
   end
 
   create_table "stops", :force => true do |t|
