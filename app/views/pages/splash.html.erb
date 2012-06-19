@@ -7,20 +7,20 @@
 <div class="hero-unit">
 	<h1><%= link_to @agencies.length, agencies_path, class: 'btn btn-large btn-info' %> Transit Agencies</h1>
 	<% if @agencies.length < 9 %>
-	<div class="progress"><div class="bar" style="width: <%= @agencies.length * 100 / 9 %>%" ></div></div>
+	<div class="progress"><div class="bar" style="width: <%= @agencies.length * 100.0 / 9 %>%" ></div></div>
 	<% end %>
 </div>
 
 <div class="hero-unit">
 	<h1><%= link_to @routes.length, routes_path, class: 'btn btn-large btn-success' %> Bus &amp; Ferry Routes</h1>
 	<% if @routes.length < 441 %>
-	<div class="progress progress-success"><div class="bar" style="width: <%= @routes.length * 100 / 441 %>%" ></div></div>
+	<div class="progress progress-success"><div class="bar" style="width: <%= @routes.length * 100.0 / 441 %>%" ></div></div>
 	<% end %>
 </div>
 
 <div class="hero-unit">
 	<h1><%= link_to @stops.length, stops_path, class: 'btn btn-large btn-warning' %> Stops &amp; Stations</h1>
-	<% if @stops.length < 13328 %>
-	<div class="progress progress-warning"><div class="bar" style="width: <%= @stops.length * 100 / 13328 %>%" ></div></div>
+	<% if @stops.length < 13268 %>
+	<div class="progress progress-warning"><div class="bar" style="width: <%= @stops.length * 100.0 / 13268 %>%" ></div></div>
 	<% end %>
 </div>

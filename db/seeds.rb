@@ -1,15 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'open-uri'
-
-# This sets $stdout to avoid buffering the input
-#STDOUT.sync = true
 
 @startTime = Time.now
 
@@ -50,15 +42,17 @@ def proper_case(string)
 		if includes?(@uppercasers, w) then w.upcase
 		elsif includes?(@downcasers, w) then w.downcase
 		else w.capitalize end
-	end }.join(' ')
+	end.join() }.join(' ')
 end
 
+# returns whether array of regular expressions and strings contains word
 def includes?(array, word)
 	array.each do |rule|
 		# if regexp then match else uppercase string compare 
 		return true if (rule.class() == Regexp and rule =~ word) or
 					   (rule == word.upcase)
 	end
+	return false
 end
 
 ###
@@ -148,12 +142,11 @@ end
 @totalTime = (Time.now - @startTime).to_i
 
 puts ""
-puts "=========================="
+puts "======================"
 puts "|| The Grand Totals:"
 puts "||  #{Agency.all.count} agencies"
 puts "||  #{Route.all.count} routes"
 puts "||  #{Stop.all.count} stops"
-puts "||------------------------"
 puts "||  #{@request_count} requests"
-puts "||  #{@totalTime / 60}:#{@totaltime % 60} elapsed"
-puts "=========================="
+puts "||  #{@totalTime / 60}:#{@totalTime % 60} elapsed"
+puts "======================"
