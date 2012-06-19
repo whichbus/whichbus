@@ -17,22 +17,26 @@ class Bus.Views.Map extends Backbone.View
     @marker_icon = L.Icon.extend(
       iconUrl: 'assets/marker.png'
       shadowUrl: 'assets/marker-shadow.png')
+    @from = new L.Marker(
+      new L.LatLng(47.63320158032844, -122.36168296958942),
+      icon: new @marker_icon, clickable: false, draggable: true)
+    @to = new L.Marker(
+      new L.LatLng(47.618624, -122.320796),
+      icon: new @marker_icon, clickable: false, draggable: true)
+    @from.on 'dragend', @plan
+    @to.on 'dragend', @plan
+    @_polylines = []
 
   render: =>
     # route
-    from = new L.Marker(
-      new L.LatLng(47.63320158032844, -122.36168296958942),
-      icon: new @marker_icon)
-    @map.addLayer(from)
-    to = new L.Marker(
-      new L.LatLng(47.618624, -122.320796),
-      icon: new @marker_icon)
-    @map.addLayer(to)
-    @plan(from, to)
+
+    @map.addLayer(@from)
+    @map.addLayer(@to)
+    #@plan(from, to)
     this
 
 
-  plan: (from, to) =>
+  plan: =>
     data = {
       arriveBy: false
       time: '2:00 pm'
@@ -43,13 +47,19 @@ class Bus.Views.Map extends Backbone.View
       date: '2012-06-01'
       routerId: ''
     }
-    data.fromPlace = "#{from.getLatLng().lat},#{from.getLatLng().lng}"
-    data.toPlace = "#{to.getLatLng().lat},#{to.getLatLng().lng}"
+    data.fromPlace = "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
+    data.toPlace = "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
     $.get '/otp/plan', data, (response) =>
       @trigger 'plan_complete', response.plan
 
 
+  clean_up: =>
+    for polyline in @_polylines
+      @map.removeLayer(polyline)
+    @_polylines = []
+
   draw_route: (plan) =>
+    @clean_up()
     console.log plan
     itinerary = plan.itineraries[0]
     for leg in itinerary.legs
@@ -60,6 +70,7 @@ class Bus.Views.Map extends Backbone.View
     points = decodeLine(points)
     latlngs = (new L.LatLng(point[0], point[1]) for point in points)
     polyline = new L.Polyline(latlngs, color: color)
+    @_polylines.push polyline
     # zoom the map to the polyline
     #@map.fitBounds(new L.LatLngBounds(latlngs))
     # add the polyline to the map
