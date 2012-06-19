@@ -29,10 +29,9 @@ class Bus.Views.Map extends Backbone.View
 
   render: =>
     # route
-
     @map.addLayer(@from)
     @map.addLayer(@to)
-    #@plan(from, to)
+    @plan()
     this
 
 
@@ -64,7 +63,6 @@ class Bus.Views.Map extends Backbone.View
     itinerary = plan.itineraries[0]
     for leg in itinerary.legs
       @draw_polyline(leg.legGeometry.points, if leg.mode == 'BUS' then 'red' else 'black')
-
 
   draw_polyline: (points, color) =>
     points = decodeLine(points)
