@@ -8,13 +8,16 @@
 
 require 'open-uri'
 
+# This sets $stdout to avoid buffering the input
+#STDOUT.sync = true
+
 @startTime = Time.now
 
-@uppercasers = ['P&R', 'NTC', 'CC', 'SCC', 'C.B.D.', 'NE', 'NW', 'SE', 'SW', 'DART', 'LINK', 'TC' ]
+###
+# QUICK JEFFREY, GET ME THAT JSON FROM THE ONEBUSAWAY API!
+###
 
-@agency_codes = { '1' => 'KCM', 'KMD' => 'KMD', '40' => 'ST'} #'EOS'
-
-# a helper method to load JSON from a url
+# a helper method to load JSON from a url (using open-uri)
 @request_count = 0
 def get_json(url)
 	@request_count += 1
@@ -30,14 +33,44 @@ def oba_api(method, id=nil, params=nil)
 	return get_json("http://api.onebusaway.org/api/where/#{method}.json?key=TEST#{@query}")['data']
 end
 
-# properly cases all the words in a string. WORK IN PROGRESS
+### 
+# PROPER CASING OF NAMES 
+###
+
+# a mix of regexes and strings defining words that should be always up/down-cased
+@uppercasers = [/^\w?CC\w?$/i, /^\w?TC$/i, /^[NS]?[EW]?$/i, /^SR-?\d/i, /^[AP]M$/i, 
+				'HS', 'P&R', 'C.B.D.', 'DART', 'LINK' ]
+@downcasers = ['AND', 'VIA', 'TO']
+
+# properly cases all the words in a string.
 def proper_case(string)
-	string.split(' ').map {|w| @uppercasers.include?(w) ? w.upcase : w.capitalize }.join(' ')
+	# split on spaces for big words to join with spaces
+	# then split on other delimiters to get actual words for proper casing
+	string.split(' ').map {|word| word.split(/(\/|\.|-)/).map do |w| 
+		if includes?(@uppercasers, w) then w.upcase
+		elsif includes?(@downcasers, w) then w.downcase
+		else w.capitalize end
+	end }.join(' ')
 end
 
-# add each agency
-#   add each route in agency
-#     add each stop on route, link them correctly
+def includes?(array, word)
+	array.each do |rule|
+		# if regexp then match else uppercase string compare 
+		return true if (rule.class() == Regexp and rule =~ word) or
+					   (rule == word.upcase)
+	end
+end
+
+###
+# AND NOW, THE SEED SCRIPT SPECTACULAR:
+###
+
+@agency_codes = { '1' => 'KCM', 'KMD' => 'KMD', '40' => 'ST'} #'EOS'
+
+# create each agency
+#   create each route in agency
+#     create each stop on route
+#     create links btw stops and route
 oba_api("agencies-with-coverage").each do |a|
 	data = a['agency']
 	# create the agency!
@@ -50,7 +83,7 @@ oba_api("agencies-with-coverage").each do |a|
 					timezone: data['timezone'],
 					disclaimer: data['disclaimer']
 				})
-	puts "+agency - #{agency.oba_id}: #{agency.name} (#{agency.code})"
+	puts "+agency - #{agency.oba_id}: #{agency.name}"
 	route_count = 0
 
 	oba_api("routes-for-agency", agency.oba_id)['list'].each do |rte|
@@ -75,9 +108,9 @@ oba_api("agencies-with-coverage").each do |a|
 		route.save!
 		route_count += 1
 
-		stop_count = 0
+		print "    +stops "
 		# and all the stops are in another!
-		route_data['stops'].each do |s|
+		route_data['stops'].each_with_index do |s, count|
 			stop = Stop.find_or_create_by_oba_id(s['id'], {
 											agency_code: agency.code,
 											code: s['code'],
@@ -87,21 +120,32 @@ oba_api("agencies-with-coverage").each do |a|
 											lon: s['lon'],
 											lat: s['lat']
 									})
-			# create stop relations
-			route.stops << stop
 			stop.agency = agency
-
 			stop.save!
-			stop_count += 1
-			puts "    +stops: #{stop_count}..." if stop_count % 25 == 0
-			#puts "    +stop - #{stop.oba_id}: #{stop.name} (#{stop.code})"
+			print '.' if count % 5 == 0
+			# puts "    +stop - #{stop.oba_id}: #{stop.name} (#{stop.code})"
 		end
-		puts "    =new stops: #{stop_count}"
+		puts " #{route_data['stops'].length}"
+
+		# hold up, the stop groupings are deeply buried in another part
+		route_data['stopGroupings'][0]['stopGroups'].each do |group|
+			group['stopIds'].each_with_index do |id, index|
+				link = RouteStop.new({
+					index: index,
+					group: group['id'].to_i,
+				})
+				link.route = route
+				link.stop = Stop.find_by_oba_id(id)
+				link.save!
+			end
+			name = group['name']['name']
+			puts "    +group #{proper_case name} (#{group['id']}): #{group['stopIds'].length} stops"
+		end
 	end
 	puts "  =new routes: #{route_count}"
 end
 
-@totalTime = Time.now - @startTime
+@totalTime = (Time.now - @startTime).to_i
 
 puts ""
 puts "=========================="
@@ -111,9 +155,5 @@ puts "||  #{Route.all.count} routes"
 puts "||  #{Stop.all.count} stops"
 puts "||------------------------"
 puts "||  #{@request_count} requests"
-puts "||  #{@totalTime} seconds"
+puts "||  #{@totalTime / 60}:#{@totaltime % 60} elapsed"
 puts "=========================="
-
-# TODO:
-# 1. nice friendly commenting
-# 2. finish proper_case 
