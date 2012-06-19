@@ -61,8 +61,10 @@ class Bus.Views.Map extends Backbone.View
     @clean_up()
     console.log plan
     itinerary = plan.itineraries[0]
+    colors = {'BUS': 'blue', 'WALK': 'black'}
     for leg in itinerary.legs
-      @draw_polyline(leg.legGeometry.points, if leg.mode == 'BUS' then 'red' else 'black')
+      @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? 'red')
+
 
   draw_polyline: (points, color) =>
     points = decodeLine(points)
