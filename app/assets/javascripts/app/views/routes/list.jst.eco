@@ -1,8 +1,7 @@
 <% for route in @: %>
-<li class="route">
-	<strong><%= route.shortName %></strong>: <%= route.description %>
-	<ul class="stop-list">
-		<%- JST['app/views/stops/list'](route.stops().all()) %>
-	</ul>
-</li>
-<% end %>
+<li class='route'>
+	<h2><a class='btn btn-large btn-success' href="#" title="<%= "#{route.oba_id}: #{route.description}" %>">
+		<%= route.name %>
+	</a></h2>
+</li>	
+<% end %>	

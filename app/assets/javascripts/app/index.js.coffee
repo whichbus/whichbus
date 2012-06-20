@@ -23,8 +23,11 @@ class App extends Spine.Controller
     window.whichbus = @whichbus
     @append(@whichbus)
 
-    App.Stop.fetch()
+    #App.Stop.fetch()
+    App.Route.fetch()
     
     Spine.Route.setup()
+
+    @bind "refresh change", @whichbus.render
 
 window.App = App
