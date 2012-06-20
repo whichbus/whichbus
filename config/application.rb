@@ -55,5 +55,8 @@ module WhichbusSpine
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Prevent application from accessing DB or loading models when precompiling (for Devise)
+    config.assets.initialize_on_precompile = false
   end
 end

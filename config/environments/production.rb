@@ -20,6 +20,9 @@ WhichbusSpine::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # default url options for Devise
+  config.action_mailer.default_url_options = { :host => 'whichbus-spine.herokuapp.com' }
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
