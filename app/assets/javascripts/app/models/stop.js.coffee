@@ -1,15 +1,10 @@
 class App.Stop extends Spine.Model
-	@configure 'Stop', 'agency', 'name', 'code', 'lat', 'lon', 'direction'
+	@configure 'Stop', 'oba_id', 'agency_code', 'code', 'name', 'lat', 'lon', 'direction', 'stop_type'
 	
-	@belongsTo 'routes', 'App.Route'
+	@extend Spine.Model.Ajax
+	#@extend Spine.Model.Local
+	
 	@hasMany 'routes', 'App.Route'
-
-	# @extend Spine.Model.Ajax
-	# @url '/stop'
-
-
-
-	@extend Spine.Model.Local
 
 	@filter: (query) ->
 		return @all() unless query
@@ -35,8 +30,12 @@ class App.Stop extends Spine.Model
 		$.getJSON url, {lat: lat, lon: lon}, (resp) =>
 			@fromJSON(resp)
 
-	@fetch: ->
-		super
-		geolocate (position) =>
-			console.log "loading stops at (#{position.coords.latitude},#{position.coords.longitude})"
-			@nearby position.coords.latitude, position.coords.longitude
+	# @fetch: ->
+	# 	super
+	# 	geolocate (position) =>
+	# 		console.log "loading stops at (#{position.coords.latitude},#{position.coords.longitude})"
+	# 		@nearby position.coords.latitude, position.coords.longitude
+
+	@fetch: (params) ->
+		params or= {data: {offset: @last()?.id}}
+		super(params)
