@@ -23,13 +23,21 @@ WhichbusSpine::Application.routes.draw do
   get "pages/index"
   root :to => "pages#index"
 
+  match '/search' => 'pages#search'
+
+  # association queries
+  match '/routes/:id/stops' => 'routes#stops', :format => 'json'
+  match '/stops/:id/routes' => 'stops#routes', :format => 'json'
+
+  # OTP ID routes
   match '/agencies/otp/:code' => 'agencies#show_otp'
   match '/routes/:agency/:code' => 'routes#show_otp'
   match '/stops/:agency/:code' => 'stops#show_otp'
+
+  # RESTful resources
   resources :agencies
   resources :routes 
   resources :stops
-  match '/search' => 'pages#search'
 
   # API methods, they return json by default
   match '/otp/:method/:agency/:id' => 'pages#otp', :format => 'json'

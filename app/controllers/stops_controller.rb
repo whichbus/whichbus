@@ -10,10 +10,6 @@ class StopsController < ApplicationController
 		end
 	end
 
-	def create
-		puts "create called. #{params[:name]}"
-	end
-
 	def show
 		@stop = Stop.find_by_oba_id(params[:id])
 
@@ -34,7 +30,21 @@ class StopsController < ApplicationController
 		end
 	end
 
+	def create
+		puts "create called. #{params[:name]}"
+	end
+
 	def edit
-		@stop = Stop.find(params[:id])
+		@stop = Stop.find_by_oba_id(params[:id])
+	end	
+
+	def routes
+		@stop = Stop.find_by_oba_id(params[:id])
+		@routes = @stop.routes
+
+		respond_to do |format|
+			format.json { render :json => @routes }
+			format.xml  { render :xml => @routes }
+		end
 	end
 end

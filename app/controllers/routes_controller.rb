@@ -45,4 +45,14 @@ class RoutesController < ApplicationController
 		# 	format.xml  { render :xml => @route }
 		# end
 	end
+
+	def stops
+		@route = Route.find_by_oba_id(params[:id])
+		@stops = @route.stops
+
+		respond_to do |format|
+			format.json { render :json => @stops }
+			format.xml  { render :xml => @stops }
+		end
+	end
 end
