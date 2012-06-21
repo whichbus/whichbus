@@ -29,6 +29,7 @@ class Bus.Views.Navigation extends Backbone.View
 
 
   add_segments: (plan) =>
+    @$('.trip').html('')
     for leg in plan.itineraries[0].legs
       view = new Bus.Views.Segment(segment: leg)
-      $(@el).append(view.render().el)
+      @$('.trip').append(view.render().el)

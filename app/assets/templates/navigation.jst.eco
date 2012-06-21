@@ -4,3 +4,4 @@
         <input class="span2" type="text" placeholder="To" id="to_query"><input class="btn" type="submit" value="Go">
     </div>
 </form>
+<div class="trip"></div>
