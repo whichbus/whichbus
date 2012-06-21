@@ -8,4 +8,17 @@
 
 #navigation {
   width: 400px;
+
+  .segment {
+    padding: 8px;
+    border-bottom: 1px solid $tableBorder;
+  }
+  .segment:hover {
+    background-color: $tableBackgroundHover;
+  }
+  .segment span.duration {
+    color: $grayLight;
+    display: inline-block;
+    float: right;
+  }
 }
