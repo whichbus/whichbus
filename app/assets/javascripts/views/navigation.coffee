@@ -9,6 +9,7 @@ class Bus.Views.Navigation extends Backbone.View
 
   initialize: =>
     Bus.events.on 'plan:complete', @add_segments
+    Bus.events.on 'plan:clear', @render
 
   render: =>
     $(@el).html(@template())

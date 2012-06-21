@@ -56,6 +56,7 @@ class Bus.Views.Map extends Backbone.View
 
 
   clean_up: =>
+    Bus.events.trigger 'plan:clear'
     for polyline in @_polylines
       @map.removeLayer(polyline)
     @_polylines = []
