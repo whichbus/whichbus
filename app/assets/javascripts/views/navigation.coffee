@@ -4,6 +4,8 @@ class Bus.Views.Navigation extends Backbone.View
 
   events:
     'submit': 'plan'
+    'click #from-location': 'from_current_location'
+    'click #to-location': 'to_current_location'
 
   initialize: =>
     Bus.events.on 'plan:complete', @add_segments
@@ -33,3 +35,11 @@ class Bus.Views.Navigation extends Backbone.View
     for leg in plan.itineraries[0].legs
       view = new Bus.Views.Segment(segment: leg)
       @$('.trip').append(view.render().el)
+
+  from_current_location: =>
+    navigator.geolocation.getCurrentPosition (position) ->
+      @$('#from_query').val("#{position.coords.latitude},#{position.coords.longitude}")
+
+  to_current_location: =>
+    navigator.geolocation.getCurrentPosition (position) ->
+      @$('#to_query').val("#{position.coords.latitude},#{position.coords.longitude}")
