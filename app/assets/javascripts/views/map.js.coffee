@@ -25,6 +25,7 @@ class Bus.Views.Map extends Backbone.View
       icon: new @marker_icon, clickable: false, draggable: true)
     @from.on 'dragend', @plan
     @to.on 'dragend', @plan
+    Bus.events.on 'geocode:complete', @update_markers
     @_polylines = []
 
   render: =>
@@ -76,3 +77,7 @@ class Bus.Views.Map extends Backbone.View
     # add the polyline to the map
     @map.addLayer(polyline)
 
+  update_markers: (from, to) =>
+    @from.setLatLng(new L.LatLng(from.lat, from.lon))
+    @to.setLatLng(new L.LatLng(to.lat, to.lon))
+    @plan()

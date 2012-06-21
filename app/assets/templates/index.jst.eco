@@ -1,1 +1,3 @@
-<div id="content"><div id="map"></div></div>
+<div id="content">
+<div id="navigation"></div>
+<div id="map"></div></div>

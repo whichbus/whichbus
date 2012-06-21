@@ -9,3 +9,5 @@ class Bus.Routes extends Backbone.Router
   index: ->
     map = new Bus.Views.Map()
     map.render()
+    navigation = new Bus.Views.Navigation()
+    navigation.render()
