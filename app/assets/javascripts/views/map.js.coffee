@@ -25,6 +25,8 @@ class Bus.Views.Map extends Backbone.View
       icon: new @marker_icon, clickable: false, draggable: true)
     @from.on 'dragend', @plan
     @to.on 'dragend', @plan
+    @from.on 'dragstart', @clean_up
+    @to.on 'dragstart', @clean_up
     Bus.events.on 'geocode:complete', @update_markers
     @_polylines = []
 
