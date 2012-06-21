@@ -6,8 +6,7 @@ class Bus.Views.Navigation extends Backbone.View
     'submit': 'plan'
 
   initialize: =>
-    # http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=renderBasicSearchNarrative&q=westminster+abbey
-
+    Bus.events.on 'plan:complete', @add_segments
 
   render: =>
     $(@el).html(@template())
@@ -27,3 +26,9 @@ class Bus.Views.Navigation extends Backbone.View
     $.get '/nominatim/v1/search', from_data, (from_response) =>
       $.get '/nominatim/v1/search', to_data, (to_response) =>
         Bus.events.trigger 'geocode:complete', from_response[0], to_response[0]
+
+
+  add_segments: (plan) =>
+    for leg in plan.itineraries[0].legs
+      view = new Bus.Views.Segment(segment: leg)
+      $(@el).append(view.render().el)

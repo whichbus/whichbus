@@ -1,0 +1,2 @@
+Take #<%= @segment.route %><br />
+Get off at <%= @segment.to.name %> (<%= Math.round(@segment.duration/60000) %> minutes)

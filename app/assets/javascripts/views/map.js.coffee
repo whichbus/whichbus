@@ -13,7 +13,7 @@ class Bus.Views.Map extends Backbone.View
       maxZoom: 18)
     seattle = new L.LatLng(47.62167,-122.349072)
     @map.setView(seattle, 13).addLayer(cloudmade)
-    @on 'plan_complete', @draw_route
+    Bus.events.on 'plan:complete', @draw_route
     @marker_icon = L.Icon.extend(
       iconUrl: 'assets/marker.png'
       shadowUrl: 'assets/marker-shadow.png')
@@ -50,7 +50,7 @@ class Bus.Views.Map extends Backbone.View
     data.fromPlace = "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
     data.toPlace = "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
     $.get '/otp/plan', data, (response) =>
-      @trigger 'plan_complete', response.plan
+      Bus.events.trigger 'plan:complete', response.plan
 
 
   clean_up: =>
