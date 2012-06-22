@@ -24,4 +24,8 @@
   .progress {
     .bar { width: 100% }
   }
+  .real-time .label {
+    display: inline-block;
+    float: right;
+  }
 }
