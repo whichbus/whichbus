@@ -9,6 +9,7 @@ class Bus.Views.Navigation extends Backbone.View
 
   initialize: =>
     Bus.events.on 'plan:complete', @add_segments
+    Bus.events.on 'plan:complete', @get_real_time
     Bus.events.on 'plan:clear', @render
 
   render: =>
@@ -45,3 +46,21 @@ class Bus.Views.Navigation extends Backbone.View
   to_current_location: =>
     navigator.geolocation.getCurrentPosition (position) ->
       @$('#to_query').val("#{position.coords.latitude},#{position.coords.longitude}")
+
+  get_real_time: (plan) =>
+    segments = plan.itineraries[0].legs
+    first_transit_leg = _.find segments, (segment) ->
+      segment.mode != 'WALK'
+    #console.log first_transit_leg
+    # TODO: get the onebusaway agency id from the agency name, cache this!
+    $.get "/workshop/agencies/otp/#{first_transit_leg.agencyId}.json", (response) =>
+      # OBA gives a response with an invalid content type, force it to json
+      $.ajax(
+        url: "/oba/where/arrivals-and-departures-for-stop/#{response.oba_id}_#{first_transit_leg.from.stopId.id}.json"
+        data: { key: 'TEST' }
+        success: (real_time) ->
+          Bus.events.trigger 'real_time:complete', real_time.data.arrivalsAndDepartures
+        dataType: 'json'
+      )
+
+    #_.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; })
