@@ -64,6 +64,7 @@ class Bus.Views.Navigation extends Backbone.View
       # OBA gives a response with an invalid content type, force it to json
       $.ajax
         url: "/oba/where/arrivals-and-departures-for-stop/#{response.oba_id}_#{first_transit_leg.from.stopId.id}.json"
+        # TODO: put the actual time in here, defaults to NOW
         data: { key: 'TEST' }
         success: (real_time) ->
           Bus.events.trigger 'real_time:complete', real_time.data.arrivalsAndDepartures
