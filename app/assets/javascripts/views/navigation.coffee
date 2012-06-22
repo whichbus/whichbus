@@ -37,6 +37,7 @@ class Bus.Views.Navigation extends Backbone.View
       view = new Bus.Views.Segment(segment: leg)
       @$('.trip').append(view.render().el)
 
+  # TODO: Use leaflet's map.locate()
   from_current_location: =>
     navigator.geolocation.getCurrentPosition (position) ->
       @$('#from_query').val("#{position.coords.latitude},#{position.coords.longitude}")

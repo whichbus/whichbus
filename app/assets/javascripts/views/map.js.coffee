@@ -28,7 +28,7 @@ class Bus.Views.Map extends Backbone.View
     @from.on 'dragstart', @clean_up
     @to.on 'dragstart', @clean_up
     Bus.events.on 'geocode:complete', @update_markers
-    @_polylines = []
+    @plan_route = new L.LayerGroup()
 
   render: =>
     # route
@@ -57,9 +57,7 @@ class Bus.Views.Map extends Backbone.View
 
   clean_up: =>
     Bus.events.trigger 'plan:clear'
-    for polyline in @_polylines
-      @map.removeLayer(polyline)
-    @_polylines = []
+    @plan_route.clearLayers()
 
   draw_route: (plan) =>
     @clean_up()
@@ -68,17 +66,16 @@ class Bus.Views.Map extends Backbone.View
     colors = {'BUS': 'blue', 'WALK': 'black'}
     for leg in itinerary.legs
       @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? 'red')
+    @map.addLayer(@plan_route)
 
 
   draw_polyline: (points, color) =>
     points = decodeLine(points)
     latlngs = (new L.LatLng(point[0], point[1]) for point in points)
     polyline = new L.Polyline(latlngs, color: color)
-    @_polylines.push polyline
+    @plan_route.addLayer(polyline)
     # zoom the map to the polyline
     #@map.fitBounds(new L.LatLngBounds(latlngs))
-    # add the polyline to the map
-    @map.addLayer(polyline)
 
   update_markers: (from, to) =>
     @from.setLatLng(new L.LatLng(from.lat, from.lon))
