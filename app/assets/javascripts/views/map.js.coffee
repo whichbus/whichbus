@@ -39,19 +39,13 @@ class Bus.Views.Map extends Backbone.View
 
 
   plan: =>
-    data = {
-      arriveBy: false
-      time: '2:00 pm'
-      ui_date: '6/1/2012'
-      mode: 'TRANSIT,WALK'
-      optimize: 'QUICK'
-      maxWalkDistance: 840
-      date: '2012-06-01'
-      routerId: ''
-    }
-    data.fromPlace = "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
-    data.toPlace = "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
-    $.get '/otp/plan', data, (response) =>
+    date = new Date()
+    request =
+      date: date.toDateString()
+      time: date.toTimeString()
+      fromPlace: "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
+      toPlace: "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
+    $.get '/otp/plan', request, (response) =>
       Bus.events.trigger 'plan:complete', response.plan
 
 
