@@ -84,9 +84,9 @@ class Bus.Views.Navigation extends Backbone.View
       if Math.abs(time_delta) < 360
         # TODO: Move tags stuff into templates
         if time_delta > 0
-          readable_time_delta = "<span class=\"label label-success early\">#{Math.abs(time_delta)} minutes early</span>"
+          readable_time_delta = "<span class=\"label label-success early\">#{Math.abs(time_delta)} minute#{if time_delta > 1 then 's' else ''} early</span>"
         else if time_delta < 0
-          readable_time_delta = "<span class=\"label label-important late\">#{Math.abs(time_delta)} minutes late</span>"
+          readable_time_delta = "<span class=\"label label-important late\">#{Math.abs(time_delta)} minute#{if time_delta < -1 then 's' else ''}  late</span>"
         else 
           readable_time_delta = '<span class=\"label on-time\">on time</span>'
 
