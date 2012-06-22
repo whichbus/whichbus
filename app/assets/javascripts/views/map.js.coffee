@@ -45,6 +45,7 @@ class Bus.Views.Map extends Backbone.View
       time: date.toTimeString()
       fromPlace: "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
       toPlace: "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
+      numItineraries: 1
     $.get '/otp/plan', request, (response) =>
       Bus.events.trigger 'plan:complete', response.plan
 
