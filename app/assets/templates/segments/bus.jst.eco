@@ -1,2 +1,5 @@
-<div class="start<%= ' real-time' if @segment.real_time %>">Take <span class="badge badge-inverse"><%= @segment.route %></span></div>
-<div class="finish">Get off at <%= @segment.to.name %> <span class="duration"><%= Math.round(@segment.duration/60000) %> minutes</span></div>
+<div class="start<%= ' real-time' if @segment.real_time %>">Take <span class="badge badge-inverse"><%= @segment.route %></span>
+<span class="duration label"><%= new Date(@segment.startTime).getHours() %>:<%= new Date(@segment.startTime).getMinutes() %></span>
+</div>
+<div>Ride for <%= Math.round(@segment.duration/60000) %> minutes</div>
+<div class="finish">Get off at <%= @segment.to.name %></div>

@@ -22,16 +22,16 @@
   }
 
   .segment {
-    padding: 8px;
+    padding: 8px 0;
     border-bottom: 1px solid $tableBorder;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
   }
   .segment span.duration {
-    color: $grayLight;
     display: inline-block;
     float: right;
+    margin-left: 5px;
   }
   .progress {
     .bar { width: 100% }

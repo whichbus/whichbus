@@ -1,1 +1,2 @@
 Walk to <%= @segment.to.name %>
+<span class="duration label"><%= new Date(@segment.startTime).getHours() %>:<%= new Date(@segment.startTime).getMinutes() %></span>
