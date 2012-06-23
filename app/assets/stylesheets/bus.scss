@@ -8,6 +8,19 @@
 }
 
 #navigation {
+
+  form {
+    margin-top: 10px;
+    input {
+      margin-bottom: 0;
+    }
+  }
+
+  .segments {
+    list-style: none;
+    margin: 0;
+  }
+
   .segment {
     padding: 8px;
     border-bottom: 1px solid $tableBorder;

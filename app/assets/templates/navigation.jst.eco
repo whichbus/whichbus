@@ -1,14 +1,16 @@
-<form class="form-inline well">
+<form class="well">
 
     <div class="input-prepend">
-        <span class="add-on current-location" id="from-location"><i class="icon-map-marker"></i></span><input class="span2" type="text" placeholder="From" id="from_query"></div>
+        <span class="add-on current-location" id="from-location"><i class="icon-map-marker"></i></span><input class="span3" type="text" placeholder="From" id="from_query"></div>
+
     <div class="input-append input-prepend">
-        <span class="add-on current-location" id="to-location"><i class="icon-map-marker"></i></span><input class="span2" type="text" placeholder="To" id="to_query"><input class="btn" type="submit" value="Go">
+        <span class="add-on current-location" id="to-location"><i class="icon-map-marker"></i></span><input class="span2" type="text" placeholder="To" id="to_query"><input class="btn span1" type="submit" value="Go">
     </div>
 </form>
+
 <div class="trip">
 
-<ul class="segments nav nav-tabs nav-stacked"></ul>
+<ul class="segments"></ul>
 <div class="progress progress-striped active"><div class="bar"></div></div>
 
 </div>
