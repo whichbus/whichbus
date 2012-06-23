@@ -67,15 +67,18 @@ class Bus.Views.Navigation extends Backbone.View
         # TODO: put the actual time in here, defaults to NOW
         data: { key: 'TEST' }
         success: (real_time) ->
-          Bus.events.trigger 'real_time:complete', real_time.data.arrivalsAndDepartures
+          oba_trip_id = "#{response.oba_id}_#{first_transit_leg.tripId}"
+          Bus.events.trigger 'real_time:complete', real_time.data.arrivalsAndDepartures, oba_trip_id
         dataType: 'json'
 
 
-  render_real_time: (data) =>
-    # FIXME: Match the trip using the data.tripId and OTP trip id.
-    # _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; })
-    trip = data[0]
-    readable_time_delta = '<span class=\"label label-warning\">unknown</span>'
+  render_real_time: (data, oba_trip_id) =>
+    # find the prediction from OBA with the same trip id as in OTP
+    trip = _.find data, (prediction) ->
+      prediction.tripId == oba_trip_id
+
+    # don't show anything if we don't have data
+    readable_time_delta = ''
 
     if trip?
       time_delta = Math.round((trip.scheduledArrivalTime - trip.predictedArrivalTime)/60000)
