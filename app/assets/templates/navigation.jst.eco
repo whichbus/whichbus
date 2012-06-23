@@ -8,8 +8,7 @@
 </form>
 <div class="trip">
 
-<div class="progress progress-striped active span5">
-<div class="bar"></div>
-</div>
+<ul class="segments nav nav-tabs nav-stacked"></ul>
+<div class="progress progress-striped active"><div class="bar"></div></div>
 
 </div>

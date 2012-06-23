@@ -38,14 +38,15 @@ class Bus.Views.Navigation extends Backbone.View
       segment.mode != 'WALK'
 
   add_segments: (plan) =>
-    @$('.trip').html('')
+    @render()
     segments = plan.itineraries[0].legs
     first_transit_leg = @_first_transit_leg(segments)
     for leg in segments
       if first_transit_leg.tripId == leg.tripId
         leg.real_time = true
       view = new Bus.Views.Segment(segment: leg)
-      @$('.trip').append(view.render().el)
+      @$('.segments').append(view.render().el)
+      @$('.progress').hide()
 
   # TODO: Use leaflet's map.locate()
   from_current_location: =>
