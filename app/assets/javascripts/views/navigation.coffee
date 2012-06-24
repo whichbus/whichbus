@@ -8,9 +8,7 @@ class Transit.Views.Navigation extends Backbone.View
     'click #to-location': 'to_current_location'
 
   initialize: =>
-    #Transit.events.on 'plan:complete', @add_segments
     #Transit.events.on 'plan:complete', @get_real_time
-    #Transit.events.on 'plan:clear', @render
     #Transit.events.on 'real_time:complete', @render_real_time
 
     @plan_view = new Transit.Views.Plan model: Transit.plan
