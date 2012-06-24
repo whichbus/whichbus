@@ -19,14 +19,8 @@ class Transit.Views.Navigation extends Backbone.View
     event.preventDefault()
     Transit.plan.geocode_from_to @$('#from_query').val(), @$('#to_query').val()
 
-
-  # TODO: Use leaflet's map.locate()
   from_current_location: =>
-    navigator.geolocation.getCurrentPosition (position) ->
-      @$('#from_query').val("#{position.coords.latitude},#{position.coords.longitude}")
+    Transit.plan.current_location @$('#from_query'), 'from'
 
   to_current_location: =>
-    navigator.geolocation.getCurrentPosition (position) ->
-      @$('#to_query').val("#{position.coords.latitude},#{position.coords.longitude}")
-
-
+    Transit.plan.current_location @$('#to_query'), 'to'

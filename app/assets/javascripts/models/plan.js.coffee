@@ -46,3 +46,11 @@ class Transit.Models.Plan extends Backbone.Model
             to: lat: to[0].lat, lon: to[0].lon
           @trigger 'geocode'
         else console.log 'From and to locations required.'
+
+
+  current_location: (selector, target) =>
+    # TODO: Use leaflet's map.locate()
+    navigator.geolocation.getCurrentPosition (pos) =>
+      selector.val "#{pos.coords.latitude},#{pos.coords.longitude}"
+      @set target, lat: pos.coords.latitude, lon: pos.coords.longitude
+      @trigger 'geocode'

@@ -1,9 +1,12 @@
 <form class="well">
 
-    <div class="input-prepend">
-        <span class="add-on current-location" id="from-location"><i class="icon-map-marker"></i></span><input class="span3" type="text" placeholder="From" id="from_query"></div>
+<div class="input-append">
+  <input class="span3" type="text" placeholder="From" id="from_query"><button class="btn" type="button" id="from-location"><i class="icon-map-marker"></i></button>
+</div>
 
-    <div class="input-append input-prepend">
-        <span class="add-on current-location" id="to-location"><i class="icon-map-marker"></i></span><input class="span2" type="text" placeholder="To" id="to_query"><input class="btn" type="submit" value="Go">
-    </div>
+<div class="input-append">
+  <input class="span3" type="text" placeholder="To" id="to_query"><button class="btn" type="button" id="to-location"><i class="icon-map-marker"></i></button>
+</div>
+
+<button class="btn btn-inverse" type="submit">Map that bus!</button>
 </form>
