@@ -91,8 +91,7 @@ class Transit.Views.Navigation extends Backbone.View
           readable_time_delta = "<span class=\"label label-success early\">#{Math.abs(time_delta)} minute#{if time_delta > 1 then 's' else ''} early</span>"
         else if time_delta < 0
           readable_time_delta = "<span class=\"label label-important late\">#{Math.abs(time_delta)} minute#{if time_delta < -1 then 's' else ''}  late</span>"
-        else 
+        else
           readable_time_delta = '<span class=\"label label-info on-time\">on time</span>'
 
     @$('.real-time').append(readable_time_delta)
-    

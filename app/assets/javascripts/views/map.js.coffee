@@ -39,15 +39,19 @@ class Transit.Views.Map extends Backbone.View
 
 
   plan: =>
-    date = new Date()
-    request =
-      date: date.toDateString()
-      time: date.toTimeString()
-      fromPlace: "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
-      toPlace: "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
-      numItineraries: 1
-    $.get '/otp/plan', request, (response) =>
-      Transit.events.trigger 'plan:complete', response.plan
+    plan = new Transit.Models.Plan(
+      date: new Date()
+      from: "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
+      to: "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
+    )
+    plan.on 'change', =>
+      console.log 'omg changed!', plan
+
+    #plan.fetch()
+    plan.fetch(error: (model, msg) => console.log('error', msg))
+
+    #$.get '/otp/plan', request, (response) =>
+    #  Transit.events.trigger 'plan:complete', response.plan
 
 
   clean_up: =>
