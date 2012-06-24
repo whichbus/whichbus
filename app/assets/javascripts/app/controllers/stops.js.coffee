@@ -1,4 +1,4 @@
-class App.Stops.index extends Spine.Controller
+class App.Stops extends Spine.Controller
 	className: 'stops'
 
 	elements:
