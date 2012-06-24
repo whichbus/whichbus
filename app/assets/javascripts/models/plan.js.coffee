@@ -26,3 +26,12 @@ class Transit.Models.Plan extends Backbone.Model
     fromPlace: "#{@get('from').lat},#{@get('from').lon}"
     toPlace: "#{@get('to').lat},#{@get('to').lon}"
     numItineraries: @get('desired_itineraries')
+
+  geocode: (query, callback) ->
+    $.get '/nominatim/v1/searcho'
+      format: 'json'
+      countrycodes: 'US'
+      q: query
+    .success(callback)
+    .error ->
+      console.log 'Failed to geocode.'
