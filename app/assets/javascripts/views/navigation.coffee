@@ -19,8 +19,7 @@ class Transit.Views.Navigation extends Backbone.View
 
   plan: (event) ->
     event.preventDefault()
-    Transit.plan.geocode_from @$('#from_query').val()
-    Transit.plan.geocode_to @$('#to_query').val()
+    Transit.plan.geocode_from_to @$('#from_query').val(), @$('#to_query').val()
 
 
   _first_transit_leg: (segments) ->

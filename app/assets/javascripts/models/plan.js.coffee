@@ -36,10 +36,12 @@ class Transit.Models.Plan extends Backbone.Model
     .error ->
       console.log "Failed to geocode #{query}."
 
-  geocode_from: (query) =>
-    @geocode query, (response) =>
-      @set 'from', lat: response[0].lat, lon: response[0].lon if response[0]?
-
-  geocode_to: (query) =>
-    @geocode query, (response) =>
-      @set 'to', lat: response[0].lat, lon: response[0].lon if response[0]?
+  geocode_from_to: (from_query, to_query) =>
+    # TODO: It would be nice to batch this instead of doing 2 queries.
+    @geocode from_query, (from) =>
+      @geocode to_query, (to) =>
+        if from[0]? and to[0]?
+          @set
+            from: lat: from[0].lat, lon: from[0].lon
+            to: lat: to[0].lat, lon: to[0].lon
+        else console.log 'From and to locations required.'
