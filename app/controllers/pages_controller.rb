@@ -17,14 +17,7 @@ class PagesController < ApplicationController
 	end
 
 	def otp
-		url = "http://otp.whichb.us:8080/opentripplanner-api-webapp/ws/transit/#{params[:method]}"
-		if params.has_key?("agency")
-			url += "?agency=#{params[:agency]}&id=#{params[:id]}"
-		elsif params.has_key?("lat")
-			url += "?lat=#{params[:lat]}&lon=#{params[:lon]}"
-		end
-		@data = get_json(url)['routes']
-		puts @data
+		@data = API.open_trip_planner(params[:method], params)['routes']
 
 		respond_to do |format|
 			format.json { render :json => @data }
@@ -32,25 +25,12 @@ class PagesController < ApplicationController
 		end
 	end
 
-	def api
-		url = "http://3xb6.localtunnel.com/#{params[:method]}"
-		if params.has_key?("agency")
-			url += "/#{params[:agency]}/#{params[:id]}"
-		elsif params.has_key?("lat")
-			url += "?lat=#{params[:lat]}&lon=#{params[:lon]}"
-		end
-		@data = get_json(url)
+	def oba
+		@data = API.one_bus_away(params[:method], params[:id], params)
 
 		respond_to do |format|
 			format.json { render :json => @data }
 			format.xml  { render :xml => @data }
 		end
-	end
-	
-	def get_json(url, verbose=false)
-		@@data_count += 1
-		puts "JSON REQUEST #{@@data_count}: #{url}"
-
-		JSON.parse(open(url, 'Content-Type' => 'application/json').read)
 	end
 end

@@ -9,4 +9,8 @@ class Route < ActiveRecord::Base
 	def kcm_id
 		"#{@agency_code or '?'}/#{code}"
 	end
+
+	def trips
+		API.one_bus_away('trips-for-route', oba_id)
+	end
 end
