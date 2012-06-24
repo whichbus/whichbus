@@ -8,7 +8,7 @@ class Transit.Views.Navigation extends Backbone.View
     'click #to-location': 'to_current_location'
 
   initialize: =>
-    Transit.events.on 'plan:complete', @add_segments
+    #Transit.events.on 'plan:complete', @add_segments
     #Transit.events.on 'plan:complete', @get_real_time
     #Transit.events.on 'plan:clear', @render
     #Transit.events.on 'real_time:complete', @render_real_time
@@ -17,7 +17,7 @@ class Transit.Views.Navigation extends Backbone.View
     Transit.plan.trigger 'fetch'
 
   render: =>
-    $(@el).html(@template())
+    $(@el).html(@template()).append(@plan_view.render().el)
     this
 
   geocode: (event) ->
@@ -29,16 +29,7 @@ class Transit.Views.Navigation extends Backbone.View
     _.find segments, (segment) ->
       segment.mode != 'WALK'
 
-  add_segments: (plan) =>
-    @render()
-    segments = plan.get('itineraries').first().get('legs')
-    first_transit_leg = @_first_transit_leg(segments)
-    for leg in segments
-      if first_transit_leg.tripId == leg.tripId
-        leg.real_time = true
-      view = new Transit.Views.Segment(segment: leg)
-      @$('.segments').append(view.render().el)
-      @$('.progress').hide()
+
 
   # TODO: Use leaflet's map.locate()
   from_current_location: =>

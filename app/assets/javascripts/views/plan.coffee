@@ -1,4 +1,7 @@
 class Transit.Views.Plan extends Backbone.View
+  template: JST['plan']
+  className: 'plan'
+
   initialize: =>
     @map = Transit.map
     @marker_icon = L.Icon.extend
@@ -10,19 +13,20 @@ class Transit.Views.Plan extends Backbone.View
     @to = new L.Marker(
       new L.LatLng(@model.get('to').lat, @model.get('to').lon),
       icon: new @marker_icon, clickable: false, draggable: true)
+    @map.addLayer(@from)
+    @map.addLayer(@to)
     @from.on 'dragstart', @clean_up
     @to.on 'dragstart', @clean_up
     @from.on 'dragend', @update_plan
     @to.on 'dragend', @update_plan
-    Transit.events.on 'plan:complete', @render
+    Transit.events.on 'plan:complete', @render_map
+    Transit.events.on 'plan:complete', @add_segments
     @model.on 'change:from change:to fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     @plan_route = new L.LayerGroup()
 
   render: =>
-    @map.addLayer(@from)
-    @map.addLayer(@to)
-    @render_map()
+    $(@el).html(@template())
     this
 
   update_plan: =>
@@ -44,7 +48,7 @@ class Transit.Views.Plan extends Backbone.View
 
 
   clean_up: =>
-    Transit.events.trigger 'plan:clear'
+    @render()
     @plan_route.clearLayers()
 
 
@@ -64,3 +68,14 @@ class Transit.Views.Plan extends Backbone.View
     @plan_route.addLayer(polyline)
     # zoom the map to the polyline
     #@map.fitBounds(new L.LatLngBounds(latlngs))
+
+
+  add_segments: (plan) =>
+    segments = plan.get('itineraries').first().get('legs')
+    first_transit_leg = _.find segments, (segment) -> segment.mode != 'WALK'
+    for leg in segments
+      if first_transit_leg.tripId == leg.tripId
+        leg.real_time = true
+      view = new Transit.Views.Segment(segment: leg)
+      @$('.segments').append(view.render().el)
+      @$('.progress').hide()
