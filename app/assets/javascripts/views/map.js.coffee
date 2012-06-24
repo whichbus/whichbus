@@ -13,7 +13,8 @@ class Transit.Views.Map extends Backbone.View
     seattle = new L.LatLng(47.62167,-122.349072)
     @map.setView(seattle, 13).addLayer(cloudmade)
 
+    plan_view = new Transit.Views.Plan model: Transit.plan
+    Transit.plan.trigger 'fetch'
+
   render: =>
-    itinerary_view = new Transit.Views.Plan model: Transit.plan
-    itinerary_view.update_plan()
     this
