@@ -1,4 +1,4 @@
-class Bus.Views.Map extends Backbone.View
+class Transit.Views.Map extends Backbone.View
   el: 'div#map'
 
 
@@ -13,7 +13,7 @@ class Bus.Views.Map extends Backbone.View
       maxZoom: 18)
     seattle = new L.LatLng(47.62167,-122.349072)
     @map.setView(seattle, 13).addLayer(cloudmade)
-    Bus.events.on 'plan:complete', @draw_route
+    Transit.events.on 'plan:complete', @draw_route
     @marker_icon = L.Icon.extend(
       iconUrl: 'assets/marker.png'
       shadowUrl: 'assets/marker-shadow.png')
@@ -27,7 +27,7 @@ class Bus.Views.Map extends Backbone.View
     @to.on 'dragend', @plan
     @from.on 'dragstart', @clean_up
     @to.on 'dragstart', @clean_up
-    Bus.events.on 'geocode:complete', @update_markers
+    Transit.events.on 'geocode:complete', @update_markers
     @plan_route = new L.LayerGroup()
 
   render: =>
@@ -47,11 +47,11 @@ class Bus.Views.Map extends Backbone.View
       toPlace: "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
       numItineraries: 1
     $.get '/otp/plan', request, (response) =>
-      Bus.events.trigger 'plan:complete', response.plan
+      Transit.events.trigger 'plan:complete', response.plan
 
 
   clean_up: =>
-    Bus.events.trigger 'plan:clear'
+    Transit.events.trigger 'plan:clear'
     @plan_route.clearLayers()
 
   draw_route: (plan) =>

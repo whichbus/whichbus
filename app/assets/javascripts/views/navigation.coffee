@@ -1,4 +1,4 @@
-class Bus.Views.Navigation extends Backbone.View
+class Transit.Views.Navigation extends Backbone.View
   template: JST['navigation']
   el: 'div#navigation'
 
@@ -8,10 +8,10 @@ class Bus.Views.Navigation extends Backbone.View
     'click #to-location': 'to_current_location'
 
   initialize: =>
-    Bus.events.on 'plan:complete', @add_segments
-    Bus.events.on 'plan:complete', @get_real_time
-    Bus.events.on 'plan:clear', @render
-    Bus.events.on 'real_time:complete', @render_real_time
+    Transit.events.on 'plan:complete', @add_segments
+    Transit.events.on 'plan:complete', @get_real_time
+    Transit.events.on 'plan:clear', @render
+    Transit.events.on 'real_time:complete', @render_real_time
 
   render: =>
     $(@el).html(@template())
@@ -30,7 +30,7 @@ class Bus.Views.Navigation extends Backbone.View
     # TODO: This is fugly, need to batch it
     $.get '/nominatim/v1/search', from_data, (from_response) =>
       $.get '/nominatim/v1/search', to_data, (to_response) =>
-        Bus.events.trigger 'geocode:complete', from_response[0], to_response[0]
+        Transit.events.trigger 'geocode:complete', from_response[0], to_response[0]
 
 
   _first_transit_leg: (segments) ->
@@ -44,7 +44,7 @@ class Bus.Views.Navigation extends Backbone.View
     for leg in segments
       if first_transit_leg.tripId == leg.tripId
         leg.real_time = true
-      view = new Bus.Views.Segment(segment: leg)
+      view = new Transit.Views.Segment(segment: leg)
       @$('.segments').append(view.render().el)
       @$('.progress').hide()
 
@@ -69,7 +69,7 @@ class Bus.Views.Navigation extends Backbone.View
         data: { key: 'TEST' }
         success: (real_time) ->
           oba_trip_id = "#{response.oba_id}_#{first_transit_leg.tripId}"
-          Bus.events.trigger 'real_time:complete', real_time.data.arrivalsAndDepartures, oba_trip_id
+          Transit.events.trigger 'real_time:complete', real_time.data.arrivalsAndDepartures, oba_trip_id
         dataType: 'json'
 
 

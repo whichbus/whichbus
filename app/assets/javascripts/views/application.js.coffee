@@ -1,4 +1,4 @@
-class Bus.Views.Application extends Backbone.View
+class Transit.Views.Application extends Backbone.View
   template: JST['index']
 
   render: =>

@@ -17,7 +17,7 @@
 //= require leaflet
 //= require decode
 //
-//= require ./bus
+//= require ./transit
 //
 //= require_tree ../templates
 //= require_tree ./models

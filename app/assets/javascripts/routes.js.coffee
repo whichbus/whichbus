@@ -1,13 +1,13 @@
-class Bus.Routes extends Backbone.Router
+class Transit.Routes extends Backbone.Router
   routes:
     '': 'index'
 
   initialize: ->
-    @view = new Bus.Views.Application()
+    @view = new Transit.Views.Application()
     $('#container').html(@view.render().el)
 
   index: ->
-    map = new Bus.Views.Map()
+    map = new Transit.Views.Map()
     map.render()
-    navigation = new Bus.Views.Navigation()
+    navigation = new Transit.Views.Navigation()
     navigation.render()

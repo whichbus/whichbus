@@ -1,12 +1,12 @@
-window.Bus =
+window.Transit =
   Models: {}
   Collections: {}
   Views: {}
   Routers: {}
   init: ->
-    Bus.events = _.extend({}, Backbone.Events)
-    Bus.routes = new Bus.Routes
+    Transit.events = _.extend({}, Backbone.Events)
+    Transit.routes = new Transit.Routes
     Backbone.history.start(pushState: true)
 
 $(document).ready ->
-  Bus.init()
+  Transit.init()

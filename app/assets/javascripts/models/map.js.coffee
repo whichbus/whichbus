@@ -1,1 +1,1 @@
-class Bus.Models.Map extends Backbone.Model
+class Transit.Models.Map extends Backbone.Model
