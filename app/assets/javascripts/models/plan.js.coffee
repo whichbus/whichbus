@@ -2,15 +2,14 @@ class Transit.Models.Plan extends Backbone.Model
   urlRoot: '/otp/plan'
   defaults:
     itineraries: []
-    num_itineraries: 1
+    desired_itineraries: 1
 
   parse: (plan) =>
     @set
       date: new Date(plan.date)
       from: plan.from
       to: plan.to
-      # TODO: Might want to create a collection of itineraries.
-      itineraries: plan.itineraries
+      itineraries: new Transit.Collections.Itineraries(plan.itineraries)
 
   sync: (method, model, options) =>
     if method == 'read'
@@ -26,4 +25,4 @@ class Transit.Models.Plan extends Backbone.Model
     time: @get('date').toTimeString()
     fromPlace: "#{@get('from').lat},#{@get('from').lon}"
     toPlace: "#{@get('to').lat},#{@get('to').lon}"
-    numItineraries: @get('num_itineraries')
+    numItineraries: @get('desired_itineraries')

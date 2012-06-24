@@ -39,7 +39,7 @@ class Transit.Views.Navigation extends Backbone.View
 
   add_segments: (plan) =>
     @render()
-    segments = plan.get('itineraries')[0].legs
+    segments = plan.get('itineraries').first().get('legs')
     first_transit_leg = @_first_transit_leg(segments)
     for leg in segments
       if first_transit_leg.tripId == leg.tripId
@@ -58,7 +58,7 @@ class Transit.Views.Navigation extends Backbone.View
       @$('#to_query').val("#{position.coords.latitude},#{position.coords.longitude}")
 
   get_real_time: (plan) =>
-    segments = plan.get('itineraries')[0].legs
+    segments = plan.get('itineraries').first().get('legs')
     first_transit_leg = @_first_transit_leg(segments)
     # TODO: get the onebusaway agency id from the agency name, cache this!
     $.get "/workshop/agencies/otp/#{first_transit_leg.agencyId}.json", (response) =>
