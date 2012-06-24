@@ -46,7 +46,9 @@ class Transit.Views.Plan extends Backbone.View
     @clean_up()
     @model.fetch
       success: (plan) -> Transit.events.trigger 'plan:complete', plan
-      error: (model, message) -> console.log message
+      error: (model, message) =>
+        @$('.progress').hide()
+        @$('.alert').html(message).show()
 
 
   clean_up: =>
