@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 	# a helper to set up an API page in one line
 	def api_page(data)
 		respond_to do |format|
-			format.html
+			# format.html
 			format.json { render :json => data }
 			format.xml  { render :xml => data }
 		end

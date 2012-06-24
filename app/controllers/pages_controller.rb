@@ -17,20 +17,10 @@ class PagesController < ApplicationController
 	end
 
 	def otp
-		@data = API.open_trip_planner(params[:method], params)['routes']
-
-		respond_to do |format|
-			format.json { render :json => @data }
-			format.xml  { render :xml => @data }
-		end
+		api_page API.open_trip_planner(params[:method], params)['routes']
 	end
 
 	def oba
-		@data = API.one_bus_away(params[:method], params[:id], params)
-
-		respond_to do |format|
-			format.json { render :json => @data }
-			format.xml  { render :xml => @data }
-		end
+		api_page API.one_bus_away(params[:method], params[:id], params)
 	end
 end
