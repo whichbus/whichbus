@@ -21,7 +21,7 @@ class Transit.Views.Plan extends Backbone.View
     @to.on 'dragend', @update_plan
     Transit.events.on 'plan:complete', @render_map
     Transit.events.on 'plan:complete', @add_segments
-    @model.on 'change:from change:to fetch', @fetch_plan
+    @model.on 'geocode fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     @plan_route = new L.LayerGroup()
 
@@ -34,6 +34,7 @@ class Transit.Views.Plan extends Backbone.View
       date: new Date()
       from: lat: @from.getLatLng().lat, lon: @from.getLatLng().lng
       to: lat: @to.getLatLng().lat, lon: @to.getLatLng().lng
+    @model.trigger 'fetch'
 
 
   update_markers: =>

@@ -44,4 +44,5 @@ class Transit.Models.Plan extends Backbone.Model
           @set
             from: lat: from[0].lat, lon: from[0].lon
             to: lat: to[0].lat, lon: to[0].lon
+          @trigger 'geocode'
         else console.log 'From and to locations required.'
