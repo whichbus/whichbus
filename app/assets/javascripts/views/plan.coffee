@@ -75,7 +75,7 @@ class Transit.Views.Plan extends Backbone.View
     segments = plan.get('itineraries').first().get('legs')
     first_transit_leg = _.find segments, (segment) -> segment.mode != 'WALK'
     for leg in segments
-      if first_transit_leg.tripId == leg.tripId
+      if first_transit_leg?.tripId == leg.tripId
         real_time = new Transit.Models.RealTime(segment: first_transit_leg)
         real_time.fetch
           success: (data) =>
