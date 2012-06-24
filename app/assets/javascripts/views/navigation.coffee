@@ -13,6 +13,9 @@ class Transit.Views.Navigation extends Backbone.View
     #Transit.events.on 'plan:clear', @render
     #Transit.events.on 'real_time:complete', @render_real_time
 
+    @plan_view = new Transit.Views.Plan model: Transit.plan
+    Transit.plan.trigger 'fetch'
+
   render: =>
     $(@el).html(@template())
     this
