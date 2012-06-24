@@ -28,16 +28,15 @@
   .segment:hover {
     background-color: $tableBackgroundHover;
   }
-  .segment span.duration {
-    display: inline-block;
+  .segment .duration {
     float: right;
     margin-left: 5px;
   }
   .progress {
     .bar { width: 100% }
   }
-  .real-time .label {
-    display: inline-block;
+  .real-time {
+    display: none;
     float: right;
   }
 }

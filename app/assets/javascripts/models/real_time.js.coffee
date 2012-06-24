@@ -9,7 +9,10 @@ class Transit.Models.RealTime extends Backbone.Model
           url: "/oba/where/arrivals-and-departures-for-stop/#{oba_stop_id}.json"
           data:
             key: 'TEST'
-            time: @get('segment').startTime
+            # TODO: Play around with this value, may need to accommodate walking.
+            #time: @get('segment').startTime
+            #minutesBefore: 10
+            #minutesAfter: 60
           success: (real_time) =>
             if real_time.code == 200
               oba_trip_id = "#{response.oba_id}_#{@get('segment').tripId}"
@@ -37,7 +40,12 @@ class Transit.Models.RealTime extends Backbone.Model
     if delta > 0
       "#{delta} #{if delta > 1 then 'minutes' else 'minute'} early"
     else if delta < 0
-      "#{delta} #{if delta < -1 then 'minutes' else 'minute'} late"
+      "#{Math.abs(delta)} #{if delta < -1 then 'minutes' else 'minute'} late"
     else if delta == 0
       'on time'
     else ''
+
+  delta_class: =>
+    if @delta_in_minutes() == 0 then 'on-time label-info'
+    else if @delta_in_minutes() > 0 then 'early label-success'
+    else 'late label-important'
