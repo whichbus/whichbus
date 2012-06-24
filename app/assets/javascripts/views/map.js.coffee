@@ -39,20 +39,15 @@ class Transit.Views.Map extends Backbone.View
 
 
   plan: =>
-    plan = new Transit.Models.Plan
+    Transit.plan.set
       date: new Date()
-      from:
-        lat: @from.getLatLng().lat, lon: @from.getLatLng().lng
-      to:
-        lat: @to.getLatLng().lat, lon: @to.getLatLng().lng
-    plan.on 'change', =>
-      console.log 'omg changed!', plan
+      from: lat: @from.getLatLng().lat, lon: @from.getLatLng().lng
+      to: lat: @to.getLatLng().lat, lon: @to.getLatLng().lng
 
-    #plan.fetch()
-    plan.fetch(error: (model, msg) => console.log('error', msg))
+    Transit.plan.fetch
+      success: (plan) -> Transit.events.trigger 'plan:complete', plan
+      error: (model, message) -> console.log message
 
-    #$.get '/otp/plan', request, (response) =>
-    #  Transit.events.trigger 'plan:complete', response.plan
 
 
   clean_up: =>
@@ -62,7 +57,7 @@ class Transit.Views.Map extends Backbone.View
   draw_route: (plan) =>
     @clean_up()
     console.log plan
-    itinerary = plan.itineraries[0]
+    itinerary = plan.get('itineraries')[0]
     colors = {'BUS': 'blue', 'WALK': 'black'}
     for leg in itinerary.legs
       @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? 'red')
