@@ -28,9 +28,11 @@ class Transit.Models.Plan extends Backbone.Model
     numItineraries: @get('desired_itineraries')
 
   geocode: (query, callback) ->
+    bounds = Transit.map.getBounds()
     $.get '/nominatim/v1/search'
       format: 'json'
       countrycodes: 'US'
+      viewbox: bounds.toBBoxString()
       q: query
     .success(callback)
     .error ->
