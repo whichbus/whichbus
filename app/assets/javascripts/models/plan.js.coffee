@@ -28,10 +28,18 @@ class Transit.Models.Plan extends Backbone.Model
     numItineraries: @get('desired_itineraries')
 
   geocode: (query, callback) ->
-    $.get '/nominatim/v1/searcho'
+    $.get '/nominatim/v1/search'
       format: 'json'
       countrycodes: 'US'
       q: query
     .success(callback)
     .error ->
-      console.log 'Failed to geocode.'
+      console.log "Failed to geocode #{query}."
+
+  geocode_from: (query) =>
+    @geocode query, (response) =>
+      @set 'from', lat: response[0].lat, lon: response[0].lon if response[0]?
+
+  geocode_to: (query) =>
+    @geocode query, (response) =>
+      @set 'to', lat: response[0].lat, lon: response[0].lon if response[0]?
