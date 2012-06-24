@@ -15,6 +15,7 @@ class Transit.Views.Plan extends Backbone.View
     @from.on 'dragend', @update_plan
     @to.on 'dragend', @update_plan
     Transit.events.on 'plan:complete', @render
+    @model.on 'change:from change:to', @update_markers
     @plan_route = new L.LayerGroup()
 
   render: =>
@@ -31,6 +32,10 @@ class Transit.Views.Plan extends Backbone.View
     Transit.plan.fetch
       success: (plan) -> Transit.events.trigger 'plan:complete', plan
       error: (model, message) -> console.log message
+
+  update_markers: =>
+    @from.setLatLng(new L.LatLng(@model.get('from').lat, @model.get('from').lon))
+    @to.setLatLng(new L.LatLng(@model.get('to').lat, @model.get('to').lon))
 
   clean_up: =>
     Transit.events.trigger 'plan:clear'

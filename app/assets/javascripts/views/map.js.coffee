@@ -13,18 +13,10 @@ class Transit.Views.Map extends Backbone.View
     seattle = new L.LatLng(47.62167,-122.349072)
     @map.setView(seattle, 13).addLayer(cloudmade)
 
-    Transit.events.on 'geocode:complete', @update_markers
+    #Transit.events.on 'geocode:complete', @update_markers
 
 
   render: =>
     itinerary_view = new Transit.Views.Plan model: Transit.plan
     itinerary_view.update_plan()
     this
-
-
-
-
-  update_markers: (from, to) =>
-    #@from.setLatLng(new L.LatLng(from.lat, from.lon))
-    #@to.setLatLng(new L.LatLng(to.lat, to.lon))
-    @plan()
