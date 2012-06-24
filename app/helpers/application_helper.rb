@@ -11,6 +11,13 @@ module ApplicationHelper
 		"<li class='stop'><h4>#{link_to stop.name, stop_path(stop.oba_id), class: 'btn btn-large btn-warning'}</h4></li>"
 	end
 
+	def arrival_item(arrival)
+		"<li class='arrival'><h3>
+			<span class='btn btn-large btn-success'>#{arrival['routeShortName']}</span>
+			#{arrival['tripHeadsign']} at #{Time.at(arrival['predictedArrivalTime'] / 1000).strftime('%r')}
+		</li>"
+	end
+
 	def wb_route_path(agency_or_id, code=nil)
 		str = "/#{agency_or_id}"
 		str += "/#{code}" unless code.nil?

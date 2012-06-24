@@ -55,4 +55,8 @@ class RoutesController < ApplicationController
 			format.xml  { render :xml => @stops }
 		end
 	end
+
+	def trips
+		api_page Route.find_by_oba_id(params[:id]).trips
+	end
 end

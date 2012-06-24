@@ -27,7 +27,10 @@ WhichbusSpine::Application.routes.draw do
 
   # association queries
   match '/routes/:id/stops' => 'routes#stops', :format => 'json'
+  match '/routes/:id/trips' => 'routes#trips', :format => 'json'
   match '/stops/:id/routes' => 'stops#routes', :format => 'json'
+  match '/stops/:id/schedules' => 'stops#schedules', :format => 'json'
+  match '/stops/:id/arrivals' => 'stops#arrivals', :format => 'json'
 
   # OTP ID routes
   match '/agencies/otp/:code' => 'agencies#show_otp'
@@ -44,8 +47,8 @@ WhichbusSpine::Application.routes.draw do
   match '/otp/:method/:lat,:lon' => 'pages#otp', :format => 'json'
   match '/otp/:method' => 'pages#otp', :format => 'json'
 
-  match '/api/:method/:agency/:id' => 'pages#api', :format => 'json'
-  match '/api/:method' => 'pages#api', :format => 'json'
+  match '/oba/:method/:id' => 'pages#oba', :format => 'json'
+  match '/oba/:method' => 'pages#oba', :format => 'json'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -6,10 +6,19 @@
 		Operated by <%= link_to @stop.agency.name, agency_path(@stop.agency.oba_id) %>.
 	</div>
 </div>
+
 <h2>Routes <small><%= @stop.routes.count %></small></h2>
 
 <ul>
 <% @stop.routes.order('code').each do |route| %>
 	<%= raw route_item(route) %>
+<% end %>
+</ul>
+
+<h2>Arrivals</h2>
+
+<ul>
+<% @stop.arrivals.each do |arr| %>
+	<%= raw arrival_item(arr) %>
 <% end %>
 </ul>

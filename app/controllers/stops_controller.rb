@@ -39,12 +39,14 @@ class StopsController < ApplicationController
 	end	
 
 	def routes
-		@stop = Stop.find_by_oba_id(params[:id])
-		@routes = @stop.routes
+		api_page Stop.find_by_oba_id(params[:id]).routes
+	end
 
-		respond_to do |format|
-			format.json { render :json => @routes }
-			format.xml  { render :xml => @routes }
-		end
+	def schedules
+		api_page Stop.find_by_oba_id(params[:id]).schedules
+	end
+
+	def arrivals
+		api_page Stop.find_by_oba_id(params[:id]).arrivals
 	end
 end
