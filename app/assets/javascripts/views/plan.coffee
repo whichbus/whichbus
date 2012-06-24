@@ -75,7 +75,10 @@ class Transit.Views.Plan extends Backbone.View
     first_transit_leg = _.find segments, (segment) -> segment.mode != 'WALK'
     for leg in segments
       if first_transit_leg.tripId == leg.tripId
-        leg.real_time = true
+        real_time = new Transit.Models.RealTime(segment: first_transit_leg)
+        real_time.fetch
+          success: (data) =>
+            @$('.real-time').html(data.readable_delta())
       view = new Transit.Views.Segment(segment: leg)
       @$('.segments').append(view.render().el)
       @$('.progress').hide()

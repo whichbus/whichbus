@@ -1,20 +1,18 @@
 class Transit.Models.RealTime extends Backbone.Model
- 
+
   sync: (method, model, options) =>
     if method == 'read'
-      segments = Transit.plan.get('itineraries').first().get('legs')
-      first_transit_leg = _.find segments, (segment) -> segment.mode != 'WALK'
-      @get_agency_id first_transit_leg.agencyId, (response) =>
+      @get_agency_id @get('segment').agencyId, (response) =>
         # OBA gives a response with an invalid content type, force it to json
-        oba_stop_id = "#{response.oba_id}_#{first_transit_leg.from.stopId.id}"
+        oba_stop_id = "#{response.oba_id}_#{@get('segment').from.stopId.id}"
         $.ajax
           url: "/oba/where/arrivals-and-departures-for-stop/#{oba_stop_id}.json"
           data:
             key: 'TEST'
-            time: first_transit_leg.startTime
-          success: (real_time) ->
+            time: @get('segment').startTime
+          success: (real_time) =>
             if real_time.code == 200
-              oba_trip_id = "#{response.oba_id}_#{first_transit_leg.tripId}"
+              oba_trip_id = "#{response.oba_id}_#{@get('segment').tripId}"
               # find the prediction from OBA with the same trip id as in OTP
               trip = _.find real_time.data.arrivalsAndDepartures, (prediction) ->
                 prediction.tripId == oba_trip_id
