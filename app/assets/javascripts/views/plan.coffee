@@ -1,4 +1,4 @@
-class Transit.Views.Itinerary extends Backbone.View
+class Transit.Views.Plan extends Backbone.View
   initialize: =>
     @map = Transit.map
     @marker_icon = L.Icon.extend

@@ -17,7 +17,7 @@ class Transit.Views.Map extends Backbone.View
 
 
   render: =>
-    itinerary_view = new Transit.Views.Itinerary model: Transit.plan
+    itinerary_view = new Transit.Views.Plan model: Transit.plan
     itinerary_view.update_plan()
     this
 
