@@ -39,11 +39,12 @@ class Transit.Views.Map extends Backbone.View
 
 
   plan: =>
-    plan = new Transit.Models.Plan(
+    plan = new Transit.Models.Plan
       date: new Date()
-      from: "#{@from.getLatLng().lat},#{@from.getLatLng().lng}"
-      to: "#{@to.getLatLng().lat},#{@to.getLatLng().lng}"
-    )
+      from:
+        lat: @from.getLatLng().lat, lon: @from.getLatLng().lng
+      to:
+        lat: @to.getLatLng().lat, lon: @to.getLatLng().lng
     plan.on 'change', =>
       console.log 'omg changed!', plan
 
