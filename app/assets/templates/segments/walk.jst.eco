@@ -1,2 +1,2 @@
 Walk to <%= @segment.to.name %>
-<span class="duration label"><%= new Date(@segment.startTime).getHours() %>:<%= new Date(@segment.startTime).getMinutes() %></span>
+<span class="duration label"><%= Transit.util.formatDate new Date(@segment.startTime), 'h:mm tt' %></span>

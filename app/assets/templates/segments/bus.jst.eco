@@ -1,5 +1,5 @@
 <div class="start">Take <span class="badge badge-inverse"><%= @segment.route %></span>
-<span class="real-time label label-info"></span><span class="duration label"><%= new Date(@segment.startTime).getHours() %>:<%= new Date(@segment.startTime).getMinutes() %></span>
+<span class="real-time label label-info"></span><span class="duration label"><%= Transit.util.formatDate new Date(@segment.startTime), 'h:mm tt' %></span>
 </div>
 <div>Ride for <%= Math.round(@segment.duration/60000) %> minutes</div>
 <div class="finish">Get off at <%= @segment.to.name %></div>
