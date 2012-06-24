@@ -3,12 +3,12 @@ class Transit.Views.Navigation extends Backbone.View
   el: 'div#navigation'
 
   events:
-    'submit': 'plan'
+    'submit': 'geocode'
     'click #from-location': 'from_current_location'
     'click #to-location': 'to_current_location'
 
   initialize: =>
-    #Transit.events.on 'plan:complete', @add_segments
+    Transit.events.on 'plan:complete', @add_segments
     #Transit.events.on 'plan:complete', @get_real_time
     #Transit.events.on 'plan:clear', @render
     #Transit.events.on 'real_time:complete', @render_real_time
@@ -17,7 +17,7 @@ class Transit.Views.Navigation extends Backbone.View
     $(@el).html(@template())
     this
 
-  plan: (event) ->
+  geocode: (event) ->
     event.preventDefault()
     Transit.plan.geocode_from_to @$('#from_query').val(), @$('#to_query').val()
 
