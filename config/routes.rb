@@ -33,6 +33,7 @@ WhichbusSpine::Application.routes.draw do
   match '/stops/:id/arrivals' => 'stops#arrivals', :format => 'json'
 
   # OTP ID routes
+  match '/stops/:agency/:code/arrivals' => 'stops#arrivals_otp', :format => 'json'
   match '/agencies/otp/:code' => 'agencies#show_otp'
   match '/routes/:agency/:code' => 'routes#show_otp'
   match '/stops/:agency/:code' => 'stops#show_otp'

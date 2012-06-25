@@ -18,7 +18,7 @@ class RoutesController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.json { render :json => @route }
+			format.json { render :json => @route, include: :stops }
 			format.xml  { render :xml => @route }
 		end
 	end

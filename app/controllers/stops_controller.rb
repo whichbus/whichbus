@@ -49,4 +49,8 @@ class StopsController < ApplicationController
 	def arrivals
 		api_page Stop.find_by_oba_id(params[:id]).arrivals
 	end
+
+	def arrivals_otp
+		api_page Stop.find_by_agency_code_and_code(params[:agency], params[:code]).arrivals
+	end
 end
