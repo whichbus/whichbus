@@ -20,8 +20,9 @@ h1 .btn, h2 .btn, h3 .btn, h4 .btn, h5 .btn {
 	float: right;
 }
 .api.links .id {
-	border: 1px solid dimgray;
+	border: 1px solid #EEE;
 	padding: 2px 4px;
+	margin: 2px;
 	line-height: 20px;
 }
 .id span {
@@ -29,7 +30,22 @@ h1 .btn, h2 .btn, h3 .btn, h4 .btn, h5 .btn {
 	display: inline-block;
 }
 
+.arrival span {
+	display: inline-block;
+	vertical-align: middle;
+}
+.arrival .details {
+	margin-left: 3px;
+}
+
 .progress {
 	margin-top: 30px;
 	margin-bottom: -30px;
+}
+
+@media (max-width: 600px) {
+	.details { font-size: 80%; }
+	.hide-phones, .id { display: none; }
+	.nav *:not(.brand) { display: none; }
+	ul { margin-left: 5px; }
 }

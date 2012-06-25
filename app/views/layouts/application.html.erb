@@ -10,9 +10,11 @@
 
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
-		<div class="container">
+		<div class="container-fluid">
 			<ul class="nav">
-				<li><%= link_to 'WhichBus WorkShop', '/search', class: 'brand' %></li>
+				<li><%= link_to '/search', class: 'brand' do %>
+					WhichBus <span class='hide-phones'>WorkShop</span>
+				<% end %></li>
 				<% %w[agencies routes stops].each do |model| %>
 				<li <%= if model == params[:controller] then 'class=active' end %>>
 					<%= link_to model.capitalize, "/#{model}" %>
@@ -25,7 +27,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container-fluid">
 <%= yield %>
 </div>
 
