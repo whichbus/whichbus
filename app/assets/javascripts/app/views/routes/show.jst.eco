@@ -1,2 +1,11 @@
-<div class="show">
+<div class="page-header">
+	<h1><span class="btn btn-large btn-success"><%= @name %></span>
+		<small><%= @description %></small></h1>
+	<div class="details">
+		<a href="<%- @url %>">Schedule Information</a>. 
+		Route Type <strong><%= @route_type %></strong>. 
+	</div>
 </div>
+<h2>Stops <small><%= @stops().size %></small></h2>
+
+

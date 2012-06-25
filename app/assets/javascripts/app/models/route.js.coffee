@@ -2,6 +2,7 @@ class App.Route extends Spine.Model
 	@configure 'Route', 'agency_code', 'code', 'name', 'description', 'url', 'color', 'polylines', 'route_type'
 	@extend Spine.Model.Ajax
 	
+	@belongsTo 'agency', 'App.Agency'
 	@hasMany 'stops', 'App.Stop'
 
 	@filter: (query) ->

@@ -14,11 +14,11 @@ class App.WhichBus extends Spine.Controller
 
 		@routes
 			"/stops/:id": (params) ->
-				# show a stop
+				@sidebar.stopShow.active(params)
 			"/stops": (params) ->
 				@sidebar.stops.active(params)
 			"/routes/:id": (params) ->
-				# show a route
+				@sidebar.routeShow.active(params)
 			"/routes": (params) ->
 				@sidebar.routes.active(params)
 
@@ -29,3 +29,5 @@ class App.Sidebar extends Spine.Stack
 	controllers:
 		stops: App.Stops
 		routes: App.Routes
+		stopShow: App.ShowStop
+		routeShow: App.ShowRoute

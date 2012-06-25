@@ -23,7 +23,7 @@ module API
 	# quick and easy way to query the OneBusAway API
 	def one_bus_away(method, id=nil, params={})
 		# optional id parameter. omit it and it will be ignored
-		if id.class() == Hash 
+		if id.is_a? Hash 
 			params = id
 			id = nil
 		end

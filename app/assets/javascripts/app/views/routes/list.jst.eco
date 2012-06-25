@@ -1,7 +1,7 @@
 <% for route in @: %>
 <li class='route'>
-	<h2><a class='btn btn-large btn-success' href="#" title="<%= "#{route.oba_id}: #{route.description}" %>">
+	<span class='btn btn-large btn-success' href="#" title="<%= "#{route.oba_id}: #{route.description}" %>">
 		<%= route.name %>
-	</a></h2>
+	</span>
 </li>	
-<% end %>	
+<% end %>

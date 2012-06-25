@@ -30,3 +30,21 @@ class App.Stops extends Spine.Controller
 	render: ->
 		# Render a list of the filtered items
 		@list.render(App.Stop.filter(@query))
+
+class App.ShowStop extends Spine.Controller
+	className: 'stop'
+
+	# elements:
+
+	# events:
+
+	constructor: ->
+		super
+		@active @change
+
+	render: ->
+		@html @view('stops/show')(@stop)
+
+	change: (params) =>
+		@stop = App.Stop.find(params.id)
+		@render()

@@ -1,2 +1,16 @@
-<div class="show">
+<div class="page-header">
+	<h1><span class='btn btn-large btn-warning'> <%= @name %></span> 
+		<small><%= @code %></small></h1>
+	<div class="details">
+		(<%= @lat %>, <%= @lon %>), heading <%= @direction %>.
+		Operated by <%= @agency.name %>.
+	</div>
 </div>
+
+<h2>Routes <small><%= @routes.length %></small></h2>
+
+<ul>
+<% for route in @routes: %>
+	<%- @view('routes/item')(route) %>
+<% end %>
+</ul>
