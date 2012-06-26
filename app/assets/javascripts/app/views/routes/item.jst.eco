@@ -1,0 +1,3 @@
+<li class="route">
+	<h3><a href="#" class="btn btn-large btn-success"><%= @name %></a></h3>
+</li>
