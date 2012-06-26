@@ -14,7 +14,10 @@ module ApplicationHelper
 	def arrival_item(arrival)
 		"<li class='arrival'><h3>
 			<span class='btn btn-large btn-success'>#{arrival['routeShortName']}</span>
-			#{arrival['tripHeadsign']} at #{Time.at(arrival['predictedArrivalTime'] / 1000).strftime('%r')}
+			<span class='details'>
+				#{arrival['tripHeadsign']}<br/>
+				#{Time.at(arrival['predictedArrivalTime'] / 1000).strftime('at %r')}
+			</span>
 		</li>"
 	end
 
@@ -25,8 +28,8 @@ module ApplicationHelper
 
 	def api_links(item)
 		"<small class='api links'>
-		<span class='oba id'>OBA: <a class='btn' id='oba_id'>#{item.oba_id}</a></span>
-		<span class='otp id'>OTP: " +
+		<span class='oba id right'>OBA: <a class='btn' id='oba_id'>#{item.oba_id}</a></span><br/>
+		<span class='otp id right'>OTP: " +
 			(item.class() == Agency ? '' : "<a class='btn' id='agency'>#{item.agency_code}</a>") +
 			"<a class='btn' id='code'>#{item.code}</a>
 		</span></small>"

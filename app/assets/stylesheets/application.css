@@ -14,8 +14,12 @@
 
 .stack > *:not(.active) { display: none; }
 
-body > .container {
+body > .container-fluid {
 	padding-top: 50px;
+}
+.container-fluid {
+	max-width: 970px;
+	margin: auto;
 }
 
 li.route, li.agency, li.stop {
