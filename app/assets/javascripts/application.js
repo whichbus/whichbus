@@ -16,7 +16,6 @@
 //= require backbone
 //= require leaflet
 //= require decode
-//= require date_util
 //
 //= require ./transit
 //

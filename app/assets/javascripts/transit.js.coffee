@@ -11,7 +11,6 @@ window.Transit =
       to: lat: 47.618624, lon: -122.320796
     Transit.events = _.extend({}, Backbone.Events)
     Transit.routes = new Transit.Routes
-    Transit.util = fc
     Backbone.history.start(pushState: true)
 
 $(document).ready ->

@@ -1,2 +1,2 @@
 Walk to <%= @segment.to.name %>
-<span class="duration label"><%= Transit.util.formatDate new Date(@segment.startTime), 'h:mm tt' %></span>
+<span class="duration label"><%= Transit.format_time @segment.startTime %></span>
