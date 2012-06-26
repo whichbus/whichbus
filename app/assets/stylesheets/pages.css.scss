@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap";
+@import "bootstrap-responsive";
 
 .left  { float: left }
 .right { float: right }
@@ -44,8 +45,9 @@ h1 .btn, h2 .btn, h3 .btn, h4 .btn, h5 .btn {
 }
 
 @media (max-width: 600px) {
+	body .container-fluid { padding: 0; }
 	.details { font-size: 80%; }
 	.hide-phones, .id { display: none; }
-	.nav *:not(.brand) { display: none; }
+	// .nav *:not(.brand) { display: none; }
 	ul { margin-left: 5px; }
 }
