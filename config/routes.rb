@@ -23,33 +23,42 @@ WhichbusSpine::Application.routes.draw do
   get "pages/index"
   root :to => "pages#index"
 
-  match '/search' => 'pages#search'
+  scope '/workshop' do
+    match '' => 'pages#search', :as => :workshop
+    match '/search' => 'pages#search'
 
-  # association queries
-  match '/routes/:id/stops' => 'routes#stops', :format => 'json'
-  match '/routes/:id/trips' => 'routes#trips', :format => 'json'
-  match '/stops/:id/routes' => 'stops#routes', :format => 'json'
-  match '/stops/:id/schedules' => 'stops#schedules', :format => 'json'
-  match '/stops/:id/arrivals' => 'stops#arrivals', :format => 'json'
+    # RESTful resources
+    resources :agencies
+    resources :routes do
+      member do
+        get 'stops', :format => 'json'
+        get 'trips', :format => 'json'
+      end
+    end 
+    resources :stops do
+      member do
+        get 'routes', :format => 'json'
+        get 'arrivals', :format => 'json'
+        get 'schedules', :format => 'json'
+      end
+    end
 
-  # OTP ID routes
-  match '/stops/:agency/:code/arrivals' => 'stops#arrivals_otp', :format => 'json'
-  match '/agencies/otp/:code' => 'agencies#show_otp'
-  match '/routes/:agency/:code' => 'routes#show_otp'
-  match '/stops/:agency/:code' => 'stops#show_otp'
+    # OTP ID routes
+    match '/stops/:agency/:code/arrivals' => 'stops#arrivals_otp', :format => 'json'
+    match '/agencies/otp/:code' => 'agencies#show_otp'
+    match '/routes/:agency/:code' => 'routes#show_otp'
+    match '/stops/:agency/:code' => 'stops#show_otp'
+  end
 
-  # RESTful resources
-  resources :agencies
-  resources :routes 
-  resources :stops
+  scope '/api' do
+    # API methods, they return json by default
+    match '/otp/:method/:agency/:id' => 'pages#otp', :format => 'json'
+    match '/otp/:method/:lat,:lon' => 'pages#otp', :format => 'json'
+    match '/otp/:method' => 'pages#otp', :format => 'json'
 
-  # API methods, they return json by default
-  match '/otp/:method/:agency/:id' => 'pages#otp', :format => 'json'
-  match '/otp/:method/:lat,:lon' => 'pages#otp', :format => 'json'
-  match '/otp/:method' => 'pages#otp', :format => 'json'
-
-  match '/oba/:method/:id' => 'pages#oba', :format => 'json'
-  match '/oba/:method' => 'pages#oba', :format => 'json'
+    match '/oba/:method/:id' => 'pages#oba', :format => 'json'
+    match '/oba/:method' => 'pages#oba', :format => 'json'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -15,16 +15,16 @@
 	<div class="navbar-inner">
 		<div class="container-fluid">
 			<ul class="nav">
-				<li><%= link_to '/search', class: 'brand' do %>
+				<li><%= link_to workshop_path, class: 'brand' do %>
 					WhichBus <span class='hide-phones'>WorkShop</span>
 				<% end %></li>
 				<% %w[agencies routes stops].each do |model| %>
 				<li <%= if model == params[:controller] then 'class=active' end %>>
-					<%= link_to model.capitalize, "/#{model}" %>
+					<%= link_to model.capitalize, "/workshop/#{model}" %>
 				</li>
 				<% end %>
 			</ul>
-			<form class="navbar-search pull-left" action="/search">
+			<form class="navbar-search pull-left" action="<%= workshop_path %>">
 				<%= text_field_tag 'query', nil, class: "search-query span2", placeholder: 'search' %>
 			</form>
 		</div>
