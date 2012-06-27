@@ -1,5 +1,5 @@
 class Transit.Views.Navigation extends Backbone.View
-  template: JST['navigation']
+  template: JST['templates/navigation']
   el: 'div#navigation'
 
   events:

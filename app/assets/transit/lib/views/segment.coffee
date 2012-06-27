@@ -1,6 +1,6 @@
 class Transit.Views.Segment extends Backbone.View
-  walk_template: JST['segments/walk']
-  bus_template: JST['segments/bus']
+  walk_template: JST['templates/segments/walk']
+  bus_template: JST['templates/segments/bus']
   tagName: 'li'
   className: 'segment'
 

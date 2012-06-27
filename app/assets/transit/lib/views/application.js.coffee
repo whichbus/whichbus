@@ -1,5 +1,5 @@
 class Transit.Views.Application extends Backbone.View
-  template: JST['index']
+  template: JST['templates/index']
 
   render: =>
     $(@el).html(@template())

@@ -1,18 +1,15 @@
 class Transit.Views.Plan extends Backbone.View
-  template: JST['plan']
+  template: JST['templates/plan']
   className: 'plan'
 
   initialize: =>
     @map = Transit.map
-    @marker_icon = L.Icon.extend
-      iconUrl: 'assets/marker.png'
-      shadowUrl: 'assets/marker-shadow.png'
     @from = new L.Marker(
       new L.LatLng(@model.get('from').lat, @model.get('from').lon),
-      icon: new @marker_icon, clickable: false, draggable: true)
+      clickable: false, draggable: true)
     @to = new L.Marker(
       new L.LatLng(@model.get('to').lat, @model.get('to').lon),
-      icon: new @marker_icon, clickable: false, draggable: true)
+      clickable: false, draggable: true)
     @map.addLayer(@from)
     @map.addLayer(@to)
     @from.on 'dragstart', @clean_up

@@ -55,5 +55,8 @@ module Bus
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Additional assets to add to the pipeline.
+    config.assets.paths << Rails.root.join('app', 'assets', 'transit')
   end
 end
