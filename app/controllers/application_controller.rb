@@ -18,4 +18,7 @@ class ApplicationController < ActionController::Base
 			format.xml  { render :xml => data }
 		end
 	end
+
+  def index
+  end
 end

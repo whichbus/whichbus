@@ -58,5 +58,8 @@ module WhichbusSpine
 
     # Prevent application from accessing DB or loading models when precompiling (for Devise)
     config.assets.initialize_on_precompile = false
+
+    # Additional assets to add to the pipeline.
+    config.assets.paths << Rails.root.join('app', 'assets', 'transit')
   end
 end
