@@ -1,16 +1,23 @@
 @import "bootstrap";
 
+$sidebar_width: 370px;
+$map_height: 250px;
+
 #map {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
+  left: $sidebar_width;
 }
 
 #navigation {
+  min-width: 320px;
+  width: $sidebar_width;
+  float: left;
 
   form {
-    margin-top: 10px;
+    margin: 10px 12px 0 12px;
     input {
       margin-bottom: 0;
     }
@@ -22,7 +29,7 @@
   }
 
   .segment {
-    padding: 8px 0;
+    padding: 8px 12px;
     border-bottom: 1px solid $tableBorder;
   }
   .segment:hover {
@@ -41,5 +48,19 @@
   }
   .alert {
     display: none;
+  }
+}
+
+
+@media (max-width: 767px) {
+  #map {
+    left: 0;
+    bottom: auto;
+    height: $map_height;
+  }
+
+  #navigation {
+    margin-top: $map_height;
+    width: 100%;
   }
 }

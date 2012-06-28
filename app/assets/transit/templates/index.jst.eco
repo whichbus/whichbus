@@ -1,6 +1,4 @@
-<div id="content" class="container-fluid">
-<div class="row-fluid">
-<div id="navigation" class="span4"></div>
-<div id="map" class="span8"></div>
-</div>
+<div id="content">
+<div id="navigation"></div>
+<div id="map"></div>
 </div>
