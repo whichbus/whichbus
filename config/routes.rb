@@ -21,7 +21,6 @@ WhichbusSpine::Application.routes.draw do
   get "agencies/edit"
 
   get "pages/index"
-  root :to => "pages#index"
 
   scope '/workshop' do
     match '' => 'pages#search', :as => :workshop
@@ -34,7 +33,7 @@ WhichbusSpine::Application.routes.draw do
         get 'stops', :format => 'json'
         get 'trips', :format => 'json'
       end
-    end 
+    end
     resources :stops do
       member do
         get 'routes', :format => 'json'

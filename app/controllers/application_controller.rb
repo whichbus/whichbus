@@ -20,5 +20,6 @@ class ApplicationController < ActionController::Base
 	end
 
   def index
+    render :layout => 'transit'
   end
 end
