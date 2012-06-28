@@ -56,16 +56,16 @@ class Transit.Views.Plan extends Backbone.View
   render_map: =>
     @clean_up()
     itinerary = Transit.plan.get('itineraries').first()
-    colors = {'BUS': 'blue', 'WALK': 'black'}
+    colors = {'BUS': '#025d8c', 'WALK': 'black'}
     for leg in itinerary.get('legs')
-      @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? 'green')
+      @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? '#1693a5')
     @map.addLayer(@plan_route)
 
 
   draw_polyline: (points, color) =>
     points = decodeLine(points)
     latlngs = (new L.LatLng(point[0], point[1]) for point in points)
-    polyline = new L.Polyline(latlngs, color: color)
+    polyline = new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
     @plan_route.addLayer(polyline)
     # zoom the map to the polyline
     #@map.fitBounds(new L.LatLngBounds(latlngs))
