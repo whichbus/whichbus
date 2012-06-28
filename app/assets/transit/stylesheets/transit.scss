@@ -1,6 +1,7 @@
 @import "bootstrap";
 
-$sidebar_width: 370px;
+$sidebar_width: 470px;
+$sidebar_margin: 12px;
 $map_height: 250px;
 
 #map {
@@ -9,8 +10,6 @@ $map_height: 250px;
   bottom: 0;
   right: 0;
   left: $sidebar_width;
-
-
 }
 
 #navigation {
@@ -19,19 +18,17 @@ $map_height: 250px;
   float: left;
 
   form {
-    margin: 10px 12px 0 12px;
+    margin: 10px $sidebar_margin;
     input {
       margin-bottom: 0;
     }
   }
-
   .segments {
     list-style: none;
     margin: 0;
   }
-
   .segment {
-    padding: 8px 12px;
+    padding: 8px $sidebar_margin;
     border-bottom: 1px solid $tableBorder;
   }
   .segment:hover {
@@ -42,6 +39,7 @@ $map_height: 250px;
     margin-left: 5px;
   }
   .progress {
+    margin: 0 $sidebar_margin 10px;
     .bar { width: 100% }
   }
   .real-time {
@@ -49,10 +47,10 @@ $map_height: 250px;
     float: right;
   }
   .alert {
+    margin: 0 $sidebar_margin 10px;
     display: none;
   }
 }
-
 
 @media (max-width: 767px) {
   #map {
