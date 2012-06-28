@@ -58,7 +58,7 @@ class Transit.Views.Plan extends Backbone.View
     itinerary = Transit.plan.get('itineraries').first()
     colors = {'BUS': 'blue', 'WALK': 'black'}
     for leg in itinerary.get('legs')
-      @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? 'red')
+      @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? 'green')
     @map.addLayer(@plan_route)
 
 
