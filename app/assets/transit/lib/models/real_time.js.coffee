@@ -2,7 +2,7 @@ class Transit.Models.RealTime extends Backbone.Model
 
   sync: (method, model, options) =>
     if method == 'read'
-      agency_id = @get('segment').agencyId
+      agency_id = @get('segment').from.stopId.agencyId
       stop_id = @get('segment').from.stopId.id
       $.get "/workshop/stops/#{agency_id}/#{stop_id}/arrivals", (response) =>
         # find the prediction from OBA with the same trip id as in OTP
