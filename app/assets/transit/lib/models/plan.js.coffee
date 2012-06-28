@@ -29,7 +29,7 @@ class Transit.Models.Plan extends Backbone.Model
 
   geocode: (query, callback) ->
     bounds = Transit.map.getBounds()
-    $.get '/nominatim/v1/search'
+    $.get 'http://open.mapquestapi.com/nominatim/v1/search'
       format: 'json'
       countrycodes: 'US'
       viewbox: bounds.toBBoxString()
