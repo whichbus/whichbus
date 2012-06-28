@@ -9,6 +9,8 @@ $map_height: 250px;
   bottom: 0;
   right: 0;
   left: $sidebar_width;
+
+
 }
 
 #navigation {
@@ -57,6 +59,10 @@ $map_height: 250px;
     left: 0;
     bottom: auto;
     height: $map_height;
+
+    .leaflet-control-attribution {
+      font-size: 10px;
+    }
   }
 
   #navigation {
