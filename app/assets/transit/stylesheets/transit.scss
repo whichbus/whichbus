@@ -1,0 +1,45 @@
+@import "bootstrap";
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#navigation {
+
+  form {
+    margin-top: 10px;
+    input {
+      margin-bottom: 0;
+    }
+  }
+
+  .segments {
+    list-style: none;
+    margin: 0;
+  }
+
+  .segment {
+    padding: 8px 0;
+    border-bottom: 1px solid $tableBorder;
+  }
+  .segment:hover {
+    background-color: $tableBackgroundHover;
+  }
+  .segment .duration {
+    float: right;
+    margin-left: 5px;
+  }
+  .progress {
+    .bar { width: 100% }
+  }
+  .real-time {
+    display: none;
+    float: right;
+  }
+  .alert {
+    display: none;
+  }
+}
