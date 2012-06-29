@@ -23,8 +23,8 @@ WhichbusSpine::Application.routes.draw do
   get "pages/index"
 
   scope '/workshop' do
-    match '' => 'pages#search', :as => :workshop
-    match '/search' => 'pages#search'
+    match '' => 'application#search', :as => :workshop
+    match '/search' => 'application#search'
 
     # RESTful resources
     resources :agencies
@@ -51,12 +51,9 @@ WhichbusSpine::Application.routes.draw do
 
   scope '/api' do
     # API methods, they return json by default
-    match '/otp/:method/:agency/:id' => 'pages#otp', :format => 'json'
-    match '/otp/:method/:lat,:lon' => 'pages#otp', :format => 'json'
-    match '/otp/:method' => 'pages#otp', :format => 'json'
+    match '/otp/:method(/:agency/:id)' => 'application#otp', :format => 'json'
 
-    match '/oba/:method/:id' => 'pages#oba', :format => 'json'
-    match '/oba/:method' => 'pages#oba', :format => 'json'
+    match '/oba/:method(/:id)' => 'application#oba', :format => 'json'
   end
 
   # The priority is based upon order of creation:
