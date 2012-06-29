@@ -2,24 +2,6 @@ WhichbusSpine::Application.routes.draw do
 
   match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
 
-  get "stops/index"
-
-  get "stops/show"
-
-  get "stops/edit"
-
-  get "routes/index"
-
-  get "routes/show"
-
-  get "routes/edit"
-
-  get "agencies/index"
-
-  get "agencies/show"
-
-  get "agencies/edit"
-
   get "pages/index"
 
   scope '/workshop' do
