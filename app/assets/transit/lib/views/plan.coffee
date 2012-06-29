@@ -32,6 +32,7 @@ class Transit.Views.Plan extends Backbone.View
       date: new Date()
       from: lat: @from.getLatLng().lat, lon: @from.getLatLng().lng
       to: lat: @to.getLatLng().lat, lon: @to.getLatLng().lng
+      fit_bounds: false
     @model.trigger 'fetch'
 
 
@@ -89,8 +90,10 @@ class Transit.Views.Plan extends Backbone.View
 
 
   fit_bounds: =>
-    point = (latlng) -> new L.LatLng(latlng[0], latlng[1])
-    points = (leg) ->_.map decodeLine(leg.legGeometry.points), point
-    legs = _.map @model.get('itineraries').first().get('legs'), points
-    bounds = new L.LatLngBounds(_.reduce legs, (a, b) -> a.concat(b))
-    @map.fitBounds(bounds)
+    if @model.get('fit_bounds')
+      point = (latlng) -> new L.LatLng(latlng[0], latlng[1])
+      points = (leg) ->_.map decodeLine(leg.legGeometry.points), point
+      legs = _.map @model.get('itineraries').first().get('legs'), points
+      bounds = new L.LatLngBounds(_.reduce legs, (a, b) -> a.concat(b))
+      @map.fitBounds(bounds)
+    @model.set { 'fit_bounds': @model.defaults.fit_bounds? }, { silent: true }

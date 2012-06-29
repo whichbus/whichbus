@@ -3,6 +3,7 @@ class Transit.Models.Plan extends Backbone.Model
   defaults:
     itineraries: []
     desired_itineraries: 1
+    fit_bounds: true
 
   parse: (plan) =>
     @set
