@@ -1,5 +1,5 @@
 class Transit.Models.Plan extends Backbone.Model
-  urlRoot: '/otp/plan'
+  urlRoot: '/api/otp/plan'
   defaults:
     itineraries: []
     desired_itineraries: 1
