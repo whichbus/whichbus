@@ -1,4 +1,4 @@
-class Transit.Routes extends Backbone.Router
+class Transit.Router extends Backbone.Router
   routes:
     '': 'index'
 
