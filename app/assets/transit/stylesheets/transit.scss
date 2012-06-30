@@ -28,13 +28,14 @@ $map_height: 250px;
     margin: 0;
   }
   .segment {
+    @include clearfix();
     padding: 8px $sidebar_margin;
     border-bottom: 1px solid $tableBorder;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
   }
-  .segment .duration {
+  .segment .label {
     float: right;
     margin-left: 5px;
   }
@@ -44,7 +45,6 @@ $map_height: 250px;
   }
   .real-time {
     display: none;
-    float: right;
   }
   .alert {
     margin: 0 $sidebar_margin 10px;
