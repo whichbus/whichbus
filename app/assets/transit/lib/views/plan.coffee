@@ -18,7 +18,7 @@ class Transit.Views.Plan extends Backbone.View
     @to.on 'dragend', @update_plan
     Transit.events.on 'plan:complete', @render_map
     Transit.events.on 'plan:complete', @add_segments
-    @model.on 'geocode fetch', @fetch_plan
+    @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     Transit.events.on 'plan:complete', @fit_bounds
     @plan_route = new L.LayerGroup()

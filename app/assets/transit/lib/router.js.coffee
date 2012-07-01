@@ -9,7 +9,7 @@ class Transit.Router extends Backbone.Router
 
   index: ->
     splash = new Transit.Views.Splash()
-    @view.$('#content').html(splash.render().el)
+    @view.$('#content').append(splash.render().el)
 
   plan: ->
     map = new Transit.Views.Map()
