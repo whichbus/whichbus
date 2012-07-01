@@ -20,7 +20,9 @@ class Transit.Views.Splash extends Backbone.View
   go_to_plan: =>
     @remove()
     @off()
-    Transit.router.navigate 'plan', trigger: true
+    from = Transit.plan.get('from')
+    to = Transit.plan.get('to')
+    Transit.router.navigate "plan/#{from.lat},#{from.lon}/#{to.lat},#{to.lon}", trigger: true
 
   from_current_location: =>
     # TODO: Refactor this, duplicate of navigation functions
