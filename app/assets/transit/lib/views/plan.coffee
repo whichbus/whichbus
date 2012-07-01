@@ -107,5 +107,8 @@ class Transit.Views.Plan extends Backbone.View
 
   go_to_splash: (event) =>
     # TODO: Place this to the topbar.
+    # FIXME: There are a few zombie events bound to the model, need to unbind them.
+    @remove()
+    @off()
     event.preventDefault()
     Transit.router.navigate '', trigger: true
