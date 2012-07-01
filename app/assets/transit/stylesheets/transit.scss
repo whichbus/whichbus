@@ -1,6 +1,9 @@
 @import "bootstrap";
 @import "bootstrap-responsive"; 
 
+/* Open Sans Font as requested by @paigepauli */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700);
+
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
 $map_height: 30%;
