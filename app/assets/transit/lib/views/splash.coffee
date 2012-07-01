@@ -18,8 +18,7 @@ class Transit.Views.Splash extends Backbone.View
     Transit.plan.geocode_from_to @$('#from_query').val(), @$('#to_query').val()
 
   go_to_plan: =>
-    $(@el).remove()
-    Transit.plan.off 'geocode'
+    Transit.plan.off()
     Transit.router.navigate 'plan', trigger: true
 
   from_current_location: =>

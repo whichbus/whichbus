@@ -2,6 +2,9 @@ class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
   className: 'plan'
 
+  events:
+    'click .go-back': 'go_to_splash'
+
   initialize: =>
     @map = Transit.map
     @from = new L.Marker(
@@ -101,3 +104,8 @@ class Transit.Views.Plan extends Backbone.View
       bounds = new L.LatLngBounds(_.reduce legs, (a, b) -> a.concat(b))
       @map.fitBounds(bounds)
     @model.set { 'fit_bounds': @model.defaults.fit_bounds? }, { silent: true }
+
+  go_to_splash: (event) =>
+    # TODO: Place this to the topbar.
+    event.preventDefault()
+    Transit.router.navigate '', trigger: true
