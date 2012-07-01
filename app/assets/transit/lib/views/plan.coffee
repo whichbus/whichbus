@@ -77,14 +77,18 @@ class Transit.Views.Plan extends Backbone.View
     for leg in segments
       view = new Transit.Views.Segment(segment: leg)
       # show real-time data only for the first bus
-      if first_transit_leg?.tripId == leg.tripId
-        real_time_view = view
-        real_time = new Transit.Models.RealTime(segment: first_transit_leg)
+      if leg.mode == 'BUS'
+        real_time = new Transit.Models.RealTime
+          agency: leg.from.stopId.agencyId
+          code: leg.from.stopId.id
+          trip: leg.tripId
+          view: view
         real_time.fetch
           success: (data) =>
-            real_time_view.$('.real-time').html(data.readable_delta())
+            console.log "#{data.get('agency')}/#{data.get('code')} prediction: #{data.readable_delta() or 'unavailable'}"
+            data.get('view').$('.real-time').html(data.readable_delta())
             if data.delta_in_minutes()?
-                real_time_view.$('.real-time').addClass(data.delta_class()).show()
+                data.get('view').$('.real-time').addClass(data.delta_class()).show()
       @$('.segments').append(view.render().el)
       @$('.progress').hide()
 
