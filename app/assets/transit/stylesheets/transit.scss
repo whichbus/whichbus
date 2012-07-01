@@ -1,8 +1,8 @@
 @import "bootstrap";
 
-$sidebar_width: 470px;
+$sidebar_width: 400px;
 $sidebar_margin: 12px;
-$map_height: 250px;
+$map_height: 30%;
 
 #map {
   position: absolute;
@@ -52,7 +52,7 @@ $map_height: 250px;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   #map {
     left: 0;
     bottom: auto;
