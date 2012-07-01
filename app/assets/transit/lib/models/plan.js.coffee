@@ -2,7 +2,7 @@ class Transit.Models.Plan extends Backbone.Model
   urlRoot: '/api/otp/plan'
   defaults:
     itineraries: []
-    desired_itineraries: 1
+    desired_itineraries: 3
     fit_bounds: true
 
   parse: (plan) =>

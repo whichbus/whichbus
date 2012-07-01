@@ -17,7 +17,7 @@ class Transit.Views.Plan extends Backbone.View
     @from.on 'dragend', @update_plan
     @to.on 'dragend', @update_plan
     Transit.events.on 'plan:complete', @render_map
-    Transit.events.on 'plan:complete', @add_segments
+    Transit.events.on 'plan:complete', @add_itineraries
     @model.on 'geocode fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     Transit.events.on 'plan:complete', @fit_bounds
@@ -70,11 +70,22 @@ class Transit.Views.Plan extends Backbone.View
     polyline = new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
     @plan_route.addLayer(polyline)
 
+  add_itineraries: (plan) =>
+    window.plan = plan
+    console.log plan
+    plan.get('itineraries').each (trip, index) =>
+      trip.set('index', index + 1)
+      console.log trip
+      view = new Transit.Views.Itinerary
+        model: trip
+        index: index
+      @$('.itineraries').append(view.render().el)
+      @$('.progress').hide()
 
   add_segments: (plan) =>
-    segments = plan.get('itineraries').first().get('legs')
-    first_transit_leg = _.find segments, (segment) -> segment.mode != 'WALK'
-    for leg in segments
+    console.log 'segments'
+    console.log plan
+    for leg in plan.get('legs')
       view = new Transit.Views.Segment(segment: leg)
       # show real-time data only for the first bus
       if leg.mode == 'BUS'
@@ -89,7 +100,7 @@ class Transit.Views.Plan extends Backbone.View
             data.get('view').$('.real-time').html(data.readable_delta())
             if data.delta_in_minutes()?
                 data.get('view').$('.real-time').addClass(data.delta_class()).show()
-      @$('.segments').append(view.render().el)
+      @$('.itineraries').append(view.render().el)
       @$('.progress').hide()
 
 
