@@ -1,6 +1,7 @@
 class Transit.Views.Itinerary extends Backbone.View
 	template: JST['templates/itinerary']
 	className: 'itinerary'
+	tagName: 'li'
 
 	render: =>	
 		$(@el).html(@template({ trip: @model, index: @model.get('index') }))
