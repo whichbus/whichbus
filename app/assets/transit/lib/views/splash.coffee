@@ -30,3 +30,11 @@ class Transit.Views.Splash extends Backbone.View
 
   to_current_location: =>
     Transit.plan.current_location @$('#to_query'), 'to'
+
+
+
+
+  
+
+
+
