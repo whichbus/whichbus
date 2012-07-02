@@ -3,6 +3,12 @@ class Transit.Views.Itinerary extends Backbone.View
 	className: 'itinerary'
 	tagName: 'li'
 
+
+	events:
+		'mouseover h4': 'map_preview'
+		'mouseout h4': 'clean_up'
+
+
 	initialize: =>
 		@map = Transit.map
 		@map.from.on 'dragstart', @clean_up
@@ -48,3 +54,6 @@ class Transit.Views.Itinerary extends Backbone.View
 		latlngs = (new L.LatLng(point[0], point[1]) for point in points)
 		polyline = new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
 		@plan_route.addLayer(polyline)
+
+	map_preview: =>
+		@render_map()
