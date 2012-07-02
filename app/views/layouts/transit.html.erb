@@ -14,15 +14,17 @@
 	<div>
 		<p>Settings</p>
 	</div>
-	<div>
+	<div id="menu-search">
 		<input value="Search">
 	</div>
-	<ul >
-		<li>Favorites</li>
-		<li>My Account</li>
-		<li>Send Us Feedback</li>
-		<li>About WhichBus</li>
-	</ul>
+	<div id="menu-list">
+		<ul>
+			<li><span>Favorites</span></li>
+			<li><span>My Account</span></li>
+			<li><span>Send Us Feedback</span></li>
+			<li><span>About WhichBus</span></li>
+		</ul>
+	</div>	
 </div>
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
@@ -42,7 +44,7 @@
 				</ul>
 			</div>
 			-->
-			<button id="menu-btn" type="button" class="btn btn-navbar">
+			<button id="menu-btn" type="button" class="btn btn-navbar" onclick="Transit.ToggleMenu()">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>

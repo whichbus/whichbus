@@ -132,15 +132,40 @@ $map_height: 30%;
 }
 
 #menu{
+  display: none;
   position:absolute;
-  right:-100%;
+  right:2.5%;
   min-width: 40%;
   float: right;
-  background-color: dimgrey;
+  background-color: whitesmoke;
   z-index: 1000;
   margin-top: 50px;
-  color:white;
-  font-size:1.6em
+  color: dimgrey;
+  font-size:1.2em;
+  padding:5px;
+}
+
+#menu-search{
+  background-color:dimgrey;
+}
+
+#menu ul {
+  list-style-type: none;
+  margin:5px;
+  background-color:whitesmoke;
+}
+
+#menu li {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: lightgrey;
+}
+
+#menu li span {
+  margin-left:20px;
+}
+#menu-list{
+  background-color:whitesmoke;
 }
 
   

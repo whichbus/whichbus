@@ -20,8 +20,7 @@ Transit.pad = (num, zeroes) -> (1e10+num+"").slice(-zeroes)
 
 Transit.ToggleMenu = () => 
   m = $('#menu')
-  if m.css('right') < 0%
-    m.transition({right:"2.5%"})
+  if m.css('display') != 'block'
+    m.css 'display', 'block' 
   else
-    m.transition({right:"-100%"})
-
+    m.css 'display', 'none'
