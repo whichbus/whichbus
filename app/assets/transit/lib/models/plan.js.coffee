@@ -4,6 +4,10 @@ class Transit.Models.Plan extends Backbone.Model
     itineraries: []
     desired_itineraries: 3
 
+  initialize: =>
+    # create a local storage for the geocode data
+    @geocode_storage = Transit.storage_get('geocode')
+
   parse: (plan) =>
     @set
       date: new Date(plan.date)
@@ -28,15 +32,23 @@ class Transit.Models.Plan extends Backbone.Model
     numItineraries: @get('desired_itineraries')
 
   geocode: (query, callback) ->
-    bounds = Transit.map.leaflet?.getBounds()
-    $.get 'http://open.mapquestapi.com/nominatim/v1/search'
-      format: 'json'
-      countrycodes: 'US'
-      viewbox: bounds?.toBBoxString()
-      q: query
-    .success(callback)
-    .error ->
-      console.log "Failed to geocode #{query}."
+    # retrieve the location from the local storage if possible
+    if @geocode_storage[query]?
+      callback(@geocode_storage[query])
+    else
+      bounds = Transit.map.leaflet?.getBounds()
+      $.get 'http://open.mapquestapi.com/nominatim/v1/search'
+        format: 'json'
+        countrycodes: 'US'
+        viewbox: bounds?.toBBoxString()
+        q: query
+      .success (response) =>
+        # save the query in the local storage
+        @geocode_storage[query] = response
+        Transit.storage_set('geocode', @geocode_storage)
+        callback(response)
+      .error ->
+        console.log "Failed to geocode #{query}."
 
   geocode_from_to: (from_query, to_query) =>
     # TODO: It would be nice to batch this instead of doing 2 queries.

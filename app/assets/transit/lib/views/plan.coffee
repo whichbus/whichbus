@@ -1,6 +1,5 @@
 class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
-
   className: 'plan'
 
   events:
@@ -15,6 +14,7 @@ class Transit.Views.Plan extends Backbone.View
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     Transit.events.on 'plan:complete', @fit_bounds
+    @model.geocode_from_to(@options.from, @options.to)
 
   render: =>
     $(@el).html(@template())

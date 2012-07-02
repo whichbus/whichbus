@@ -4,5 +4,3 @@ class Transit.Views.Map extends Backbone.View
   initialize: =>
     Transit.map = new Transit.Models.Map(element: @el)
 
-  render: =>
-    this

@@ -6,18 +6,36 @@ $navbarBackground: darken($wbGreen, 5%);
 $navbarBackgroundHighlight: $wbGreen;
 
 @import "bootstrap";
-@import "bootstrap-responsive"; 
+// This does things automatically and breaks layout, figure out what we need from there.
+//@import "bootstrap-responsive"; 
 
 /* Open Sans Font as requested by @paigepauli */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,700);
 
+$navbar_height: 40px;
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
-$map_height: 30%;
+$map_height: 150px;
+
+#container {
+  margin-top: $navbar_height;
+}
+
+#splash {
+  margin-top: $navbar_height;
+  @include clearfix();
+  #logo {
+    margin: 20px 0;
+    text-align: center;
+    img {
+      width: 479px;
+    }
+  }
+}
 
 #map {
   position: absolute;
-  top: 0;
+  top: $navbar_height;
   bottom: 0;
   right: 0;
   left: $sidebar_width;
@@ -27,34 +45,28 @@ $map_height: 30%;
   min-width: 320px;
   width: $sidebar_width;
   float: left;
+  padding: 10px 0;
 
-  form {
-    margin: 10px $sidebar_margin;
-    input {
-      margin-bottom: 0;
-    }
-    @media (max-width: 480px) { display: none; }
+  .itineraries, .segments {
+    list-style: none;
+    margin: 0;
+    li:last-child  { border-bottom: none; }
   }
-  
+
   .itinerary {
     margin: 5px 0;
     border-bottom: 1px solid $grayLight; 
     h4 { 
+      padding-left: $sidebar_margin; 
       cursor: pointer; 
     }
   }
 
-  .segments {
-    list-style: none;
-    margin: 0;
-    li:first-child { border-top: 1px solid $grayLight;}
-    li:last-child  { border-bottom: none; }
-  }
+
   .segment {
     @include clearfix();
     padding: 8px $sidebar_margin;
-    border-bottom: 1px solid $tableBorder;
-    border-left: 1px solid $tableBorder;
+    border-top: 1px solid $tableBorder;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
@@ -78,18 +90,13 @@ $map_height: 30%;
 
 @media (max-width: 768px) {
   #map {
+    top: $navbar_height;
     left: 0;
-    bottom: auto;
     height: $map_height;
-    margin-top:50px;
     z-index: -1;
   }
   .leaflet-control-attribution {
-    font-size: 10px;
-  }
-  .main-area {
-    margin-top: 0px;
-
+    font-size: 9px;
   }
   #navigation {
     margin-top: $map_height;
@@ -98,9 +105,7 @@ $map_height: 30%;
   }
 }
 
-.main-area { 
-  margin-top:30px;
-}
+
 
 /*Pacifico Font setup for WhichBus */
 @font-face {

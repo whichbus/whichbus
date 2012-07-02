@@ -5,23 +5,16 @@ class Transit.Router extends Backbone.Router
 
   initialize: ->
     @view = new Transit.Views.Application()
-    $('#container').html(@view.render().el)
+    @view.render()
 
   index: ->
     @view.render()
     splash = new Transit.Views.Splash()
-    @view.$('#content').append(splash.render().el)
+    @view.$el.html(splash.render().el)
 
   plan: (from_query, to_query) ->
-    if not Transit.plan.get('from') or not Transit.plan.get('to')
-      # TODO: Ideally this should accept more than a lat/lon
-      from = from_query.split(',')
-      to = to_query.split(',')
-      Transit.plan.set
-        from: { lat: from[0], lon: from[1] }
-        to: { lat: to[0], lon: to[1] }
     @view.render()
     map = new Transit.Views.Map()
-    map.render()
-    navigation = new Transit.Views.Navigation()
-    navigation.render()
+
+    plan = new Transit.Views.Plan(model: Transit.plan, from: from_query, to: to_query)
+    @view.$('#navigation').append(plan.render().el)

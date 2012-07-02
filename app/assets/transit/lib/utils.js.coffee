@@ -18,6 +18,12 @@ Transit.format_duration = (seconds, minimize=false) ->
 
 Transit.pad = (num, zeroes) -> (1e10+num+"").slice(-zeroes)
 
+Transit.storage_get = (key) ->
+  JSON.parse(localStorage.getItem(key) ? '{}')
+
+Transit.storage_set = (key, value) ->
+  localStorage.setItem(key, JSON.stringify(value))
+
 Transit.ToggleMenu = () => 
   m = $('#menu')
   if m.css('display') != 'block'

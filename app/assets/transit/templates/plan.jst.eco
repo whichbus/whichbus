@@ -1,4 +1,4 @@
 <ol class="itineraries"></ol>
 <div class="progress progress-striped active"><div class="bar"></div></div>
 <div class="alert alert-error"></div>
-<button class="btn btn-mini go-back">Go back</button>
+<!-- <button class="btn btn-mini go-back">Go back</button> -->

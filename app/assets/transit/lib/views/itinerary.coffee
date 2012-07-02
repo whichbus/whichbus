@@ -34,10 +34,7 @@ class Transit.Views.Itinerary extends Backbone.View
 		Transit.map.leaflet.addLayer(@plan_route)
 
 	draw_polyline: (points, color) =>
-		points = decodeLine(points)
-		latlngs = (new L.LatLng(point[0], point[1]) for point in points)
-		polyline = new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
-		@plan_route.addLayer(polyline)
+		@plan_route.addLayer(Transit.map.create_polyline(points, color))
 
 	map_preview: =>
 		@render_map()

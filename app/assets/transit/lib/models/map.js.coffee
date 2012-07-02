@@ -3,8 +3,7 @@ class Transit.Models.Map extends Backbone.Model
 
   defaults:
     api_url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/{z}/{x}/{y}.png'
-    attribution: 'Map data &copy;
-    <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,
+    attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,
     <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,
     &copy; <a href="http://mapbox.com/">Mapbox</a>'
     fit_bounds: true
@@ -54,3 +53,8 @@ class Transit.Models.Map extends Backbone.Model
       @update_marker('to') if @hasChanged('to')
       # trigger a single custom event when from and/or to change
       @trigger 'change:markers'
+
+  create_polyline: _.memoize (points, color) ->
+    points = decodeLine(points)
+    latlngs = (new L.LatLng(point[0], point[1]) for point in points)
+    new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
