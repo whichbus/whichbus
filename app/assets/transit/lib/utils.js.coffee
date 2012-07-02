@@ -17,3 +17,11 @@ Transit.format_duration = (seconds, minimize=false) ->
 	else "#{mins}#{if minimize then 'm' else ' minutes'}"
 
 Transit.pad = (num, zeroes) -> (1e10+num+"").slice(-zeroes)
+
+Transit.ToggleMenu = () => 
+  m = $('#menu')
+  if m.css('right') < 0%
+    m.transition({right:"2.5%"})
+  else
+    m.transition({right:"-100%"})
+
