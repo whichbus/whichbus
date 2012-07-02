@@ -3,7 +3,6 @@ class Transit.Models.Plan extends Backbone.Model
   defaults:
     itineraries: []
     desired_itineraries: 3
-    fit_bounds: true
 
   parse: (plan) =>
     @set
@@ -29,7 +28,7 @@ class Transit.Models.Plan extends Backbone.Model
     numItineraries: @get('desired_itineraries')
 
   geocode: (query, callback) ->
-    bounds = Transit.map?.getBounds?()
+    bounds = Transit.map.leaflet?.getBounds()
     $.get 'http://open.mapquestapi.com/nominatim/v1/search'
       format: 'json'
       countrycodes: 'US'

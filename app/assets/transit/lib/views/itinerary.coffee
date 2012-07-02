@@ -3,16 +3,12 @@ class Transit.Views.Itinerary extends Backbone.View
 	tagName: 'li'
 	className: 'itinerary'
 
-
 	events:
 		'mouseover h4': 'map_preview'
 		'mouseout h4': 'clean_up'
 
-
 	initialize: =>
-		@map = Transit.map
-		@map.from.on 'dragstart', @clean_up
-		@map.to.on 'dragstart', @clean_up
+		Transit.map.on 'drag:start', @clean_up
 		Transit.events.on 'plan:complete', @clean_up
 		@plan_route = new L.LayerGroup()
 
@@ -27,7 +23,6 @@ class Transit.Views.Itinerary extends Backbone.View
 			view.fetch_prediction()
 			@$('.segments').append(view.render().el)
 
-
 	clean_up: =>
 		@plan_route.clearLayers()
 
@@ -36,7 +31,7 @@ class Transit.Views.Itinerary extends Backbone.View
 		colors = {'BUS': '#025d8c', 'WALK': 'black', 'FERRY': '#f02311'}
 		for leg in @model.get('legs')
 			@draw_polyline(leg.legGeometry.points, colors[leg.mode] ? '#1693a5')
-		@map.addLayer(@plan_route)
+		Transit.map.leaflet.addLayer(@plan_route)
 
 	draw_polyline: (points, color) =>
 		points = decodeLine(points)
