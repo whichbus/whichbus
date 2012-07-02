@@ -38,18 +38,23 @@ $map_height: 30%;
   
   .itinerary {
     margin: 5px 0;
-
-    h4 { cursor: pointer; }
+    border-bottom: 1px solid $grayLight; 
+    h4 { 
+      cursor: pointer; 
+    }
   }
 
   .segments {
     list-style: none;
     margin: 0;
+    li:first-child { border-top: 1px solid $grayLight;}
+    li:last-child  { border-bottom: none; }
   }
   .segment {
     @include clearfix();
     padding: 8px $sidebar_margin;
     border-bottom: 1px solid $tableBorder;
+    border-left: 1px solid $tableBorder;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
