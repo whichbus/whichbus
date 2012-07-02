@@ -1,5 +1,5 @@
 class Stop < ActiveRecord::Base
-	attr_accessible :oba_id, :agency_code, :code, :name, :lat, :lon, :direction, :stop_type
+	attr_accessible :oba_id, :agency_code, :code, :name, :lat, :lon, :direction, :stop_type, :safety
 
 	belongs_to :agency
 
