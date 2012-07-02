@@ -7,24 +7,20 @@ class Transit.Views.Plan extends Backbone.View
 
   initialize: =>
     @map = Transit.map
-    @from = new L.Marker(
+    @map.from = new L.Marker(
       new L.LatLng(@model.get('from').lat, @model.get('from').lon),
       clickable: false, draggable: true)
-    @to = new L.Marker(
+    @map.to = new L.Marker(
       new L.LatLng(@model.get('to').lat, @model.get('to').lon),
       clickable: false, draggable: true)
-    @map.addLayer(@from)
-    @map.addLayer(@to)
-    @from.on 'dragstart', @clean_up
-    @to.on 'dragstart', @clean_up
-    @from.on 'dragend', @update_plan
-    @to.on 'dragend', @update_plan
-    Transit.events.on 'plan:complete', @render_map
+    @map.addLayer(@map.from)
+    @map.addLayer(@map.to)
+    @map.from.on 'dragend', @update_plan
+    @map.to.on 'dragend', @update_plan
     Transit.events.on 'plan:complete', @add_itineraries
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     Transit.events.on 'plan:complete', @fit_bounds
-    @plan_route = new L.LayerGroup()
 
   render: =>
     $(@el).html(@template())
@@ -33,19 +29,19 @@ class Transit.Views.Plan extends Backbone.View
   update_plan: =>
     @model.set
       date: new Date()
-      from: lat: @from.getLatLng().lat, lon: @from.getLatLng().lng
-      to: lat: @to.getLatLng().lat, lon: @to.getLatLng().lng
+      from: lat: @map.from.getLatLng().lat, lon: @map.from.getLatLng().lng
+      to: lat: @map.to.getLatLng().lat, lon: @map.to.getLatLng().lng
       fit_bounds: false
     @model.trigger 'fetch'
 
 
   update_markers: =>
-    @from.setLatLng(new L.LatLng(@model.get('from').lat, @model.get('from').lon))
-    @to.setLatLng(new L.LatLng(@model.get('to').lat, @model.get('to').lon))
+    @map.from.setLatLng(new L.LatLng(@model.get('from').lat, @model.get('from').lon))
+    @map.to.setLatLng(new L.LatLng(@model.get('to').lat, @model.get('to').lon))
 
 
   fetch_plan: =>
-    @clean_up()
+    @render()
     @model.fetch
       success: (plan) -> Transit.events.trigger 'plan:complete', plan
       error: (model, message) =>
@@ -53,25 +49,7 @@ class Transit.Views.Plan extends Backbone.View
         @$('.alert').html(message).show()
 
 
-  clean_up: =>
-    @render()
-    @plan_route.clearLayers()
 
-
-  render_map: =>
-    @clean_up()
-    itinerary = Transit.plan.get('itineraries').first()
-    colors = {'BUS': '#025d8c', 'WALK': 'black', 'FERRY': '#f02311'}
-    for leg in itinerary.get('legs')
-      @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? '#1693a5')
-    @map.addLayer(@plan_route)
-
-
-  draw_polyline: (points, color) =>
-    points = decodeLine(points)
-    latlngs = (new L.LatLng(point[0], point[1]) for point in points)
-    polyline = new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
-    @plan_route.addLayer(polyline)
 
   add_itineraries: (plan) =>
     window.plan = plan
@@ -82,6 +60,8 @@ class Transit.Views.Plan extends Backbone.View
       view = new Transit.Views.Itinerary
         model: trip
         index: index
+      if Transit.plan.get('itineraries').first() == trip
+        view.render_map()
       @$('.itineraries').append(view.render().el)
       @$('.progress').hide()
 

@@ -3,7 +3,13 @@ class Transit.Views.Itinerary extends Backbone.View
 	className: 'itinerary'
 	tagName: 'li'
 
-	render: =>	
+	initialize: =>
+		@map = Transit.map
+		@map.from.on 'dragstart', @clean_up
+		@map.to.on 'dragstart', @clean_up
+		@plan_route = new L.LayerGroup()
+
+	render: =>
 		$(@el).html(@template({ trip: @model, index: @model.get('index') }))
 		@add_segments()
 		this
@@ -25,3 +31,20 @@ class Transit.Views.Itinerary extends Backbone.View
 						if data.delta_in_minutes()?
 								data.get('view').$('.real-time').addClass(data.delta_class()).show()
 			@$('.segments').append(view.render().el)
+
+
+	clean_up: =>
+		@plan_route.clearLayers()
+
+	render_map: =>
+		@clean_up()
+		colors = {'BUS': '#025d8c', 'WALK': 'black', 'FERRY': '#f02311'}
+		for leg in @model.get('legs')
+			@draw_polyline(leg.legGeometry.points, colors[leg.mode] ? '#1693a5')
+		@map.addLayer(@plan_route)
+
+	draw_polyline: (points, color) =>
+		points = decodeLine(points)
+		latlngs = (new L.LatLng(point[0], point[1]) for point in points)
+		polyline = new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
+		@plan_route.addLayer(polyline)
