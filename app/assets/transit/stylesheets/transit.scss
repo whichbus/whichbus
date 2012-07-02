@@ -9,7 +9,7 @@ $navbarBackgroundHighlight: $wbGreen;
 @import "bootstrap-responsive"; 
 
 /* Open Sans Font as requested by @paigepauli */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,700);
 
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
@@ -113,7 +113,7 @@ $map_height: 30%;
 }
 
 #whichbus {
-  font-size:2.4em;
+  font-size:2.2em;
   font-style:none;
   text-decoration:none;
   color:white;
@@ -124,7 +124,18 @@ $map_height: 30%;
 
 #menu-btn {
   margin-left:-40px;
+}
 
+#menu{
+  position:absolute;
+  right:-100%;
+  min-width: 40%;
+  float: right;
+  background-color: dimgrey;
+  z-index: 1000;
+  margin-top: 50px;
+  color:white;
+  font-size:1.6em
 }
 
   
