@@ -2,12 +2,14 @@ class Transit.Models.RealTime extends Backbone.Model
 
   sync: (method, model, options) =>
     if method == 'read'
-      agency_id = @get('segment').from.stopId.agencyId
-      stop_id = @get('segment').from.stopId.id
-      $.get "/workshop/stops/#{agency_id}/#{stop_id}/arrivals", (response) =>
+      if @get('agency')?
+        identifier = "#{@get('agency')}/#{@get('code')}"
+      else
+        identifier = @get('id')
+      $.get "/workshop/stops/#{identifier}/arrivals", (response) =>
         # find the prediction from OBA with the same trip id as in OTP
         trip = _.find response, (prediction) =>
-          prediction.tripId.split('_')[1] == @get('segment').tripId
+          prediction.tripId.indexOf(@get('trip')) > 0
         options.success trip
       .error -> options.error 'Real-time data not available.'
     else options.error 'Real-time data is read-only.'
@@ -29,6 +31,7 @@ class Transit.Models.RealTime extends Backbone.Model
     else ''
 
   delta_class: =>
-    if @delta_in_minutes() == 0 then 'on-time label-info'
-    else if @delta_in_minutes() > 0 then 'early label-success'
+    delta = @delta_in_minutes()
+    if delta == 0 then 'on-time label-info'
+    else if delta > 0 then 'early label-success'
     else 'late label-important'

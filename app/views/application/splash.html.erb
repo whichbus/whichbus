@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1>WhichBus WorkShop</em> 
+		<small>a simple, beautful way to explore WhichBus</small>
+	</h1>
+</div>
+
+<div class="hero-unit">
+	<h1><%= link_to Agency.count, agencies_path, class: 'btn btn-large btn-info' %> Transit Agencies</h1>
+	<% if Agency.count < 9 %>
+	<div class="progress"><div class="bar" style="width: <%= Agency.count * 100.0 / 9 %>%" ></div></div>
+	<% end %>
+</div>
+
+<div class="hero-unit">
+	<h1><%= link_to Route.count, routes_path, class: 'btn btn-large btn-success' %> Bus &amp; Ferry Routes</h1>
+	<% if Route.count < 441 %>
+	<div class="progress progress-success"><div class="bar" style="width: <%= Route.count * 100.0 / 441 %>%" ></div></div>
+	<% end %>
+</div>
+
+<div class="hero-unit">
+	<h1><%= link_to Stop.count, stops_path, class: 'btn btn-large btn-warning' %> Stops &amp; Stations</h1>
+	<% if Stop.count < 13268 %>
+	<div class="progress progress-warning"><div class="bar" style="width: <%= Stop.count * 100.0 / 13268 %>%" ></div></div>
+	<% end %>
+</div>

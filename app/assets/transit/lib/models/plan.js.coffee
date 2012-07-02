@@ -2,7 +2,7 @@ class Transit.Models.Plan extends Backbone.Model
   urlRoot: '/api/otp/plan'
   defaults:
     itineraries: []
-    desired_itineraries: 1
+    desired_itineraries: 3
     fit_bounds: true
 
   parse: (plan) =>
@@ -29,11 +29,11 @@ class Transit.Models.Plan extends Backbone.Model
     numItineraries: @get('desired_itineraries')
 
   geocode: (query, callback) ->
-    bounds = Transit.map.getBounds()
+    bounds = Transit.map?.getBounds?()
     $.get 'http://open.mapquestapi.com/nominatim/v1/search'
       format: 'json'
       countrycodes: 'US'
-      viewbox: bounds.toBBoxString()
+      viewbox: bounds?.toBBoxString()
       q: query
     .success(callback)
     .error ->
@@ -56,4 +56,4 @@ class Transit.Models.Plan extends Backbone.Model
     navigator.geolocation.getCurrentPosition (pos) =>
       selector.val "#{pos.coords.latitude},#{pos.coords.longitude}"
       @set target, lat: pos.coords.latitude, lon: pos.coords.longitude
-      @trigger 'geocode'
+      @trigger 'geolocate'

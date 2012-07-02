@@ -24,11 +24,31 @@ class ApplicationController < ActionController::Base
 	end
 
 	def search
-		query = "%#{params[:query]}%"
-		@agencies = Agency.where("code like ? OR name like ?", query, query)
-		@routes = Route.where("code like ? OR name like ?", query, query)
-		@stops = Stop.where("code like ? OR name like ?", query, query)
-		render 'splash' if params[:query].nil?
+		unless params[:query].nil? or params[:query].blank?
+			# enter a stop ID to jump straight to it
+			if params[:query].to_i > 1000
+				@stop = Stop.find_by_code(params[:query])
+				redirect_to stop_path(@stop.oba_id) if @stop
+			end
+
+			# sanitize query parameters
+			query = "%#{params[:query]}%"
+			limit = params[:limit] or 100
+			offset = params[:page].to_i * limit.to_i or 0
+
+			# generic search looks at all models using SQL like operator
+			@agencies = Agency.where("code like ? OR name like ?", query, query)
+			@routes = Route.where("code like ? OR name like ?", query, query).limit(limit).offset(offset)
+			@stops = Stop.where("name like ?", query).limit(limit).offset(offset)
+		end
+
+		# and it's an API too!
+		respond_to do |format|
+			format.html { render 'splash' if params[:query].nil? or params[:query].blank? }
+			format.json { 
+				render :json => {agencies: @agencies, routes: @routes, stops: @stops} 
+			}
+		end
 	end
 
 	def otp

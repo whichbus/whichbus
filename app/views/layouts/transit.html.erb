@@ -10,7 +10,50 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="menu">
+	<div>
+		<p>Settings</p>
+	</div>
+	<div id="menu-search">
+		<input value="Search">
+	</div>
+	<div id="menu-list">
+		<ul>
+			<li><span>Favorites</span></li>
+			<li><span>My Account</span></li>
+			<li><span>Send Us Feedback</span></li>
+			<li><span>About WhichBus</span></li>
+		</ul>
+	</div>	
+</div>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid whichbus-nav">
+			<a id="whichbus" class="pacifico" alt="WhichBus" href="/">WhichBus</a>
+			<!-- 
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			Future menu area, realized we should not use Bootstrap expandable thing and should instead
+			develop our own based on Paige's specs
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<li>Future menu area</li>
+				</ul>
+			</div>
+			-->
+			<button id="menu-btn" type="button" class="btn btn-navbar" onclick="Transit.ToggleMenu()">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
+			
+		</div>
+	</div>
+</div>
 <%= yield %>
 
 </body>

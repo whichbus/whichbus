@@ -1,27 +1,27 @@
 class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
+  
   className: 'plan'
+
+  events:
+    'click .go-back': 'go_to_splash'
 
   initialize: =>
     @map = Transit.map
-    @from = new L.Marker(
+    @map.from = new L.Marker(
       new L.LatLng(@model.get('from').lat, @model.get('from').lon),
       clickable: false, draggable: true)
-    @to = new L.Marker(
+    @map.to = new L.Marker(
       new L.LatLng(@model.get('to').lat, @model.get('to').lon),
       clickable: false, draggable: true)
-    @map.addLayer(@from)
-    @map.addLayer(@to)
-    @from.on 'dragstart', @clean_up
-    @to.on 'dragstart', @clean_up
-    @from.on 'dragend', @update_plan
-    @to.on 'dragend', @update_plan
-    Transit.events.on 'plan:complete', @render_map
-    Transit.events.on 'plan:complete', @add_segments
-    @model.on 'geocode fetch', @fetch_plan
+    @map.addLayer(@map.from)
+    @map.addLayer(@map.to)
+    @map.from.on 'dragend', @update_plan
+    @map.to.on 'dragend', @update_plan
+    Transit.events.on 'plan:complete', @add_itineraries
+    @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     Transit.events.on 'plan:complete', @fit_bounds
-    @plan_route = new L.LayerGroup()
 
   render: =>
     $(@el).html(@template())
@@ -30,19 +30,19 @@ class Transit.Views.Plan extends Backbone.View
   update_plan: =>
     @model.set
       date: new Date()
-      from: lat: @from.getLatLng().lat, lon: @from.getLatLng().lng
-      to: lat: @to.getLatLng().lat, lon: @to.getLatLng().lng
+      from: lat: @map.from.getLatLng().lat, lon: @map.from.getLatLng().lng
+      to: lat: @map.to.getLatLng().lat, lon: @map.to.getLatLng().lng
       fit_bounds: false
     @model.trigger 'fetch'
 
 
   update_markers: =>
-    @from.setLatLng(new L.LatLng(@model.get('from').lat, @model.get('from').lon))
-    @to.setLatLng(new L.LatLng(@model.get('to').lat, @model.get('to').lon))
+    @map.from.setLatLng(new L.LatLng(@model.get('from').lat, @model.get('from').lon))
+    @map.to.setLatLng(new L.LatLng(@model.get('to').lat, @model.get('to').lon))
 
 
   fetch_plan: =>
-    @clean_up()
+    @render()
     @model.fetch
       success: (plan) -> Transit.events.trigger 'plan:complete', plan
       error: (model, message) =>
@@ -50,42 +50,22 @@ class Transit.Views.Plan extends Backbone.View
         @$('.alert').html(message).show()
 
 
-  clean_up: =>
-    @render()
-    @plan_route.clearLayers()
 
 
-  render_map: =>
-    @clean_up()
-    itinerary = Transit.plan.get('itineraries').first()
-    colors = {'BUS': '#025d8c', 'WALK': 'black'}
-    for leg in itinerary.get('legs')
-      @draw_polyline(leg.legGeometry.points, colors[leg.mode] ? '#1693a5')
-    @map.addLayer(@plan_route)
-
-
-  draw_polyline: (points, color) =>
-    points = decodeLine(points)
-    latlngs = (new L.LatLng(point[0], point[1]) for point in points)
-    polyline = new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
-    @plan_route.addLayer(polyline)
-
-
-  add_segments: (plan) =>
-    segments = plan.get('itineraries').first().get('legs')
-    first_transit_leg = _.find segments, (segment) -> segment.mode != 'WALK'
-    for leg in segments
-      view = new Transit.Views.Segment(segment: leg)
-      # show real-time data only for the first bus
-      if first_transit_leg?.tripId == leg.tripId
-        real_time_view = view
-        real_time = new Transit.Models.RealTime(segment: first_transit_leg)
-        real_time.fetch
-          success: (data) =>
-            real_time_view.$('.real-time').html(data.readable_delta())
-            if data.delta_in_minutes()?
-                real_time_view.$('.real-time').addClass(data.delta_class()).show()
-      @$('.segments').append(view.render().el)
+  add_itineraries: (plan) =>
+    window.plan = plan
+    console.log plan
+    plan.get('itineraries').each (trip, index) =>
+      trip.set('index', index + 1)
+      console.log trip
+      view = new Transit.Views.Itinerary
+        model: trip
+        index: index
+      # only render the first itinerary, disable mouse over events for it
+      if Transit.plan.get('itineraries').first() == trip
+        view.undelegateEvents()
+        view.render_map()
+      @$('.itineraries').append(view.render().el)
       @$('.progress').hide()
 
 
@@ -97,3 +77,11 @@ class Transit.Views.Plan extends Backbone.View
       bounds = new L.LatLngBounds(_.reduce legs, (a, b) -> a.concat(b))
       @map.fitBounds(bounds)
     @model.set { 'fit_bounds': @model.defaults.fit_bounds? }, { silent: true }
+
+  go_to_splash: (event) =>
+    # TODO: Place this to the topbar.
+    # FIXME: There are a few zombie events bound to the model, need to unbind them.
+    @remove()
+    @off()
+    event.preventDefault()
+    Transit.router.navigate '', trigger: true
