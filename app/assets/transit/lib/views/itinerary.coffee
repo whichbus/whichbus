@@ -13,6 +13,7 @@ class Transit.Views.Itinerary extends Backbone.View
 		@map = Transit.map
 		@map.from.on 'dragstart', @clean_up
 		@map.to.on 'dragstart', @clean_up
+		Transit.events.on 'plan:complete', @clean_up
 		@plan_route = new L.LayerGroup()
 
 	render: =>
