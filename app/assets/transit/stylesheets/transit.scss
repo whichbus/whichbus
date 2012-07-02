@@ -1,3 +1,10 @@
+$wbGreen: hsl(127, 44%, 70%);
+
+/* Change Bootstrap variables before importing */
+$sansFontFamily: "Open Sans", sans-serif;
+$navbarBackground: darken($wbGreen, 5%);
+$navbarBackgroundHighlight: $wbGreen;
+
 @import "bootstrap";
 @import "bootstrap-responsive"; 
 
@@ -26,11 +33,12 @@ $map_height: 30%;
     input {
       margin-bottom: 0;
     }
+    @media (max-width: 480px) { display: none; }
   }
   
   .itinerary {
     margin: 5px 0;
-    
+
     h4 { cursor: pointer; }
   }
 
