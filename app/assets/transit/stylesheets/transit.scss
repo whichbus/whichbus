@@ -52,10 +52,17 @@ $map_height: 150px;
     border-bottom: 1px solid $grayLight;
   }
 
-  .itineraries, .segments {
+  .itineraries, .segments, .arrivals, .routes {
     list-style: none;
     margin: 0;
+    @include clearfix();
     li:last-child  { border-bottom: none; }
+  }
+
+  .routes { margin: $sidebar_margin; }
+  .routes li { 
+    float: left;
+    margin: 5px 5px 0 0;
   }
 
   .itinerary {
@@ -67,7 +74,7 @@ $map_height: 150px;
     }
   }
 
-  .segment {
+  .segment, .arrival {
     @include clearfix();
     padding: 8px $sidebar_margin;
     border-top: 1px dashed $tableBorder;

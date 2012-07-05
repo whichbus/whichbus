@@ -2,6 +2,7 @@ class Transit.Router extends Backbone.Router
   routes:
     '': 'index'
     'plan/:from/:to': 'plan'
+    'stops/:id': 'showStop'
 
   initialize: ->
     @view = new Transit.Views.Application()
@@ -18,3 +19,10 @@ class Transit.Router extends Backbone.Router
 
     plan = new Transit.Views.Plan(model: Transit.plan, from: from_query, to: to_query)
     @view.$('#navigation').append(plan.render().el)
+
+  showStop: (id) ->
+    @view.render()
+    map = new Transit.Views.Map()
+
+    stop = new Transit.Views.Stop(model: new Transit.Models.Stop(id: id))
+    @view.$('#navigation').append(stop.render().el)

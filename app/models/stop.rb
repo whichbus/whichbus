@@ -4,7 +4,7 @@ class Stop < ActiveRecord::Base
 	belongs_to :agency
 
 	has_many :route_stops
-	has_many :routes, :through => :route_stops
+	has_many :routes, :through => :route_stops, :uniq => true, :order => "CAST(routes.name AS INT)"
 
 	def kcm_id
 		"#{agency_code}/#{code}"

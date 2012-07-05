@@ -30,3 +30,18 @@ Transit.ToggleMenu = () =>
     m.css 'display', 'block' 
   else
     m.css 'display', 'none'
+
+window.HTML = {}
+# HTML GENERATORS (jQuery wrappers)
+HTML.tag = (tagname, classes, body...) ->
+  html = $(tagname).addClass(classes)
+  html.append text for text in body
+  html
+HTML.div = (classes, body...) ->
+  HTML.tag "<div>", classes, body...
+HTML.span = (classes, body...) ->
+  HTML.tag "<span>", classes, body...
+HTML.li = (classes, body...) ->
+  HTML.tag "<li>", classes, body...
+HTML.link = (href, classes, body...) ->
+  HTML.tag("<a>", classes, body...).attr("href", href)

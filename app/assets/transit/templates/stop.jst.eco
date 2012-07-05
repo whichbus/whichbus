@@ -1,0 +1,9 @@
+<header>
+	<h2><%= @stop.get('name') or 'Loading...' %></h2>
+</header>
+<ul class="routes">
+	<% for route in @stop.get('routes'): %>
+	<li><a href="/routes/<%= route.oba_id %>" class="badge badge-inverse"> <%= route.name %></a></li>
+	<% end %>
+</ul>
+<ul class="arrivals" id="arrivals"></ul>
