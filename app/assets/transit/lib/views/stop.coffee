@@ -9,12 +9,11 @@ class Transit.Views.Stop extends Backbone.View
 		@model.fetch
 			success: @render
 			error: (model, message) =>
-				@$('.progress').hide()
-				@$('.alert').html(message).show()
+				$('.alert').html(message).show()
 		@arrivals = new Transit.Collections.Arrivals(@model)
 		@arrivals.fetch
 			success: @showArrivals
-		Transit.events.on 'route:complete', @render
+		# Transit.events.on 'route:complete', @render
 
 	render: =>
 		$(@el).html(@template(stop: @model))
@@ -22,14 +21,6 @@ class Transit.Views.Stop extends Backbone.View
 		@marker = new L.Marker(stopLocation)
 		Transit.map.map.addLayer(@marker).setView(stopLocation, 16)
 		this
-
-	fetch_plan: =>
-		@render()
-		@model.fetch
-			success: (route) -> Transit.events.trigger 'route:complete', route
-			error: (model, message) =>
-				@$('.progress').hide()
-				@$('.alert').html(message).show()
 
 	showArrivals: =>
 		list = $("#arrivals")

@@ -1,2 +1,4 @@
-<div id="navigation"></div>
+<div id="navigation">
+	<div class="alert alert-error hide"></div>
+</div>
 <div id="map"></div>
