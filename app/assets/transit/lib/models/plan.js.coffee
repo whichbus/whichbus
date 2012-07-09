@@ -65,6 +65,8 @@ class Transit.Models.Plan extends Backbone.Model
   current_location: (selector, target) =>
     # TODO: Use leaflet's map.locate()
     navigator.geolocation.getCurrentPosition (pos) =>
-      selector.val "#{pos.coords.latitude},#{pos.coords.longitude}"
-      @set target, lat: pos.coords.latitude, lon: pos.coords.longitude
+      latitude = pos.coords.latitude.toFixed(7)
+      longitude = pos.coords.longitude.toFixed(7)
+      selector.val "#{latitude},#{longitude}"
+      @set target, lat: latitude, lon: longitude
       @trigger 'geolocate'
