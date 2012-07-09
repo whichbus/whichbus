@@ -55,7 +55,7 @@ header {
   padding: 0 $sidebar_margin;
   color: white;
   text-transform: uppercase;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  @include box-shadow(0 2px 4px rgba(0,0,0,0.25));
   @include shadow-black(0.25);
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600; 
@@ -76,6 +76,9 @@ header.gray {
     height: $title_height;
     h3 {
       line-height: $title_height;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -241,8 +244,8 @@ header.gray {
 }
 
 .directions {
-  box-shadow: 0 0 3px 1px rgba(0,0,0,0.15);
-  border-radius: 10px;
+  @include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
+  @include border-radius(10px);
   border: 1px solid #adaca1;
   background: url('<%= image_path("background/directions.png") %>') repeat #cdcabf;
 
@@ -274,7 +277,7 @@ header.gray {
     line-height: 1.3em;
     text-align: center;
     vertical-align: middle;
-    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset;
+    @include box-shadow(0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset);
     @include border-radius($borderRadius 0 0 $borderRadius);
     @include placeholder(#94978C);
   }
@@ -303,13 +306,13 @@ header.gray {
   color: #666;
   a {
     text-decoration: none;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    @include shadow-black(0.25);
     color: #666;
   }
   a:hover {
     color: white;
     border-bottom: 2px white dotted;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+    @include shadow-black(0.15);
   }
 }
 

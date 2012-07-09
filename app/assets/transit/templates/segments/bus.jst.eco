@@ -1,5 +1,5 @@
 <div class="start">
-	Take <span class="badge badge-inverse"><%= @segment.route %></span>
+	Take <span class="btn btn-route"><%= @segment.route %></span>
 	<span class="duration label"><%= Transit.format_time @segment.startTime %></span>
 	<span class="real-time label"></span>
 </div>
