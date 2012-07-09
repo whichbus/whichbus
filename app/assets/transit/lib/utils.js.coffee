@@ -31,6 +31,9 @@ Transit.ToggleMenu = () =>
   else
     m.css 'display', 'none'
 
+Transit.setTitle = (title) =>
+  $("#title h3").text(title)
+
 window.HTML = {}
 # HTML GENERATORS (jQuery wrappers)
 HTML.tag = (tagname, classes, body...) ->

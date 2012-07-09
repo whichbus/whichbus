@@ -18,6 +18,7 @@ $navbarBackgroundHighlight: $wbGreen;
 }
 
 $navbar_height: 40px;
+$title_height: 30px;
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
 $map_height: 150px;
@@ -50,35 +51,44 @@ body {
   left: $sidebar_width;
 }
 
+header {
+  padding: 0 $sidebar_margin;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 2px 0 3px;
+  @include shadow-black(0.25);
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600; 
+  }
+}
+header.red {
+  border-top: 1px solid #f48668;
+  border-bottom: 1px solid #762a16;
+  @include gradient-vertical(#dc6a4c, #a7442a);
+}
+header.gray {
+  border-bottom: 1px solid #57564d;
+  @include gradient-vertical(#939285, #7a796e);
+}
+
+#title {
+  header {
+    height: $title_height;
+    h3 {
+      line-height: $title_height;
+    }
+  }
+}
+
 #navigation {
   min-width: 320px;
   width: $sidebar_width;
   float: left;
-  padding: 10px 0;
+  // padding: 10px 0;
 
-  header {
-    padding: 0 $sidebar_margin;
-    color: white;
-    text-transform: uppercase;
-    @include shadow-black(0.25);
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600; 
-    }
-  }
-  header.red {
-    border-top: 1px solid #f48668;
-    border-bottom: 1px solid #762a16;
-    @include gradient-vertical(#dc6a4c, #a7442a);
-  }
-  header.gray {
-    border-bottom: 1px solid #57564d;
-    @include gradient-vertical(#939285, #7a796e);
-  }
-
-  li {
+  ol li {
     color: #565656;
     height: 50px;
-    margin-left: 25px;
     border-top: 1px solid #f3f3f3;
     border-top: 1px solid #ababab;
     @include gradient-vertical(#e1e0e0, #d2d2d2)
@@ -91,7 +101,7 @@ body {
     // li:last-child  { border-bottom: none; }
   }
 
-  .routes { margin: $sidebar_margin; }
+  // .routes { margin: $sidebar_margin; }
   .routes li { 
     float: left;
     margin: 5px 5px 0 0;
@@ -133,7 +143,7 @@ body {
 
 @media (max-width: 768px) {
   #map {
-    top: $navbar_height;
+    top: $navbar_height + $title_height;
     left: 0;
     height: $map_height;
     z-index: -1;
@@ -321,4 +331,16 @@ body {
 }
 .favorite.active, .favorite:hover {
   background-position: 0 -15px;
+}
+.favorite.active:hover { background-position: 0 0; }
+
+.btn.btn-route {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 4px 8px;
+  vertical-align: middle;
+  border: 1px solid #748c7d;
+  @include shadow-black(0.25);
+  @include gradient-vertical(#bfe4cd, #90b89f)
 }

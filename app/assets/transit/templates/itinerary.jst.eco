@@ -3,4 +3,4 @@
 	<%= @trip.timing() %><br/>
 	<small><%= @trip.duration() %></small>
 </h4>
-<ul class="segments collapse <%= 'in' if @index == 1 %>" id="trip<%= @index %>"></ul>
+<ol class="segments collapse <%= 'in' if @index == 1 %>" id="trip<%= @index %>"></ol>

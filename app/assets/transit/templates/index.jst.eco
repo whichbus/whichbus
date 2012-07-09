@@ -1,3 +1,9 @@
+<div class="subnav" id="title">
+	<header class="gray">
+		<span class="icon favorite"></span>
+		<h3>loading...</h3>
+	</header>
+</div>
 <div id="navigation">
 	<div class="alert alert-error hide"></div>
 </div>
