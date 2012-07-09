@@ -1,6 +1,7 @@
 require "net/http"
 require "uri"
 require "json"
+require "csv"
 
 desc "Populate the crime data from socrata and randomly"
 
@@ -27,7 +28,6 @@ end
 ## 900 - homicide
 ## 1300 - assault (aggressive)
 ## 3500 - narcotics
-## 2400 - vehicle theft
 # Spot-checking spots:
 ## North Seattle 47.7159996, -122.334221
 ## South Seattle 47.5463409, -122.285454
@@ -106,4 +106,89 @@ HEREDOC
     puts " safety => #{s.safety}"
     s.save
   end
+end
+
+task :load_crime_csv => :environment do
+    puts "Deleting existing crimes"
+    Crime.delete_all()
+    
+    ## Note, the policy incident report is 60 MB so... you need to download it locally to temp
+    ## URL: https://data.seattle.gov/Public-Safety/Seattle-Police-Department-Police-Report-Incident/7ais-f98f
+    ## Then download as CSV to the tmp folder... and you're good to go!
+    csv_text = File.read('tmp/Seattle_Police_Department_Police_Report_Incident.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+    puts "Loaded police csv"
+    
+    csv.each do |row|
+        puts "Creating new crime record - " + row['Summary Offense Code'] + " at " + row['Latitude'] + ", " + row['Longitude']
+        c = Crime.new(:latitude=> row["Latitude"], :longitude=> row["Longitude"], :address=>row["Hundred Block Location"], :summary_code=>row["Summary Offense Code"])
+        c.save
+    end
+    puts "DONEZO!"
+end
+
+task :load_stop_safety_csv => :environment do
+    csv_text = File.read('db/crime_seed.csv')
+    csv = CSV.parse(csv_text, :headers => false)
+    puts "Loaded safety csv"
+    
+    csv.each do |row|
+        s = Stop.where(:oba_id => row[0]).first
+        s.safety = row[1]
+        puts "Updating #{s.oba_id.to_s} with safety = #{s.safety.to_s}"
+        s.save
+    end
+    puts "DONEZO!"
+end
+
+
+task :compute_crime_locally => :environment do
+    puts "Finding matching stops"
+    histogram = Array.new(12)
+    
+    csv_text = File.read('tmp/Seattle_Police_Department_Police_Report_Incident.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+    puts "Loaded police csv"
+    
+    allCrime = Array.new()
+    
+    csv.each do |row|
+        puts "Creating new crime record - " + row['Summary Offense Code'] + " at " + row['Latitude'] + ", " + row['Longitude']
+        c = Crime.new(:latitude=> row["Latitude"], :longitude=> row["Longitude"], :address=>row["Hundred Block Location"], :summary_code=>row["Summary Offense Code"])
+    end
+
+    
+    out_csv_text = File.open('db/crime_seed.csv', 'w')
+
+    Stop.all.each do |s|
+        s.safety = 0
+        puts "Looking for crime near #{s.lat}, #{s.lon}"
+        Crime.near([s.lat, s.lon], 0.12).each do |found|
+        #Crime.find_within(0.25, :origin => [s.lat, s.lon]).each do |found|
+            if(found.summary_code.to_s =~ /900|1300|3500/)
+                puts "Hit " + found.summary_code.to_s + " near " + s.oba_id.to_s
+                s.safety+=1
+            else
+                puts "No hit - summary code is " + found.summary_code.to_s
+            end
+        end
+        
+        histosave = s.safety
+        if s.safety > 10 then histosave = 11
+        end
+        if(histogram[histosave] == nil) then histogram[histosave] = 0
+        end
+        histogram[histosave] += 1
+        ## Saving the record is commented out since the goal of this task is to generate the csv file
+        #s.save
+        out_csv_text.write("#{s.oba_id.to_s},#{s.safety.to_s}\n")
+    end
+    
+    out_csv_text.close()
+    
+    puts "Histogram Results:"
+    histogram.each do |hist|
+        puts hist.to_s
+    end
+    puts "DONEZO!"
 end
