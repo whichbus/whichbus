@@ -1,5 +1,6 @@
-<header>
-	<h2><%= @stop.get('name') or 'Loading...' %></h2>
+<header class="gray">
+	<span class="icon favorite"></span>
+	<h3><%= @stop.get('name') or 'Loading...' %></h3>
 </header>
 <ul class="routes">
 	<% for route in @stop.get('routes'): %>

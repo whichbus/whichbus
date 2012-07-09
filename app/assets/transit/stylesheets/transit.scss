@@ -1,8 +1,9 @@
-$wbGreen: hsl(127, 44%, 70%);
+$wbGreen: #bbefce;
+$wbGreenDark: #a1d0b1;
 
 /* Change Bootstrap variables before importing */
 $sansFontFamily: "Open Sans", sans-serif;
-$navbarBackground: darken($wbGreen, 5%);
+$navbarBackground: $wbGreenDark;
 $navbarBackgroundHighlight: $wbGreen;
 
 @import "bootstrap";
@@ -10,12 +11,20 @@ $navbarBackgroundHighlight: $wbGreen;
 //@import "bootstrap-responsive"; 
 
 /* Open Sans Font as requested by @paigepauli */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600,700);
+
+@mixin shadow-black($opacity) {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, $opacity);
+}
 
 $navbar_height: 40px;
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
 $map_height: 150px;
+
+body {
+  background: url('/assets/background/background-stripes.png') repeat #dcdcd7;
+}
 
 #container {
   margin-top: $navbar_height;
@@ -24,13 +33,13 @@ $map_height: 150px;
 #splash {
   margin-top: $navbar_height;
   @include clearfix();
-  #logo {
-    margin: 20px 0;
-    text-align: center;
-    img {
-      width: 479px;
-    }
-  }
+  // #logo {
+  //   margin: 20px 0;
+  //   text-align: center;
+  //   img {
+  //     width: 479px;
+  //   }
+  // }
 }
 
 #map {
@@ -49,14 +58,37 @@ $map_height: 150px;
 
   header {
     padding: 0 $sidebar_margin;
-    border-bottom: 1px solid $grayLight;
+    color: white;
+    text-transform: uppercase;
+    @include shadow-black(0.25);
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600; 
+    }
+  }
+  header.red {
+    border-top: 1px solid #f48668;
+    border-bottom: 1px solid #762a16;
+    @include gradient-vertical(#dc6a4c, #a7442a);
+  }
+  header.gray {
+    border-bottom: 1px solid #57564d;
+    @include gradient-vertical(#939285, #7a796e);
+  }
+
+  li {
+    color: #565656;
+    height: 50px;
+    margin-left: 25px;
+    border-top: 1px solid #f3f3f3;
+    border-top: 1px solid #ababab;
+    @include gradient-vertical(#e1e0e0, #d2d2d2)
   }
 
   .itineraries, .segments, .arrivals, .routes {
     list-style: none;
     margin: 0;
     @include clearfix();
-    li:last-child  { border-bottom: none; }
+    // li:last-child  { border-bottom: none; }
   }
 
   .routes { margin: $sidebar_margin; }
@@ -77,7 +109,7 @@ $map_height: 150px;
   .segment, .arrival {
     @include clearfix();
     padding: 8px $sidebar_margin;
-    border-top: 1px dashed $tableBorder;
+    // border-top: 1px dashed $tableBorder;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
@@ -134,10 +166,11 @@ $map_height: 150px;
 }
 
 #whichbus {
-  font-size:2.2em;
-  font-style:none;
-  text-decoration:none;
-  color:white;
+  font-size: 2em;
+  line-height: 1.3em;
+  text-decoration: none;
+  color: white;
+  @include shadow-black(0.25);
 }
 .whichbus-nav{
   text-align:center;
@@ -184,5 +217,108 @@ $map_height: 150px;
   background-color:whitesmoke;
 }
 
-  
-  
+
+.row-fluid [class*="span"].centered:first-child {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  float: none;
+}
+
+.logo {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.directions {
+  box-shadow: 0 0 3px 1px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  border: 1px solid #adaca1;
+  background: url('/assets/background/directions.png') repeat #cdcabf;
+
+  $borderRadius: 7px;
+
+  h2 { 
+    font-weight: normal;
+    text-align: center;
+    margin: 20px auto 15px;
+    color: white;
+    @include shadow-black(0.20);
+  }
+
+  form .row-fluid {
+    margin-bottom: 13px;
+  }
+
+  .input-append {
+    input, button { 
+      display: inline !important; 
+      float: none !important;
+    }
+  }
+
+  input.location {
+    height: 45px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.3em;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset;
+    @include border-radius($borderRadius 0 0 $borderRadius);
+    @include placeholder(#94978C);
+  }
+  .input-append .btn.geolocate:last-child {
+    height: 45px;
+    @include border-radius(0 $borderRadius $borderRadius 0);
+  }
+
+  .btn.btn-map {
+    height: 45px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid #5e9b99;
+    @include shadow-black(0.25);
+    @include gradient-vertical(#93d2d0, #679a98);
+    @include border-radius($borderRadius);
+  }
+}
+
+.footer {
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #666;
+  a {
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color: #666;
+  }
+  a:hover {
+    color: white;
+    border-bottom: 2px white dotted;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+.settings {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  height: 20px;
+  width: 20px;
+  background: url('/assets/icons/icon-settings.png') no-repeat;
+}
+
+.favorite {
+  float: right;
+  margin-top: 6px;
+  width: 20px;
+  height: 15px;
+  background: url('/assets/icons/icon-favorite.png') no-repeat;
+}
+.favorite.active, .favorite:hover {
+  background-position: 0 -15px;
+}
