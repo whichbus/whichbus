@@ -32,6 +32,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'spine-rails'
 gem 'eco'
+gem 'geocoder'
 
 gem 'devise'
 

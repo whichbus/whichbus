@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  time: 2012-07-08 15:32:21
+  lat: MyString
+  lon: MyString
+  summary_code: 1
+
+two:
+  time: 2012-07-08 15:32:21
+  lat: MyString
+  lon: MyString
+  summary_code: 1

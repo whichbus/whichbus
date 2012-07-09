@@ -7,6 +7,7 @@
 # Ignore project configs
 *.xcodeproj
 Gemfile.lock
+*.xcsettings
 
 # Ignore bundler config
 /.bundle
