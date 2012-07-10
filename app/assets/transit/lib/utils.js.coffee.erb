@@ -35,15 +35,15 @@ Transit.setTitle = (title) =>
   $("#title h3").text(title)
 
 
-Transit.markers =
-  start: new L.Icon
-    iconUrl: '<%= image_path("icons/icon-start-location") %>'
+Transit.Markers =
+  Start: L.Icon.extend
     iconSize: new L.Point(33, 35)
-    iconAnchor: new L.Point(17, 0)
-  end: new L.Icon
-    iconUrl: '<%= image_path("icons/icon-end-location") %>'
+    iconAnchor: new L.Point(11, 35)
+    iconUrl: '<%= image_path("icons/icon-start-location.png") %>'
+  End: L.Icon.extend
     iconSize: new L.Point(33, 35)
-    iconAnchor: new L.Point(17, 0)
+    iconAnchor: new L.Point(11, 35)
+    iconUrl: '<%= image_path("icons/icon-end-location.png") %>'
 
 window.HTML = {}
 # HTML GENERATORS (jQuery wrappers)

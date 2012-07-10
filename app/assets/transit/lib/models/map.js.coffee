@@ -33,15 +33,7 @@ class Transit.Models.Map extends Backbone.Model
     point = new L.LatLng(@get(attribute).lat, @get(attribute).lon)
     if not @has(marker_name)
       # marker hasn't been added to the map yet, create it
-      @set marker_name, new L.Marker(point, clickable: false, draggable: true, icon: Transit.markers.start), silent: true
-      # update location after the drag, trigger a drag event on a drag
-      marker = @get(marker_name)
-      marker.on 'dragstart', =>
-        @trigger "drag drag:start drag:start:#{attribute}"
-      marker.on 'dragend', =>
-        @set(attribute, lat: marker.getLatLng().lat, lon: marker.getLatLng().lng)
-        @trigger "drag drag:end drag:end:#{attribute}"
-      @map.addLayer(marker)
+      @create_marker(attribute, point, Transit.Markers.Start)
     else
       # marker is already on the map, update its location
       @get(marker_name).setLatLng(point)
@@ -58,3 +50,16 @@ class Transit.Models.Map extends Backbone.Model
     points = decodeLine(points)
     latlngs = (new L.LatLng(point[0], point[1]) for point in points)
     new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
+
+  create_marker: (name, position, icon) ->
+    marker = new L.Marker(position, clickable: false, draggable: true, icon: new icon())
+    # update location after the drag, trigger a drag event on a drag
+    marker.on 'dragstart', =>
+      @trigger "drag drag:start drag:start:#{name}"
+    marker.on 'dragend', =>
+      @set(name, lat: marker.getLatLng().lat, lon: marker.getLatLng().lng)
+      @trigger "drag drag:end drag:end:#{name}"
+    # add marker to map and model
+    @map.addLayer(marker)
+    @set "#{name}_marker", marker, silent: true
+
