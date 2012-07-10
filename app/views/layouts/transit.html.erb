@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bus</title>
+  <title>WhichBus</title>
   <%= stylesheet_link_tag    "transit", :media => "all" %>
   <%= javascript_include_tag "transit" %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -29,6 +29,7 @@
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid whichbus-nav">
+			<a href="/" class="icon bus"></a>
 			<a id="whichbus" class="pacifico" alt="WhichBus" href="/">WhichBus</a>
 			<!-- 
 			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -49,8 +50,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="#" class="settings"></a>
-			
+			<a href="#" class="icon settings"></a>			
 		</div>
 	</div>
 </div>

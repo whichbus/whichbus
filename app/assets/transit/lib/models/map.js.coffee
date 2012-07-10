@@ -33,7 +33,7 @@ class Transit.Models.Map extends Backbone.Model
     point = new L.LatLng(@get(attribute).lat, @get(attribute).lon)
     if not @has(marker_name)
       # marker hasn't been added to the map yet, create it
-      @set marker_name, new L.Marker(point, clickable: false, draggable: true), silent: true
+      @set marker_name, new L.Marker(point, clickable: false, draggable: true, icon: Transit.markers.start), silent: true
       # update location after the drag, trigger a drag event on a drag
       marker = @get(marker_name)
       marker.on 'dragstart', =>
