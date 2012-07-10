@@ -97,7 +97,7 @@ header.gray {
     z-index: -1;
     li {
       color: #565656;
-      height: 50px;
+      // height: 50px;
       border-top: 1px solid #f3f3f3;
       border-bottom: 1px solid #ababab;
       @include gradient-vertical(#e1e0e0, #d2d2d2)
@@ -126,6 +126,7 @@ header.gray {
     }
   }
 
+  .segments { z-index: 0; }
   .segment, .arrival {
     @include clearfix();
     padding: 8px $sidebar_margin;
