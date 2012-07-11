@@ -32,8 +32,12 @@ class Transit.Models.Plan extends Backbone.Model
     numItineraries: @get('desired_itineraries')
 
   geocode: (query, callback) ->
+    # if the query is already a lat,lon pair then simply use that as location
+    latLon = /^(-?\d+\.\d+),(-?\d+\.\d+)$/.exec(query)
+    if latLon?
+      callback({ lat: latLon[1], lon: latLon[2] })
     # retrieve the location from the local storage if possible
-    if @geocode_storage[query]?
+    else if @geocode_storage[query]?
       callback(@geocode_storage[query])
     else
       bounds = Transit.map.leaflet?.getBounds()
@@ -43,21 +47,22 @@ class Transit.Models.Plan extends Backbone.Model
         viewbox: bounds?.toBBoxString()
         q: query
       .success (response) =>
-        # save the query in the local storage
-        @geocode_storage[query] = response
+        # save the first result in the local storage
+        @geocode_storage[query] = response[0]
         Transit.storage_set('geocode', @geocode_storage)
-        callback(response)
+        callback(response[0])
       .error ->
         console.log "Failed to geocode #{query}."
 
   geocode_from_to: (from_query, to_query) =>
     # TODO: It would be nice to batch this instead of doing 2 queries.
-    @geocode from_query, (from) =>
-      @geocode to_query, (to) =>
-        if from[0]? and to[0]?
+    @geocode unescape(from_query), (from) =>
+      @geocode unescape(to_query), (to) =>
+        # geocode method returns one result instead of array
+        if from? and to?
           @set
-            from: lat: from[0].lat, lon: from[0].lon
-            to: lat: to[0].lat, lon: to[0].lon
+            from: lat: from.lat, lon: from.lon
+            to: lat: to.lat, lon: to.lon
           @trigger 'geocode'
         else console.log 'From and to locations required.'
 
