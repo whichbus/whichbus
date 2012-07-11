@@ -3,8 +3,11 @@ class Transit.Views.Itinerary extends Backbone.View
 	tagName: 'li'
 	className: 'itinerary'
 
+	# TODO: move to constant location
+	segmentColors: {'BUS': '#025d8c', 'WALK': 'black', 'FERRY': '#f02311'}
+
 	events:
-		'mouseover h4': 'map_preview'
+		'mouseover h4': 'render_map'
 		'mouseout h4': 'clean_up'
 
 	initialize: =>
@@ -19,22 +22,16 @@ class Transit.Views.Itinerary extends Backbone.View
 
 	add_segments: =>
 		for leg in @model.get('legs')
+			# create a view for the segment
 			view = new Transit.Views.Segment(segment: leg)
 			view.fetch_prediction()
 			@$('.segments').append(view.render().el)
+			# render the segment's polyline
+			poly = Transit.map.create_polyline(leg.legGeometry.points, @segmentColors[leg.mode] ? '#1693a5')
+			@plan_route.addLayer(poly)
 
 	clean_up: =>
-		@plan_route.clearLayers()
+		Transit.map.leaflet.removeLayer(@plan_route)
 
-	render_map: =>
-		@clean_up()
-		colors = {'BUS': '#025d8c', 'WALK': 'black', 'FERRY': '#f02311'}
-		for leg in @model.get('legs')
-			@draw_polyline(leg.legGeometry.points, colors[leg.mode] ? '#1693a5')
+	render_map: =>	
 		Transit.map.leaflet.addLayer(@plan_route)
-
-	draw_polyline: (points, color) =>
-		@plan_route.addLayer(Transit.map.create_polyline(points, color))
-
-	map_preview: =>
-		@render_map()

@@ -64,7 +64,9 @@ class Transit.Models.Plan extends Backbone.Model
             from: lat: from.lat, lon: from.lon
             to: lat: to.lat, lon: to.lon
           @trigger 'geocode'
-        else console.log 'From and to locations required.'
+        else 
+          console.log "FROM geocoding failed: #{unescape(from_query)}" unless from?
+          console.log "TO geocoding failed: #{unescape(to_query)}" unless to?
 
 
   current_location: (selector, target) =>
