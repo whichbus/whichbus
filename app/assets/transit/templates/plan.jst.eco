@@ -1,5 +1,5 @@
-<header class="red">
-	<h3>Three Itineraries</h3>
+<header class="blue">
+	<h3>Suggested Itineraries</h3>
 </header>
 <ol class="itineraries"></ol>
 <div class="progress progress-striped active"><div class="bar"></div></div>

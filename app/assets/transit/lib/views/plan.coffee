@@ -59,7 +59,7 @@ class Transit.Views.Plan extends Backbone.View
         model: trip
         index: index
       # only render the first itinerary, disable mouse over events for it
-      if Transit.plan.get('itineraries').first() == trip
+      if index == 0
         view.undelegateEvents()
         view.render_map()
       @$('.itineraries').append(view.render().el)

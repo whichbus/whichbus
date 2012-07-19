@@ -24,15 +24,31 @@ Transit.storage_get = (key) ->
 Transit.storage_set = (key, value) ->
   localStorage.setItem(key, JSON.stringify(value))
 
-Transit.ToggleMenu = () => 
+Transit.storage_clear = (key) ->
+  localStorage.setItem(key, undefined)
+
+Transit.ToggleMenu = () =>
   m = $('#menu')
   if m.css('display') != 'block'
-    m.css 'display', 'block' 
+    m.css 'display', 'block'
   else
     m.css 'display', 'none'
 
 Transit.setTitle = (title) =>
   $("#title h3").text(title)
+
+
+Transit.Markers =
+  Start: L.Icon.extend
+    iconSize: new L.Point(33, 35)
+    iconAnchor: new L.Point(11, 35)
+    iconUrl: '<%= image_path("icons/icon-start-location.png") %>'
+    shadowUrl: null
+  End: L.Icon.extend
+    iconSize: new L.Point(33, 35)
+    iconAnchor: new L.Point(11, 35)
+    iconUrl: '<%= image_path("icons/icon-end-location.png") %>'
+    shadowUrl: null
 
 window.HTML = {}
 # HTML GENERATORS (jQuery wrappers)

@@ -3,6 +3,9 @@ class Transit.Models.Itinerary extends Backbone.Model
 		# TODO: case with no bus legs
 		_.pluck(_.filter(@get('legs'), (leg) -> leg.mode == 'BUS'), 'route').join(', ')
 
+	summaryHTML: =>
+		_.map(_.filter(@get('legs'), (leg) -> leg.mode == 'BUS'), (leg) -> "<span class='btn btn-route'>#{leg.route}</span>").join(' ')
+
 	timing: =>
 		start = Transit.format_time(@get('startTime'))
 		end   = Transit.format_time(@get('endTime'))
