@@ -146,16 +146,16 @@ task :compute_crime_locally => :environment do
     puts "Finding matching stops"
     histogram = Array.new(12)
     
-    csv_text = File.read('tmp/Seattle_Police_Department_Police_Report_Incident.csv')
-    csv = CSV.parse(csv_text, :headers => true)
-    puts "Loaded police csv"
+    #csv_text = File.read('tmp/Seattle_Police_Department_Police_Report_Incident.csv')
+    #csv = CSV.parse(csv_text, :headers => true)
+    #puts "Loaded police csv"
     
-    allCrime = Array.new()
+    #allCrime = Array.new()
     
-    csv.each do |row|
-        puts "Creating new crime record - " + row['Summary Offense Code'] + " at " + row['Latitude'] + ", " + row['Longitude']
-        c = Crime.new(:latitude=> row["Latitude"], :longitude=> row["Longitude"], :address=>row["Hundred Block Location"], :summary_code=>row["Summary Offense Code"])
-    end
+    #csv.each do |row|
+    #    puts "Creating new crime record - " + row['Summary Offense Code'] + " at " + row['Latitude'] + ", " + row['Longitude']
+    #    c = Crime.new(:latitude=> row["Latitude"], :longitude=> row["Longitude"], :address=>row["Hundred Block Location"], :summary_code=>row["Summary Offense Code"])
+    #end
 
     
     out_csv_text = File.open('db/crime_seed.csv', 'w')
