@@ -6,6 +6,7 @@ class Transit.Views.Splash extends Backbone.View
     'submit form': 'go_to_plan'
     'click #from-location': 'from_current_location'
     'click #to-location': 'to_current_location'
+    'focusin input.location': 'select_all'
 
   render: =>
     $(@el).html(@template())
@@ -24,3 +25,6 @@ class Transit.Views.Splash extends Backbone.View
   to_current_location: =>
     Transit.plan.current_location @$('#to_query'), 'to'
 
+  select_all: (evt) =>
+    console.log "focus", evt
+    $(evt.currentTarget).select()
