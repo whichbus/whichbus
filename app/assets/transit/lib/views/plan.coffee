@@ -25,7 +25,6 @@ class Transit.Views.Plan extends Backbone.View
       date: new Date()
       from: @map.get('from')
       to: @map.get('to')
-    @map.set fit_bounds: false, { silent: true }
     @model.trigger 'fetch'
 
 
