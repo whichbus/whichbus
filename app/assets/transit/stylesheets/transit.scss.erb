@@ -43,15 +43,15 @@ body {
   background: url('<%= image_path("background/background-stripes.png") %>') repeat #dcdcd7;
 }
 
-#container {
+.container {
   margin-top: $navbar_height;
+  max-width: 900px;
+  margin: auto;
 }
 
 #splash {
   @include clearfix();
   margin-top: $navbar_height;
-  max-width: 900px;
-  margin: auto;
 }
 
 #map {
