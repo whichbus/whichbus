@@ -40,15 +40,10 @@ body {
 }
 
 #splash {
-  margin-top: $navbar_height;
   @include clearfix();
-  // #logo {
-  //   margin: 20px 0;
-  //   text-align: center;
-  //   img {
-  //     width: 479px;
-  //   }
-  // }
+  margin-top: $navbar_height;
+  max-width: 900px;
+  margin: auto;
 }
 
 #map {
@@ -308,11 +303,17 @@ header.blue {
     @include box-shadow(0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset);
     @include border-radius($borderRadius 0 0 $borderRadius);
     @include placeholder(#94978C);
+    // border: 1px solid #ADACA1;
+  }
+  input.location:focus {
+    // border-color: rgba(82, 168, 236, 0.8);
+    // @include box-shadow(0px 2px 8px 0px rgba(82, 168, 236, 0.15) inset);
   }
   .input-append .btn.geolocate:last-child {
     @include size(45px, 47px);
     @include stretch(false, 0, false, false);
     @include border-radius(0 $borderRadius $borderRadius 0);
+    border: 1px solid #ADACA1;
   }
 
   .btn.btn-map {
@@ -322,8 +323,9 @@ header.blue {
     font-weight: 700;
     border: 1px solid #5e9b99;
     @include shadow-black(0.25);
-    @include gradient-vertical(#93d2d0, #679a98);
+    @include gradientBar(#93d2d0, #679a98);
     @include border-radius($borderRadius);
+    background-color: #679A98;
   }
 }
 
