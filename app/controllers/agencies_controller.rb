@@ -37,4 +37,14 @@ class AgenciesController < ApplicationController
       format.xml  { render :xml => @agency }
     end
   end
+  def create
+    puts "create agencies blocked. #{params[:name]}"
+  end
+
+  def destroy
+    puts "Destroy agencies blocked"
+  end
+  def update
+    puts "Update agencies blocked"
+  end
 end

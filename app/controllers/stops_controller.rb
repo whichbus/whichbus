@@ -31,7 +31,15 @@ class StopsController < ApplicationController
 	end
 
 	def create
-		puts "create called. #{params[:name]}"
+		puts "Create stops blocked. #{params[:name]}"
+	end
+
+	def destroy
+		puts "Destroy stops blocked"
+	end
+
+	def update
+		puts "Update stops blocked"
 	end
 
 	def edit
