@@ -3,7 +3,8 @@
 <header class="gray" data-toggle="collapse" data-target="#routes"><h3>Available Bus Routes</h3></header>
 <ul class="routes collapse in" id="routes">
 	<% for route in @stop.get('routes'): %>
-	<li><a href="/routes/<%= route.oba_id %>" class="btn btn-route"><%= route.name %></a></li>
+	<li>
+    <a href="/routes/<%= route.oba_id %>" class="btn btn-route"><%= route.name %></a></li>
 	<% end %>
 </ul>
 

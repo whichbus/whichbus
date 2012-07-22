@@ -8,7 +8,9 @@
 *.xcodeproj
 Gemfile.lock
 *.xcsettings
-
+*.xcworkspacedata
+*.xcuserstate
+whichbus.xcworkspace/*
 # Ignore bundler config
 /.bundle
 

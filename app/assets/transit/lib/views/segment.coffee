@@ -27,3 +27,14 @@ class Transit.Views.Segment extends Backbone.View
 					if data.delta_in_minutes()?
 							@$('.real-time').addClass(data.delta_class()).show()
 
+	fetch_safety: =>
+		if @options.segment.mode == 'BUS'
+			s = new Transit.Models.Stop
+			s.agency = @options.segment.to.stopId.agencyId
+			s.code = @options.segment.to.stopId.id
+			s.fetch
+				success: (data)->
+					safetyNumber = data.get('safety')
+					console.log("safety = #{safetyNumber} where stopId = #{data.get('code')}")
+					if(safetyNumber <= 10) # Magic number...
+						@$('.safety').html('') # this is selecting all safety classes, not just the one in the template

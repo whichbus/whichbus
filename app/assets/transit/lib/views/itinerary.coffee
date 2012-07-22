@@ -25,6 +25,7 @@ class Transit.Views.Itinerary extends Backbone.View
 			# create a view for the segment
 			view = new Transit.Views.Segment(segment: leg)
 			view.fetch_prediction()
+			view.fetch_safety()
 			@$('.segments').append(view.render().el)
 			# render the segment's polyline
 			poly = Transit.map.create_polyline(leg.legGeometry.points, @segmentColors[leg.mode] ? '#1693a5')

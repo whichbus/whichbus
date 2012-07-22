@@ -3,7 +3,7 @@
 		<small><%= @stop.code %></small> <%= raw api_links(@stop) %></h1>
 	<div class="details">
 		(<%= @stop.lat %>, <%= @stop.lon %>), heading <%= @stop.direction %>.
-		Operated by <%= link_to @stop.agency.name, agency_path(@stop.agency.oba_id) %>.
+		Operated by <%= link_to @stop.agency.name, agency_path(@stop.agency.oba_id) %>.  Safety rating = <%= @stop.safety %>
 	</div>
 </div>
 
