@@ -43,8 +43,8 @@ body {
   background: url('<%= image_path("background/background-stripes.png") %>') repeat #dcdcd7;
 }
 
+#container { margin-top: $navbar_height; }
 .container {
-  margin-top: $navbar_height;
   max-width: 900px;
   margin: auto;
 }
@@ -157,8 +157,9 @@ header.blue {
     display: none;
   }
   .alert {
-    margin: 0 $sidebar_margin 10px;
+    margin: $sidebar_margin;
     display: none;
+    strong { display:block; }
   }
 }
 

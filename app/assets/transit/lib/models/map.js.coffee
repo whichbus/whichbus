@@ -16,6 +16,10 @@ class Transit.Models.Map extends Backbone.Model
     tiles = new L.TileLayer(@get('api_url'), attribution: @get('attribution'))
     @map.attributionControl.setPrefix('')
     @map.addLayer(tiles)
+
+    @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
+    @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
+
     @on 'change:south_west change:north_east', @set_max_bounds
     @on 'change', @update_markers
     @fetch()

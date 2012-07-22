@@ -13,6 +13,7 @@ class Transit.Views.Plan extends Backbone.View
     Transit.events.on 'plan:complete', @add_itineraries
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
+    @model.on 'geocode:error', @geocode_error
     Transit.events.on 'plan:complete', @fit_bounds
     @model.geocode_from_to(@options.from, @options.to)
 
@@ -34,6 +35,10 @@ class Transit.Views.Plan extends Backbone.View
       to: _.pick(@model.get('to'), 'lat', 'lon')
 
 
+  geocode_error: (message) =>
+    @$('.progress').hide()
+    Transit.errorMessage("Sorry, don't know that place.", message)
+
 
   fetch_plan: =>
     @render()
@@ -42,9 +47,7 @@ class Transit.Views.Plan extends Backbone.View
         Transit.events.trigger 'plan:complete', plan
       error: (model, message) =>
         @$('.progress').hide()
-        @$('.alert').html(message).show()
-
-
+        Transit.errorMessage('Whoops, something went wrong!', message)
 
 
   add_itineraries: (plan) =>

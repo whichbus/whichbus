@@ -37,6 +37,12 @@ Transit.ToggleMenu = () =>
 Transit.setTitle = (title) =>
   $("#title h3").text(title)
 
+Transit.errorMessage = (title, message) =>
+  if title?
+    @$('.alert').html(message).prepend($("<strong>").html(title)).show()
+  else
+    @$('.alert').html('').hide()
+
 
 Transit.Markers =
   Start: L.Icon.extend
