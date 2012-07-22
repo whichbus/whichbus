@@ -1,10 +1,18 @@
+/* Here are our lovely colors: */
 $wbGreen: #bbefce;
 $wbGreenDark: #a1d0b1;
+$wbBlue: #93d2d0;
+$wbBlueDark: #679a98;
+$wbRed: #dc6a4c;
+$wbRedDark: #a7442a;
 
 /* Change Bootstrap variables before importing */
 $sansFontFamily: "Open Sans", sans-serif;
 $navbarBackground: $wbGreenDark;
 $navbarBackgroundHighlight: $wbGreen;
+
+$linkColor: $wbBlueDark;
+$linkColorHover: darken($wbBlue, 5%);
 
 @import "bootstrap";
 // This does things automatically and breaks layout, figure out what we need from there.
@@ -328,13 +336,14 @@ header.blue {
     font-weight: 700;
     border: 1px solid #5e9b99;
     @include shadow-black(0.25);
-    @include gradientBar(#93d2d0, #679a98);
+    @include gradientBar($wbBlue, $wbBlueDark);
     @include border-radius($borderRadius);
-    background-color: #679A98;
+    background-color: darken($wbBlueDark, 1%);
   }
 }
 
 .footer {
+  display: none !important;  // HIDING THE LOGIN | SIGN UP FOOTER FOR NOW
   margin-top: 12px;
   margin-bottom: 15px;
   text-align: center;
@@ -354,11 +363,11 @@ header.blue {
 }
 
 .copyright {
-  padding: 0 0 5px 5px;
+  padding: 20px 0 5px 5px;
   font-size: 11px;
-  font-weight: 300;
   .copy { 
     font-size: 14px; 
+    font-weight: 300; 
     vertical-align: middle;
   }
 }
