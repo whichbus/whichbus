@@ -250,7 +250,7 @@ header.blue {
 }
 
 
-.row-fluid [class*="span"].centered:first-child {
+.row-fluid [class*="span"].centered {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -274,12 +274,37 @@ header.blue {
     font-weight: normal;
     text-align: center;
     margin: 20px auto 15px;
-    color: white;
+    color: white; 
     @include shadow-black(0.20);
   }
 
+  table {
+    tr { margin-bottom: 15px; }
+    tr:last-child { margin-bottom: 0; }
+    td { padding: 0;}
+
+    input.location {
+      @include size(43px, 98%);
+      margin: 0px;
+      padding: 0px 1%;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.3em;
+      text-align: center;
+      @include box-shadow(0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset);
+      @include border-radius($borderRadius 0 0 $borderRadius);
+      @include placeholder(#94978C);
+    }
+    button.geolocate {
+      @include size(45px, 47px);
+      margin-left: -1px;
+      border: 1px solid #ADACA1;
+      @include border-radius(0 $borderRadius $borderRadius 0);
+    }
+  }
+
   form .row-fluid {
-    margin-bottom: 13px;
+    margin-bottom: 15px;
   }
 
   .input-append {
@@ -291,29 +316,9 @@ header.blue {
     }
   }
 
-  input.location {
-    @include size(auto, auto);
-    @include stretch(0, 46px, 0, 0);
-    padding: 0;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.3em;
-    text-align: center;
-    vertical-align: middle;
-    @include box-shadow(0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset);
-    @include border-radius($borderRadius 0 0 $borderRadius);
-    @include placeholder(#94978C);
-    // border: 1px solid #ADACA1;
-  }
   input.location:focus {
     // border-color: rgba(82, 168, 236, 0.8);
     // @include box-shadow(0px 2px 8px 0px rgba(82, 168, 236, 0.15) inset);
-  }
-  .input-append .btn.geolocate:last-child {
-    @include size(45px, 47px);
-    @include stretch(false, 0, false, false);
-    @include border-radius(0 $borderRadius $borderRadius 0);
-    border: 1px solid #ADACA1;
   }
 
   .btn.btn-map {
@@ -331,6 +336,7 @@ header.blue {
 
 .footer {
   margin-top: 12px;
+  margin-bottom: 15px;
   text-align: center;
   font-weight: 700;
   font-size: 14px;
@@ -344,6 +350,16 @@ header.blue {
     color: white;
     border-bottom: 2px white dotted;
     @include shadow-black(0.15);
+  }
+}
+
+.copyright {
+  padding: 0 0 5px 5px;
+  font-size: 11px;
+  font-weight: 300;
+  .copy { 
+    font-size: 14px; 
+    vertical-align: middle;
   }
 }
 
