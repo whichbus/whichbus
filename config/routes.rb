@@ -5,6 +5,7 @@ WhichbusSpine::Application.routes.draw do
   get "pages/index"
 
   match '/spine' => 'pages#index'
+  match '/about/:action' => 'about#:action'
 
   scope '/workshop' do
     match '' => 'application#search', :as => :workshop
