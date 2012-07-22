@@ -5,7 +5,12 @@ WhichbusSpine::Application.routes.draw do
   get "pages/index"
 
   match '/spine' => 'pages#index'
-  match '/about/:action' => 'about#:action'
+  # If we choose to add more pages without updating routes, use this approach
+  #match '/about/:action' => 'about#:action'
+  match '/about' => 'about#whichbus'
+  match '/privacy' => 'about#privacy'
+  match '/terms' => 'about#terms'
+  match '/issues' => 'about#issues'
 
   scope '/workshop' do
     match '' => 'application#search', :as => :workshop
