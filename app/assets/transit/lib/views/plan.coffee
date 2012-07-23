@@ -27,7 +27,7 @@ class Transit.Views.Plan extends Backbone.View
     @model.trigger 'fetch'
 
   display_trip_options: =>
-    @$('.trip-options').slideDown()
+    @$('.trip-options').slideToggle()
 
   change_trip_options: (event) =>
     event.preventDefault()
