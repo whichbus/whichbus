@@ -38,9 +38,27 @@ $title_height: 30px;
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
 $map_height: 150px;
+$borderRadius: 7px;
 
 body {
   background: url('<%= image_path("background/background-stripes.png") %>') repeat #dcdcd7;
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 2px dotted;
+}
+
+input {
+  @include size(43px, 98%);
+  margin: 0px;
+  padding: 0px 1%;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.3em;
+  text-align: center;
+  @include box-shadow(0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset);
+  @include placeholder(#94978C);
 }
 
 #container { margin-top: $navbar_height; }
@@ -83,6 +101,7 @@ header.blue {
   @include shadow-black(0.25);
   @include gradient-vertical(#93d2d0, #679a98);
 }
+
 
 #title {
   header {
@@ -182,16 +201,13 @@ header.blue {
 
 @media (min-width: 769px) {
   .subnav { 
-	width: 400px; 
-	text-overflow:ellipsis; 
-  h3 {
-	font-size:1rem;
+  	width: 400px; 
+  	text-overflow:ellipsis; 
+    h3 {
+  	 font-size:1rem;
+    }
   }
-  }
-
 }
-
-
 
 /*Pacifico Font setup for WhichBus */
 @font-face {
@@ -215,6 +231,7 @@ header.blue {
   color: white;
   @include shadow-black(0.25);
 }
+#whichbus:hover { border: none }
 .whichbus-nav{
   text-align:center;
 }
@@ -233,16 +250,16 @@ header.blue {
 
 #settings-menu{
   display: none;
-  position:absolute;
-  right:0.5%;
-  min-width: 40%;
+  position: absolute;
+  right: 0.5%;
+  // min-width: 40%;
   background-color: #fff;
   z-index: -99;
   margin-top: -5px;
   color: dimgrey;
-  font-size:1.2em;
-  min-height:34%;
-  border-radius:10px 5px 5px 5px;
+  font-size: 1.2em;
+  min-height: 34%;
+  border-radius: 10px 5px 5px 5px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.55); 
 
 
@@ -257,37 +274,25 @@ header.blue {
     border-radius: 10px 0px 0px 0px;
     vertical-align:middle;
 
-    p {
-      font-size:14px;
-      text-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.35);
-      text-transform:uppercase;
-      font-family: "Open Sans", sans-serf;
-      font-weight:bold;
+     h3 {
       color: #fff;
+      font-size: 16px;
+      line-height: 18px;
+      text-transform: uppercase;
+      @include shadow-black(0.35);
     }
   }
 
-  #settings-search{
-    background-color:#ced1d1;
-    border-top:#dadada;
-    border-bottom:#bfbfbf;
-    height:15%;
-    padding:5px;
-    padding-left:10px;
-    border-bottom: 1px solid #ededed;
-    border-top: 1px solid #ededed;
+  #settings-search {
+    background-color: #ced1d1;
+    height: 15%;
+    padding: 5px 10px;
+    border-bottom: 1px solid #bfbfbf;
+    border-top: 1px solid #dadada;
 
-    input{
-      text-align:center;
-      font-size:14px;
-      font-weight:400px;
-      font-family: 'Open Sans', sans-serif;
-      color: #bebebe;
-      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25) inset;
-      border-radius: 5px;
-      height:22px;
-      margin:0px;
-
+    input {
+      font-size: 14px;
+      height: 30px;
     }
   }
 
@@ -337,8 +342,6 @@ header.blue {
   border: 1px solid #adaca1;
   background: url('<%= image_path("background/directions.png") %>') repeat #cdcabf;
 
-  $borderRadius: 7px;
-
   h2 { 
     font-weight: normal;
     text-align: center;
@@ -354,15 +357,7 @@ header.blue {
 
     input.location {
       @include size(43px, 98%);
-      margin: 0px;
-      padding: 0px 1%;
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.3em;
-      text-align: center;
-      @include box-shadow(0px 2px 8px 0px rgba(0, 0, 0, 0.15) inset);
       @include border-radius($borderRadius 0 0 $borderRadius);
-      @include placeholder(#94978C);
     }
     button.geolocate {
       @include size(45px, 47px);
@@ -455,6 +450,8 @@ header.blue {
   background-position: 0 -15px;
 }
 .favorite.active:hover { background-position: 0 0; }
+
+.disabled { color: #aaa; text-shadow: none; }
 
 .trip-options {
   margin: 0;

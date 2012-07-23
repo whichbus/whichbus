@@ -25,16 +25,16 @@
 <body>
 <div id="settings-menu">
 	<div id="settings-title">
-		<p>Settings</p>
+		<h3>Settings</h3>
 	</div>
 	<div id="settings-search">
-		<input value="Search">
+		<input class="search" name="search" id="search" placeholder="Search Routes and Stops">
 	</div>
 	<div id="settings-list">
 		<ul>
-			<li id="settings-favorites"><img src="http://placehold.it/25x25"><span>Favorites</span></li>
-			<li><img src="http://placehold.it/25x25"><span>My Account</span></li>
-			<li><img src="http://placehold.it/25x25"><span>Send Us Feedback</span></li>
+			<li id="settings-favorites"><img src="http://placehold.it/25x25"><span>Favorites</span> <small class="label label-info">COMING SOON</small></li>
+			<li><img src="http://placehold.it/25x25"><span>My Account</span> <small class="label label-info">COMING SOON</small></li>
+			<li><img src="http://placehold.it/25x25"><span><%= link_to 'Send Us Feedback', '/about/issues' %></span></li>
 			<li><img src="http://placehold.it/25x25"><span><%= link_to 'About WhichBus', '/about' %></span></li>
 		</ul>
 	</div>	
@@ -69,7 +69,7 @@
 </div>
 <%= yield %>
 
-<div class="copyright pull-left">
+<div class="copyright">
 	<span class="copy">&copy;</span> 2012 <%= link_to 'WhichBus', '/about' %>
 	| <%= link_to 'Terms of Service', '/about/terms' %>
 	| <%= link_to 'Privacy Policy', '/about/privacy' %>
