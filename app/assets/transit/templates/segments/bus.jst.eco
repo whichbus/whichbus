@@ -1,5 +1,5 @@
 <div class="start">
-	Take <span class="btn btn-route"><%= @segment.route %></span>
+	Take <a class="btn btn-route" href="/routes/<%= @segment.route.id %>"><%= @segment.route %></a>
 	<span class="duration label"><%= Transit.format_time @segment.startTime %></span>
 	<span class="real-time label"></span>
 </div>

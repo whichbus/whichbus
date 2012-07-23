@@ -9,7 +9,7 @@ class Transit.Views.Stop extends Backbone.View
 		@model.fetch
 			success: @render
 			error: (model, message) =>
-				$('.alert').html(message).show()
+				Transit.errorMessage('Error Loading Stop', message)
 		@arrivals = new Transit.Collections.Arrivals(@model)
 		@arrivals.fetch
 			success: @showArrivals

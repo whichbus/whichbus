@@ -1,0 +1,6 @@
+<% Transit.setTitleHTML(HTML.btn('btn-route', @route.get('name') ? ':('), ' ', @route.get('description') ? 'SAD BUS') %>
+
+<header class="gray" data-toggle="collapse" data-target="#routes"><h3>Available Bus Routes</h3></header>
+<ul class="routes collapse in" id="routes">
+</ul>
+<div class="alert alert-error"></div>
