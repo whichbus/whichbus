@@ -6,6 +6,13 @@ Transit.format_time = (input) ->
   period = if date.getHours() < 12 then 'am' else 'pm'
   "#{hours}:#{padded_minutes} #{period}"
 
+Transit.format_otp_date = (input) ->
+  date = if input not instanceof Date then new Date(input) else input
+  month = date.getMonth() + 1
+  day = date.getDate()
+  year = date.getFullYear()
+  "#{month}-#{day}-#{year}"
+
 Transit.format_duration = (seconds, minimize=false) ->
 	mins = Math.floor(seconds / 60)
 	if mins > 59
