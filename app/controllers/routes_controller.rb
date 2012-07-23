@@ -64,4 +64,8 @@ class RoutesController < ApplicationController
 	def trips
 		api_page Route.find_by_oba_id(params[:id]).trips
 	end
+
+	def trips_otp
+		api_page Route.find_by_agency_code_and_code(params[:agency], params[:code]).trips
+	end
 end
