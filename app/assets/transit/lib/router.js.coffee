@@ -5,7 +5,7 @@ class Transit.Router extends Backbone.Router
     'stops/:id': 'showStop'
 
   initialize: ->
-    @view = new Transit.Views.Application()
+    window.application = @view = new Transit.Views.Application()
     @view.render()
 
   index: ->
