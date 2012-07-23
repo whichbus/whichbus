@@ -23,6 +23,21 @@ Transit.format_duration = (seconds, minimize=false) ->
 	if hrs > 0 then "#{hrs}#{if minimize then 'h' else ' hours'}, #{mins}#{if minimize then 'm' else ' minutes'}"
 	else "#{mins}#{if minimize then 'm' else ' minutes'}"
 
+Transit.format_deviation = (seconds) ->
+  minutes = Math.round(seconds / 60)
+  if minutes > 0
+    "#{minutes} minute#{if minutes > 1 then 's' else ''} early"
+  else if minutes < 0
+    "#{Math.abs(minutes)} minute#{if minutes < -1 then 's' else ''} late"
+  else if minutes == 0 
+    'on time'
+  else null
+
+Transit.deviation_class = (seconds) ->
+  if seconds > 60 then 'early label-success'
+  if seconds > -30 then 'on-time label-info'
+  else 'late label-important'
+
 Transit.pad = (num, zeroes) -> (1e10+num+"").slice(-zeroes)
 
 Transit.storage_get = (key) ->

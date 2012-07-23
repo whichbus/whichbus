@@ -1,7 +1,7 @@
 <li class="arrival">
 	<span class="badge badge-inverse"><%= @arrival.get('routeShortName') %></span> 
 	at <%= Transit.format_time @arrival.arrivalTime() %> 
-	<span class="label <%= @arrival.delta_class() %> pull-right">
-		<%= @arrival.readable_delta() or 'scheduled' %>
+	<span class="label <%= Transit.deviation_class(@arrival.deviation()) %> pull-right">
+		<%= Transit.format_deviation(@arrival.deviation()) or 'scheduled' %>
 	</span>
 </li>

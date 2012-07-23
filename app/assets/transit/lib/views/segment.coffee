@@ -38,4 +38,4 @@ class Transit.Views.Segment extends Backbone.View
 					console.log("safety = #{safetyNumber} where stopId = #{data.get('code')}")
 					if(safetyNumber? and safetyNumber > 10) # Magic number...
 						console.log "showing safety warning for possibly unsafe stop"
-						@$('.safety').show() # this is selecting all safety classes, not just the one in the template
+						@$('.safety').attr('data-safety', safetyNumber).show() # this is selecting all safety classes, not just the one in the template
