@@ -3,6 +3,7 @@ class Transit.Models.Plan extends Backbone.Model
   defaults:
     itineraries: []
     desired_itineraries: 3
+    arrive_by: false
 
   initialize: =>
     # create a local storage for the geocode data
@@ -25,8 +26,9 @@ class Transit.Models.Plan extends Backbone.Model
     else options.error 'Plan is read-only.'
 
   request: =>
-    date: @get('date').toDateString()
-    time: @get('date').toTimeString()
+    date: Transit.format_otp_date(@get('date'))
+    time: @get('date').toLocaleTimeString()
+    arriveBy: @get('arrive_by')
     fromPlace: "#{@get('from').lat},#{@get('from').lon}"
     toPlace: "#{@get('to').lat},#{@get('to').lon}"
     numItineraries: @get('desired_itineraries')

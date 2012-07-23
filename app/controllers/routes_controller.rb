@@ -10,7 +10,12 @@ class RoutesController < ApplicationController
 	end
 
 	def create
-		render :json => params
+		#render :json => params
+		puts "Create routes blocked"
+	end
+
+	def destroy
+		puts "Destroy routes blocked"
 	end
 
 	def show

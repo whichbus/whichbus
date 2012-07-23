@@ -8,7 +8,7 @@ class Transit.Router extends Backbone.Router
     'routes/:id': 'showRoute'
 
   initialize: ->
-    @view = new Transit.Views.Application()
+    window.application = @view = new Transit.Views.Application()
     @view.render()
 
   index: ->

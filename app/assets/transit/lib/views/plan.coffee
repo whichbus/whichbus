@@ -4,12 +4,12 @@ class Transit.Views.Plan extends Backbone.View
 
   events:
     'click .go-back': 'go_to_splash'
+    'click header h3': 'display_trip_options'
+    'submit .trip-options': 'change_trip_options'
 
   initialize: =>
     @map = Transit.map
-
     @map.on 'drag:end', @update_plan
-
     Transit.events.on 'plan:complete', @add_itineraries
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
@@ -18,16 +18,28 @@ class Transit.Views.Plan extends Backbone.View
     @model.geocode_from_to(@options.from, @options.to)
 
   render: =>
-    $(@el).html(@template())
+    $(@el).html(@template(plan: @model))
     this
 
   update_plan: =>
     @model.set
-      date: new Date()
       from: @map.get('from')
       to: @map.get('to')
     @model.trigger 'fetch'
 
+  display_trip_options: =>
+    @$('.trip-options').slideToggle()
+
+  change_trip_options: (event) =>
+    event.preventDefault()
+    date = $('input[name="trip_date"]').val()
+    time = $('input[name="trip_time"]').val()
+    @model.set({
+      date: new Date(Date.parse("#{date} #{time}")),
+      arrive_by: if $('select[name="arrive_or_depart"]').val() == 'by' then true else false
+    }, { silent: true })
+    # TODO: See if this can be bound to a model date change event.
+    @model.trigger 'fetch'
 
   update_markers: =>
     @map.set

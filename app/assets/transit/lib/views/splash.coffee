@@ -15,10 +15,19 @@ class Transit.Views.Splash extends Backbone.View
 
   go_to_plan: =>
     event.preventDefault()
-    @remove()
     from = @$('#from_query').val()
     to = @$('#to_query').val()
-    Transit.router.navigate "plan/#{from}/#{to}", trigger: true
+    if (to == null || to.length <= 3)
+        @$('#to-location').addClass('btn-danger')
+    else
+        @$('#to-location').removeClass('btn-danger')
+    if (from == null || from.length <=3)
+        @$('#from-location').addClass('btn-danger')
+    else
+        @$('#from-location').removeClass('btn-danger')
+    if (to? and from? and to.length > 3 and from.length > 3)
+        @remove()
+        Transit.router.navigate "plan/#{from}/#{to}", trigger: true
 
   from_current_location: =>
     Transit.plan.current_location @$('#from_query'), 'from'

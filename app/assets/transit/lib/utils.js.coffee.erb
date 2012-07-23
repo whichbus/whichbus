@@ -6,6 +6,13 @@ Transit.format_time = (input) ->
   period = if date.getHours() < 12 then 'am' else 'pm'
   "#{hours}:#{padded_minutes} #{period}"
 
+Transit.format_otp_date = (input) ->
+  date = if input not instanceof Date then new Date(input) else input
+  month = date.getMonth() + 1
+  day = date.getDate()
+  year = date.getFullYear()
+  "#{month}-#{day}-#{year}"
+
 Transit.format_duration = (seconds, minimize=false) ->
 	mins = Math.floor(seconds / 60)
 	if mins > 59
@@ -27,13 +34,6 @@ Transit.storage_set = (key, value) ->
 Transit.storage_clear = (key) ->
   localStorage.setItem(key, undefined)
 
-Transit.ToggleMenu = () =>
-  m = $('#menu')
-  if m.css('display') != 'block'
-    m.css 'display', 'block'
-  else
-    m.css 'display', 'none'
-
 Transit.setTitle = (title) =>
   $("#title h3").text(title)
 
@@ -47,6 +47,19 @@ Transit.errorMessage = (title, message) =>
   else
     @$('.alert').html('').hide()
 
+#Didn't have a Backbone class to put this into yet, doesn't work in Transit.Views.Application
+  #because it doesn't work within that scope.
+Transit.toggleMenu = () =>
+    m = $('#settings-menu')
+    b = $('#settings-button')
+    if parseInt(m.css('z-index')) < 0
+      m.css 'z-index', '9999' 
+      m.css 'display', 'block' 
+      b.addClass 'active'
+    else
+      m.css 'z-index', '-1'
+      m.css 'display', 'none' #Have to hide it on the splash page as negative z-index won't hide it
+      b.removeClass 'active'
 
 Transit.Markers =
   Start: L.Icon.extend

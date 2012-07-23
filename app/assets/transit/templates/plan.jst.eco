@@ -1,7 +1,17 @@
 <header class="blue">
 	<h3>Suggested Itineraries</h3>
 </header>
+<form class="well form-inline trip-options">
+    <select class="span1" name="arrive_or_depart">
+    <option value="at">At</option>
+    <option value="by" <%= ' selected' if @plan.get('arrive_by') %>>By</option>
+    </select>
+    <input type="text" class="span2" name="trip_date"
+            value="<%= @plan.get('date').toLocaleDateString() %>">
+    <input type="text" class="span1" name="trip_time"
+            value="<%= Transit.format_time @plan.get('date') %>">
+    <button type="submit" class="btn">OK</button>
+</form>
 <ol class="itineraries"></ol>
 <div class="progress progress-striped active"><div class="bar"></div></div>
 <div class="alert alert-error"></div>
-<!-- <button class="btn btn-mini go-back">Go back</button> -->

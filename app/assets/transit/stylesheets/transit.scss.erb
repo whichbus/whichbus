@@ -127,7 +127,7 @@ header.blue {
   }
 
   .itinerary {
-    margin: 5px 0;
+    margin: 0px 0;
     border-bottom: 1px solid $grayLight; 
     h4 { 
       padding: 5px $sidebar_margin; 
@@ -223,41 +223,101 @@ header.blue {
   margin-left:-40px;
 }
 
-#menu{
+#settings-button.settings.active{
+  background-color:#9bd5d3;
+  border-radius:5px 5px 0px 0px; 
+  background-position:center;
+  width:34px;
+  height:34px;
+}
+
+#settings-menu{
   display: none;
   position:absolute;
-  right:2.5%;
+  right:0.5%;
   min-width: 40%;
-  float: right;
-  background-color: whitesmoke;
-  z-index: 1000;
-  margin-top: 50px;
+  background-color: #fff;
+  z-index: -99;
+  margin-top: -5px;
   color: dimgrey;
   font-size:1.2em;
-  padding:5px;
-}
+  min-height:34%;
+  border-radius:10px 5px 5px 5px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.55); 
 
-#menu-search{
-  background-color:dimgrey;
-}
 
-#menu ul {
+  #settings-title{    
+    //Not working just yet
+    //background-image: linear-gradient(to bottom 50% #9bd5d3 #5c9998);   
+    background-color:#9bd5d3;
+    border-bottom:#9d9d9d; 
+    height:32px;
+    padding-top:14px;
+    padding-left:16px;
+    border-radius: 10px 0px 0px 0px;
+    vertical-align:middle;
+
+    p {
+      font-size:14px;
+      text-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.35);
+      text-transform:uppercase;
+      font-family: "Open Sans", sans-serf;
+      font-weight:bold;
+      color: #fff;
+    }
+  }
+
+  #settings-search{
+    background-color:#ced1d1;
+    border-top:#dadada;
+    border-bottom:#bfbfbf;
+    height:15%;
+    padding:5px;
+    padding-left:10px;
+    border-bottom: 1px solid #ededed;
+    border-top: 1px solid #ededed;
+
+    input{
+      text-align:center;
+      font-size:14px;
+      font-weight:400px;
+      font-family: 'Open Sans', sans-serif;
+      color: #bebebe;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25) inset;
+      border-radius: 5px;
+      height:22px;
+      margin:0px;
+
+    }
+  }
+
+  ul {
   list-style-type: none;
   margin:5px;
-  background-color:whitesmoke;
-}
+  }
 
-#menu li {
-  border-top: 1px solid lightgrey;
-}
+  li {
+    padding: 10px 20px;
+  }
+  li + li {
+    border-top: 1px solid #bfbfbf;
+  }
 
-#menu li span {
-  margin-left:20px;
-}
-#menu-list{
-  background-color:whitesmoke;
-}
+  li img {
+    margin-left:10px;
+  }
 
+  li span {
+    margin-left:10px;
+    font-size:12px;
+    font-weight:600px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform:uppercase;
+  }
+  #settings-list{
+    background-color:#fff;
+  }
+}
 
 .row-fluid [class*="span"].centered {
   margin-left: auto;
@@ -380,9 +440,9 @@ header.blue {
 }
 
 .settings {
-  @include square(20px);
-  @include stretch(9px, 15px, false, false);
-  background: url('<%= image_path("icons/icon-settings.png") %>') no-repeat;
+  @include square(34px);
+  @include stretch(3px, 5px, false, false);
+  background: url('<%= image_path("icons/icon-settings.png") %>') no-repeat center;
 }
 
 .favorite {
@@ -395,6 +455,11 @@ header.blue {
   background-position: 0 -15px;
 }
 .favorite.active:hover { background-position: 0 0; }
+
+.trip-options {
+  margin: 0;
+  display: none;
+}
 
 .btn.btn-route {
   color: white;

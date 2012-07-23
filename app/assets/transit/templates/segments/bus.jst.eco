@@ -4,7 +4,7 @@
 	<span class="real-time label"></span>
 </div>
 <div class="finish">Get off at <%= @segment.to.name %>
-<span class="safety">
+<span class="safety" style="display:none;">
 <img src="/assets/icons/icon-safety-yellow-small.png" alt="Be aware of your surroundings at this stop"/>
 </span>
 </div>

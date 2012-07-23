@@ -23,19 +23,19 @@
 </script>
 </head>
 <body>
-<div id="menu">
-	<div>
+<div id="settings-menu">
+	<div id="settings-title">
 		<p>Settings</p>
 	</div>
-	<div id="menu-search">
+	<div id="settings-search">
 		<input value="Search">
 	</div>
-	<div id="menu-list">
+	<div id="settings-list">
 		<ul>
-			<li><span>Favorites</span></li>
-			<li><span>My Account</span></li>
-			<li><span>Send Us Feedback</span></li>
-			<li><span><%= link_to 'About WhichBus', '/about' %></span></li>
+			<li id="settings-favorites"><img src="http://placehold.it/25x25"><span>Favorites</span></li>
+			<li><img src="http://placehold.it/25x25"><span>My Account</span></li>
+			<li><img src="http://placehold.it/25x25"><span>Send Us Feedback</span></li>
+			<li><img src="http://placehold.it/25x25"><span><%= link_to 'About WhichBus', '/about' %></span></li>
 		</ul>
 	</div>	
 </div>
@@ -58,12 +58,12 @@
 				</ul>
 			</div>
 			-->
-			<button id="menu-btn" type="button" class="btn btn-navbar" onclick="Transit.ToggleMenu()">
+			<button id="menu-btn" type="button" class="btn btn-navbar">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="#" class="icon settings"></a>			
+			<a href="#" id="settings-button" class="icon settings" onclick=Transit.toggleMenu()></a>			
 		</div>
 	</div>
 </div>
@@ -71,9 +71,9 @@
 
 <div class="copyright pull-left">
 	<span class="copy">&copy;</span> 2012 <%= link_to 'WhichBus', '/about' %>
-	| <%= link_to 'Terms of Service', '/terms' %>
-	| <%= link_to 'Privacy Policy', '/privacy' %>
-    | <%= link_to 'Known Issues', '/issues' %>
+	| <%= link_to 'Terms of Service', '/about/terms' %>
+	| <%= link_to 'Privacy Policy', '/about/privacy' %>
+    | <%= link_to 'Known Issues', '/about/issues' %>
 </div>
 </body>
 </html>
