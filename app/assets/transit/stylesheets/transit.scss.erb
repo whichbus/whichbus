@@ -170,7 +170,7 @@ header.blue {
   }
   .segment .label {
     float: right;
-    margin-left: 5px;
+    margin-left: 5px;   
   }
   .progress {
     margin: $sidebar_margin;
@@ -362,6 +362,11 @@ header.blue {
     input.location {
       @include size(43px, 98%);
       @include border-radius($borderRadius 0 0 $borderRadius);
+      margin: 0;
+      padding: 0 1%;
+      font-size: 18px;
+      line-height: 1.3em;
+      vertical-align: middle;
     }
     button.geolocate {
       @include size(45px, 47px);
