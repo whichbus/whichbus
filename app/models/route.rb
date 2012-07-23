@@ -15,7 +15,10 @@ class Route < ActiveRecord::Base
 		response['list'].map do |trip|
 			refTrip = response['references']['trips'].find { |t| t['id'] == trip['tripId'] }
 			trip['status']['headsign'] = refTrip['tripHeadsign']
-			trip['status']['tripId'] = trip['tripId']
+			trip['status']['nextStopName'] = Stop.find_by_oba_id(trip['status']['nextStop']).name
+			%w(lastLocationUpdateTime lastKnownLocation lastKnownOrientation lastUpdateTime lastKnownDistanceAlongTrip).each do |k|
+				trip['status'].delete k
+			end
 			trip['status']
 		end
 	end

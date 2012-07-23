@@ -14,14 +14,15 @@ Transit.format_otp_date = (input) ->
   "#{month}-#{day}-#{year}"
 
 Transit.format_duration = (seconds, minimize=false) ->
-	mins = Math.floor(seconds / 60)
-	if mins > 59
-		hrs = Math.floor(mins / 60)
-		mins = mins % 60
-	else hrs = 0
+  return "NOW!" if seconds < 60
+  mins = Math.floor(seconds / 60)
+  if mins > 59
+    hrs = Math.floor(mins / 60)
+    mins = mins % 60
+  else hrs = 0
 
-	if hrs > 0 then "#{hrs}#{if minimize then 'h' else ' hours'}, #{mins}#{if minimize then 'm' else ' minutes'}"
-	else "#{mins}#{if minimize then 'm' else ' minutes'}"
+  if hrs > 0 then "#{hrs}#{if minimize then 'h' else ' hours'}, #{mins}#{if minimize then 'm' else ' minutes'}"
+  else "#{mins}#{if minimize then 'm' else ' minutes'}"
 
 Transit.format_deviation = (seconds) ->
   minutes = Math.round(seconds / 60)
@@ -34,8 +35,8 @@ Transit.format_deviation = (seconds) ->
   else null
 
 Transit.deviation_class = (seconds) ->
-  if seconds > 60 then 'early label-success'
-  if seconds > -30 then 'on-time label-info'
+  if seconds > 30 then 'early label-success'
+  else if seconds > -30 then 'on-time label-info'
   else 'late label-important'
 
 Transit.pad = (num, zeroes) -> (1e10+num+"").slice(-zeroes)
