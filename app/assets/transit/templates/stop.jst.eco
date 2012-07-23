@@ -10,3 +10,4 @@
 
 <header class="gray" data-toggle="collapse" data-target="#arrivals"><h3>Real-time arrivals</h3></header>
 <ol class="arrivals collapse in" id="arrivals"></ol>
+<div class="alert alert-error"></div>

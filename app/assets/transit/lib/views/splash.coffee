@@ -1,7 +1,7 @@
 class Transit.Views.Splash extends Backbone.View
   template: JST['templates/splash']
   id: 'splash'
-  className: 'container'
+  className: 'container-fluid'
 
   events:
     'submit form': 'go_to_plan'

@@ -44,7 +44,7 @@ body {
 }
 
 #container { margin-top: $navbar_height; }
-.container {
+.container-fluid {
   max-width: 900px;
   margin: auto;
 }
@@ -405,7 +405,8 @@ header.blue {
   vertical-align: middle;
   border: 1px solid #748c7d;
   @include shadow-black(0.25);
-  @include gradient-vertical(#bfe4cd, #90b89f)
+  @include gradientBar(#bfe4cd, #90b89f);
+  background-color: darken(#90b89f, 1%);
 }
 
 .leaflet-control-zoom-in {

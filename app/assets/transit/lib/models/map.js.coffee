@@ -54,6 +54,13 @@ class Transit.Models.Map extends Backbone.Model
     points = decodeLine(points)
     latlngs = (new L.LatLng(point[0], point[1]) for point in points)
     new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
+  
+  create_multi_polyline: (pointsArray, color) ->
+    latlngs = []
+    for points in pointsArray
+      points = decodeLine(points)
+      latlngs.push(new L.LatLng(point[0], point[1]) for point in points)
+    new L.MultiPolyline(latlngs, color: color, opacity: 0.6, clickable: false)
 
   create_marker: (name, position, icon) ->
     marker = new L.Marker(position, clickable: false, draggable: true, icon: new icon())

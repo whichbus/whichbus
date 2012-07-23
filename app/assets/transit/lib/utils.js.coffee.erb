@@ -37,6 +37,10 @@ Transit.ToggleMenu = () =>
 Transit.setTitle = (title) =>
   $("#title h3").text(title)
 
+Transit.setTitleHTML = (contents...) =>
+  title = $("#title h3").html('')
+  title.append(content) for content in contents
+
 Transit.errorMessage = (title, message) =>
   if title?
     @$('.alert').html(message).prepend($("<strong>").html(title)).show()
@@ -70,3 +74,8 @@ HTML.li = (classes, body...) ->
   HTML.tag "<li>", classes, body...
 HTML.link = (href, classes, body...) ->
   HTML.tag("<a>", classes, body...).attr("href", href)
+HTML.btn = (classes, text, href=null) ->
+  if href?
+    HTML.link href, "btn #{classes}", text
+  else
+    HTML.span "btn #{classes}", text
