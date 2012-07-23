@@ -13,7 +13,7 @@ class Transit.Views.Splash extends Backbone.View
     $(@el).html(@template())
     this
 
-  go_to_plan: =>
+  go_to_plan: (event) =>
     event.preventDefault()
     from = @$('#from_query').val()
     to = @$('#to_query').val()
