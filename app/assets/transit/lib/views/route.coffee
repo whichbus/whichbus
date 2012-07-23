@@ -1,6 +1,6 @@
 class Transit.Views.Route extends Backbone.View
 	template: JST['templates/route']
-	arrivalTemplate: JST['templates/arrival']
+	tripTemplate: JST['templates/trip']
 	el: '#navigation'
 	tagName: 'div'
 	className: 'route'
@@ -10,6 +10,9 @@ class Transit.Views.Route extends Backbone.View
 			success: @render
 			error: (model, message) =>
 				Transit.errorMessage('Error Loading Route', message)
+		@trips = new Transit.Collections.Trips(@model)
+		@trips.fetch
+			success: @showTrips
 		# Transit.events.on 'route:complete', @render
 
 	render: =>
@@ -25,3 +28,8 @@ class Transit.Views.Route extends Backbone.View
 		Transit.map.map.fitBounds(new L.LatLngBounds(stopLatlngs))
 		Transit.map.map.addLayer(@stopMarkers)
 		this
+
+	showTrips: =>
+		list = $("#trips")
+		@trips.forEach (item) =>
+			list.append(@tripTemplate(trip: item))

@@ -1,0 +1,7 @@
+<li class="trip">
+	<h4><%= @trip.get('headsign') %></h4>
+	arrives in <%= Transit.format_duration(@trip.get('nextStopTimeOffset')) %> to stop <%= @trip.get('nextStop') %>
+	<span class="label <%= Transit.deviation_class(@trip.get('scheduleDeviation')) %> pull-right">
+		<%= Transit.format_deviation(@trip.get('scheduleDeviation')) %>
+	</span>
+</li>

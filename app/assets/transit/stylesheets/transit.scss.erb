@@ -132,7 +132,7 @@ header.blue {
     }
   }
 
-  .itineraries, .segments, .arrivals, .routes {
+  .itineraries, .segments, .arrivals, .routes, .trips {
     list-style: none;
     margin: 0;
     @include clearfix();
@@ -153,6 +153,10 @@ header.blue {
       cursor: pointer; 
       small { color: lightgrey; }
     }
+  }
+  
+  .trip {
+    padding: 5px $sidebar_margin;
   }
 
   .segments { z-index: 0; }
