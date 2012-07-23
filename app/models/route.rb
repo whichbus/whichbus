@@ -11,6 +11,12 @@ class Route < ActiveRecord::Base
 	end
 
 	def trips
-		API.one_bus_away('trips-for-route', oba_id)
+		response = API.one_bus_away('trips-for-route', oba_id, includeStatus: 'true')
+		response['list'].map do |trip|
+			refTrip = response['references']['trips'].find { |t| t['id'] == trip['tripId'] }
+			trip['status']['headsign'] = refTrip['tripHeadsign']
+			trip['status']['tripId'] = trip['tripId']
+			trip['status']
+		end
 	end
 end

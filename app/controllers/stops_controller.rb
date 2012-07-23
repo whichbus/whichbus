@@ -15,7 +15,7 @@ class StopsController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.json { render :json => @stop, :include => {:routes => { :only => [:oba_id, :name] } } }
+			format.json { render :json => @stop, include: {routes: { only: [:oba_id, :name] } } }
 			format.xml  { render :xml => @stop }
 		end
 	end
@@ -25,7 +25,7 @@ class StopsController < ApplicationController
 
 		respond_to do |format|
 			format.html { render 'show' }
-			format.json { render :json => @stop }
+			format.json { render :json => @stop, include: {routes: { only: [:oba_id, :name] } } }
 			format.xml  { render :xml => @stop }
 		end
 	end

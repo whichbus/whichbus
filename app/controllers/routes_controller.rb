@@ -18,7 +18,7 @@ class RoutesController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.json { render :json => @route, include: :stops }
+			format.json { render :json => @route, include: {stops: {except: [:id, :agency_id, :created_at, :updated_at]} } }
 			format.xml  { render :xml => @route }
 		end
 	end
@@ -28,7 +28,7 @@ class RoutesController < ApplicationController
 
 		respond_to do |format|
 			format.html { render 'show' }
-			format.json { render :json => @route }
+			format.json { render :json => @route, include: {stops: {except: [:id, :agency_id, :created_at, :updated_at]} }  }
 			format.xml  { render :xml => @route }
 		end
 	end
