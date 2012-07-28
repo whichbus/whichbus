@@ -65,7 +65,7 @@ class Transit.Views.Plan extends Backbone.View
   add_itineraries: (plan) =>
     window.plan = plan
     console.log plan
-    Transit.setTitle("#{plan.get('from').name} to #{plan.get('to').name}")
+    @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
     plan.get('itineraries').each (trip, index) =>
       trip.set('index', index + 1)
       console.log trip

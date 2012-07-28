@@ -15,8 +15,6 @@ $linkColor: $wbBlueDark;
 $linkColorHover: darken($wbBlue, 5%);
 
 @import "bootstrap";
-// This does things automatically and breaks layout, figure out what we need from there.
-//@import "bootstrap-responsive"; 
 
 /* Open Sans Font as requested by @paigepauli */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600,700);
@@ -61,7 +59,11 @@ input {
   @include placeholder(#94978C);
 }
 
-#container { margin-top: $navbar_height; }
+#container {
+  margin-top: $navbar_height;
+  clear: both;
+  overflow: auto;
+}
 .container-fluid {
   max-width: 900px;
   margin: auto;
@@ -74,6 +76,10 @@ input {
 
 #map {
   @include stretch($navbar_height, 0, 0, $sidebar_width);
+
+  a:hover {
+    border-bottom: none;
+  }
 }
 
 header {
@@ -119,7 +125,6 @@ header.blue {
   min-width: 320px;
   width: $sidebar_width;
   float: left;
-  // padding: 10px 0;
 
   ol {
     z-index: -1;
@@ -198,25 +203,19 @@ header.blue {
     top: $navbar_height + $title_height;
     left: 0;
     height: $map_height;
-    z-index: -1;
   }
   .leaflet-control-attribution {
     font-size: 9px;
   }
   #navigation {
-    margin-top: $map_height;
+    margin-top: $map_height + $title_height;
     width: 100%;
 
   }
-}
-
-@media (min-width: 769px) {
-  .subnav { 
-  	width: 400px; 
-  	text-overflow:ellipsis; 
-    h3 {
-  	 font-size:1rem;
-    }
+  #navigation #title { 
+    position: absolute;
+    top: $navbar_height;
+    left:0; right: 0;
   }
 }
 
@@ -435,12 +434,11 @@ header.blue {
 }
 
 .copyright {
-  padding: 20px 0 5px 5px;
+  padding: 15px 0 5px 5px;
   font-size: 11px;
-  .copy { 
-    font-size: 14px; 
-    font-weight: 300; 
-    vertical-align: middle;
+  text-align: center;
+  .copy {
+    font-size: 12px;
   }
 }
 
