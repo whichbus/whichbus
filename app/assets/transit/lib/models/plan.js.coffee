@@ -27,7 +27,7 @@ class Transit.Models.Plan extends Backbone.Model
 
   request: =>
     date: Transit.format_otp_date(@get('date'))
-    time: @get('date').toLocaleTimeString()
+    time: Transit.format_otp_time(@get('date'))
     arriveBy: @get('arrive_by')
     fromPlace: "#{@get('from').lat},#{@get('from').lon}"
     toPlace: "#{@get('to').lat},#{@get('to').lon}"

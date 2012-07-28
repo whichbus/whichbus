@@ -13,6 +13,15 @@ Transit.format_otp_date = (input) ->
   year = date.getFullYear()
   "#{month}-#{day}-#{year}"
 
+Transit.format_otp_time = (input) ->
+  date = if input not instanceof Date then new Date(input) else input
+  hours = date.getHours()
+  minutes = date.getMinutes()
+  seconds = date.getSeconds()
+  padded_minutes = "#{if minutes < 10 then '0' else ''}#{minutes}"
+  padded_seconds = "#{if seconds < 10 then '0' else ''}#{seconds}"
+  "#{hours}:#{padded_minutes}:#{padded_seconds}"
+
 Transit.format_duration = (seconds, minimize=false) ->
   return "NOW!" if seconds < 60
   mins = Math.floor(seconds / 60)
