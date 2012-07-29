@@ -246,8 +246,8 @@ header.blue {
   color: white;
   @include shadow-black(0.25);
 }
-#whichbus:hover { border: none }
 .whichbus-nav{
+  a { border: none; }
   text-align:center;
 }
 
@@ -456,6 +456,7 @@ header.blue {
 .settings {
   @include square(34px);
   @include stretch(3px, 5px, false, false);
+  cursor: pointer;
   background: url('<%= image_path("icons/icon-settings.png") %>') no-repeat center;
 }
 

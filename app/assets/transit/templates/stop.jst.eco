@@ -1,5 +1,11 @@
-<% Transit.setTitle(@stop.get('name')) %>
+<div class="subnav" id="title">
+	<header class="<%= if @stop.get('routes')? then 'gray' else 'red' %>">
+		<span class="icon favorite"></span>
+		<h3><%= @stop.get('name') ? 'which stop?' %></h3>
+	</header>
+</div>
 
+<% if @stop.get('routes')?: %>
 <header class="gray" data-toggle="collapse" data-target="#routes"><h3>Available Bus Routes</h3></header>
 <ul class="routes collapse in" id="routes">
 	<% for route in @stop.get('routes'): %>
@@ -10,4 +16,6 @@
 
 <header class="gray" data-toggle="collapse" data-target="#arrivals"><h3>Real-time arrivals</h3></header>
 <ol class="arrivals collapse in" id="arrivals"></ol>
+<% end %>
+
 <div class="alert alert-error"></div>
