@@ -43,11 +43,15 @@ class Transit.Models.Plan extends Backbone.Model
       callback(@geocode_storage[query])
     else
       bounds = Transit.map.leaflet?.getBounds()
-      $.get 'http://open.mapquestapi.com/nominatim/v1/search'
-        format: 'json'
-        countrycodes: 'US'
-        viewbox: bounds?.toBBoxString()
-        q: query
+      $.ajax
+        type: 'GET'
+        dataType: 'jsonp'
+        url: 'http://open.mapquestapi.com/nominatim/v1/search?json_callback=?'
+        data:
+          format: 'json'
+          countrycodes: 'US'
+          viewbox: bounds?.toBBoxString()
+          q: query
       .success (response) =>
         # save the first result in the local storage
         @geocode_storage[query] = response[0]
