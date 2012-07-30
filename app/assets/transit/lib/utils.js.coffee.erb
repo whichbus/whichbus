@@ -82,12 +82,21 @@ Transit.toggleMenu = () =>
     b = $('#settings-button')
     if parseInt(m.css('z-index')) < 0
       m.css 'z-index', '9999' 
-      m.css 'display', 'block' 
+      m.css 'display', 'block'
+
       b.addClass 'active'
+      b.css 'z-index', '9999'
+
+      settingsbg = $('<div/>').insertAfter(m).addClass('settingsBg')
     else
       m.css 'z-index', '-1'
       m.css 'display', 'none' #Have to hide it on the splash page as negative z-index won't hide it
+
       b.removeClass 'active'
+      b.css 'z-index', '1030'
+
+      settingsbg = $('.settingsBg')
+      settingsbg.remove()
 
 Transit.Markers =
   Start: L.Icon.extend
