@@ -184,9 +184,14 @@ header.blue {
     float: right;
     margin-left: 5px;   
   }
-  .progress {
+
+  .progress-striped {
+    
     margin: $sidebar_margin;
-    .bar { width: 100% }
+    .bar { 
+      width: 100%;
+      @include gradient-striped(#86bdcf, -45deg);
+    }
   }
   .real-time {
     display: none;
