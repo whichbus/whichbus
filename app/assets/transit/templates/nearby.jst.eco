@@ -1,0 +1,10 @@
+<div class="subnav" id="title">
+	<header class="gray">
+		<h3>Nearby Stops</h3>
+	</header>
+</div>
+
+<ol class="stops collapse in" id="stops">
+</ol>
+
+<div class="alert alert-error"></div>

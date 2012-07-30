@@ -1,6 +1,8 @@
 class Transit.Router extends Backbone.Router
   routes:
     '': 'index'
+    'nearby': 'nearby'
+    'nearby/:query': 'nearby'
     'plan/:from/:to': 'plan'
     'stops/:agency/:code': 'showStop'
     'stops/:id': 'showStop'
@@ -15,6 +17,13 @@ class Transit.Router extends Backbone.Router
     @view.render()
     splash = new Transit.Views.Splash()
     @view.$el.html(splash.render().el)
+
+  nearby: (query) ->
+    @view.render()
+    map = new Transit.Views.Map()
+
+    near = new Transit.Views.Nearby(query: query)
+    @view.$('#navigation').append(near.render().el)
 
   plan: (from_query, to_query) ->
     @view.render()

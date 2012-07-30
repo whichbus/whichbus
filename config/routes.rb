@@ -17,26 +17,27 @@ WhichbusSpine::Application.routes.draw do
   scope '/workshop' do
     match '' => 'application#search', :as => :workshop
     match '/search' => 'application#search'
+    match '/stops/nearby' => 'stops#nearby', format: 'json'
 
     # RESTful resources
     resources :agencies
     resources :routes do
       member do
-        get 'stops', :format => 'json'
-        get 'trips', :format => 'json'
+        get 'stops', format: 'json'
+        get 'trips', format: 'json'
       end
     end
     resources :stops do
       member do
-        get 'routes', :format => 'json'
-        get 'arrivals', :format => 'json'
-        get 'schedules', :format => 'json'
+        get 'routes', format: 'json'
+        get 'arrivals', format: 'json'
+        get 'schedules', format: 'json'
       end
     end
 
     # OTP ID routes
-    match '/stops/:agency/:code/arrivals' => 'stops#arrivals_otp', :format => 'json'
-    match '/routes/:agency/:code/trips' => 'routes#trips_otp', :format => 'json'
+    match '/stops/:agency/:code/arrivals' => 'stops#arrivals_otp', format: 'json'
+    match '/routes/:agency/:code/trips' => 'routes#trips_otp', format: 'json'
     match '/agencies/otp/:code' => 'agencies#show_otp'
     match '/routes/:agency/:code' => 'routes#show_otp'
     match '/stops/:agency/:code' => 'stops#show_otp'
@@ -44,9 +45,9 @@ WhichbusSpine::Application.routes.draw do
 
   scope '/api' do
     # API methods, they return json by default
-    match '/otp/:method(/:agency/:id)' => 'application#otp', :format => 'json'
+    match '/otp/:method(/:agency/:id)' => 'application#otp', format: 'json'
 
-    match '/oba/:method(/:id)' => 'application#oba', :format => 'json'
+    match '/oba/:method(/:id)' => 'application#oba', format: 'json'
   end
 
   # The priority is based upon order of creation:

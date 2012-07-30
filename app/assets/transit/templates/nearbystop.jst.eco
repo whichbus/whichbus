@@ -1,0 +1,9 @@
+<li class="stop">
+	<span class="pull-right distance">
+		<span class="label">
+			<%= @stop.get('distance') %>
+		</span><br/>
+	</span>
+
+	<a href="/stops/<%= @stop.get('id') %>" class="stop"><h4><%= @stop.get('name') %></h4></a>
+</li>

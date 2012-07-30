@@ -61,4 +61,8 @@ class StopsController < ApplicationController
 	def arrivals_otp
 		api_page Stop.find_by_agency_code_and_code(params[:agency], params[:code]).arrivals
 	end
+
+	def nearby
+		api_page API.one_bus_away('stops-for-location', params)['stops']
+	end
 end
