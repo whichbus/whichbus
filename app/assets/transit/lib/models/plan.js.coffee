@@ -33,37 +33,10 @@ class Transit.Models.Plan extends Backbone.Model
     toPlace: "#{@get('to').lat},#{@get('to').lon}"
     numItineraries: @get('desired_itineraries')
 
-  geocode: (query, callback) ->
-    # if the query is already a lat,lon pair then simply use that as location
-    latLon = /^(-?\d+\.\d+),(-?\d+\.\d+)$/.exec(query)
-    if latLon?
-      callback({ lat: latLon[1], lon: latLon[2] })
-    # retrieve the location from the local storage if possible
-    else if @geocode_storage[query]?
-      callback(@geocode_storage[query])
-    else
-      bounds = Transit.map.leaflet?.getBounds()
-      $.ajax
-        type: 'GET'
-        dataType: 'jsonp'
-        url: 'http://open.mapquestapi.com/nominatim/v1/search?json_callback=?'
-        data:
-          format: 'json'
-          countrycodes: 'US'
-          viewbox: bounds?.toBBoxString()
-          q: query
-      .success (response) =>
-        # save the first result in the local storage
-        @geocode_storage[query] = response[0]
-        Transit.storage_set('geocode', @geocode_storage)
-        callback(response[0])
-      .error ->
-        console.log "Failed to geocode #{query}."
-
   geocode_from_to: (from_query, to_query) =>
     # TODO: It would be nice to batch this instead of doing 2 queries.
-    @geocode unescape(from_query), (from) =>
-      @geocode unescape(to_query), (to) =>
+    Transit.geocode unescape(from_query), (from) =>
+      Transit.geocode unescape(to_query), (to) =>
         # geocode method returns one result instead of array
         if from? and to?
           @set
