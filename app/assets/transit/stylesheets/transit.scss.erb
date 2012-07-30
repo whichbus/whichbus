@@ -260,6 +260,7 @@ header.blue {
   background-position:center;
   width:34px;
   height:34px;
+  z-index: 9999;
 }
 
 #settings-menu{
@@ -267,8 +268,8 @@ header.blue {
   position: fixed;
   right: 4px;
   background-color: #fff;
-  z-index: -99;
-  margin-top: -5px;
+  z-index: 9999;
+  margin-top: 35px;
   color: dimgrey;
   font-size: 1.2em;
   min-height: 34%;
@@ -348,16 +349,16 @@ header.blue {
 }
 
 //For the black background thing
-.settingsBg{
-    position: fixed; 
-    height: 100%;
-    width: 100%;
-    background: rgba(0,0,0,0.8);
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    display:block;
-  }
+#settings-bg {
+  position: fixed; 
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  display: none;
+}
 
 .row-fluid [class*="span"].centered {
   margin-left: auto;

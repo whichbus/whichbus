@@ -75,28 +75,11 @@ Transit.errorMessage = (title, message) =>
 Transit.errorPage = (heading, title, message) =>
   $(@el).html(@template(heading: heading, title: title, message: message))
 
-#Didn't have a Backbone class to put this into yet, doesn't work in Transit.Views.Application
-  #because it doesn't work within that scope.
+# toggles appearance of the Settings menu via the gear button
 Transit.toggleMenu = () =>
-    m = $('#settings-menu')
-    b = $('#settings-button')
-    if parseInt(m.css('z-index')) < 0
-      m.css 'z-index', '9999' 
-      m.css 'display', 'block'
-
-      b.addClass 'active'
-      b.css 'z-index', '9999'
-
-      settingsbg = $('<div/>').insertAfter(m).addClass('settingsBg')
-    else
-      m.css 'z-index', '-1'
-      m.css 'display', 'none' #Have to hide it on the splash page as negative z-index won't hide it
-
-      b.removeClass 'active'
-      b.css 'z-index', '1030'
-
-      settingsbg = $('.settingsBg')
-      settingsbg.remove()
+  $("#settings-bg").toggle()
+  $('#settings-menu').toggle()
+  $('#settings-button').toggleClass('active')
 
 Transit.Markers =
   Start: L.Icon.extend

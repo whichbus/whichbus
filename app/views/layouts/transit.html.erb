@@ -12,6 +12,7 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
+<div id="settings-bg" onclick="Transit.toggleMenu()"></div>
 <div id="settings-menu">
 	<div id="settings-title">
 		<h3>Settings</h3>
@@ -22,22 +23,25 @@
 	</div>
 	<div id="settings-list">
 		<ul>
-			<li id="settings-favorites"><img src="http://placehold.it/25x25"><span>Favorites</span> <small class="label label-info">COMING SOON</small></li>
+			<li id="settings-favorites">
+				<img src="http://placehold.it/25x25">
+				<span>Favorites</span> 
+				<small class="label label-info">COMING SOON</small></li>
 			<li>
-				<img src="http://placehold.it/25x25"><span>My Account</span> <small class="label label-info">COMING SOON</small>
+				<img src="http://placehold.it/25x25">
+				<span>My Account</span> 
+				<small class="label label-info">COMING SOON</small>
 			</li>
 			<li>
 				<%= link_to '/about/issues' do %>
-					<div>
-						<img src="http://placehold.it/25x25"><span>Send Us Feedback</span>
-					</div>
+					<img src="http://placehold.it/25x25">
+					<span>Send Us Feedback</span>
 				<% end %>
 			</li>
 			<li>
 				<%= link_to '/about' do %>
-					<div>
-						<img src="http://placehold.it/25x25"><span>About WhichBus</span>
-					</div>
+					<img src="http://placehold.it/25x25">
+					<span>About WhichBus</span>
 				<% end %>
 			</li>
 		</ul>
@@ -48,26 +52,7 @@
 		<div class="container-fluid whichbus-nav">
 			<a href="/" class="icon bus"></a>
 			<a id="whichbus" class="pacifico" alt="WhichBus" href="/">WhichBus</a>
-			<!--
-			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			Future menu area, realized we should not use Bootstrap expandable thing and should instead
-			develop our own based on Paige's specs
-			<div class="nav-collapse collapse">
-				<ul class="nav">
-					<li>Future menu area</li>
-				</ul>
-			</div>
-			-->
-			<button id="menu-btn" type="button" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a id="settings-button" class="icon settings" onclick=Transit.toggleMenu()></a>
+			<a id="settings-button" class="icon settings" onclick="Transit.toggleMenu()"></a>
 		</div>
 	</div>
 </div>
