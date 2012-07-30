@@ -1,5 +1,5 @@
 == WhichBus
-![Travis-CI Status](https://secure.travis-ci.org/whichbus/whichbus.png?branch=master)
+!(Travis-CI Status)[https://secure.travis-ci.org/whichbus/whichbus.png?branch=master]
 1. Real-Time Schedules
 2. Multi-Modal Trip Planning
 3. On all your gadgets
