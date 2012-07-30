@@ -17,8 +17,8 @@ class Transit.Models.Map extends Backbone.Model
     @map.attributionControl.setPrefix('')
     @map.addLayer(tiles)
 
-    @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
-    @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
+    @map.addLayer @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
+    @map.addLayer @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
 
     @on 'change:south_west change:north_east', @set_max_bounds
     @on 'change', @update_markers
@@ -62,8 +62,8 @@ class Transit.Models.Map extends Backbone.Model
       latlngs.push(new L.LatLng(point[0], point[1]) for point in points)
     new L.MultiPolyline(latlngs, color: color, opacity: 0.6, clickable: false)
 
-  create_marker: (name, position, icon) ->
-    marker = new L.Marker(position, clickable: false, draggable: true, icon: new icon())
+  create_marker: (name, position, icon, draggable=true, clickable=false) ->
+    marker = new L.Marker(position, clickable: clickable, draggable: draggable, icon: new icon())
     # update location after the drag, trigger a drag event on a drag
     marker.on 'dragstart', =>
       @trigger "drag drag:start drag:start:#{name}"
@@ -71,6 +71,7 @@ class Transit.Models.Map extends Backbone.Model
       @set(name, lat: marker.getLatLng().lat, lon: marker.getLatLng().lng)
       @trigger "drag drag:end drag:end:#{name}"
     # add marker to map and model
-    @map.addLayer(marker)
+    # @map.addLayer(marker)
     @set "#{name}_marker", marker, silent: true
+    return marker
 

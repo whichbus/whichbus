@@ -23,7 +23,7 @@ Transit.format_otp_time = (input) ->
   "#{hours}:#{padded_minutes}:#{padded_seconds}"
 
 Transit.format_duration = (seconds, minimize=false) ->
-  return "NOW!" if seconds < 60
+  return "NOW!" if seconds < 60 and not minimize
   mins = Math.floor(seconds / 60)
   if mins > 59
     hrs = Math.floor(mins / 60)
@@ -99,6 +99,16 @@ Transit.Markers =
     iconSize: new L.Point(33, 35)
     iconAnchor: new L.Point(11, 35)
     iconUrl: '<%= image_path("icons/icon-end-location.png") %>'
+    shadowUrl: null
+  Stop: L.Icon.extend
+    iconSize: new L.Point(20, 20)
+    iconAnchor: new L.Point(10, 20)
+    iconUrl: '<%= image_path("icons/icon-busstop.png") %>'
+    shadowUrl: null
+  StopDot: L.Icon.extend
+    iconSize: new L.Point(10, 10)
+    iconAnchor: new L.Point(5, 5)
+    iconUrl: '<%= image_path("icons/icon-stopdot.png") %>'
     shadowUrl: null
 
 window.HTML = {}
