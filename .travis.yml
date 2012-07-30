@@ -2,5 +2,6 @@ language: ruby
 rvm:
   - 1.9.3
   - 1.9.2
-script: rake db:setup
-script: rake db:seed
+after_install:
+	- rake db:setup
+    - rake db:seed

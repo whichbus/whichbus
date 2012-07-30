@@ -36,7 +36,6 @@ gem 'jquery-rails'
 gem 'spine-rails'
 gem 'eco'
 gem 'geocoder'
-
 gem 'devise'
 
 # To use ActiveModel has_secure_password
