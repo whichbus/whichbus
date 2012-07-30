@@ -3,18 +3,19 @@ class Transit.Views.Application extends Backbone.View
   el: 'div#container'
 
   events:
-  	'click .icon.favorite': 'toggleFavorite'
-  	'click a.btn-route': 'showRoute'
+    'click .icon.favorite': 'toggleFavorite'
+    'click a.btn-route': 'niceNavigate'
+    'click a.stop': 'niceNavigate'
 
   render: =>
     $(@el).html(@template())
     this
 
   toggleFavorite: (evt) =>
-  	$(evt.currentTarget).toggleClass('active')
+    $(evt.currentTarget).toggleClass('active')
 
   # gracefully navigates to the route page when a route button is clicked
   # way smoother and faster than standard link behavior!
-  showRoute: (evt) =>
-  	evt.preventDefault()
-  	Transit.router.navigate $(evt.currentTarget).attr('href'), trigger: true
+  niceNavigate: (evt) =>
+    evt.preventDefault()
+    Transit.router.navigate $(evt.currentTarget).attr('href'), trigger: true
