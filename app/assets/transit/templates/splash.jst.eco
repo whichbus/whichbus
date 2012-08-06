@@ -16,7 +16,7 @@
 				</tr>
 			</table>
 			<div class="row-fluid">
-				<button class="btn btn-map span8 centered" type="submit">MAP THAT BUS!</button>
+				<button class="btn btn-map btn-go span8 centered" type="submit">MAP THAT BUS!</button>
 			</div>
 		</form>
 	</div>
