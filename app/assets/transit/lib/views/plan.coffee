@@ -66,6 +66,8 @@ class Transit.Views.Plan extends Backbone.View
     window.plan = plan
     console.log plan
     @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
+    @$('.progress').hide()
+    @$('.itineraries').html('')
     plan.get('itineraries').each (trip, index) =>
       trip.set('index', index + 1)
       console.log trip
@@ -77,7 +79,6 @@ class Transit.Views.Plan extends Backbone.View
         view.undelegateEvents()
         view.render_map()
       @$('.itineraries').append(view.render().el)
-      @$('.progress').hide()
 
 
   fit_bounds: =>
