@@ -305,7 +305,7 @@ header.blue {
     border-top: 1px solid #dadada;
 
     input {
-      width:76%;
+      width: 76%;
       font-size: 14px;
       height: 30px;
     }
@@ -319,49 +319,37 @@ header.blue {
   }
 
   ul {
-  list-style-type: none;
-  margin:5px;
+    list-style-type: none;
+    margin: 0;
   }
 
   li {
-    padding: 8px 18px;
-    a {
-      // hide border on menu links
-      border-bottom: none;
+    padding: 10px 20px;
+
+    span {
+      margin-left: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
     }
+
+    // hide border on menu links
+    a { border-bottom: none; }
     // show link border on interior span (just the text)
     a:hover span { border-bottom: 2px dotted; }
   }
+
+  // put a 1px border between list items, but not on outsides
   li + li {
     border-top: 1px solid #bfbfbf;
-  }
-
-  li img {
-    margin-left:10px;
-  }
-
-  li span {
-    margin-left:10px;
-    font-size:12px;
-    font-weight:600px;
-    font-family: 'Open Sans', sans-serif;
-    text-transform:uppercase;
-  }
-  li a 
-  #settings-list{
-    background-color:#fff;
   }
 }
 
 //For the black background thing
 #settings-bg {
-  position: fixed; 
-  height: 100%;
-  width: 100%;
+  @include stretch();
+  position: fixed;
   background: rgba(0,0,0,0.5);
   z-index: 1000;
-  top: 0;
-  left: 0;
   display: none;
 }
 
