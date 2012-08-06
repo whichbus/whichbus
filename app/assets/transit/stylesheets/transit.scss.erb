@@ -59,7 +59,7 @@ input {
   @include placeholder(#94978C);
 }
 
-#container {
+body > .container-fluid, #container {
   margin-top: $navbar_height;
   clear: both;
   overflow: auto;
@@ -236,6 +236,7 @@ header.blue {
   font-family: 'PacificoRegular', Arial, sans-serif;
   line-height: 2rem;
   letter-spacing: 0;
+  font-weight: normal;
 }
 
 #whichbus {
@@ -269,14 +270,13 @@ header.blue {
   right: 4px;
   background-color: #fff;
   z-index: 9999;
-  margin-top: 35px;
+  margin-top: -5px;
   color: dimgrey;
   font-size: 1.2em;
-  min-height: 34%;
   border-radius: 10px 5px 5px 5px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.55);
   overflow:auto; 
-
+  
 
   #settings-title{    
     //Not working just yet
@@ -311,11 +311,9 @@ header.blue {
     }
     button {
       color: #fff;
-      @include gradient-vertical(#7bb5b3, #548a89);
       @include size(30px, 40px);
       padding: 5px 8px;
       margin-left: -1px;
-      border: 1px solid #ADACA1;
       //@include border-radius(0 $borderRadius $borderRadius 0);
     }
   }
@@ -327,6 +325,12 @@ header.blue {
 
   li {
     padding: 8px 18px;
+    a {
+      // hide border on menu links
+      border-bottom: none;
+    }
+    // show link border on interior span (just the text)
+    a:hover span { border-bottom: 2px dotted; }
   }
   li + li {
     border-top: 1px solid #bfbfbf;
@@ -343,6 +347,7 @@ header.blue {
     font-family: 'Open Sans', sans-serif;
     text-transform:uppercase;
   }
+  li a 
   #settings-list{
     background-color:#fff;
   }
@@ -431,11 +436,7 @@ header.blue {
     color: white;
     font-size: 18px;
     font-weight: 700;
-    border: 1px solid #5e9b99;
-    @include shadow-black(0.25);
-    @include gradientBar($wbBlue, $wbBlueDark);
     @include border-radius($borderRadius);
-    background-color: darken($wbBlueDark, 1%);
   }
 }
 
@@ -510,6 +511,13 @@ header.blue {
   @include shadow-black(0.25);
   @include gradientBar(#bfe4cd, #90b89f);
   background-color: darken(#90b89f, 1%);
+}
+
+.btn.btn-go {
+  border: 1px solid #5e9b99;
+  @include shadow-black(0.25);
+  @include gradientBar($wbBlue, $wbBlueDark);
+  background-color: darken($wbBlueDark, 1%);
 }
 
 .leaflet-control-zoom-in {
