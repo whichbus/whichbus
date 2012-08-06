@@ -63,7 +63,7 @@ class Transit.Models.Map extends Backbone.Model
     new L.MultiPolyline(latlngs, color: color, opacity: 0.6, clickable: false)
 
   create_marker: (name, position, icon, draggable=true, clickable=false) ->
-    marker = new L.Marker(position, clickable: clickable, draggable: draggable, icon: new icon())
+    marker = new L.Marker(position, title: name, clickable: clickable, draggable: draggable, icon: new icon())
     # update location after the drag, trigger a drag event on a drag
     marker.on 'dragstart', =>
       @trigger "drag drag:start drag:start:#{name}"
