@@ -526,3 +526,35 @@ header.blue {
 .leaflet-control-zoom-out {
   background-image: url('<%= image_path("vendor/leaflet/images/zoom-out.png") %>');
 }
+
+// nice formatting for about and issues pages
+.about, .issues {
+  margin: 20px auto; 
+  background-color:white;
+  color:#707070; 
+  @include border-radius(15px);
+  h1 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .content {
+    margin: 15px;
+  }
+}
+
+// constrain the width of the issues google form
+.issues iframe {
+  margin: auto; 
+  display: block;
+  max-width: 500px;
+  width: 100%;
+  height: 850px;
+}
+
+// a small logo, constrained in height. used on about & issues pages
+.logo-small {
+  display: block;
+  margin: auto;
+  max-height: 110px;
+  margin-top: 20px;
+}
