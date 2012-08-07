@@ -1,5 +1,6 @@
 class Transit.Router extends Backbone.Router
   routes:
+    '?:params': 'index'
     '': 'index'
     'nearby': 'nearby'
     'nearby/:query': 'nearby'
