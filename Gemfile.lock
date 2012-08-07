@@ -142,6 +142,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.2.3)
+  rake
   sass-rails (~> 3.2.3)
   spine-rails
   sqlite3
