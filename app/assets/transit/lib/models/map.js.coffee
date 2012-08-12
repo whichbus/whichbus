@@ -8,6 +8,8 @@ class Transit.Models.Map extends Backbone.Model
     mapOptions =
       center: new google.maps.LatLng(47.62167, -122.349072),
       zoom: 13,
+      disableDefaultUI: true
+      zoomControl: true
       mapTypeId: google.maps.MapTypeId.ROADMAP
     @map = new google.maps.Map(document.getElementById('map'), mapOptions)
 
