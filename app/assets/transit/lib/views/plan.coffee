@@ -14,7 +14,7 @@ class Transit.Views.Plan extends Backbone.View
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     @model.on 'geocode:error', @geocode_error
-    #Transit.events.on 'plan:complete', @fit_bounds
+    Transit.events.on 'plan:complete', @fit_bounds
     @model.geocode_from_to(@options.from, @options.to)
 
   render: =>
@@ -83,11 +83,11 @@ class Transit.Views.Plan extends Backbone.View
 
   fit_bounds: =>
     if @map.get('fit_bounds')
-      point = (latlng) -> new L.LatLng(latlng[0], latlng[1])
-      points = (leg) -> _.map decodeLine(leg.legGeometry.points), point
-      legs = _.map @model.get('itineraries').first().get('legs'), points
-      bounds = new L.LatLngBounds(_.reduce legs, (a, b) -> a.concat(b))
-      @map.leaflet.fitBounds(bounds)
+      bounds = new google.maps.LatLngBounds()
+      for leg in @model.get('itineraries').first().get('legs')
+        for point in google.maps.geometry.encoding.decodePath(leg.legGeometry.points)
+          bounds.extend(new google.maps.LatLng(point['Xa'], point['Ya']))
+      @map.map.fitBounds(bounds)
     @map.set 'fit_bounds': @map.defaults.fit_bounds?, { silent: true }
 
   go_to_splash: (event) =>

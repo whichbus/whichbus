@@ -13,9 +13,6 @@ class Transit.Models.Map extends Backbone.Model
       mapTypeId: google.maps.MapTypeId.ROADMAP
     @map = new google.maps.Map(document.getElementById('map'), mapOptions)
 
-    #@map.attributionControl.setPrefix('')
-    #@map.addLayer(tiles)
-
     #@map.addLayer @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
     #@map.addLayer @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
 
