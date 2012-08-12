@@ -13,11 +13,13 @@ class Transit.Models.Map extends Backbone.Model
       mapTypeId: google.maps.MapTypeId.ROADMAP
     @map = new google.maps.Map(document.getElementById('map'), mapOptions)
 
-    #@map.addLayer @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
-    #@map.addLayer @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
+    Transit.Markers = {}
+
+    @create_marker('from', new google.maps.LatLng(0, 0), Transit.Markers.Start)
+    @create_marker('to', new google.maps.LatLng(0, 0), Transit.Markers.End)
 
     #@on 'change:south_west change:north_east', @set_max_bounds
-    #@on 'change', @update_markers
+    @on 'change', @update_markers
     @fetch()
 
   parse: (data) =>
@@ -30,13 +32,13 @@ class Transit.Models.Map extends Backbone.Model
 
   update_marker: (attribute) =>
     marker_name = "#{attribute}_marker"
-    point = new L.LatLng(@get(attribute).lat, @get(attribute).lon)
+    point = new google.maps.LatLng(@get(attribute).lat, @get(attribute).lon)
     if not @has(marker_name)
       # marker hasn't been added to the map yet, create it
       @create_marker(attribute, point, Transit.Markers.Start)
     else
       # marker is already on the map, update its location
-      @get(marker_name).setLatLng(point)
+      @get(marker_name).setPosition(point)
 
   update_markers: =>
     # create or update markers from given coordinates
@@ -49,10 +51,10 @@ class Transit.Models.Map extends Backbone.Model
   create_polyline: (points, color) ->
     points = google.maps.geometry.encoding.decodePath(points)
     new google.maps.Polyline
-      path: points,
-      strokeColor: color,
-      strokeOpacity: 1.0,
-      strokeWeight: 2
+      path: points
+      strokeColor: color
+      strokeOpacity: 0.6,
+      strokeWeight: 5
 
   create_multi_polyline: (pointsArray, color) ->
     latlngs = []
@@ -62,15 +64,19 @@ class Transit.Models.Map extends Backbone.Model
     new L.MultiPolyline(latlngs, color: color, opacity: 0.6, clickable: false)
 
   create_marker: (name, position, icon, draggable=true, clickable=false) ->
-    marker = new L.Marker(position, clickable: clickable, draggable: draggable, icon: new icon())
+    marker = new google.maps.Marker
+      position: position
+      #icon: new icon()
+      draggable: draggable
+      clickable: clickable
+      map: @map
+
     # update location after the drag, trigger a drag event on a drag
-    marker.on 'dragstart', =>
+    google.maps.event.addListener marker, 'dragstart', =>
       @trigger "drag drag:start drag:start:#{name}"
-    marker.on 'dragend', =>
-      @set(name, lat: marker.getLatLng().lat, lon: marker.getLatLng().lng)
+    google.maps.event.addListener marker, 'dragend', (event) =>
+      @set(name, lat: event.latLng.lat(), lon: event.latLng.lng())
       @trigger "drag drag:end drag:end:#{name}"
     # add marker to map and model
-    # @map.addLayer(marker)
     @set "#{name}_marker", marker, silent: true
     return marker
-
