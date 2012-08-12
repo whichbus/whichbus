@@ -2,32 +2,35 @@ class Transit.Models.Map extends Backbone.Model
   urlRoot: '/api/otp/metadata'
 
   defaults:
+    api_url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/{z}/{x}/{y}.png'
+    attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,
+    <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,
+    &copy; <a href="http://mapbox.com/">Mapbox</a>'
     fit_bounds: true
 
   initialize: (attributes) =>
-    mapOptions =
-      center: new google.maps.LatLng(47.62167, -122.349072),
-      zoom: 13,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    @map = new google.maps.Map(document.getElementById('map'), mapOptions)
+    @leaflet = @map = new L.Map attributes.element,
+      center: new L.LatLng(47.62167,-122.349072)
+      zoom: 13
+      maxZoom: 17
+    tiles = new L.TileLayer(@get('api_url'), attribution: @get('attribution'))
+    @map.attributionControl.setPrefix('')
+    @map.addLayer(tiles)
 
-    #@map.attributionControl.setPrefix('')
-    #@map.addLayer(tiles)
+    @map.addLayer @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
+    @map.addLayer @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
 
-    #@map.addLayer @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
-    #@map.addLayer @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
-
-    #@on 'change:south_west change:north_east', @set_max_bounds
-    #@on 'change', @update_markers
+    @on 'change:south_west change:north_east', @set_max_bounds
+    @on 'change', @update_markers
     @fetch()
 
   parse: (data) =>
-    #@set
-    #  south_west: new L.LatLng data.lowerLeftLatitude, data.lowerLeftLongitude
-    #  north_east: new L.LatLng data.upperRightLatitude, data.upperRightLongitude
+    @set
+      south_west: new L.LatLng data.lowerLeftLatitude, data.lowerLeftLongitude
+      north_east: new L.LatLng data.upperRightLatitude, data.upperRightLongitude
 
   set_max_bounds: =>
-    #@map.setMaxBounds new L.LatLngBounds(@get('south_west'), @get('north_east'))
+    @map.setMaxBounds new L.LatLngBounds(@get('south_west'), @get('north_east'))
 
   update_marker: (attribute) =>
     marker_name = "#{attribute}_marker"
@@ -48,13 +51,10 @@ class Transit.Models.Map extends Backbone.Model
       @trigger 'change:markers'
 
   create_polyline: (points, color) ->
-    points = google.maps.geometry.encoding.decodePath(points)
-    new google.maps.Polyline
-      path: points,
-      strokeColor: color,
-      strokeOpacity: 1.0,
-      strokeWeight: 2
-
+    points = decodeLine(points)
+    latlngs = (new L.LatLng(point[0], point[1]) for point in points)
+    new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
+  
   create_multi_polyline: (pointsArray, color) ->
     latlngs = []
     for points in pointsArray
@@ -74,4 +74,3 @@ class Transit.Models.Map extends Backbone.Model
     # @map.addLayer(marker)
     @set "#{name}_marker", marker, silent: true
     return marker
-
