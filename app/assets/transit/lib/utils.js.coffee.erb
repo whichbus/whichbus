@@ -81,27 +81,27 @@ Transit.toggleMenu = () =>
   $('#settings-menu').toggle()
   $('#settings-button').toggleClass('active')
 
-Transit.Markers =
-  Start: L.Icon.extend
-    iconSize: new L.Point(33, 35)
-    iconAnchor: new L.Point(11, 35)
-    iconUrl: '<%= image_path("icons/icon-start-location.png") %>'
-    shadowUrl: null
-  End: L.Icon.extend
-    iconSize: new L.Point(33, 35)
-    iconAnchor: new L.Point(11, 35)
-    iconUrl: '<%= image_path("icons/icon-end-location.png") %>'
-    shadowUrl: null
-  Stop: L.Icon.extend
-    iconSize: new L.Point(20, 20)
-    iconAnchor: new L.Point(10, 20)
-    iconUrl: '<%= image_path("icons/icon-busstop.png") %>'
-    shadowUrl: null
-  StopDot: L.Icon.extend
-    iconSize: new L.Point(10, 10)
-    iconAnchor: new L.Point(5, 5)
-    iconUrl: '<%= image_path("icons/icon-stopdot.png") %>'
-    shadowUrl: null
+#Transit.Markers =
+#  Start: L.Icon.extend
+#    iconSize: new L.Point(33, 35)
+#    iconAnchor: new L.Point(11, 35)
+#    iconUrl: '<%= image_path("icons/icon-start-location.png") %>'
+#    shadowUrl: null
+#  End: L.Icon.extend
+#    iconSize: new L.Point(33, 35)
+#    iconAnchor: new L.Point(11, 35)
+#    iconUrl: '<%= image_path("icons/icon-end-location.png") %>'
+#    shadowUrl: null
+#  Stop: L.Icon.extend
+#    iconSize: new L.Point(20, 20)
+#    iconAnchor: new L.Point(10, 20)
+#    iconUrl: '<%= image_path("icons/icon-busstop.png") %>'
+#    shadowUrl: null
+#  StopDot: L.Icon.extend
+#    iconSize: new L.Point(10, 10)
+#    iconAnchor: new L.Point(5, 5)
+#    iconUrl: '<%= image_path("icons/icon-stopdot.png") %>'
+#    shadowUrl: null
 
 window.HTML = {}
 # HTML GENERATORS (jQuery wrappers)

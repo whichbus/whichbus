@@ -8,7 +8,7 @@
 # Provide a callback method that will be given an object containing 
 # keys 'lat' and 'lon' (and possibly other things, in the case of an address).
 
-Transit.geocode = (query, callback) ->
+Transit.nominatum_geocode = (query, callback) ->
   # if query exists and is not the string "here"...
   if query? and query != "here"
     query = unescape(query)
@@ -43,3 +43,14 @@ Transit.geocode = (query, callback) ->
   else
     navigator.geolocation.getCurrentPosition (position) ->
       callback(lat: position.coords.latitude.toFixed(7), lon: position.coords.longitude.toFixed(7))
+
+Transit.geocode = (query, callback) ->
+  # TODO: No localStorage or any optimizations from the above used yet
+  geocoder = new google.maps.Geocoder()
+  geocoder.geocode 'address': query, (results, status) ->
+    if status == google.maps.GeocoderStatus.OK
+      return callback
+        lat: results[0].geometry.location['Xa']
+        lon: results[0].geometry.location['Ya']
+    else
+      console.log "Failed to geocode #{query}: #{status}"

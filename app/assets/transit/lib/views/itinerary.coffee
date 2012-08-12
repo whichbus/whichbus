@@ -13,7 +13,7 @@ class Transit.Views.Itinerary extends Backbone.View
 	initialize: =>
 		Transit.map.on 'drag:start', @clean_up
 		Transit.events.on 'plan:complete', @clean_up
-		@plan_route = new L.LayerGroup()
+		@plan_route = []
 
 	render: =>
 		$(@el).html(@template({ trip: @model, index: @model.get('index') }))
@@ -29,10 +29,13 @@ class Transit.Views.Itinerary extends Backbone.View
 			@$('.segments').append(view.render().el)
 			# render the segment's polyline
 			poly = Transit.map.create_polyline(leg.legGeometry.points, @segmentColors[leg.mode] ? '#1693a5')
-			@plan_route.addLayer(poly)
+			poly.setMap(Transit.map.map)
+			@plan_route.push(poly)
 
 	clean_up: =>
-		Transit.map.leaflet.removeLayer(@plan_route)
+		for line in @plan_route
+			line.setMap(null)
 
-	render_map: =>	
-		Transit.map.leaflet.addLayer(@plan_route)
+	render_map: =>
+		for line in @plan_route
+			line.setMap(Transit.map.map)

@@ -14,7 +14,7 @@ class Transit.Views.Plan extends Backbone.View
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'change:from change:to', @update_markers
     @model.on 'geocode:error', @geocode_error
-    Transit.events.on 'plan:complete', @fit_bounds
+    #Transit.events.on 'plan:complete', @fit_bounds
     @model.geocode_from_to(@options.from, @options.to)
 
   render: =>
