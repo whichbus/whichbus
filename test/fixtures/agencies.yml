@@ -1,21 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  code: MyString
-  name: MyString
-  url: MyString
-  timezone: MyString
-  phone: MyString
-  disclaimer: MyString
-  privateService: 
-  language: MyString
+  "code": String
+  "name": String
+  "url" : String
+  "timezone" : String
+  "phone": String
+  "disclaimer": String
+  "created_at": 2012-07-08 15:32:21
+  "updated_at": 2012-07-08 15:32:21
+  "oba_id": String
 
 two:
-  code: MyString
-  name: MyString
-  url: MyString
-  timezone: MyString
-  phone: MyString
-  disclaimer: MyString
-  privateService: 
-  language: MyString
+  "code": String
+  "name": String
+  "url" : String
+  "timezone" : String
+  "phone": String
+  "disclaimer": String
+  "created_at": 2012-07-08 15:32:21
+  "updated_at": 2012-07-08 15:32:21
+  "oba_id": String

@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  time: 2012-07-08 15:32:21
-  lat: MyString
-  lon: MyString
-  summary_code: 1
+  "time": 2012-07-08 15:32:21
+  "latitude": 1.5
+  "longitude": 1.5
+  "summary_code": 2
+  "address": String
+  "created_at": 2012-07-08 15:32:21
+  "updated_at": 2012-07-08 15:32:21
 
 two:
-  time: 2012-07-08 15:32:21
-  lat: MyString
-  lon: MyString
-  summary_code: 1
+  "time": 2012-07-08 15:32:21
+  "latitude": 1.5
+  "longitude": 1.5
+  "summary_code": 2
+  "address": String
+  "created_at": 2012-07-08 15:32:21
+  "updated_at": 2012-07-08 15:32:21
