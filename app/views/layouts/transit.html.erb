@@ -17,17 +17,19 @@
 	<div id="settings-title">
 		<h3>Settings</h3>
 	</div>
-	<div id="settings-search">
-		<input class="search" name="search" type="text" id="search" placeholder="Search Routes &amp; Stops">
-		<button class="btn btn-go" type="button">GO</button>
+	<div id="settings-search" class="blocked">
+		<input class="search" name="search" type="text" id="search" placeholder="Search Routes &amp; Stops" disabled>
+		<button class="btn btn-go" type="button" disabled>GO</button>
+		<small class="label label-info">IN DEVELOPMENT</small>
 	</div>
 	<div id="settings-list">
 		<ul>
-			<li id="settings-favorites">
+			<li id="settings-favorites" class="blocked">
 				<img src="<%= image_path 'icons/settings-favorites.png' %>">
 				<span>Favorites</span> 
-				<small class="label label-info">COMING SOON</small></li>
-			<li>
+				<small class="label label-info">COMING SOON</small>
+			</li>
+			<li class="blocked">
 				<img src="<%= image_path 'icons/settings-myaccount.png' %>">
 				<span>My Account</span> 
 				<small class="label label-info">WAIT FOR IT</small>
