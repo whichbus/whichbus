@@ -57,7 +57,7 @@ Transit.storage_set = (key, value) ->
   localStorage.setItem(key, JSON.stringify(value))
 
 Transit.storage_clear = (key) ->
-  localStorage.setItem(key, undefined)
+  localStorage.removeItem key
 
 Transit.setTitle = (title) =>
   $("#title h3").text(title)
@@ -72,8 +72,9 @@ Transit.errorMessage = (title, message) =>
   else
     @$('.alert').html('').hide()
 
-Transit.errorPage = (heading, title, message) =>
-  $(@el).html(@template(heading: heading, title: title, message: message))
+Transit.errorPage = (title, message) =>
+  console.error "#{title} - #{message}"
+  $("#navigation").html(JST['templates/error'](title: title, message: message))
 
 # toggles appearance of the Settings menu via the gear button
 Transit.toggleMenu = () =>

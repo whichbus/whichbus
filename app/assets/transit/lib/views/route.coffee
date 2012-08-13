@@ -9,14 +9,13 @@ class Transit.Views.Route extends Backbone.View
 		@model.fetch
 			success: @render
 			error: (model, message) =>
-				Transit.errorMessage('Error Loading Route', message)
+				Transit.errorPage('Error Loading Route', message)
 		@trips = new Transit.Collections.Trips(@model)
 		@trips.fetch
 			success: @showTrips
 		# Transit.events.on 'route:complete', @render
 
 	render: =>
-		console.log window.model = @model, @model.get('polylines')
 		$(@el).html(@template(route: @model))
 		@polylines = Transit.map.create_multi_polyline(@model.get('polylines').split(','), '#025d8c')
 		Transit.map.addLayer @polylines

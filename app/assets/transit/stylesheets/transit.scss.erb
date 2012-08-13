@@ -200,9 +200,9 @@ header.blue {
   }
   .alert {
     margin: $sidebar_margin;
-    display: none;
     strong { display:block; }
   }
+  .alert:not(.show) { display: none; }
 }
 
 @media (max-width: 768px) {
