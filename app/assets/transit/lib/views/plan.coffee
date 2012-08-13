@@ -1,5 +1,7 @@
 class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
+  # el: "#navigation"
+  # tagName: 'div'
   className: 'plan'
 
   events:
@@ -10,23 +12,49 @@ class Transit.Views.Plan extends Backbone.View
   initialize: =>
     @map = Transit.map
     @map.on 'drag:end', @update_plan
-    Transit.events.on 'plan:complete', @add_itineraries
+
     @model.on 'geocode geolocate fetch', @fetch_plan
-    @model.on 'change:from change:to', @update_markers
     @model.on 'geocode:error', @geocode_error
+
+    # add markers and geocode locations once the map is finished.
+    # this event is triggered after loading OTP coverage boundaries which is used to bias geocoding results.
     Transit.map.on 'complete', =>
+      # create from/to markers, position will be updated later
+      Transit.map.addMarker 'from', 'Starting Point', new G.LatLng(), Transit.GMarkers.Start 
+      Transit.map.addMarker 'to', 'Ending Point', new G.LatLng(), Transit.GMarkers.End
+      # begin the geocoding process!
       @model.geocode_from_to(@options.from, @options.to)
 
   render: =>
     $(@el).html(@template(plan: @model))
     this
 
+  # update the plan when markers are dragged
   update_plan: =>
     console.log "UPDATING PLAN..."
+    # set the model from/to locations from the marker positions
     @model.set
-      from: @map.get('from')
-      to: @map.get('to')
+      from: @map.get('from').position.toHash()
+      to: @map.get('to').position.toHash()
+    # then load the new plan
     @model.trigger 'fetch'
+
+  fetch_plan: =>
+    @render()
+    # move the from/to markers to geocoded locations
+    Transit.map.moveMarker 'from', @model.get('from')
+    Transit.map.moveMarker 'to', @model.get('to')
+    # fetch the new plan from OTP
+    @model.fetch
+      success: @add_itineraries
+      error: (model, message) =>
+        @$('.progress').hide()
+        Transit.errorMessage('Whoops, something went wrong!', message)
+
+  geocode_error: (message) =>
+    @$('.progress').hide()
+    Transit.errorMessage("Sorry, don't know that place.", message)
+
 
   display_trip_options: =>
     @$('.trip-options').slideToggle()
@@ -42,36 +70,14 @@ class Transit.Views.Plan extends Backbone.View
     # TODO: See if this can be bound to a model date change event.
     @model.trigger 'fetch'
 
-  update_markers: =>
-    @map.set
-      from: _.pick(@model.get('from'), 'lat', 'lon')
-      to: _.pick(@model.get('to'), 'lat', 'lon')
-
-
-  geocode_error: (message) =>
-    @$('.progress').hide()
-    Transit.errorMessage("Sorry, don't know that place.", message)
-
-
-  fetch_plan: =>
-    @render()
-    @model.fetch
-      success: (plan) ->
-        Transit.events.trigger 'plan:complete', plan
-      error: (model, message) =>
-        @$('.progress').hide()
-        Transit.errorMessage('Whoops, something went wrong!', message)
-
 
   add_itineraries: (plan) =>
-    window.plan = plan
-    console.log plan
+    # reset UI, set title of directions
     @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
     @$('.progress').hide()
     @$('.itineraries').html('')
     plan.get('itineraries').each (trip, index) =>
       trip.set('index', index + 1)
-      console.log trip
       view = new Transit.Views.Itinerary
         model: trip
         index: index
@@ -84,7 +90,6 @@ class Transit.Views.Plan extends Backbone.View
 
 
   fit_bounds: =>
-    console.log "fitting bounds..."
     if @map.get('fit_bounds')
       bounds = new google.maps.LatLngBounds()
       for leg in @model.get('itineraries').first().get('legs')
