@@ -35,8 +35,6 @@ class Transit.Models.Plan extends Backbone.Model
     numItineraries: @get('desired_itineraries')
 
   geocode_from_to: (from_query, to_query) =>
-    Transit.geocode to_query, (sup) ->
-      console.log sup
     # TODO: It would be nice to batch this instead of doing 2 queries.
     Transit.geocode unescape(from_query), (from) =>
       Transit.geocode unescape(to_query), (to) =>
