@@ -61,13 +61,16 @@ class Transit.Views.Plan extends Backbone.View
         @$('.progress').hide()
         Transit.errorMessage('Whoops, something went wrong!', message)
 
+  reset: =>
+    @$('.progress').hide()
+    @$('.itineraries').html('')
+    Transit.errorMessage(null)  # clear the error message
 
   add_itineraries: (plan) =>
+    @reset()
     window.plan = plan
     console.log plan
     @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
-    @$('.progress').hide()
-    @$('.itineraries').html('')
     plan.get('itineraries').each (trip, index) =>
       trip.set('index', index + 1)
       console.log trip
