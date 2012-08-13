@@ -50,6 +50,9 @@ class Transit.Models.Map extends Backbone.Model
       # trigger a single custom event when from and/or to change
       @trigger 'change:markers'
 
+  latlng: (lat, lng) ->
+    new L.LatLng(lat, lng)
+
   create_polyline: (points, color) ->
     points = decodeLine(points)
     latlngs = (new L.LatLng(point[0], point[1]) for point in points)

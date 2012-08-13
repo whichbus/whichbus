@@ -2,5 +2,5 @@ class Transit.Views.Map extends Backbone.View
   el: 'div#map'
 
   initialize: =>
-    Transit.map = new Transit.Models.Map(element: @el)
+    Transit.map = new Transit.Models.GoogleMap(element: @el)
 

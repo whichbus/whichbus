@@ -29,13 +29,13 @@ class Transit.Views.Itinerary extends Backbone.View
 			@$('.segments').append(view.render().el)
 			# render the segment's polyline
 			poly = Transit.map.create_polyline(leg.legGeometry.points, @segmentColors[leg.mode] ? '#1693a5')
-			poly.setMap(Transit.map.map)
+			# Transit.map.addLayer poly
 			@plan_route.push(poly)
 
 	clean_up: =>
 		for line in @plan_route
-			line.setMap(null)
+			Transit.map.removeLayer line
 
 	render_map: =>
 		for line in @plan_route
-			line.setMap(Transit.map.map)
+			Transit.map.addLayer line

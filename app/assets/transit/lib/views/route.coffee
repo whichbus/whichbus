@@ -16,17 +16,18 @@ class Transit.Views.Route extends Backbone.View
 		# Transit.events.on 'route:complete', @render
 
 	render: =>
+		console.log window.model = @model, @model.get('polylines')
 		$(@el).html(@template(route: @model))
 		@polylines = Transit.map.create_multi_polyline(@model.get('polylines').split(','), '#025d8c')
-		Transit.map.map.addLayer(@polylines)
+		Transit.map.addLayer @polylines
 
-		@stopMarkers = new L.LayerGroup()
-		stopLatlngs = []
+		@stopMarkers = []
 		for stop in @model.get('stops')
-			stopLatlngs.push pos = new L.LatLng(stop['lat'], stop['lon'])
-			@stopMarkers.addLayer(Transit.map.create_marker(stop['name'], pos, Transit.Markers.StopDot))
-		Transit.map.map.fitBounds(new L.LatLngBounds(stopLatlngs))
-		Transit.map.map.addLayer(@stopMarkers)
+			pos = new G.LatLng(stop['lat'], stop['lon'])
+			@stopMarkers.push Transit.map.create_marker(stop['name'], pos, Transit.GMarkers.StopDot, false)
+			if bounds? then bounds.extend(pos) else bounds = new G.LatLngBounds(pos) 
+		Transit.map.map.fitBounds(bounds)
+		Transit.map.addLayer(@stopMarkers)
 		this
 
 	showTrips: =>

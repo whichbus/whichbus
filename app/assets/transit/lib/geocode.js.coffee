@@ -44,13 +44,23 @@ Transit.nominatum_geocode = (query, callback) ->
     navigator.geolocation.getCurrentPosition (position) ->
       callback(lat: position.coords.latitude.toFixed(7), lon: position.coords.longitude.toFixed(7))
 
+geocoder = new google.maps.Geocoder()
 Transit.geocode = (query, callback) ->
-  # TODO: No localStorage or any optimizations from the above used yet
-  geocoder = new google.maps.Geocoder()
-  geocoder.geocode 'address': query, (results, status) ->
-    if status == google.maps.GeocoderStatus.OK
-      return callback
-        lat: results[0].geometry.location['Xa']
-        lon: results[0].geometry.location['Ya']
-    else
-      console.log "Failed to geocode #{query}: #{status}"
+  # if query exists and is not the string "here"...
+  if query? and query != "here"
+    # TODO: No localStorage or any optimizations from the above used yet
+    console.log "geocoding bounds: #{Transit.map.get('coverage').toString()}"
+    
+    geocoder.geocode {address: unescape(query), bounds: Transit.map.get('coverage') }, (results, status) ->
+      if status == google.maps.GeocoderStatus.OK
+        console.log "GEOCODE RESULTS:", results
+        return callback
+          address: results[0].formatted_address
+          lat: results[0].geometry.location.lat()
+          lon: results[0].geometry.location.lng()
+      else
+        console.log "Failed to geocode #{query}: #{status}"
+  # if query does not exist then use current position
+  else
+    navigator.geolocation.getCurrentPosition (position) ->
+      callback(lat: position.coords.latitude.toFixed(7), lon: position.coords.longitude.toFixed(7))

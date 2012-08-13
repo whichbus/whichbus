@@ -38,7 +38,6 @@ class Transit.Router extends Backbone.Router
     map = new Transit.Views.Map()
 
     stop = new Transit.Views.Stop(model: new Transit.Models.Stop(id: id, agency: id, code: code))
-    @view.$('#navigation').append(stop.render().el)
 
   showRoute: (id, code) ->
     console.log code
@@ -46,4 +45,3 @@ class Transit.Router extends Backbone.Router
     map = new Transit.Views.Map()
 
     route = new Transit.Views.Route(model: new Transit.Models.Route(id: id, agency: id, code: code))
-    @view.$('#navigation').append(route.render().el)
