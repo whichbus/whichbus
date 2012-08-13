@@ -19,10 +19,6 @@ class Transit.Models.GoogleMap extends Backbone.Model
       # zoomControlOptions:
       #   style: google.maps.ZoomControlStyle.DEFAULT
     @map = new G.Map(document.getElementById('map'), mapOptions)
-
-    #@map.attributionControl.setPrefix('')
-
-    # @on 'change:south_west change:north_east', @set_max_bounds
     @on 'change:from change:to', @update_markers
     @fetch()
 
@@ -91,10 +87,10 @@ class Transit.Models.GoogleMap extends Backbone.Model
     console.log "new marker: #{key} => #{name}", marker
 
     # update location after the drag, trigger a drag event on a drag
-    google.maps.event.addListener marker, 'dragstart', =>
+    G.event.addListener marker, 'dragstart', =>
       @trigger "drag:start drag:start:#{key}"
 
-    google.maps.event.addListener marker, 'dragend', =>
+    G.event.addListener marker, 'dragend', =>
       # @set(key, lat: marker.getPosition().lat(), lon: marker.getPosition().lng())
       @trigger "drag:end drag:end:#{key}"
 
