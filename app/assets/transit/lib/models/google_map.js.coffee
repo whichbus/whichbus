@@ -1,5 +1,8 @@
 window.G = google.maps
 
+G.LatLng.prototype.toArray = () -> [@lat(), @lng()]
+G.LatLng.prototype.toHash = () -> lat: @lat(), lon: @lng()
+
 class Transit.Models.GoogleMap extends Backbone.Model
   urlRoot: '/api/otp/metadata'
 
@@ -8,18 +11,16 @@ class Transit.Models.GoogleMap extends Backbone.Model
 
   initialize: (attributes) =>
     mapOptions =
-      center: new google.maps.LatLng(47.62167, -122.349072)
+      center: new G.LatLng(47.62167, -122.349072)
       zoom: 13
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-      zoomControl: true
-      zoomControlOptions:
-        style: google.maps.ZoomControlStyle.DEFAULT
-    @map = new google.maps.Map(document.getElementById('map'), mapOptions)
+      mapTypeId: G.MapTypeId.ROADMAP
+      disableDefaultUI: true
+      # zoomControl: true
+      # zoomControlOptions:
+      #   style: google.maps.ZoomControlStyle.DEFAULT
+    @map = new G.Map(document.getElementById('map'), mapOptions)
 
     #@map.attributionControl.setPrefix('')
-
-    @addLayer @create_marker 'from', @latlng(0, 0), Transit.GMarkers.Start 
-    @addLayer @create_marker 'to', @latlng(0, 0), Transit.GMarkers.End
 
     # @on 'change:south_west change:north_east', @set_max_bounds
     @on 'change:from change:to', @update_markers
@@ -34,7 +35,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
 
   update_marker: (attribute) =>
     marker_name = "#{attribute}_marker"
-    point = @latlng(@get(attribute).lat, @get(attribute).lon)
+    point = new G.LatLng(@get(attribute).lat, @get(attribute).lon)
     if not @has(marker_name)
       # marker hasn't been added to the map yet, create it
       @create_marker(attribute, point, Transit.GMarkers.Start)
@@ -51,49 +52,79 @@ class Transit.Models.GoogleMap extends Backbone.Model
     # trigger a single custom event when from and/or to change
     @trigger 'change:markers'
 
-  latlng: (lat, lng) ->
-    new google.maps.LatLng(lat, lng)
+  latlng: (lat, lng) -> new G.LatLng(lat, lng)
 
-  create_polyline: (points, color) ->
-    points = google.maps.geometry.encoding.decodePath(points)
-    new google.maps.Polyline
+  # creates a polyline with the set of points and given color
+  create_polyline: (points, color = '#000', weight = 5, opacity = 0.8) ->
+    points = G.geometry.encoding.decodePath(points)
+    new G.Polyline
       path: points,
       strokeColor: color,
-      strokeOpacity: 0.8,
-      strokeWeight: 5
+      strokeWeight: weight,
+      strokeOpacity: opacity
 
+  # creates an array of polylines for each set of points in the given array
   create_multi_polyline: (polylinesArray, color) ->
     polylines = []
     for poly in polylinesArray
       polylines.push @create_polyline(poly, color)
     polylines
 
+  # create a marker with the five most common options
   create_marker: (name, position, icon, draggable=true, clickable=false) ->
-    marker = new google.maps.Marker
+    marker = new G.Marker
       title: name
       position: position
       clickable: clickable
       draggable: draggable
       icon: icon
-      # map: @map
-    console.log "new marker #{name}", marker 
-    # update location after the drag, trigger a drag event on a drag
-    google.maps.event.addListener marker, 'dragstart', =>
-      @trigger "drag drag:start drag:start:#{name}"
-    google.maps.event.addListener marker, 'dragend', =>
-      @set(name, lat: marker.getPosition().lat(), lon: marker.getPosition().lng())
-      @trigger "drag drag:end drag:end:#{name}"
-    # add marker to map and model
-    # @map.addLayer(marker)
-    @set "#{name}_marker", marker, silent: true
+    # do not add marker to the map yet, that's what @addLayer is for
     return marker
 
+  # creates marker, saves it in the map's attributes using the key, and adds it to the map.
+  # also adds dragstart and dragend events that trigger drag:event:key Backbone events.
+  addMarker: (key, name, position, icon, draggable=true, clickable=false) ->
+    marker = @create_marker name, position, icon, draggable, clickable
+    @set key, marker, silent: true
+    @addLayer marker
+
+    console.log "new marker: #{key} => #{name}", marker
+
+    # update location after the drag, trigger a drag event on a drag
+    google.maps.event.addListener marker, 'dragstart', =>
+      @trigger "drag:start drag:start:#{key}"
+
+    google.maps.event.addListener marker, 'dragend', =>
+      # @set(key, lat: marker.getPosition().lat(), lon: marker.getPosition().lng())
+      @trigger "drag:end drag:end:#{key}"
+
+  # moves the marker with the given key to the given position.
+  # accept many formats of position: G.LatLng, array [lat, lon], hash {lat:?, lon:?}
+  moveMarker: (key, position) ->
+    marker = @get key
+    if position instanceof G.LatLng
+      marker.setPosition(position)
+    else if _.isArray position
+      marker.setPosition new G.LatLng(position[0], position[1])
+    else
+      marker.setPosition new G.LatLng(position.lat, position.lon)
+
+  # remove marker from map and delete from attributes, then return it.
+  removeMarker: (key) ->
+    marker = @get key
+    if marker?
+      @unset key
+      @removeLayer marker
+      marker
+
+  # adds an item or array of items to the map
   addLayer: (mapLayer) ->
     if _.isArray mapLayer
       item.setMap @map for item in mapLayer
     else
       mapLayer.setMap @map
 
+  # removes an item or array of items from the map
   removeLayer: (mapLayer) ->
     if _.isArray mapLayer
       item.setMap null for item in mapLayer
