@@ -13,6 +13,8 @@ class Transit.Views.Route extends Backbone.View
 		@trips = new Transit.Collections.Trips(@model)
 		@trips.fetch
 			success: @showTrips
+
+		@tripTimer = setInterval (=> @trips.fetch(success: @showTrips)), 30000
 		# Transit.events.on 'route:complete', @render
 
 	render: =>
@@ -23,13 +25,18 @@ class Transit.Views.Route extends Backbone.View
 		@stopMarkers = []
 		for stop in @model.get('stops')
 			pos = new G.LatLng(stop['lat'], stop['lon'])
-			@stopMarkers.push Transit.map.create_marker(stop['name'], pos, Transit.GMarkers.StopDot, false)
+			@stopMarkers.push Transit.map.create_marker(stop['name'], pos, Transit.GMarkers.StopDot, false, true)
 			if bounds? then bounds.extend(pos) else bounds = new G.LatLngBounds(pos) 
 		Transit.map.map.fitBounds(bounds)
 		Transit.map.addLayer(@stopMarkers)
 		this
 
 	showTrips: =>
-		list = $("#trips")
+		list = $("#trips").html('')
 		@trips.forEach (item) =>
 			list.append(@tripTemplate(trip: item))
+			key = "vehicle#{item.get('vehicleId')}"
+			pos = Transit.map.latlng item.get('position')
+			if Transit.map.hasMarker key then Transit.map.moveMarker key, pos
+			else Transit.map.addMarker key, "Vehicle #{item.get('vehicleId')}", pos, Transit.GMarkers.Bus, false, true, G.Animation.DROP
+
