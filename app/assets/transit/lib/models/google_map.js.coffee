@@ -9,16 +9,18 @@ class Transit.Models.GoogleMap extends Backbone.Model
   defaults:
     fit_bounds: true
 
-  initialize: (attributes) =>
+  initialize: ->
     mapOptions =
       center: new G.LatLng(47.62167, -122.349072)
       zoom: 13
       mapTypeId: G.MapTypeId.ROADMAP
-      disableDefaultUI: true
-      # zoomControl: true
-      # zoomControlOptions:
-      #   style: google.maps.ZoomControlStyle.DEFAULT
-    @map = new G.Map(document.getElementById('map'), mapOptions)
+      mapTypeControl: false
+      streetViewControl: false
+      zoomControl: true
+      zoomControlOptions:
+        style: google.maps.ZoomControlStyle.DEFAULT
+    @map = new G.Map(@get('el'), mapOptions)
+    
     @on 'change:from change:to', @update_markers
     @fetch()
 
@@ -48,7 +50,13 @@ class Transit.Models.GoogleMap extends Backbone.Model
     # trigger a single custom event when from and/or to change
     @trigger 'change:markers'
 
-  latlng: (lat, lng) -> new G.LatLng(lat, lng)
+  latlng: (param) -> 
+    # create as an array [lat, lon]
+    if _.isArray param then new G.LatLng param[0], param[1]
+    # or as a hash { lat:?, lon:? }
+    else if _.isObject param then new G.LatLng param.lat, param.lon
+    # or as two parameters latlng(lat, lon)
+    else new G.LatLng(arguments[0], arguments[1] ? arguments[0])
 
   # creates a polyline with the set of points and given color
   create_polyline: (points, color = '#000', weight = 5, opacity = 0.8) ->
@@ -75,13 +83,14 @@ class Transit.Models.GoogleMap extends Backbone.Model
       draggable: draggable
       icon: icon
     # do not add marker to the map yet, that's what @addLayer is for
-    return marker
+    marker
 
   # creates marker, saves it in the map's attributes using the key, and adds it to the map.
   # also adds dragstart and dragend events that trigger drag:event:key Backbone events.
-  addMarker: (key, name, position, icon, draggable=true, clickable=false) ->
+  addMarker: (key, name, position, icon, draggable=true, clickable=false, animation) ->
     marker = @create_marker name, position, icon, draggable, clickable
     @set key, marker, silent: true
+    marker.setAnimation(animation) if animation? 
     @addLayer marker
 
     console.log "new marker: #{key} => #{name}", marker
@@ -93,6 +102,8 @@ class Transit.Models.GoogleMap extends Backbone.Model
     G.event.addListener marker, 'dragend', =>
       # @set(key, lat: marker.getPosition().lat(), lon: marker.getPosition().lng())
       @trigger "drag:end drag:end:#{key}"
+
+    marker
 
   # moves the marker with the given key to the given position.
   # accept many formats of position: G.LatLng, array [lat, lon], hash {lat:?, lon:?}
@@ -112,6 +123,8 @@ class Transit.Models.GoogleMap extends Backbone.Model
       @unset key
       @removeLayer marker
       marker
+
+  hasMarker: (key) -> @get(key)?
 
   # adds an item or array of items to the map
   addLayer: (mapLayer) ->

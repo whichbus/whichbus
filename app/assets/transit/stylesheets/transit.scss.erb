@@ -35,7 +35,8 @@ $navbar_height: 40px;
 $title_height: 30px;
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
-$map_height: 150px;
+$map_height_phone: 150px;
+$map_height_tablet: 260px;
 $borderRadius: 7px;
 
 body {
@@ -81,6 +82,16 @@ body > .container-fluid, #container {
   }
   img {
     max-width: none;
+  }
+
+  @media (max-width: 768px) {
+    top: $navbar_height + $title_height;
+    left: 0;
+    height: $map_height_tablet;
+  }
+
+  @media (max-width: 480px) {
+    height: $map_height_phone;
   }
 }
 
@@ -203,26 +214,24 @@ header.blue {
     strong { display:block; }
   }
   .alert:not(.show) { display: none; }
-}
 
-@media (max-width: 768px) {
-  #map {
-    top: $navbar_height + $title_height;
-    left: 0;
-    height: $map_height;
-  }
-  .leaflet-control-attribution {
-    font-size: 9px;
-  }
-  #navigation {
-    margin-top: $map_height + $title_height;
+  @media (max-width: 768px) {
+    margin-top: $title_height + $map_height_tablet;
     width: 100%;
 
+    #title { 
+      position: absolute;
+      top: $navbar_height;
+      left:0; right: 0;
+    }
+
+    .leaflet-control-attribution {
+      font-size: 9px;
+    }
   }
-  #navigation #title { 
-    position: absolute;
-    top: $navbar_height;
-    left:0; right: 0;
+
+  @media (max-width: 480px) {
+    margin-top: $title_height + $map_height_phone;
   }
 }
 

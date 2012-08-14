@@ -83,10 +83,11 @@ Transit.toggleMenu = () =>
   $('#settings-button').toggleClass('active')
 
 Transit.GMarkers =
-  Start: '<%= image_path("icons/icon-start-location.png") %>'
-  End: '<%= image_path("icons/icon-end-location.png") %>'
+  Start: new G.MarkerImage('<%= image_path("icons/icon-start-location.png") %>', new G.Size(33, 35), new G.Point(0, 0), new G.Point(11, 35))
+  End: new G.MarkerImage('<%= image_path("icons/icon-end-location.png") %>', new G.Size(33, 35), new G.Point(0, 0), new G.Point(11, 35))
   Stop: '<%= image_path("icons/icon-busstop.png") %>'
-  StopDot: '<%= image_path("icons/icon-stopdot.png") %>'
+  StopDot: new G.MarkerImage('<%= image_path("icons/bus/busstop-stopdot.png") %>', new G.Size(17, 17), new G.Point(0, 0), new G.Point(6, 6), new G.Size(12, 12))
+  Bus: '<%= image_path("icons/icon-busstop.png") %>'
 
 # Transit.Markers =
 #  Start: L.Icon.extend
