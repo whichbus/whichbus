@@ -14,7 +14,61 @@ $navbarBackgroundHighlight: $wbGreen;
 $linkColor: $wbBlueDark;
 $linkColorHover: darken($wbBlue, 5%);
 
-@import "bootstrap";
+
+// Core variables and mixins
+@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/mixins";
+
+// CSS Reset
+@import "bootstrap/reset";
+
+// Grid system and page structure
+@import "bootstrap/scaffolding";
+@import "bootstrap/grid";
+@import "bootstrap/layouts";
+
+// Base CSS
+@import "bootstrap/type";
+//@import "bootstrap/code";
+@import "bootstrap/forms";
+@import "bootstrap/tables";
+
+// Components: common
+//@import "bootstrap/sprites";
+@import "bootstrap/dropdowns";
+@import "bootstrap/wells";
+@import "bootstrap/component-animations";
+@import "bootstrap/close";
+
+// Components: Buttons & Alerts
+@import "bootstrap/buttons";
+@import "bootstrap/button-groups";
+@import "bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+//@import "bootstrap/breadcrumbs";
+//@import "bootstrap/pagination";
+//@import "bootstrap/pager";
+
+// Components: Popovers
+@import "bootstrap/modals";
+@import "bootstrap/tooltip";
+//@import "bootstrap/popovers";
+
+// Components: Misc
+//@import "bootstrap/thumbnails";
+@import "bootstrap/labels-badges";
+@import "bootstrap/progress-bars";
+@import "bootstrap/accordion";
+//@import "bootstrap/carousel";
+//@import "bootstrap/hero-unit";
+
+// Utility classes
+@import "bootstrap/utilities"; // Has to be last to override when necessary
+
+
 
 /* Open Sans Font as requested by @paigepauli */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600,700);
@@ -348,8 +402,9 @@ header.blue {
     border-top: 1px solid #bfbfbf;
   }
 
-  li img {
-    margin-left:10px;
+  li i {
+    font-size: 1.4em;
+    color: #bbb;
   }
 
   li span {
@@ -411,6 +466,7 @@ header.blue {
     input.location {
       @include size(43px, 98%);
       @include border-radius($borderRadius 0 0 $borderRadius);
+      border: 1px solid #adaca1;
       margin: 0;
       padding: 0 1%;
       font-size: 18px;
@@ -420,7 +476,7 @@ header.blue {
     button.geolocate {
       @include size(45px, 47px);
       margin-left: -1px;
-      border: 1px solid #ADACA1;
+      border: 1px solid #adaca1;
       @include border-radius(0 $borderRadius $borderRadius 0);
     }
   }
@@ -491,19 +547,26 @@ header.blue {
   @include square(34px);
   @include stretch(3px, 5px, false, false);
   cursor: pointer;
-  background: url('<%= image_path("icons/icon-settings.png") %>') no-repeat center;
+  font-size: 2em;
+  line-height: 1.3em;
+  text-decoration: none;
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.settings:hover {
+  color: white;
 }
 
 .favorite {
   @include size(15px, 20px);
   float: right;
   margin-top: 6px;
-  background: url('<%= image_path("icons/icon-favorite.png") %>') no-repeat;
+  font-size: 1.5em;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .favorite.active, .favorite:hover {
-  background-position: 0 -15px;
+  color: #a40802;
 }
-.favorite.active:hover { background-position: 0 0; }
 
 .disabled { color: #aaa; text-shadow: none; }
 
