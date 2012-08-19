@@ -1,7 +1,9 @@
 <li class="arrival">
-	<span class="badge badge-inverse"><%= @arrival.get('routeShortName') %></span> 
-	at <%= Transit.format_time @arrival.arrivalTime() %> 
-	<span class="label <%= Transit.deviation_class(@arrival.deviation()) %> pull-right">
+	<span class="timing pull-right">
+		<span class="duration label"><%= Transit.format_time @arrival.arrivalTime() %></span><br/>
+		<span class="label <%= Transit.deviation_class(@arrival.deviation()) %>">
 		<%= Transit.format_deviation(@arrival.deviation()) or 'scheduled' %>
 	</span>
+	</span>
+	<span class="btn btn-route"><%= @arrival.get('routeShortName') %></span> <%= @arrival.get('tripHeadsign') %>
 </li>

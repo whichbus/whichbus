@@ -212,10 +212,15 @@ header.blue {
   }
 
   // .routes { margin: $sidebar_margin; }
-  .routes li { 
-    float: left;
-    margin: 5px 5px 0 0;
+  .routes {
+    padding-left: $sidebar_margin;
+    padding-right: $sidebar_margin;
+    li { 
+      float: left;
+      margin: $sidebar_margin/2 $sidebar_margin/2 0 0;
+    }
   }
+  .routes.collapse.in { padding-bottom: $sidebar_margin /2 }
 
   .itinerary {
     margin: 0px 0;
@@ -229,13 +234,6 @@ header.blue {
   
   .trip {
     padding: 8px $sidebar_margin;
-    .timing { 
-      display: block;
-      text-align: right;
-      .label { 
-        display: inline-block; 
-        margin-bottom: 2px;}
-    }
   }
 
   .segments { z-index: 0; }
@@ -259,6 +257,14 @@ header.blue {
       width: 100%;
       @include gradient-striped(#86bdcf, -45deg);
     }
+  }
+  
+  .timing { 
+    display: block;
+    text-align: right;
+    .label { 
+      display: inline-block; 
+      margin-bottom: 2px;}
   }
   .real-time {
     display: none;
