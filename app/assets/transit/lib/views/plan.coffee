@@ -73,6 +73,7 @@ class Transit.Views.Plan extends Backbone.View
 
   add_itineraries: (plan) =>
     # reset UI, set title of directions
+    console.log "Plan completed", plan
     @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
     @$('.progress').hide()
     @$('.itineraries').html('')

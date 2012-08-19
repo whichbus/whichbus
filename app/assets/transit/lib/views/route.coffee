@@ -25,7 +25,7 @@ class Transit.Views.Route extends Backbone.View
 		@stopMarkers = []
 		for stop in @model.get('stops')
 			pos = new G.LatLng(stop['lat'], stop['lon'])
-			@stopMarkers.push Transit.map.create_marker(stop['name'], pos, Transit.GMarkers.StopDot, false, true)
+			@stopMarkers.push Transit.map.create_marker(stop['name'] + " (#{stop['direction']})", pos, Transit.GMarkers.StopDot, false, true)
 			if bounds? then bounds.extend(pos) else bounds = new G.LatLngBounds(pos) 
 		Transit.map.map.fitBounds(bounds)
 		Transit.map.addLayer(@stopMarkers)

@@ -22,7 +22,10 @@ Transit.format_otp_time = (input) ->
   padded_seconds = "#{if seconds < 10 then '0' else ''}#{seconds}"
   "#{hours}:#{padded_minutes}:#{padded_seconds}"
 
-Transit.format_duration = (seconds, minimize=false) ->
+Transit.format_duration = (seconds, minimize) ->
+  # if no second parameter specified then auto-minimize if time > 1 hour
+  minimize = seconds > 3600 unless minimize?
+
   return "NOW!" if seconds < 60 and not minimize
   mins = Math.floor(seconds / 60)
   if mins > 59
@@ -88,7 +91,7 @@ Transit.GMarkers =
   Stop: '<%= image_path("icons/icon-busstop.png") %>'
   StopDot: new G.MarkerImage('<%= image_path("icons/bus/busstop-stopdot.png") %>', new G.Size(17, 17), new G.Point(0, 0), new G.Point(6, 6), new G.Size(12, 12))
   Bus: '<%= image_path("icons/icon-busstop.png") %>'
-
+    
 # Transit.Markers =
 #  Start: L.Icon.extend
 #    iconSize: new L.Point(33, 35)
