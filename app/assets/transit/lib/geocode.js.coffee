@@ -46,9 +46,9 @@ Transit.nominatum_geocode = (query, callback) ->
 
 geocoder = new google.maps.Geocoder()
 Transit.geocode = (query, callback) ->
-  query = unescape(query)
   # if query exists and is not the string "here"...
   if query? and query != "here"
+    query = unescape(query)
     geocode_storage = Transit.storage_get('geocode')
     
     # HACK SAUCE FISH PARTY! geocoder returns something ridiculous for 'space needle' w/o city
@@ -77,6 +77,8 @@ Transit.geocode = (query, callback) ->
           return callback geocoded
         else
           console.error "Failed to geocode #{query}: #{status}"
+          # callback with undefined parameter means there was an error
+          return callback()
   # if query does not exist then use current position
   else
     navigator.geolocation.getCurrentPosition (position) ->

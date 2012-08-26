@@ -273,10 +273,11 @@ header.blue {
     text-align: right;
     .label { 
       display: inline-block; 
-      margin-bottom: 2px;}
-  }
-  .real-time {
-    display: none;
+      margin-bottom: 2px;
+    }
+    .real-time {
+      display: none;
+    }
   }
   .alert {
     margin: $sidebar_margin;
@@ -428,10 +429,13 @@ header.blue {
     font-weight:600px;
     font-family: 'Open Sans', sans-serif;
     text-transform:uppercase;
-  }
-  li a 
+  } 
   #settings-list{
     background-color:#fff;
+
+    small.label.label-info{
+	margin-left:5px;
+    }
   }
 }
 
@@ -611,6 +615,7 @@ header.blue {
 }
 
 .btn.btn-go {
+  font-weight: bold; 
   border: 1px solid #5e9b99;
   @include shadow-black(0.25);
   @include gradientBar($wbBlue, $wbBlueDark);
