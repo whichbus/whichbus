@@ -6,7 +6,7 @@ class Transit.Views.Plan extends Backbone.View
 
   events:
     'click .go-back': 'go_to_splash'
-    'click header h3': 'display_trip_options'
+    'click header.options': 'display_trip_options'
     'submit .trip-options': 'change_trip_options'
 
   initialize: =>
@@ -61,7 +61,7 @@ class Transit.Views.Plan extends Backbone.View
 
 
   display_trip_options: =>
-    @$('.trip-options').slideToggle()
+    @$('#tripOptions').slideToggle()
 
   change_trip_options: (event) =>
     event.preventDefault()
@@ -87,10 +87,8 @@ class Transit.Views.Plan extends Backbone.View
         model: trip
         index: index
       @$('.itineraries').append(view.render().el)
-      # only render the first itinerary, disable mouse over events for it
-      if index == 0
-        view.undelegateEvents()
-        view.render_map()
+      # automatically show the first itinerary
+      view.render_map().toggle() if index == 0
     @fit_bounds()
 
 

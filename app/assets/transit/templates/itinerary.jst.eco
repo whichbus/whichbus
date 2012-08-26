@@ -1,9 +1,9 @@
 <header class="gray">
-	<h4 data-toggle="collapse" data-target="#trip<%= @index %>">
 	<i class="affordance icon-chevron-right"></i>
+	<h4 >
 		<span class="summary pull-right"><%- @trip.summaryHTML() %></span>
 		<%= @trip.timing() %><br/>
 		<small><%= @trip.duration() %></small>
 	</h4>
 </header>
-<ol class="segments collapse <%= 'in' if @index == 1 %>" id="trip<%= @index %>"></ol>
+<ol class="segments collapse" id="trip<%= @index %>"></ol>
