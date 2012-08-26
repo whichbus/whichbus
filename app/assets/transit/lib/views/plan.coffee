@@ -36,6 +36,10 @@ class Transit.Views.Plan extends Backbone.View
     @model.set
       from: @map.get('from').position.toHash()
       to: @map.get('to').position.toHash()
+    # update the url and history with new locations
+    from_url = @map.get('from').position.toUrlValue()
+    to_url = @map.get('to').position.toUrlValue()
+    Transit.router.navigate "plan/#{from_url}/#{to_url}"
     # then load the new plan
     @model.trigger 'fetch'
 
