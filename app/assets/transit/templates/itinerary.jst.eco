@@ -1,5 +1,6 @@
 <header class="gray">
 	<h4 data-toggle="collapse" data-target="#trip<%= @index %>">
+	<i class="affordance icon-chevron-right"></i>
 		<span class="summary pull-right"><%- @trip.summaryHTML() %></span>
 		<%= @trip.timing() %><br/>
 		<small><%= @trip.duration() %></small>
