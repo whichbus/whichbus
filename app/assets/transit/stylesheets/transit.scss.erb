@@ -208,9 +208,12 @@ header.blue {
     li {
       color: #565656;
       // height: 50px;
-      border-top: 1px solid #f3f3f3;
+      border-top: 1px solid #565656 * 2;
       border-bottom: 1px solid #ababab;
       @include gradient-vertical(#e1e0e0, #d2d2d2)
+    }
+    li:first-child {
+      border-top: 1px solid #f3f3f3;
     }
   }
 
@@ -233,8 +236,8 @@ header.blue {
   .routes.collapse.in { padding-bottom: $sidebar_margin /2 }
 
   .itinerary {
-    margin: 0px 0;
-    border-bottom: 1px solid $grayLight;
+    margin: 0;
+    border-bottom: 0;
     h4 {
       padding: 5px $sidebar_margin;
       cursor: pointer;
@@ -251,6 +254,12 @@ header.blue {
     @include clearfix();
     padding: 8px $sidebar_margin;
     // border-top: 1px dashed $tableBorder;
+  }
+  .segment {
+    border-top: 1px solid #f3f3f3;
+  }
+  li.segment:last-child {
+    border-bottom: 1px solid #ababab * 0.9;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
@@ -272,12 +281,14 @@ header.blue {
   .timing {
     display: block;
     text-align: right;
+
     .label {
       display: inline-block;
-      margin-bottom: 2px;}
-  }
-  .real-time {
-    display: none;
+      margin-bottom: 2px;
+    }
+    .real-time {
+      display: none;
+    }
   }
   .alert {
     margin: $sidebar_margin;
