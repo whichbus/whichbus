@@ -15,8 +15,8 @@ class Transit.Views.Splash extends Backbone.View
 
   go_to_plan: (event) =>
     event.preventDefault()
-    from = @$('#from_query').val()
-    to = @$('#to_query').val()
+    from = @$('#from_query').val().replace(/\s/g, '+')
+    to = @$('#to_query').val().replace(/\s/g, '+')
     if (to == null || to.length <= 3)
         @$('#to-location').addClass('btn-danger')
     else
