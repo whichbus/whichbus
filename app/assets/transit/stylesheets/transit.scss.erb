@@ -82,7 +82,7 @@ $linkColorHover: darken($wbBlue, 5%);
   @if $offset-top { top: $offset-top; }
   @if $offset-bottom { bottom: $offset-bottom; }
   @if $offset-left { left: $offset-left; }
-  @if $offset-right { right: $offset-right; } 
+  @if $offset-right { right: $offset-right; }
 }
 
 $navbar_height: 40px;
@@ -156,7 +156,7 @@ header {
   @include box-shadow(0 2px 4px rgba(0,0,0,0.25));
   @include shadow-black(0.25);
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600; 
+    font-weight: 600;
   }
 }
 header.red {
@@ -193,6 +193,16 @@ header.blue {
   width: $sidebar_width;
   float: left;
 
+
+  .subnav {
+    height:33px;
+
+    i {
+      vertical-align:middle;
+      font-size:22px;
+
+    }
+  }
   ol {
     z-index: -1;
     li {
@@ -218,7 +228,7 @@ header.blue {
   .routes {
     padding-left: $sidebar_margin;
     padding-right: $sidebar_margin;
-    li { 
+    li {
       float: left;
       margin: $sidebar_margin/2 $sidebar_margin/2 0 0;
     }
@@ -228,13 +238,13 @@ header.blue {
   .itinerary {
     margin: 0;
     border-bottom: 0;
-    h4 { 
-      padding: 5px $sidebar_margin; 
-      cursor: pointer; 
+    h4 {
+      padding: 5px $sidebar_margin;
+      cursor: pointer;
       small { color: lightgrey; }
     }
   }
-  
+
   .trip {
     padding: 8px $sidebar_margin;
   }
@@ -256,23 +266,24 @@ header.blue {
   }
   .segment .label {
     float: right;
-    margin-left: 5px;   
+    margin-left: 5px;
   }
 
   .progress-striped {
-    
+
     margin: $sidebar_margin;
-    .bar { 
+    .bar {
       width: 100%;
       @include gradient-striped(#86bdcf, -45deg);
     }
   }
-  
-  .timing { 
+
+  .timing {
     display: block;
     text-align: right;
-    .label { 
-      display: inline-block; 
+
+    .label {
+      display: inline-block;
       margin-bottom: 2px;
     }
     .real-time {
@@ -289,7 +300,7 @@ header.blue {
     margin-top: $title_height + $map_height_tablet;
     width: 100%;
 
-    #title { 
+    #title {
       position: absolute;
       top: $navbar_height;
       left:0; right: 0;
@@ -339,7 +350,7 @@ header.blue {
 
 #settings-button.settings.active{
   background-color:#9bd5d3;
-  border-radius:5px 5px 0px 0px; 
+  border-radius:5px 5px 0px 0px;
   background-position:center;
   width:34px;
   height:34px;
@@ -357,13 +368,13 @@ header.blue {
   font-size: 1.2em;
   border-radius: 10px 5px 5px 5px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.55);
-  overflow:auto; 
-  
+  overflow:auto;
 
-  #settings-title{    
+
+  #settings-title{
     //Not working just yet
     @include gradient-vertical(#9bd5d3, #5c9998);
-    border-bottom:#9d9d9d; 
+    border-bottom:#9d9d9d;
     height:32px;
     padding-top:14px;
     padding-left:16px;
@@ -429,7 +440,7 @@ header.blue {
     font-weight:600px;
     font-family: 'Open Sans', sans-serif;
     text-transform:uppercase;
-  } 
+  }
   #settings-list{
     background-color:#fff;
 
@@ -441,7 +452,7 @@ header.blue {
 
 //For the black background thing
 #settings-bg {
-  position: fixed; 
+  position: fixed;
   height: 100%;
   width: 100%;
   background: rgba(0,0,0,0.5);
@@ -469,11 +480,11 @@ header.blue {
   border: 1px solid #adaca1;
   background: url('<%= image_path("background/directions.png") %>') repeat #cdcabf;
 
-  h2 { 
+  h2 {
     font-weight: normal;
     text-align: center;
     margin: 20px auto 15px;
-    color: white; 
+    color: white;
     @include shadow-black(0.20);
   }
 
@@ -509,8 +520,8 @@ header.blue {
   .input-append {
     position: relative;
     height: 45px;
-    input, button { 
-      display: inline !important; 
+    input, button {
+      display: inline !important;
       float: none !important;
     }
   }
@@ -615,7 +626,7 @@ header.blue {
 }
 
 .btn.btn-go {
-  font-weight: bold; 
+  font-weight: bold;
   border: 1px solid #5e9b99;
   @include shadow-black(0.25);
   @include gradientBar($wbBlue, $wbBlueDark);
@@ -631,9 +642,9 @@ header.blue {
 
 // nice formatting for about and issues pages
 .about, .issues {
-  margin: 20px auto; 
+  margin: 20px auto;
   background-color:white;
-  color:#707070; 
+  color:#707070;
   @include border-radius(15px);
   h1 {
     text-align: center;
@@ -646,7 +657,7 @@ header.blue {
 
 // constrain the width of the issues google form
 .issues iframe {
-  margin: auto; 
+  margin: auto;
   display: block;
   max-width: 500px;
   width: 100%;
