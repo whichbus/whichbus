@@ -588,13 +588,7 @@ header.blue {
   }
 }
 
-.bus {
-  @include size(24px, 20px);
-  @include stretch(8px, false, false, 15px);
-  background: url('<%= image_path("icons/icon-bus.png") %>') no-repeat;
-}
-
-.settings {
+.settings, .bus {
   @include square(34px);
   @include stretch(3px, 5px, false, false);
   cursor: pointer;
@@ -604,8 +598,13 @@ header.blue {
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-.settings:hover {
+.settings:hover, .bus:hover {
   color: white;
+}
+.bus {
+  font-size: 1.9em;
+  line-height: 1.5em;
+  @include stretch(3px, false, false, 10px);
 }
 
 .favorite {
