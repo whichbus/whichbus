@@ -92,6 +92,7 @@ $sidebar_margin: 12px;
 $map_height_phone: 150px;
 $map_height_tablet: 260px;
 $borderRadius: 7px;
+$settings_menu_width: 230px;
 
 body {
   background: url('<%= image_path("background/background-stripes.png") %>') repeat #dcdcd7;
@@ -128,27 +129,7 @@ body > .container-fluid, #container {
   @include clearfix();
 }
 
-#map {
-  @include stretch($navbar_height, 0, 0, $sidebar_width);
-
-  a:hover {
-    border-bottom: none;
-  }
-  img {
-    max-width: none;
-  }
-
-  @media (max-width: 768px) {
-    top: $navbar_height + $title_height;
-    left: 0;
-    height: $map_height_tablet;
-  }
-
-  @media (max-width: 480px) {
-    height: $map_height_phone;
-  }
-}
-
+/* HEADER STYLES */
 header {
   padding: 0 $sidebar_margin;
   color: white;
@@ -180,7 +161,11 @@ header.blue {
   @include gradient-vertical(#93d2d0, #679a98);
 }
 
+////////
+/* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
+////////
 
+// title is at the top of the page with a fixed height. it contains an h3 for text
 #title {
   header {
     height: $title_height;
@@ -193,11 +178,55 @@ header.blue {
   }
 }
 
-#navigation {
+// then comes the map. on desktop the map is absolute positioned to fill the area to the
+// right of the sidebar. on phone/tablet it fits neatly between title and navigation.
+#map {
+  // stretch to fill the entire right side of the screen
+  @include stretch($navbar_height, 0, 0, $sidebar_width);
+
+  a:hover {
+    border-bottom: none;
+  }
+  img {
+    max-width: none;
+  }
+
+  @media (max-width: 768px) {
+    // fixed height, clear absolute positioning
+    @include size($map_height_tablet, 100%);
+    @include stretch();
+    position: relative;
+  }
+
+  @media (max-width: 480px) {
+    height: $map_height_phone;
+  }
+}
+
+// on desktop title and navigation fill the sidebar but no more
+#title, #navigation {
   min-width: 320px;
   width: $sidebar_width;
   float: left;
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+// requires absolute positioning on desktop to put it right below the title.
+#navigation {
+  position: absolute;
+  top: $navbar_height + $title_height + 1;
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+
+  @media (max-width: 768px) {
+    // but on mobile it's super easy relative layout
+    position: relative;
+    top: 0;
+  }
 
   .subnav {
     height:33px;
@@ -300,25 +329,6 @@ header.blue {
     strong { display:block; }
   }
   .alert:not(.show) { display: none; }
-
-  @media (max-width: 768px) {
-    margin-top: $title_height + $map_height_tablet;
-    width: 100%;
-
-    #title {
-      position: absolute;
-      top: $navbar_height;
-      left:0; right: 0;
-    }
-
-    .leaflet-control-attribution {
-      font-size: 9px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    margin-top: $title_height + $map_height_phone;
-  }
 }
 
 /*Pacifico Font setup for WhichBus */
@@ -374,6 +384,7 @@ header.blue {
   border-radius: 10px 5px 5px 5px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.55);
   overflow:auto;
+  width: $settings_menu_width;
 
   #settings-title{
     //Not working just yet
@@ -654,8 +665,9 @@ header.blue {
 }
 
 .btn.btn-stop {
-  padding: 1px 4px;
+  padding: 2px 5px;
   border-bottom: none;
+  vertical-align: baseline;
 }
 
 .btn.btn-go {
