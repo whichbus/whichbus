@@ -1,11 +1,3 @@
-<div class="subnav" id="title">
-	<header class="gray">
-		<span class="icon favorite">
-            <i class="icon-heart"></i>
-        </span>
-		<h3>loading...</h3>
-	</header>
-</div>
 <header class="blue options">
     <h3>
         <i class="icon-reorder pull-right"></i>
