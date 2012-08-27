@@ -29,6 +29,7 @@ class Transit.Models.Plan extends Backbone.Model
     date: Transit.format_otp_date(@get('date'))
     time: Transit.format_otp_time(@get('date'))
     arriveBy: @get('arrive_by')
+    console.log @get('from'), '=>', @get('to')
     fromPlace: "#{@get('from').lat},#{@get('from').lon}"
     toPlace: "#{@get('to').lat},#{@get('to').lon}"
     numItineraries: @get('desired_itineraries')

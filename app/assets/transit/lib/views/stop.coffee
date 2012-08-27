@@ -9,17 +9,18 @@ class Transit.Views.Stop extends Backbone.View
 		@model.fetch
 			success: @render
 			error: (model, message) =>
-				Transit.errorMessage('Error Loading Stop', message)
+				Transit.errorPage('Error Loading Stop', message)
 		@arrivals = new Transit.Collections.Arrivals(@model)
 		@arrivals.fetch
 			success: @showArrivals
-		# Transit.events.on 'route:complete', @render
 
 	render: =>
+		console.log @model
 		$(@el).html(@template(stop: @model))
-		stopLocation = new L.LatLng(@model.get('lat'), @model.get('lon'))
-		@marker = new L.Marker(stopLocation)
-		Transit.map.map.addLayer(@marker).setView(stopLocation, 16)
+		stopLocation = new G.LatLng(@model.get('lat'), @model.get('lon'))
+		@marker = Transit.map.create_marker @model.get('name'), stopLocation, Transit.GMarkers.Start, false
+		Transit.map.addLayer(@marker) 
+		Transit.map.map.panTo stopLocation
 		this
 
 	showArrivals: =>

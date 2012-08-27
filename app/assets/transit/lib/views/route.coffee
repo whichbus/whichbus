@@ -9,27 +9,34 @@ class Transit.Views.Route extends Backbone.View
 		@model.fetch
 			success: @render
 			error: (model, message) =>
-				Transit.errorMessage('Error Loading Route', message)
+				Transit.errorPage('Error Loading Route', message)
 		@trips = new Transit.Collections.Trips(@model)
 		@trips.fetch
 			success: @showTrips
+
+		@tripTimer = setInterval (=> @trips.fetch(success: @showTrips)), 30000
 		# Transit.events.on 'route:complete', @render
 
 	render: =>
 		$(@el).html(@template(route: @model))
 		@polylines = Transit.map.create_multi_polyline(@model.get('polylines').split(','), '#025d8c')
-		Transit.map.map.addLayer(@polylines)
+		Transit.map.addLayer @polylines
 
-		@stopMarkers = new L.LayerGroup()
-		stopLatlngs = []
+		@stopMarkers = []
 		for stop in @model.get('stops')
-			stopLatlngs.push pos = new L.LatLng(stop['lat'], stop['lon'])
-			@stopMarkers.addLayer(Transit.map.create_marker(stop['name'], pos, Transit.Markers.StopDot, false))
-		Transit.map.map.fitBounds(new L.LatLngBounds(stopLatlngs))
-		Transit.map.map.addLayer(@stopMarkers)
+			pos = new G.LatLng(stop['lat'], stop['lon'])
+			@stopMarkers.push Transit.map.create_marker(stop['name'] + " (#{stop['direction']})", pos, Transit.GMarkers.StopDot, false, true)
+			if bounds? then bounds.extend(pos) else bounds = new G.LatLngBounds(pos) 
+		Transit.map.map.fitBounds(bounds)
+		Transit.map.addLayer(@stopMarkers)
 		this
 
 	showTrips: =>
-		list = $("#trips")
+		list = $("#trips").html('')
 		@trips.forEach (item) =>
 			list.append(@tripTemplate(trip: item))
+			key = "vehicle#{item.get('vehicleId')}"
+			pos = Transit.map.latlng item.get('position')
+			if Transit.map.hasMarker key then Transit.map.moveMarker key, pos
+			else Transit.map.addMarker key, "Vehicle #{item.get('vehicleId')}", pos, Transit.GMarkers.Bus, false, true, G.Animation.DROP
+

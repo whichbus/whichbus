@@ -9,16 +9,19 @@ class Transit.Views.Itinerary extends Backbone.View
 	events:
 		'mouseover h4': 'render_map'
 		'mouseout h4': 'clean_up'
+		'click h4': 'toggle'
 
 	initialize: =>
 		Transit.map.on 'drag:start', @clean_up
 		Transit.events.on 'plan:complete', @clean_up
-		@plan_route = new L.LayerGroup()
+		@plan_route = []
 
 	render: =>
 		$(@el).html(@template({ trip: @model, index: @model.get('index') }))
 		@add_segments()
-		this
+		if @index == 0
+			@toggle()
+		@
 
 	add_segments: =>
 		for leg in @model.get('legs')
@@ -29,10 +32,23 @@ class Transit.Views.Itinerary extends Backbone.View
 			@$('.segments').append(view.render().el)
 			# render the segment's polyline
 			poly = Transit.map.create_polyline(leg.legGeometry.points, @segmentColors[leg.mode] ? '#1693a5')
-			@plan_route.addLayer(poly)
+			# Transit.map.addLayer poly
+			@plan_route.push(poly)
 
 	clean_up: =>
-		Transit.map.leaflet.removeLayer(@plan_route)
+		# leave polylines on map if this itinerary is active
+		return if $(@el).hasClass 'active'
+		for line in @plan_route
+			Transit.map.removeLayer line
+		@
 
-	render_map: =>	
-		Transit.map.leaflet.addLayer(@plan_route)
+	render_map: =>
+		for line in @plan_route
+			Transit.map.addLayer line
+		@
+
+	toggle: =>
+		# indicate that this itinerary is active
+		$(@el).toggleClass 'active'
+		@$('.affordance').toggleClass('icon-chevron-down').toggleClass('icon-chevron-right')
+		@$('.segments').collapse 'toggle'

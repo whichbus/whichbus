@@ -5,7 +5,7 @@ class Transit.Views.Application extends Backbone.View
   events:
     'click .icon.favorite': 'toggleFavorite'
     'click a.btn-route': 'niceNavigate'
-    'click a.stop': 'niceNavigate'
+    'click a.btn-stop': 'niceNavigate'
 
   render: =>
     $(@el).html(@template())
