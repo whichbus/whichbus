@@ -156,6 +156,8 @@ HTML.btn = (classes, text, href=null) ->
     HTML.link href, "btn #{classes}", text
   else
     HTML.span "btn #{classes}", text
+HTML.icon = (icon, classes) ->
+  HTML.tag '<i>', "icon-#{icon} #{classes}"
 # str() function returns outer HTML of tag and children as string
 # and enables the HTMLpers to be used in javascript templates through
 # eco's raw output tag
