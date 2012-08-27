@@ -229,6 +229,20 @@ header.subnav {
   }
 }
 
+// requires absolute positioning on desktop to put it right below the title.
+#navigation {
+  position: absolute;
+  top: $navbar_height + $title_height + 1;
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+
+  @media (max-width: 768px) {
+    // but on mobile it's super easy relative layout
+    position: relative;
+    top: 0;
+  }
+
 // requires absolute positioning for overflow scroll
 $nav_height_base: $navbar_height + $title_height + 1;
 #navigation {
