@@ -1,34 +1,67 @@
 class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
+  # el: "#navigation"
+  # tagName: 'div'
   className: 'plan'
 
   events:
     'click .go-back': 'go_to_splash'
-    'click header h3': 'display_trip_options'
+    'click header.options': 'display_trip_options'
     'submit .trip-options': 'change_trip_options'
 
   initialize: =>
     @map = Transit.map
     @map.on 'drag:end', @update_plan
-    Transit.events.on 'plan:complete', @add_itineraries
+
     @model.on 'geocode geolocate fetch', @fetch_plan
-    @model.on 'change:from change:to', @update_markers
     @model.on 'geocode:error', @geocode_error
-    Transit.events.on 'plan:complete', @fit_bounds
-    @model.geocode_from_to(@options.from, @options.to)
+
+    # add markers and geocode locations once the map is finished.
+    # this event is triggered after loading OTP coverage boundaries which is used to bias geocoding results.
+    Transit.map.on 'complete', =>
+      # create from/to markers, position will be updated later
+      Transit.map.addMarker 'from', 'Starting Point', new G.LatLng(), Transit.GMarkers.Start 
+      Transit.map.addMarker 'to', 'Ending Point', new G.LatLng(), Transit.GMarkers.End
+      # begin the geocoding process!
+      @model.geocode_from_to(@options.from, @options.to)
 
   render: =>
     $(@el).html(@template(plan: @model))
     this
 
+  # update the plan when markers are dragged
   update_plan: =>
+    console.log "UPDATING PLAN..."
+    # set the model from/to locations from the marker positions
     @model.set
-      from: @map.get('from')
-      to: @map.get('to')
+      from: @map.get('from').position.toHash()
+      to: @map.get('to').position.toHash()
+    # update the url and history with new locations
+    from_url = @map.get('from').position.toUrlValue()
+    to_url = @map.get('to').position.toUrlValue()
+    Transit.router.navigate "plan/#{from_url}/#{to_url}"
+    # then load the new plan
     @model.trigger 'fetch'
 
+  fetch_plan: =>
+    @render()
+    # move the from/to markers to geocoded locations
+    Transit.map.moveMarker 'from', @model.get('from')
+    Transit.map.moveMarker 'to', @model.get('to')
+    # fetch the new plan from OTP
+    @model.fetch
+      success: @add_itineraries
+      error: (model, message) =>
+        @$('.progress').hide()
+        Transit.errorMessage('Whoops, something went wrong!', message)
+
+  geocode_error: (message) =>
+    @$('.progress').hide()
+    Transit.errorMessage("Sorry, don't know that place.", message)
+
+
   display_trip_options: =>
-    @$('.trip-options').slideToggle()
+    @$('#tripOptions').slideToggle()
 
   change_trip_options: (event) =>
     event.preventDefault()
@@ -41,56 +74,34 @@ class Transit.Views.Plan extends Backbone.View
     # TODO: See if this can be bound to a model date change event.
     @model.trigger 'fetch'
 
-  update_markers: =>
-    @map.set
-      from: _.pick(@model.get('from'), 'lat', 'lon')
-      to: _.pick(@model.get('to'), 'lat', 'lon')
-
-
-  geocode_error: (message) =>
-    @$('.progress').hide()
-    Transit.errorMessage("Sorry, don't know that place.", message)
-
-
-  fetch_plan: =>
-    @render()
-    @model.fetch
-      success: (plan) ->
-        Transit.events.trigger 'plan:complete', plan
-      error: (model, message) =>
-        @$('.progress').hide()
-        Transit.errorMessage('Whoops, something went wrong!', message)
-
   reset: =>
     @$('.progress').hide()
     @$('.itineraries').html('')
     Transit.errorMessage(null)  # clear the error message
 
   add_itineraries: (plan) =>
+    # reset UI, set title of directions
+    console.log "Plan completed", plan
     @reset()
-    window.plan = plan
-    console.log plan
     @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
     plan.get('itineraries').each (trip, index) =>
       trip.set('index', index + 1)
-      console.log trip
       view = new Transit.Views.Itinerary
         model: trip
         index: index
-      # only render the first itinerary, disable mouse over events for it
-      if index == 0
-        view.undelegateEvents()
-        view.render_map()
       @$('.itineraries').append(view.render().el)
+      # automatically show the first itinerary
+      view.render_map().toggle() if index == 0
+    @fit_bounds()
 
 
   fit_bounds: =>
     if @map.get('fit_bounds')
-      point = (latlng) -> new L.LatLng(latlng[0], latlng[1])
-      points = (leg) -> _.map decodeLine(leg.legGeometry.points), point
-      legs = _.map @model.get('itineraries').first().get('legs'), points
-      bounds = new L.LatLngBounds(_.reduce legs, (a, b) -> a.concat(b))
-      @map.leaflet.fitBounds(bounds)
+      bounds = new google.maps.LatLngBounds()
+      for leg in @model.get('itineraries').first().get('legs')
+        for point in google.maps.geometry.encoding.decodePath(leg.legGeometry.points)
+          bounds.extend(point)
+      @map.map.fitBounds(bounds)
     @map.set 'fit_bounds': @map.defaults.fit_bounds?, { silent: true }
 
   go_to_splash: (event) =>

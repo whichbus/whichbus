@@ -34,13 +34,13 @@ class Transit.Models.Map extends Backbone.Model
 
   update_marker: (attribute) =>
     marker_name = "#{attribute}_marker"
-    point = new L.LatLng(@get(attribute).lat, @get(attribute).lon)
+    point = new google.maps.LatLng(@get(attribute).lat, @get(attribute).lon)
     if not @has(marker_name)
       # marker hasn't been added to the map yet, create it
       @create_marker(attribute, point, Transit.Markers.Start)
     else
       # marker is already on the map, update its location
-      @get(marker_name).setLatLng(point)
+      @get(marker_name).setPosition(point)
 
   update_markers: =>
     # create or update markers from given coordinates
@@ -49,6 +49,9 @@ class Transit.Models.Map extends Backbone.Model
       @update_marker('to') if @hasChanged('to')
       # trigger a single custom event when from and/or to change
       @trigger 'change:markers'
+
+  latlng: (lat, lng) ->
+    new L.LatLng(lat, lng)
 
   create_polyline: (points, color) ->
     points = decodeLine(points)
@@ -65,13 +68,12 @@ class Transit.Models.Map extends Backbone.Model
   create_marker: (name, position, icon, draggable=true, clickable=false) ->
     marker = new L.Marker(position, title: name, clickable: clickable, draggable: draggable, icon: new icon())
     # update location after the drag, trigger a drag event on a drag
-    marker.on 'dragstart', =>
-      @trigger "drag drag:start drag:start:#{name}"
-    marker.on 'dragend', =>
-      @set(name, lat: marker.getLatLng().lat, lon: marker.getLatLng().lng)
-      @trigger "drag drag:end drag:end:#{name}"
+    # TODO: leaflet event code
+    # google.maps.event.addListener marker, 'dragstart', =>
+    #   @trigger "drag drag:start drag:start:#{name}"
+    # google.maps.event.addListener marker, 'dragend', (event) =>
+    #   @set(name, lat: event.latLng.lat(), lon: event.latLng.lng())
+    #   @trigger "drag drag:end drag:end:#{name}"
     # add marker to map and model
-    # @map.addLayer(marker)
     @set "#{name}_marker", marker, silent: true
     return marker
-

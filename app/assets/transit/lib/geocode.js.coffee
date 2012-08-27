@@ -8,7 +8,7 @@
 # Provide a callback method that will be given an object containing 
 # keys 'lat' and 'lon' (and possibly other things, in the case of an address).
 
-Transit.geocode = (query, callback) ->
+Transit.nominatum_geocode = (query, callback) ->
   # if query exists and is not the string "here"...
   if query? and query != "here"
     query = unescape(query)
@@ -43,3 +43,46 @@ Transit.geocode = (query, callback) ->
   else
     navigator.geolocation.getCurrentPosition (position) ->
       callback(lat: position.coords.latitude.toFixed(7), lon: position.coords.longitude.toFixed(7))
+
+geocoder = new google.maps.Geocoder()
+Transit.geocode = (query, callback) ->
+  # if query exists and is not the string "here"...
+  if query? and query != "here"
+    query = unescape(query)
+    geocode_storage = Transit.storage_get('geocode')
+    
+    # HACK SAUCE FISH PARTY! geocoder returns something ridiculous for 'space needle' w/o city
+    if /space needle/i.test query then query = "space needle, seattle"
+
+    # if the query is already a lat,lon pair then simply use that as location
+    latLon = /^(-?\d+\.\d+),(-?\d+\.\d+)$/.exec(query)
+    if latLon?
+      callback({ lat: latLon[1], lon: latLon[2] })
+    # otherwise perform a quick storage lookup
+    else if geocode_storage[query]?
+      callback geocode_storage[query]
+    # finally, call the Google geocoding service
+    else  
+      geocoder.geocode {address: query, bounds: Transit.map.get('coverage') }, (results, status) ->
+        if status == google.maps.GeocoderStatus.OK
+          console.log "GEOCODE RESULTS (#{results.length}):", results
+          geocoded = 
+            address: results[0].formatted_address
+            lat: results[0].geometry.location.lat()
+            lon: results[0].geometry.location.lng()
+          # save to geocode storage
+          geocode_storage[query] = geocoded
+          Transit.storage_set('geocode', geocode_storage)
+          # process callback
+          return callback geocoded
+        else
+          console.error "Failed to geocode #{query}: #{status}"
+          # callback with undefined parameter means there was an error
+          return callback()
+  # if query does not exist then use current position
+  else
+    navigator.geolocation.getCurrentPosition (position) ->
+      callback
+        address: 'Current Location'
+        lat: position.coords.latitude.toFixed(7)
+        lon: position.coords.longitude.toFixed(7)

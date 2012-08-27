@@ -25,18 +25,17 @@
 	<div id="settings-list">
 		<ul>
 			<li id="settings-favorites" class="blocked">
-				<img src="<%= image_path 'icons/settings-favorites.png' %>">
+                <i class="icon-heart"></i>
 				<span>Favorites</span> 
-				<small class="label label-info">COMING SOON</small>
-			</li>
+				<small class="label label-info">COMING SOON</small></li>
 			<li class="blocked">
-				<img src="<%= image_path 'icons/settings-myaccount.png' %>">
+                <i class="icon-user"></i>
 				<span>My Account</span> 
 				<small class="label label-info">WAIT FOR IT</small>
 			</li>
 			<li>
 				<%= link_to '/about/issues' do %>
-					<img src="<%= image_path 'icons/settings-feedback.png' %>">
+                    <i class="icon-comment"></i>
 					<span>Send Us Feedback</span>
 				<% end %>
 			</li>
@@ -54,12 +53,16 @@
 		<div class="container-fluid whichbus-nav">
 			<a href="/" class="icon bus"></a>
 			<a id="whichbus" class="pacifico" alt="WhichBus" href="/">WhichBus</a>
-			<a id="settings-button" class="icon settings" onclick="Transit.toggleMenu()"></a>
+            <a id="settings-button" class="icon settings" onclick="Transit.toggleMenu()">
+              <i class="icon-cog"></i>
+            </a>
 		</div>
 	</div>
 </div>
 <%= yield %>
 
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDI_tGrmAMV4wPYDHCbkdOhpSCsYT8dBPI&sensor=true&libraries=geometry"></script>
 
 <%= javascript_include_tag "transit" %>
 
