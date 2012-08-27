@@ -19,8 +19,9 @@ class Transit.Views.Nearby extends Backbone.View
 		google.maps.event.addListener Transit.map.map, 'zoomend', => @update()
 
 		# finish by geocoding the query
-		Transit.map.on 'complete', =>
-			Transit.geocode @options.query, (location) => 
+		Transit.map.on 'complete', => Transit.geocode 
+			query: @options.query, 
+			success: (location) => 
 				@searchMarker.setPosition(pos = new G.LatLng(location.lat, location.lon))
 				google.maps.event.addListener @searchMarker, 'dragend', => @loadStops()
 				@loadStops()
