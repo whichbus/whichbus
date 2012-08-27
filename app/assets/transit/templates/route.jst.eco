@@ -1,5 +1,5 @@
 <% if @route.get('name')?: %>
-<header class="gray" data-toggle="collapse" data-target="#routes"><h3>Active Trips</h3></header>
+<header class="gray subnav" data-toggle="collapse" data-target="#routes"><h3>Active Trips</h3></header>
 <ol class="trips collapse in" id="trips">
 </ol>
 <% end %>
