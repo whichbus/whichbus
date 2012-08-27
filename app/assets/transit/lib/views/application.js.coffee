@@ -3,7 +3,7 @@ class Transit.Views.Application extends Backbone.View
   el: 'div#container'
 
   events:
-    'click .icon.favorite': 'toggleFavorite'
+    'click i.favorite': 'toggleFavorite'
     'click a.btn-route': 'niceNavigate'
     'click a.btn-stop': 'niceNavigate'
 
