@@ -19,6 +19,7 @@ class Transit.Views.Route extends Backbone.View
 
 	render: =>
 		$(@el).html(@template(route: @model))
+		Transit.setTitleHTML HTML.btn('btn-route', @model.get('name')), @model.get('description')
 		@polylines = Transit.map.create_multi_polyline(@model.get('polylines').split(','), '#025d8c')
 		Transit.map.addLayer @polylines
 
