@@ -34,6 +34,12 @@
 				<small class="label label-info">WAIT FOR IT</small>
 			</li>
 			<li>
+				<%= link_to '#', onclick: 'Transit.Geocode.cacheClear()' do %>
+                    <i class="icon-refresh"></i>
+					<span>Clear Geocache</span>
+				<% end %>
+			</li>
+			<li>
 				<%= link_to '/about/issues' do %>
                     <i class="icon-comment"></i>
 					<span>Send Us Feedback</span>
