@@ -6,6 +6,7 @@ class Transit.Views.Application extends Backbone.View
     'click i.favorite': 'toggleFavorite'
     'click a.btn-route': 'niceNavigate'
     'click a.btn-stop': 'niceNavigate'
+    'click #clearCache': 'clearCache'
 
   render: =>
     $(@el).html(@template())
@@ -19,3 +20,7 @@ class Transit.Views.Application extends Backbone.View
   niceNavigate: (evt) =>
     evt.preventDefault()
     Transit.router.navigate $(evt.currentTarget).attr('href'), trigger: true
+
+  clearCache: (evt) =>
+    evt.preventDefault()
+    Transit.Geocode.cacheClear()
