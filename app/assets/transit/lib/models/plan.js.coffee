@@ -36,11 +36,13 @@ class Transit.Models.Plan extends Backbone.Model
 
   geocode_from_to: (from_query, to_query) =>
     # TODO: It would be nice to batch this instead of doing 2 queries.
-    Transit.geocode 
+    Transit.Geocode.lookup
       query: unescape(from_query)
+      modal: true
       success: (from) =>
-        Transit.geocode 
+        Transit.Geocode.lookup
           query: unescape(to_query)
+          modal: true
           success: (to) =>
             # geocode method returns one result instead of array
             if from? and to?

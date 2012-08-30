@@ -720,3 +720,39 @@ $nav_height_base: $navbar_height + $title_height + 1;
   .safety .icon-warning-sign {
   color: $orange;
 }
+
+// some generic styling changes for all modals
+.modal {
+  // shrink the dialog on phones so it looks nice
+  @media (max-width: 480px) {
+    width: 90% !important;
+    max-height: 90%;
+    left: 5%;
+    top: 5%;
+    margin: 0 !important;
+    .modal-body { max-height: 200px; }
+  }
+}
+
+// the modal dialog for geocode result disambiguation!
+#disambiguate {
+  width: 480px;
+  margin-left: -240px;
+  .results {
+    // this is a nice little hack for a vertical btn-group: 
+    // 100% width blocks with border radius tricks
+    .btn { 
+      box-sizing: border-box;
+      border-radius: 0;
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
+    .btn:first-child { border-radius: 5px 5px 0 0; }
+    .btn:last-child  { border-radius: 0 0 5px 5px; }
+  }
+  input {
+    height: auto;
+  }
+
+}
