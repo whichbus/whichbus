@@ -98,7 +98,7 @@ body {
   background: url('<%= image_path("background/background-stripes.png") %>') repeat #dcdcd7;
 }
 
-a:hover {
+a:not(.btn):hover {
   text-decoration: none;
   border-bottom: 2px dotted;
 }
@@ -172,6 +172,9 @@ header.subnav {
     width: 100%;
   }
 }
+
+.cozy { padding: 10px 20px; }
+.compact { padding: 5px 10px; }
 
 ////////
 /* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
@@ -360,11 +363,12 @@ $nav_height_base: $navbar_height + $title_height + 1;
   font-size: 2em;
   line-height: 1.4em;
   text-decoration: none;
+  border: none;
   color: white;
   @include shadow-black(0.25);
 }
 .whichbus-nav{
-  a { border: none; }
+  a { border: none !important; }
   text-align:center;
 }
 
@@ -417,20 +421,22 @@ $nav_height_base: $navbar_height + $title_height + 1;
   #settings-search {
     background-color: #ced1d1;
     height: 15%;
-    padding: 5px 10px;
+    padding: 10px;
     border-bottom: 1px solid #bfbfbf;
     border-top: 1px solid #dadada;
 
     input {
-      width: 76%;
+      @include size(34px, 76%);
       font-size: 14px;
-      height: 30px;
+      vertical-align: top;
+      box-sizing: border-box;
+      margin: 0;
     }
     button {
       color: #fff;
-      @include size(30px, 40px);
+      @include size(34px, 40px);
       padding: 5px 8px;
-      margin-left: -1px;
+      margin-left: 5px;
       //@include border-radius(0 $borderRadius $borderRadius 0);
     }
   }
@@ -441,7 +447,8 @@ $nav_height_base: $navbar_height + $title_height + 1;
     .label {
       position: absolute;
       right: 10px;
-      top: 14px;
+      top: 50%;
+      margin-top: -8px;
     }
   }
 
@@ -459,6 +466,12 @@ $nav_height_base: $navbar_height + $title_height + 1;
       text-transform: uppercase;
     }
 
+    i {
+      font-size: 1.4em;
+      color: #bbb;
+      vertical-align: middle;
+    }
+
     // hide border on menu links
     a { border-bottom: none; }
     // show link border on interior span (just the text)
@@ -470,23 +483,12 @@ $nav_height_base: $navbar_height + $title_height + 1;
     border-top: 1px solid #bfbfbf;
   }
 
-  li i {
-    font-size: 1.4em;
-    color: #bbb;
-  }
-
-  li span {
-    margin-left:10px;
-    font-size:12px;
-    font-weight:600px;
-    font-family: 'Open Sans', sans-serif;
-    text-transform:uppercase;
-  }
   #settings-list{
     background-color:#fff;
+    border-radius: 0 0 10px 10px;
 
     small.label.label-info{
-	margin-left:5px;
+      margin-left:5px;
     }
   }
 }
@@ -717,7 +719,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
   margin-top: 20px;
 }
 
-  .safety .icon-warning-sign {
+.safety .icon-warning-sign {
   color: $orange;
 }
 
