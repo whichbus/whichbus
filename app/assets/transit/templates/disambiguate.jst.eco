@@ -1,0 +1,19 @@
+<div class="modal" id="disambiguate">
+	<div class="modal-header">
+		<h3>When you said "<%= @options.query %>" did you mean...</h3>
+	</div>
+	<div class="modal-body">
+		<div class="results btn-group btn-group-vertical">
+		<% index = 0 %>
+		<% for item in @options.results: %>
+			<a href="#<%=index++%>" class="btn btn-large"><%= item.address %></a>
+		<% end %>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<label class="checkbox pull-right">
+			<input type="checkbox" class="cb-inline" name="save" id="save"> 
+			Always use this result for this search
+		</label>
+	</div>
+</div>
