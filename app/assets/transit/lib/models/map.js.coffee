@@ -66,19 +66,14 @@ class Transit.Models.Map extends Backbone.Model
     new L.MultiPolyline(latlngs, color: color, opacity: 0.6, clickable: false)
 
   create_marker: (name, position, icon, draggable=true, clickable=false) ->
-    marker = new google.maps.Marker
-      position: position
-      #icon: new icon()
-      draggable: draggable
-      clickable: clickable
-      map: @map
-
+    marker = new L.Marker(position, title: name, clickable: clickable, draggable: draggable, icon: new icon())
     # update location after the drag, trigger a drag event on a drag
-    google.maps.event.addListener marker, 'dragstart', =>
-      @trigger "drag drag:start drag:start:#{name}"
-    google.maps.event.addListener marker, 'dragend', (event) =>
-      @set(name, lat: event.latLng.lat(), lon: event.latLng.lng())
-      @trigger "drag drag:end drag:end:#{name}"
+    # TODO: leaflet event code
+    # google.maps.event.addListener marker, 'dragstart', =>
+    #   @trigger "drag drag:start drag:start:#{name}"
+    # google.maps.event.addListener marker, 'dragend', (event) =>
+    #   @set(name, lat: event.latLng.lat(), lon: event.latLng.lng())
+    #   @trigger "drag drag:end drag:end:#{name}"
     # add marker to map and model
     @set "#{name}_marker", marker, silent: true
     return marker

@@ -7,7 +7,7 @@
 	Take <a class="btn btn-route" href="/routes/<%= @segment.agencyId %>/<%= @segment.route %>"><%= @segment.route %></a> 
 	to <a class="btn btn-stop" href="/stops/<%= @segment.to.stopId.agencyId %>/<%= @segment.to.stopId.id %>"><%= @segment.to.name %>
 		<span class="safety" style="display:none;">
-			<img src="/assets/icons/icon-safety-yellow-small.png" alt="Be aware of your surroundings at this stop"/>
+			<i class="icon-warning-sign" title="Be aware of your surroundings at this stop"></i>
 		</span>
 	</a>
 </div>

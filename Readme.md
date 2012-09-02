@@ -1,5 +1,6 @@
 # WhichBus
 [![build status](https://secure.travis-ci.org/whichbus/whichbus.png?branch=master)](https://secure.travis-ci.org/whichbus/whichbus)
+
 WhichBus is a simple, _beautiful_ way to navigate public transit.
 
 1. Real-Time Schedules
