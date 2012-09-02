@@ -158,6 +158,11 @@ header {
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
   }
+  .affordance {
+    float: left;
+    font-size: 20px;
+    margin: 14px 2px 0 -12px;
+  }
 }
 header.red {
   border-top: 1px solid #f48668;
@@ -370,7 +375,6 @@ header.blue {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.55);
   overflow:auto;
 
-
   #settings-title{
     //Not working just yet
     @include gradient-vertical(#9bd5d3, #5c9998);
@@ -398,7 +402,7 @@ header.blue {
     border-top: 1px solid #dadada;
 
     input {
-      width:76%;
+      width: 76%;
       font-size: 14px;
       height: 30px;
 
@@ -421,20 +425,37 @@ header.blue {
     }
   }
 
+  .blocked {
+    position: relative;
+    opacity: 0.6;
+    .label {
+      position: absolute;
+      right: 10px;
+      top: 14px;
+    }
+  }
+
   ul {
-  list-style-type: none;
-  margin:5px;
+    list-style-type: none;
+    margin: 0;
   }
 
   li {
-    padding: 8px 18px;
-    a {
-      // hide border on menu links
-      border-bottom: none;
+    padding: 10px 20px;
+
+    span {
+      margin-left: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
     }
+
+    // hide border on menu links
+    a { border-bottom: none; }
     // show link border on interior span (just the text)
     a:hover span { border-bottom: 2px dotted; }
   }
+
+  // put a 1px border between list items, but not on outsides
   li + li {
     border-top: 1px solid #bfbfbf;
   }
@@ -467,8 +488,6 @@ header.blue {
   width: 100%;
   background: rgba(0,0,0,0.5);
   z-index: 1000;
-  top: 0;
-  left: 0;
   display: none;
 }
 
@@ -614,6 +633,12 @@ header.blue {
 .trip-options {
   margin: 0;
   display: none;
+
+  input {
+    height: auto;
+    font-size: inherit;
+    padding: 4px 8px;
+  }
 }
 
 .btn.btn-route {
@@ -679,4 +704,8 @@ header.blue {
   margin: auto;
   max-height: 110px;
   margin-top: 20px;
+}
+
+  .safety .icon-warning-sign {
+  color: $orange;
 }

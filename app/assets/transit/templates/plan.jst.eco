@@ -6,13 +6,16 @@
 		<h3>loading...</h3>
 	</header>
 </div>
-<header class="blue">
-	<h3>Suggested Itineraries</h3>
+<header class="blue options">
+    <h3>
+        <i class="icon-reorder pull-right"></i>
+        Suggested Itineraries
+    </h3>
 </header>
-<form class="well form-inline trip-options">
+<form class="well form-inline trip-options" id="tripOptions">
     <select class="span1" name="arrive_or_depart">
-    <option value="at">At</option>
-    <option value="by" <%= ' selected' if @plan.get('arrive_by') %>>By</option>
+        <option value="at">At</option>
+        <option value="by" <%= ' selected' if @plan.get('arrive_by') %>>By</option>
     </select>
     <input type="text" class="span2" name="trip_date"
             value="<%= @plan.get('date').toLocaleDateString() %>">
@@ -20,7 +23,7 @@
             value="<%= Transit.format_time @plan.get('date') %>">
     <button type="submit" class="btn">OK</button>
 </form>
-<ol class="itineraries"></ol>
+<ol class="itineraries" id="itineraries"></ol>
 <div class="progress progress-striped active"><div class="bar"></div></div>
 <div class="alert alert-error"></div>
 
