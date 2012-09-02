@@ -1,0 +1,14 @@
+/*  WhichBus font depends on Font Awesome's styles, insert it before using this font. */
+
+@font-face {
+  font-family: 'WhichBus';
+  src: url('/whichbus-font/fonts/whichbus.eot?#');
+  src: url('/whichbus-font/fonts/whichbus.woff') format('woff'), url('/whichbus-font/fonts/whichbus.ttf') format('truetype'), url('/whichbus-font/fonts/whichbus.svg#WhichBus') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-wb-"]:before, [class*=" icon-wb-"]:before {
+  font-family: 'WhichBus';
+}
+
+.icon-wb-bus:before { content: "\e000"; }

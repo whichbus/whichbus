@@ -1,0 +1,3 @@
+[submodule "public/whichbus-font"]
+	path = public/whichbus-font
+	url = git://github.com/whichbus/whichbus-font.git
