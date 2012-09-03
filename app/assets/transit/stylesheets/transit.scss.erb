@@ -172,7 +172,6 @@ header.subnav {
     width: 100%;
   }
 }
-<<<<<<< HEAD
 
 .cozy { padding: 10px 20px; }
 .compact { padding: 5px 10px; }
@@ -181,16 +180,6 @@ header.subnav {
 /* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
 ////////
 
-=======
-
-.cozy { padding: 10px 20px; }
-.compact { padding: 5px 10px; }
-
-////////
-/* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
-////////
-
->>>>>>> c3f37201a6f7f67bfcfaf39f64b4de9f32485067
 // title is at the top of the page with a fixed height. it contains an h3 for text
 #title {
   header {
@@ -239,9 +228,9 @@ header.subnav {
     width: 100%;
   }
 }
-<<<<<<< HEAD
 
-// requires absolute positioning on desktop to put it right below the title.
+// requires absolute positioning for overflow scroll
+$nav_height_base: $navbar_height + $title_height + 1;
 #navigation {
   position: absolute;
   top: $navbar_height + $title_height + 1;
@@ -253,23 +242,6 @@ header.subnav {
     // but on mobile it's super easy relative layout
     position: relative;
     top: 0;
-  }
-
-=======
-
->>>>>>> c3f37201a6f7f67bfcfaf39f64b4de9f32485067
-// requires absolute positioning for overflow scroll
-$nav_height_base: $navbar_height + $title_height + 1;
-#navigation {
-  position: absolute;
-  top: $nav_height_base;
-  bottom: 0;
-  left: 0;
-  overflow: scroll;
-
-  // on mobile it's super easy to bump it down below the map
-  @media (max-width: 768px) {
-    top: $nav_height_base + $map_height_tablet;
   }
   @media (max-width: 480px) {
     top: $nav_height_base + $map_height_phone;
@@ -288,13 +260,8 @@ $nav_height_base: $navbar_height + $title_height + 1;
       border-top: 1px solid #f3f3f3;
     }
   }
-<<<<<<< HEAD
   ol.itineraries, ol.trips {
     padding-top: 30px;
-=======
-  ol.itineraries, ol.trips {
-    padding-top: 30px;
->>>>>>> c3f37201a6f7f67bfcfaf39f64b4de9f32485067
   }
 
   .itineraries, .segments, .arrivals, .routes, .trips, .stops {
@@ -462,11 +429,10 @@ $nav_height_base: $navbar_height + $title_height + 1;
     input {
       @include size(34px, 76%);
       font-size: 14px;
+      height: 30px;
       vertical-align: top;
       box-sizing: border-box;
       margin: 0;
-<<<<<<< HEAD
-      height: 30px;
 
     }
     input::-webkit-input-placeholder {
@@ -477,8 +443,6 @@ $nav_height_base: $navbar_height + $title_height + 1;
     }
     input:-ms-input-placeholder {
       font-style: italic;
-=======
->>>>>>> c3f37201a6f7f67bfcfaf39f64b4de9f32485067
     }
     button {
       color: #fff;
@@ -788,15 +752,9 @@ $nav_height_base: $navbar_height + $title_height + 1;
   width: 480px;
   margin-left: -240px;
   .results {
-<<<<<<< HEAD
     // this is a nice little hack for a vertical btn-group:
     // 100% width blocks with border radius tricks
     .btn {
-=======
-    // this is a nice little hack for a vertical btn-group:
-    // 100% width blocks with border radius tricks
-    .btn {
->>>>>>> c3f37201a6f7f67bfcfaf39f64b4de9f32485067
       box-sizing: border-box;
       border-radius: 0;
       display: block;
