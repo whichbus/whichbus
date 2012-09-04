@@ -1,8 +1,8 @@
 <div class="modal" id="disambiguate">
-	<div class="modal-header">
-		<h3>When you said "<%= @options.query %>" did you mean...</h3>
+	<div class="modal-header gradient green">
+		<h3>When you said <div class="btn"><%= @options.query %></div> did you mean...</h3>
 	</div>
-	<div class="modal-body">
+	<div class="modal-body gradient light-gray">
 		<div class="results btn-group btn-group-vertical">
 		<% index = 0 %>
 		<% for item in @options.results: %>
@@ -10,7 +10,7 @@
 		<% end %>
 		</div>
 	</div>
-	<div class="modal-footer">
+	<div class="modal-footer gradient gray">
 		<label class="checkbox pull-right">
 			<input type="checkbox" class="cb-inline" name="save" id="save"> 
 			Always use this result for this search
