@@ -3,7 +3,7 @@
 	<span class="real-time label"></span>
 </span>
 
-<div class="summary">
+<div class="">
 	Take <a class="btn btn-route" href="/routes/<%= @segment.agencyId %>/<%= @segment.route %>"><%= @segment.route %></a> 
 	to <a class="btn btn-stop" href="/stops/<%= @segment.to.stopId.agencyId %>/<%= @segment.to.stopId.id %>"><%= @segment.to.name %>
 		<span class="safety" style="display:none;">
