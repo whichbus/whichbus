@@ -313,6 +313,12 @@ $nav_height_base: $navbar_height + $title_height + 1;
       cursor: pointer;
       small { color: lightgrey; }
     }
+    .summary {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin-top: -14px;
+    }
   }
 
   .trip {
@@ -395,6 +401,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
   a { 
     border: none !important; 
     color: white;
+    label { display: none; }
   }
   a:hover { color: #eee; }
   // group of navbar items
@@ -402,7 +409,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
     font-size: 1.8em;
     line-height: 1.3em;
     margin: 0 3px;
-    a + a { margin-left: 15px; }
+    a + a { margin-left: 10px; }
   }
   // position block on left or right edge of screen
   .block.right { @include stretch(3px, 0px, false, false); }
@@ -419,7 +426,31 @@ $nav_height_base: $navbar_height + $title_height + 1;
   }
   .icon.bus {
     // different font requires special sizing
-    font-size: 22px;
+    width: auto;
+    font-size: 28px;
+    line-height: 30px;
+    padding-left: 5px;
+    i { font-size: 22px; }
+    .phone { display: none; }
+    @media (max-width: 480px) { 
+      .desktop { display: none; }
+      .phone { display: inline; }
+    }
+  }
+
+  // special directions icon has two map markers slightly offset
+  #directions {
+    position: relative;
+    margin-left: 14px;
+    .icon-map-marker { 
+      z-index: 4; 
+      font-size: 20px; 
+    }
+    .icon-map-marker:first-child {
+      @include stretch(-3px, false, false, -1px);
+      position: absolute;
+      z-index: 2;
+    }
   }
 }
 
@@ -800,5 +831,8 @@ $nav_height_base: $navbar_height + $title_height + 1;
   label {
     margin-bottom: 0;
   }
+}
 
+.tooltip {
+  text-transform: uppercase;
 }

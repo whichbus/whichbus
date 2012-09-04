@@ -8,11 +8,22 @@ class Transit.Views.Navbar extends Backbone.View
     'click #clearCache': 'clearCache'
     'click #locate': 'locate'
 
+  initialize: ->
+    @$('a[title]').tooltip
+      placement: 'bottom'
+    # @$('#directions').popover
+    #   trigger: 'click'
+    #   placement: 'bottom'
+    #   title: 'The Title'
+    #   selector: '#directions-popover'
+    @delegateEvents()
+    $('#settings-bg').click @toggleMenu
+
   # toggle settings menu appearance
   toggleMenu: (evt) ->
     $('#settings-bg').toggle()
     $('#settings-menu').toggle()
-    $(evt.currentTarget).toggleClass('active')
+    $('#settings-button').toggleClass('active')
 
   # automagically locate the user on the map
   locate: (evt) ->

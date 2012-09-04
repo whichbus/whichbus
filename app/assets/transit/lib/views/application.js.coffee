@@ -10,7 +10,6 @@ class Transit.Views.Application extends Backbone.View
   initialize: ->
     # create navbar view and attach its events (already rendered in transit template)
     @navbar = new Transit.Views.Navbar()
-    @navbar.delegateEvents()
 
   render: =>
     $(@el).html(@template())

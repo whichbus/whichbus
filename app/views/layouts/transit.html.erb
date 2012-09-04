@@ -17,13 +17,27 @@
 	<div class="navbar-inner">
 		<div class="container-fluid whichbus-nav">
 			<div class="block left">
-				<a href="/" class="icon bus"><i class="icon-wb-bus"></i></a>
+				<a href="/" class="icon bus pacifico"><i class="icon-wb-bus"></i>
+					<span class="desktop">WhichBus</span>
+					<span class="phone">?</span>
+				</a>
 			</div>
-			<a id="whichbus" class="pacifico" alt="WhichBus" href="/">WhichBus</a>
 			<div class="block right">
-				<a id="locate" class="icon" href="/nearby"><i class="icon-screenshot"></i></a>
-	            <a id="settings-button" class="icon settings">
-	              <i class="icon-cog"></i>
+				<a id="locate" class="icon" href="/nearby" rel="tooltip" title="find me">
+					<i class="icon-screenshot"></i><label>Locate</label>
+				</a>
+				<a id="directions" class="icon" href="#" rel="tooltip" title="get directions">
+					<i class="icon-map-marker"></i><i class="icon-map-marker"></i>
+					<label>Directions</label>
+				</a>
+				<a id="favorites" class="icon" href="#" rel="tooltip" title="favorites">
+					<i class="icon-pushpin"></i><label>Favorites</label>
+				</a>
+				<a id="search" class="icon" href="#"rel="tooltip" title="search transit">
+					<i class="icon-search"></i><label>Search</label>
+				</a>
+	            <a id="settings-button" class="icon settings"rel="tooltip" title="settings">
+	              <i class="icon-cog"></i><label>Settings</label>
 	            </a>
 			</div>
 		</div>
