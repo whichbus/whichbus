@@ -35,11 +35,12 @@ class Transit.Views.Itinerary extends Backbone.View
 			# Transit.map.addLayer poly
 			@plan_route.push(poly)
 
-	clean_up: =>
-		# leave polylines on map if this itinerary is active
-		return if $(@el).hasClass 'active'
-		for line in @plan_route
-			Transit.map.removeLayer line
+	clean_up: (forced) ->
+		# leave polylines on map if this itinerary is active.
+		# set forced parameter to true to ignore active status.
+		if forced == true or not $(@el).hasClass('active')
+			for line in @plan_route
+				Transit.map.removeLayer line
 		@
 
 	render_map: =>
