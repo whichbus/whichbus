@@ -131,8 +131,9 @@ body > .container-fluid, #container {
 
 /* HEADER STYLES */
 header {
+  height: 100%;
+  position: relative;
   padding: 0 $sidebar_margin;
-  color: white;
   text-transform: uppercase;
   box-sizing: border-box;
   @include box-shadow(0 2px 4px rgba(0,0,0,0.25));
@@ -146,25 +147,47 @@ header {
   .affordance {
     float: left;
     font-size: 20px;
-    margin: 14px 2px 0 -12px;
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    margin-top: -10px;
   }
 }
-header.red {
+
+header, .gradient, header:hover, .gradient:hover { 
+  color: white; 
+  @include shadow-black(0.25);
+}
+header.red, .gradient.red {
   border-top: 1px solid #f48668;
   border-bottom: 1px solid #762a16;
   @include gradient-vertical(#dc6a4c, #a7442a);
+  background-color: #a7442a;
 }
-header.gray {
+header.light-gray, .gradient.light-gray {
+  border-top: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
+  @include gradient-vertical(#e1e0e0, #d2d2d2);
+  background-color: darken(#d2d2d2, 1%);
+}
+header.gray, .gradient.gray {
   border-bottom: 1px solid #57564d;
   @include gradient-vertical(#939285, #7a796e);
+  background-color: darken(#7a796e, 1%);
 }
-header.blue {
+header.blue, .gradient.blue {
   border-top: 1px solid #5e9b99;
   border-bottom: 1px solid #5e9b99;
-  @include shadow-black(0.25);
   @include gradient-vertical(#93d2d0, #679a98);
+  background-color: darken(#679a98, 1%);
 }
-header.subnav {
+header.green, .gradient.green {
+  border-top: 1px solid $wbGreenDark;
+  border-bottom: 1px solid $wbGreenDark;
+  @include gradient-vertical($wbGreen, $wbGreenDark);
+  background-color: darken($wbGreenDark, 1%);
+}
+.gradient.subnav {
   position: fixed;
   z-index: 10;
   width: $sidebar_width;
@@ -365,7 +388,6 @@ $nav_height_base: $navbar_height + $title_height + 1;
   line-height: 1.4em;
   text-decoration: none;
   border: none;
-  color: white;
   @include shadow-black(0.25);
 }
 .whichbus-nav{
@@ -740,6 +762,8 @@ $nav_height_base: $navbar_height + $title_height + 1;
 
 // some generic styling changes for all modals
 .modal {
+  background: transparent;
+  .modal-header { border-radius: 6px 6px 0 0; }
   // shrink the dialog on phones so it looks nice
   @media (max-width: 480px) {
     width: 90% !important;
@@ -770,6 +794,9 @@ $nav_height_base: $navbar_height + $title_height + 1;
   }
   input {
     height: auto;
+  }
+  label {
+    margin-bottom: 0;
   }
 
 }

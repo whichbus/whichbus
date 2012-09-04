@@ -1,7 +1,5 @@
+# renders a Bootstrap modal dialog. don't forget to set the template before rendering!
 class Transit.Views.Modal extends Backbone.View
-  # renders a Bootstrap modal dialog. don't forget to set the template before rendering!
-  tagName: 'div'
-  className: 'modal'
 
   # we're expecting the modal to contain a bunch of buttons that close the modal when clicked
   events:
