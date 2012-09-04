@@ -1,5 +1,5 @@
 <header class="gray">
-	<i class="affordance icon-chevron-right"></i>
+	<i class="affordance icon-caret-right"></i>
 	<h4 >
 		<span class="summary pull-right"><%- @trip.summaryHTML() %></span>
 		<%= @trip.timing() %><br/>

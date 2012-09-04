@@ -50,5 +50,5 @@ class Transit.Views.Itinerary extends Backbone.View
 	toggle: =>
 		# indicate that this itinerary is active
 		$(@el).toggleClass 'active'
-		@$('.affordance').toggleClass('icon-chevron-down').toggleClass('icon-chevron-right')
+		@$('.affordance').toggleClass('icon-caret-down').toggleClass('icon-caret-right')
 		@$('.segments').collapse 'toggle'
