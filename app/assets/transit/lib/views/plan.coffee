@@ -32,6 +32,9 @@ class Transit.Views.Plan extends Backbone.View
   # update the plan when markers are dragged
   update_plan: =>
     console.log "UPDATING PLAN..."
+    # clean up the existing views when markers are dragged
+    view.clean_up(true) for view in @views
+    
     # set the model from/to locations from the marker positions
     @model.set
       from: @map.get('from').position.toHash()
@@ -85,14 +88,16 @@ class Transit.Views.Plan extends Backbone.View
     @reset()
     Transit.setTitleHTML(HTML.icon('heart', 'favorite'), "#{plan.get('from').name} to #{plan.get('to').name}")
     # @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
-    plan.get('itineraries').each (trip, index) =>
-      trip.set('index', index + 1)
+    index = 0
+    # store the views in a local variable so we can clean them up when markers are dragged
+    @views = plan.get('itineraries').map (trip) ->
       view = new Transit.Views.Itinerary
         model: trip
-        index: index
+        index: ++index
       @$('.itineraries').append(view.render().el)
       # automatically show the first itinerary
-      view.render_map().toggle() if index == 0
+      view.render_map().toggle() if index == 1
+      view
     @fit_bounds()
 
 
