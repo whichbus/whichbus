@@ -1,0 +1,9 @@
+<form>
+	<div class="input-container">
+		<i class="icon-map-marker start"></i>
+		<input type="text" name="from" placeholder="where from, yo?">
+		<i class="icon-screenshot find"></i>
+	</div>
+	<input type="text" name="to" placeholder="where to, bud?">
+	<a type="input" class="btn btn-map btn-go" onclick="Transit.loadDirections(this)">Map that bus</a>
+</form>

@@ -1,0 +1,8 @@
+<div class="top-arrow">
+	<header class="popout-title blue compact">
+		<h3><%= @title %></h3>
+	</header>
+	<div class="popout-content">
+		<%- @content %>
+	</div>
+</div>

@@ -7,17 +7,32 @@ class Transit.Views.Navbar extends Backbone.View
     'click #settings-button': 'toggleMenu'
     'click #clearCache': 'clearCache'
     'click #locate': 'locate'
+    'click a.popout': 'popout'
 
   initialize: ->
     @$('a[title]').tooltip
       placement: 'bottom'
-    # @$('#directions').popover
-    #   trigger: 'click'
-    #   placement: 'bottom'
-    #   title: 'The Title'
-    #   selector: '#directions-popover'
     @delegateEvents()
     $('#settings-bg').click @toggleMenu
+
+  popout: (evt) =>
+    window.source = $(evt.currentTarget)
+    # get rid of tooltip and any pre-existing popout
+    source.tooltip('hide')
+    @popout?.remove?()
+    # if this popout is active then deactivate it
+    if source.hasClass('active')
+      source.removeClass('active')
+    else
+      # make a new popout and append it to body of page
+      @popout = new Transit.Views.Popout
+        parent: source
+        title: source.data('original-title')
+        partial: JST['templates/partials/' + source.attr('id')]()
+      $('body').append @popout.render().el
+      # deactive other popouts, make this one active
+      @$('a.popout.active').removeClass('active')
+      source.addClass('active')
 
   # toggle settings menu appearance
   toggleMenu: (evt) ->
