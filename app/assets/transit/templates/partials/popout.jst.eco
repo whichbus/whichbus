@@ -1,8 +1,6 @@
-<div class="top-arrow">
-	<header class="popout-title blue compact">
-		<h3><%= @title %></h3>
-	</header>
-	<div class="popout-content">
-		<%- @content %>
-	</div>
+<header class="popout-title blue compact">
+	<h3><%= @title %><a class="close pull-right">&times;</a></h3>
+</header>
+<div class="popout-content">
+	<%- @content %>
 </div>

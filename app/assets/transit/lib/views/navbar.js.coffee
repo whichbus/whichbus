@@ -1,5 +1,5 @@
 class Transit.Views.Navbar extends Backbone.View
-  # select the navbar after it's been created. use delegateEvents() to attach event handlers.
+  # select the navbar after it's been created. use delegateEvents() to attach event handlers in initialize().
   el: 'div.navbar'
   # note no render() method because this view is automatically rendered in the template
 
@@ -7,33 +7,31 @@ class Transit.Views.Navbar extends Backbone.View
     'click #settings-button': 'toggleMenu'
     'click #clearCache': 'clearCache'
     'click #locate': 'locate'
-    'click a.popout': 'popout'
+    'click a.popout': 'showPopout'
 
   initialize: ->
+    window.navbar = @
     # put tooltips on all navbar links with title attributes
     @$('a[title]').tooltip(placement: 'bottom') unless $.browser.mobile
     # attach event handlers to relevant elements
     @delegateEvents()
     $('#settings-bg').click @toggleMenu
 
-  popout: (evt) =>
-    window.source = $(evt.currentTarget)
+  showPopout: (evt) =>
+    source = $(evt.currentTarget)
+    active = source.hasClass('active')
     # get rid of tooltip and any pre-existing popout
     source.tooltip('hide')
-    @popout?.remove?()
-    # if this popout is active then deactivate it
-    if source.hasClass('active')
-      source.removeClass('active')
-    else
+    @popout?.close()
+    # if this popout was not already opened...
+    unless active
+      console.log "popout #{source.attr('id')} opened"
       # make a new popout and append it to body of page
       @popout = new Transit.Views.Popout
         parent: source
         title: source.data('original-title')
         partial: JST['templates/partials/' + source.attr('id')]()
       $('body').append @popout.render().el
-      # deactive other popouts, make this one active
-      @$('a.popout.active').removeClass('active')
-      source.addClass('active')
 
   # toggle settings menu appearance
   toggleMenu: (evt) ->
