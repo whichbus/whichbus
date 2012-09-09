@@ -1,0 +1,29 @@
+<ul class="unstyled">
+    <li id="settings-favorites" class="blocked">
+        <i class="icon-heart"></i>
+        <span>Favorites</span> 
+        <small class="label label-info">COMING SOON</small></li>
+    <li class="blocked">
+        <i class="icon-user"></i>
+        <span>My Account</span> 
+        <small class="label label-info">WAIT FOR IT</small>
+    </li>
+    <li>
+        <a href="#" id="clearCache">
+            <i class="icon-refresh"></i>
+            <span>Clear Geocache</span>
+        </a>
+    </li>
+    <li>
+        <a href="/about/issues">
+            <i class="icon-comment"></i>
+            <span>Send Us Feedback</span>
+        </a>
+    </li>
+    <li>
+        <a href="/about">
+            <i class="icon-wb-bus"></i>
+            <span>About WhichBus</span>
+        </a>
+    </li>
+</ul>
