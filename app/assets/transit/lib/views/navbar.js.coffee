@@ -10,8 +10,9 @@ class Transit.Views.Navbar extends Backbone.View
     'click a.popout': 'popout'
 
   initialize: ->
-    @$('a[title]').tooltip
-      placement: 'bottom'
+    # put tooltips on all navbar links with title attributes
+    @$('a[title]').tooltip(placement: 'bottom') unless $.browser.mobile
+    # attach event handlers to relevant elements
     @delegateEvents()
     $('#settings-bg').click @toggleMenu
 
