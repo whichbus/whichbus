@@ -163,3 +163,12 @@ HTML.icon = (icon, classes) ->
 # eco's raw output tag
 $.fn.str = () -> @prop('outerHTML')
 
+$.fn.popout = (options) ->
+  window.opt = options
+  console.log @, options
+  @view = options.view
+  @.click (event) ->
+    event.preventDefault()
+    view = new @view()
+    view.render()
+

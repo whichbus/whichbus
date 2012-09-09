@@ -1,0 +1,4 @@
+<form>
+	<input type="text" placeholder="search routes and stops">
+	<button type="submit" class="btn btn-map">Find me it</button>
+</form>
