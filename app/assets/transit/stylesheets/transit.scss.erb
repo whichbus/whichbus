@@ -131,7 +131,7 @@ body > .container-fluid, #container {
 
 /* HEADER STYLES */
 header {
-  height: 100%;
+  // height: 100%;
   position: relative;
   padding: 0 $sidebar_margin;
   text-transform: uppercase;
@@ -140,7 +140,11 @@ header {
   @include shadow-black(0.25);
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
+    line-height: auto;
+    margin: 0;
   }
+  h3 { font-size: 18px; line-height: 30px; }
+  h4 { font-size: 14px; small { font-size: 12px;} }
   [class^="icon-"], [class*=" icon-"] {
     font-size: 18px;
   }
@@ -187,13 +191,17 @@ header.green, .gradient.green {
   @include gradient-vertical($wbGreen, $wbGreenDark);
   background-color: darken($wbGreenDark, 1%);
 }
-.gradient.subnav {
+.subnav {
   position: fixed;
   z-index: 10;
   width: $sidebar_width;
+  height: 32px;
   @media (max-width: 768px) {
     width: 100%;
   }
+}
+.subnav + ul, .subnav + ol {
+  padding-top: $title_height;
 }
 
 .cozy { padding: 10px 20px; }
@@ -202,11 +210,19 @@ header.green, .gradient.green {
 ////////
 /* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
 ////////
+$nav_height_base: $navbar_height + $title_height + 1;
 
 // title is at the top of the page with a fixed height. it contains an h3 for text
 #title {
+  position: absolute;
+  top: $navbar_height;
   header {
     height: $title_height;
+    // white-space: normal;
+    // @media (max-width: 768px) { 
+    //   height: $title_height; 
+    //   white-space: nowrap;
+    // }
     h3 {
       line-height: $title_height;
       overflow: hidden;
@@ -230,10 +246,9 @@ header.green, .gradient.green {
   }
 
   @media (max-width: 768px) {
-    // fixed height, clear absolute positioning
-    @include size($map_height_tablet, 100%);
-    @include stretch();
-    position: relative;
+    top: $nav_height_base;
+    left: 0;
+    height: $map_height_tablet;
   }
 
   @media (max-width: 480px) {
@@ -253,18 +268,15 @@ header.green, .gradient.green {
 }
 
 // requires absolute positioning for overflow scroll
-$nav_height_base: $navbar_height + $title_height + 1;
 #navigation {
   position: absolute;
-  top: $navbar_height + $title_height + 1;
+  top: $nav_height_base;
   bottom: 0;
   left: 0;
   overflow: scroll;
 
   @media (max-width: 768px) {
-    // but on mobile it's super easy relative layout
-    position: relative;
-    top: 0;
+    top: $nav_height_base + $map_height_tablet;
   }
   @media (max-width: 480px) {
     top: $nav_height_base + $map_height_phone;
@@ -284,7 +296,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
     }
   }
   ol.itineraries, ol.trips {
-    padding-top: 30px;
+    padding-top: $title_height;
   }
 
   .itineraries, .segments, .arrivals, .routes, .trips, .stops {
@@ -292,6 +304,18 @@ $nav_height_base: $navbar_height + $title_height + 1;
     margin: 0;
     @include clearfix();
     // li:last-child  { border-bottom: none; }
+  }
+  .stops > li { padding: $sidebar_margin;}
+
+  .route-list {
+    margin: 0;
+    list-style-type: none;
+    padding-left: $sidebar_margin;
+    padding-right: $sidebar_margin;
+    li { 
+      display: inline-block; 
+      margin: 5px 5px 0 0; 
+    }
   }
 
   // .routes { margin: $sidebar_margin; }
@@ -377,7 +401,10 @@ $nav_height_base: $navbar_height + $title_height + 1;
 @font-face {
   font-family: 'PacificoRegular';
   src: url('/pacifico/Pacifico-webfont.eot');
-  src: url('/pacifico/Pacifico-webfont.eot?#iefix') format('embedded-opentype'), url('/pacifico/Pacifico-webfont.woff') format('woff'), url('/pacifico/Pacifico-webfont.ttf') format('truetype'), url('/pacifico/Pacifico-webfont.svg#PacificoRegular') format('svg');
+  src: url('/pacifico/Pacifico-webfont.eot?#iefix') format('embedded-opentype'), 
+       url('/pacifico/Pacifico-webfont.woff') format('woff'), 
+       url('/pacifico/Pacifico-webfont.ttf') format('truetype'), 
+       url('/pacifico/Pacifico-webfont.svg#PacificoRegular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -408,12 +435,12 @@ $nav_height_base: $navbar_height + $title_height + 1;
   .block {
     font-size: 1.8em;
     line-height: 1.3em;
-    margin: 0 3px;
+    margin: 0 10px;
     a + a { margin-left: 10px; }
   }
   // position block on left or right edge of screen
-  .block.right { @include stretch(3px, 0px, false, false); }
-  .block.left { @include stretch(3px, false, false, 0px); }
+  .block.right { @include stretch(0, 0, false, false); }
+  .block.left  { @include stretch(0, false, false, 0); }
   // style icons in navbar
   .icon {
     display: inline-block;
@@ -427,8 +454,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
   .icon.bus {
     // different font requires special sizing
     width: auto;
-    font-size: 28px;
-    line-height: 30px;
+    font-size: 24px;
     padding-left: 5px;
     i { font-size: 22px; }
     .phone { display: none; }
@@ -657,14 +683,6 @@ $nav_height_base: $navbar_height + $title_height + 1;
     // border-color: rgba(82, 168, 236, 0.8);
     // @include box-shadow(0px 2px 8px 0px rgba(82, 168, 236, 0.15) inset);
   }
-
-  .btn.btn-map {
-    height: 45px;
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-    @include border-radius($borderRadius);
-  }
 }
 
 .footer {
@@ -735,6 +753,10 @@ $nav_height_base: $navbar_height + $title_height + 1;
   @include gradientBar(#bfe4cd, #90b89f);
   background-color: darken(#90b89f, 1%);
 }
+.btn-route.btn-small {
+  font-size: 14px;
+  min-width: 20px;
+}
 
 .btn.btn-stop {
   padding: 2px 5px;
@@ -748,6 +770,16 @@ $nav_height_base: $navbar_height + $title_height + 1;
   @include shadow-black(0.25);
   @include gradientBar($wbBlue, $wbBlueDark);
   background-color: darken($wbBlueDark, 1%);
+}
+
+.btn.btn-map {
+  color: white;
+  font-size: 18px;
+  line-height: 35px;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  @include border-radius($borderRadius);
 }
 
 .leaflet-control-zoom-in {
@@ -796,15 +828,28 @@ $nav_height_base: $navbar_height + $title_height + 1;
 // some generic styling changes for all modals
 .modal {
   background: transparent;
-  .modal-header { border-radius: 6px 6px 0 0; }
+  .modal-header { 
+    border-radius: 6px 6px 0 0; 
+    h3 {
+      text-align: center;
+      font-size: 18px;
+    }
+    .btn {
+      color: #333;
+      font-weight: normal;
+      font-size: 15px;
+    }
+  }
   // shrink the dialog on phones so it looks nice
-  @media (max-width: 480px) {
-    width: 90% !important;
+  @media (max-width: 767px) {
     max-height: 90%;
     left: 5%;
     top: 5%;
     margin: 0 !important;
+    width: 90% !important;
     .modal-body { max-height: 200px; }
+  }
+  @media (max-width: 480px) {
   }
 }
 
@@ -812,24 +857,47 @@ $nav_height_base: $navbar_height + $title_height + 1;
 #disambiguate {
   width: 480px;
   margin-left: -240px;
-  .results {
-    // this is a nice little hack for a vertical btn-group:
-    // 100% width blocks with border radius tricks
+  // @media (max-width: 767px) { top: 5%; }
+  .modal-body {
+    // buttons aligned vertically separated by small margin
     .btn {
-      box-sizing: border-box;
-      border-radius: 0;
-      display: block;
       width: 100%;
-      margin: 0;
+      display: block;
+      margin-bottom: 8px;
+      box-sizing: border-box;
+      vertical-align: baseline;
     }
-    .btn:first-child { border-radius: 5px 5px 0 0; }
-    .btn:last-child  { border-radius: 0 0 5px 5px; }
+    .btn:last-child  { margin-bottom: 0; }
   }
-  input {
-    height: auto;
-  }
-  label {
+  input {height: auto; } 
+  label {margin-bottom: 0; }
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 8px;
+  input { 
     margin-bottom: 0;
+  }
+  i {
+    position: absolute;
+    top: 50%;
+    font-size: 24px;
+    margin-top: -12px;
+    line-height: 100%;
+    opacity: 0.5;
+  }
+  i:hover { opacity: 0.9; }
+  .start {
+    left: 8px;
+    color: green;
+  }
+  .end {
+    left: 8px;
+    color: red;
+  }
+  .find {
+    right: 8px;
   }
 }
 

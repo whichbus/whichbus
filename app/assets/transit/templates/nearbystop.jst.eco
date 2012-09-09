@@ -1,9 +1,16 @@
-<li class="stop">
+<li class="stop gradient light-gray">
 	<span class="pull-right distance">
 		<span class="label">
 			<%= @stop.get('distance') %>
 		</span><br/>
 	</span>
 
-	<a href="/stops/<%= @stop.get('id') %>" class="stop"><h4><%= @stop.get('name') %></h4></a>
+	<a href="/stops/<%= @stop.get('id') %>" class="btn btn-stop"><%= @stop.get('name') %></a>
+	<ul class="route-list">
+	<% for route in @stop.get('routes'): %>
+		<li class="route">
+			<a class="btn btn-route btn-small" href="/routes/<%= route.id %>"><%= route.shortName %></a>
+		</li>
+	<% end %>
+	</ul>
 </li>

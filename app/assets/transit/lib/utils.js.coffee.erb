@@ -150,6 +150,10 @@ HTML.span = (classes, body...) ->
 HTML.li = (classes, body...) ->
   HTML.tag "<li>", classes, body...
 HTML.link = (href, classes, body...) ->
+  # if body array is empty then assume classes is body content
+  unless body? and body.length > 0
+    body = [classes] 
+    classes = undefined
   HTML.tag("<a>", classes, body...).attr("href", href)
 HTML.btn = (classes, text, href=null) ->
   if href?
@@ -162,6 +166,12 @@ HTML.icon = (icon, classes) ->
 # and enables the HTMLpers to be used in javascript templates through
 # eco's raw output tag
 $.fn.str = () -> @prop('outerHTML')
+
+# nice little jQuery copyright line
+Transit.copyright = HTML.div 'copyright',
+  HTML.span('copy', '&copy;'), '2012 WhichBus - ',
+  HTML.link('/about/terms', 'Terms'), ' - ', 
+  HTML.link('/about/privacy', '', 'Privacy')
 
 $.fn.popout = (options) ->
   window.opt = options
