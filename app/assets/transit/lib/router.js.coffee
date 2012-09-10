@@ -5,6 +5,7 @@ class Transit.Router extends Backbone.Router
     'nearby': 'nearby'
     'nearby/:query': 'nearby'
     'plan/:from/:to': 'plan'
+    'plan/:from/:to?:params': 'plan'
     'stops/:agency/:code': 'showStop'
     'stops/:id': 'showStop'
     'routes/:agency/:code': 'showRoute'
@@ -26,7 +27,7 @@ class Transit.Router extends Backbone.Router
     near = new Transit.Views.Nearby(query: query)
     @view.$('#navigation').append(near.render().el)
 
-  plan: (from_query, to_query) ->
+  plan: (from_query, to_query, params) ->
     @view.render()
     map = new Transit.Views.Map()
 

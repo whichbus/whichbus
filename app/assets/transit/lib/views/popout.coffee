@@ -7,7 +7,7 @@ class Transit.Views.Popout extends Backbone.View
 
   events:
     'click .close': 'close'
-    'click .search .btn-go': 'search'
+    'click .search .btn-go': 'loadSearch'
     'click .directions .btn-go': 'loadDirections'
     'click .directions .btn.here': 'geolocate'
 
@@ -21,7 +21,7 @@ class Transit.Views.Popout extends Backbone.View
     $(@el).css(right: right, width: @width).html @template(
       left: (offset - @margin) / @width
       title: @options.title
-      content: @options.partial
+      content: @options.content
     )
     $(@el).addClass(@options.parent.attr('id'))
     # add the arrow to the popout. positioned separately beneath parent
@@ -60,7 +60,7 @@ class Transit.Views.Popout extends Backbone.View
     evt.preventDefault()
     $(evt.currentTarget).siblings('input').val('here')
 
-  search: (evt) ->
+  loadSearch: (evt) ->
     evt.preventDefault()
     @resetForm()
     query = @$('form').find('input[name=query]').val()
