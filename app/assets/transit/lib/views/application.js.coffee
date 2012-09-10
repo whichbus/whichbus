@@ -13,6 +13,7 @@ class Transit.Views.Application extends Backbone.View
 
   render: =>
     $(@el).html(@template())
+    window.scrollTo(0, 1) if $.browser.mobile
     this
 
   toggleFavorite: (evt) =>
