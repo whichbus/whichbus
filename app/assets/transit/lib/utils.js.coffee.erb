@@ -168,10 +168,12 @@ HTML.icon = (icon, classes) ->
 $.fn.str = () -> @prop('outerHTML')
 
 # nice little jQuery copyright line
-Transit.copyright = HTML.div 'copyright',
+Transit.copyright = HTML.div('copyright',
   HTML.span('copy', '&copy;'), '2012 WhichBus - ',
+  HTML.link('/about', 'About'), ' - '
   HTML.link('/about/terms', 'Terms'), ' - ', 
   HTML.link('/about/privacy', '', 'Privacy')
+).str()
 
 $.fn.popout = (options) ->
   window.opt = options
