@@ -19,8 +19,4 @@
 <div class="progress progress-striped active"><div class="bar"></div></div>
 <div class="alert alert-error"></div>
 
-<div class="copyright">
-<span class="copy">&copy;</span> WhichBus
-- <a href="/about/terms">Terms</a>
-- <a href="/about/privacy">Privacy</a>
-</div>
+<%- Transit.copyright %>

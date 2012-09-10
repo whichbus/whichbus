@@ -22,8 +22,4 @@
 	</div>
 </div>
 
-<div class="copyright">
-<span class="copy">&copy;</span>2012 WhichBus
-- <a href="/about/terms">Terms</a>
-- <a href="/about/privacy">Privacy</a>
-</div>
+<%- Transit.copyright %>
