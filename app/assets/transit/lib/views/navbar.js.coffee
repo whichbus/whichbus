@@ -18,6 +18,7 @@ class Transit.Views.Navbar extends Backbone.View
     $('#settings-bg').click @toggleMenu
 
   showPopout: (evt) =>
+    evt.preventDefault()
     source = $(evt.currentTarget)
     active = source.hasClass('active')
     # get rid of tooltip and any pre-existing popout

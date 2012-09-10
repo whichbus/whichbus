@@ -951,14 +951,25 @@ div.popout {
       margin: 0;
       input[type=text] {
         box-sizing: border-box;
-        width: 100%;
-        height: auto;
-        padding: 8px;
+        height: 40px;
         font-size: 16px;
         line-height: auto;
         @include placeholder(#eaeaea);
       }
-      .btn { width: 100%; }
+      .input-append {
+        input {
+          width: 85%;
+        }
+        .btn {
+          box-sizing: border-box;
+          width: 15%;
+          height: 40px;
+          line-height: 40px;
+          font-size: 20px;
+          padding: 0;
+        }
+      }
+      > .btn { width: 100%; }
     }
 
     ul {
