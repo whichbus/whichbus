@@ -42,7 +42,8 @@ Transit.Geocode =
           if status == google.maps.GeocoderStatus.OK
             console.log "GEOCODE RESULTS (#{results.length}):", results
             results = _.map results, (item) ->
-              address: item.formatted_address
+              # trim zip code and country from formatted address
+              address: /^(.+)\d{5}/.exec(item.formatted_address)?[1] ? item.formatted_address
               lat: item.geometry.location.lat()
               lon: item.geometry.location.lng()
             if options.modal and results.length > 1
