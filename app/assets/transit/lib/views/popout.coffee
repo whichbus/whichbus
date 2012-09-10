@@ -6,8 +6,10 @@ class Transit.Views.Popout extends Backbone.View
   margin: 10
 
   events:
-    'click .btn': 'clicked'
     'click .close': 'close'
+    'click .search .btn-go': 'search'
+    'click .directions .btn-go': 'loadDirections'
+    'click .directions .btn.here': 'geolocate'
 
   render: () ->
     @options.parent.addClass('active')
@@ -21,7 +23,7 @@ class Transit.Views.Popout extends Backbone.View
       title: @options.title
       content: @options.partial
     )
-    # $(@el).addClass(@options.parent.attr('id'))
+    $(@el).addClass(@options.parent.attr('id'))
     # add the arrow to the popout. positioned separately beneath parent
     $(@el).prepend arrow = HTML.div('top-arrow')
     arrow.css('right': offset - @margin) if right <= @margin
@@ -38,3 +40,33 @@ class Transit.Views.Popout extends Backbone.View
     @options.parent.removeClass('active')
     @remove()
     open
+
+  loadDirections: (evt) ->
+    evt.preventDefault()
+    @resetForm()
+    form = @$('form')
+    start = form.find('input[name=from]')
+    end = form.find('input[name=to]')
+    # ensure fields are not empty before navigating
+    if start.val().length < 3
+      start.focus().parent().addClass 'error'
+    else if end.val().length < 3
+      end.focus().parent().addClass 'error'
+    else
+      @close()
+      Transit.router.navigate "plan/#{encodeURIComponent start.val()}/#{encodeURIComponent end.val()}", trigger: true
+
+  geolocate: (evt) ->
+    evt.preventDefault()
+    $(evt.currentTarget).siblings('input').val('here')
+
+  search: (evt) ->
+    evt.preventDefault()
+    @resetForm()
+    query = @$('form').find('input[name=query]').val()
+    console.log "search for #{query}"
+
+  resetForm: ->
+    @$('form .control-group').removeClass('error')
+
+  search: ->
