@@ -31,7 +31,7 @@ class Transit.Views.Navbar extends Backbone.View
       @popout = new Transit.Views.Popout
         parent: source
         title: source.data('original-title')
-        partial: JST['templates/partials/' + source.attr('id')]()
+        content: JST['templates/partials/' + source.attr('id')]()
       $('body').append @popout.render().el
 
   # toggle settings menu appearance

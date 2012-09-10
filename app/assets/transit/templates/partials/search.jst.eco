@@ -2,5 +2,5 @@
 	<div class="control-group">
 		<input type="text" name="query" placeholder="search routes and stops">
 	</div>
-	<button type="submit" class="btn btn-map">Find me it</button>
+	<button type="submit" class="btn btn-map btn-go">Find me it</button>
 </form>
