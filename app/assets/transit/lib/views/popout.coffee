@@ -43,6 +43,7 @@ class Transit.Views.Popout extends Backbone.View
 
   loadDirections: (evt) ->
     evt.preventDefault()
+    console.log 'loading directions...'
     @resetForm()
     form = @$('form')
     start = form.find('input[name=from]')
