@@ -143,6 +143,7 @@ header {
     line-height: auto;
     margin: 0;
   }
+  h2 { font-size: 24px; }
   h3 { font-size: 18px; line-height: 30px; }
   h4 { font-size: 14px; small { font-size: 12px;} }
   [class^="icon-"], [class*=" icon-"] {
@@ -214,6 +215,7 @@ header.green, .gradient.green {
   width: 20px;
   text-align: center;
   line-height: inherit;
+  z-index: 2000;
 }
 
 ////////
@@ -652,6 +654,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
   h2 {
     font-weight: normal;
     text-align: center;
+    font-size: 24px;
     margin: 20px auto 15px;
     color: white;
     @include shadow-black(0.20);
