@@ -30,10 +30,12 @@ class Transit.Views.Splash extends Backbone.View
         Transit.router.navigate "plan/#{from}/#{to}", trigger: true
 
   from_current_location: =>
-    Transit.plan.current_location @$('#from_query'), 'from'
+    @$("#from_query").val('here')
+    # Transit.plan.current_location @$('input[name=from]'), 'from'
 
   to_current_location: =>
-    Transit.plan.current_location @$('#to_query'), 'to'
+    @$("#to_query").val('here')
+    # Transit.plan.current_location @$('input[name=to]'), 'to'
 
   select_all: (evt) =>
     console.log "focus", evt
