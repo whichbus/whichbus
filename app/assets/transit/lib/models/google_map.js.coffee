@@ -59,7 +59,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
     else new G.LatLng(arguments[0], arguments[1] ? arguments[0])
 
   # creates a polyline with the set of points and given color
-  create_polyline: (points, color = '#000', weight = 5, opacity = 0.8) ->
+  create_polyline: (points, color = '#000', weight = 5, opacity = 0.6) ->
     points = G.geometry.encoding.decodePath(points)
     new G.Polyline
       path: points,
