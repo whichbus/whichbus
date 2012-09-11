@@ -305,7 +305,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
     }
   }
   ol.itineraries, ol.trips {
-    padding-top: $title_height;
+    clear: both;
   }
 
   .itineraries, .segments, .arrivals, .routes, .trips, .stops {
@@ -405,6 +405,9 @@ $nav_height_base: $navbar_height + $title_height + 1;
     strong { display:block; }
   }
   .alert:not(.show) { display: none; }
+  .clearfix {
+    height: $title_height;
+  }
 }
 
 /*Pacifico Font setup for WhichBus */
