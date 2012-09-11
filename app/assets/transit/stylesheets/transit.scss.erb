@@ -731,14 +731,15 @@ $nav_height_base: $navbar_height + $title_height + 1;
 .favorite {
   @include size(15px, 20px);
   float: right;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  line-height: 25px;
-  text-shadow: 0px -1px 5px #57564d;
+  line-height: 30px;
+  text-shadow: 1px 1px 5px #ddd, -1px -1px 5px #555;
+  opacity: 0.99;
 }
 .favorite.active, .favorite:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(#dc785e), to(#c65f43));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  //background: -webkit-gradient(linear, left top, left bottom, from(#dc785e), to(#c65f43));
+  //-webkit-background-clip: text;
+  //-webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 5px #ddd, -1px -1px 5px #555, -1px -1px 2px #000;
   color: #d86749;
 }
 
