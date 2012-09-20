@@ -10,9 +10,9 @@
         <option value="at">At</option>
         <option value="by" <%= ' selected' if @plan.get('arrive_by') %>>By</option>
     </select>
-    <input type="text" class="span2" name="trip_date"
-            value="<%= @plan.get('date').toLocaleDateString() %>">
-    <input type="text" class="span1" name="trip_time"
+    <input type="date" class="date" name="trip_date"
+            value="<%= Transit.format_date @plan.get('date') %>">
+    <input type="text" class="span1 time" name="trip_time"
             value="<%= Transit.format_time @plan.get('date') %>">
     <button type="submit" class="btn">OK</button>
 </form>
