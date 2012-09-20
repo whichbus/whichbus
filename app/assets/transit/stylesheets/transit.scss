@@ -198,6 +198,9 @@ header.green, .gradient.green {
   z-index: 10;
   width: $sidebar_width;
   height: 32px;
+  i {
+    cursor: pointer;
+  }
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -738,6 +741,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
 }
 
 .favorite {
+  display: none;
   @include size(15px, 20px);
   float: right;
   line-height: 30px;
