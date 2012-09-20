@@ -1,3 +1,12 @@
+Transit.format_date = (input) ->
+  date = if input not instanceof Date then new Date(input) else input
+  month = date.getMonth() + 1
+  padded_month = "#{if month < 10 then '0' else ''}#{month}"
+  day = date.getDate()
+  padded_day = "#{if day < 10 then '0' else ''}#{day}"
+  year = date.getFullYear()
+  "#{year}-#{padded_month}-#{padded_day}"
+
 Transit.format_time = (input) ->
   date = if input not instanceof Date then new Date(input) else input
   hours = date.getHours() % 12 || 12
