@@ -290,8 +290,8 @@ $nav_height_base: $navbar_height + $title_height + 1;
   top: $nav_height_base;
   bottom: 0;
   left: 0;
-  overflow: auto;
-  @include box-shadow(0 0px 4px rgba(0,0,0,0.25));
+  overflow: scroll;
+  @include box-shadow(2px 0px 4px rgba(0,0,0,0.25));
 
   @media (max-width: 768px) {
     top: $nav_height_base + $map_height_tablet;
