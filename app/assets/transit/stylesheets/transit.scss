@@ -95,7 +95,7 @@ $borderRadius: 7px;
 $settings_menu_width: 230px;
 
 body {
-  background: url('<%= image_path("background/background-stripes.png") %>') repeat #dcdcd7;
+  background: image-url("background/background-stripes.png") repeat #dcdcd7;
 }
 
 a:not(.btn):not(.close):hover {
@@ -653,7 +653,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
   @include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
   @include border-radius(10px);
   border: 1px solid #adaca1;
-  background: url('<%= image_path("background/directions.png") %>') repeat #cdcabf;
+  background: image-url("background/directions.png") repeat #cdcabf;
 
   h2 {
     font-weight: normal;
@@ -813,10 +813,10 @@ $nav_height_base: $navbar_height + $title_height + 1;
 }
 
 .leaflet-control-zoom-in {
-  background-image: url('<%= image_path("vendor/leaflet/images/zoom-in.png") %>');
+  background-image: image-url("vendor/leaflet/images/zoom-in.png");
 }
 .leaflet-control-zoom-out {
-  background-image: url('<%= image_path("vendor/leaflet/images/zoom-out.png") %>');
+  background-image: image-url("vendor/leaflet/images/zoom-out.png");
 }
 
 // nice formatting for about and issues pages
