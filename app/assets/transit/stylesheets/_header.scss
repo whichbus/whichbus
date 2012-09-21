@@ -1,0 +1,60 @@
+.whichbus-nav{
+  text-align: center;
+  a { 
+    border: none !important; 
+    color: white;
+    label { display: none; }
+  }
+  a:hover { color: #F5F5F2; }
+  // group of navbar items
+  .block {
+    font-size: 1.8em;
+    line-height: 1.3em;
+    margin: 0 10px;
+    a + a { margin-left: 10px; }
+  }
+  // position block on left or right edge of screen
+  .block.right { @include stretch(0, 0, false, false); }
+  .block.left  { @include stretch(0, false, false, 0); }
+  // style icons in navbar
+  .icon {
+    display: inline-block;
+    @include square(34px);
+    line-height: 34px;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: middle;
+    @include shadow-black(0.25);
+    opacity: 0.99;
+  }
+  .icon:hover, .icon.active {
+    // invert border on hover or active
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  }
+  .icon.bus {
+    // whichbus font requires special sizing
+    width: auto;
+    font-size: 24px;
+    i { font-size: 22px; }
+    .phone { display: none; }
+    @media (max-width: 480px) { 
+      .desktop { display: none; }
+      .phone { display: inline; }
+    }
+  }
+
+  // special directions icon has two map markers slightly offset
+  #directions {
+    .icon-map-marker { 
+      position: relative;
+      font-size: 20px; 
+      left: 1px;
+    }
+    // move the first marker up and left a bit
+    .icon-map-marker:first-child {
+      top: -5px;
+      left: -1px;
+    }
+  }
+}
+

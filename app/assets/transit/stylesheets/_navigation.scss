@@ -1,0 +1,135 @@
+// requires absolute positioning for overflow scroll
+#navigation {
+  position: absolute;
+  top: $nav_height_base;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  @include box-shadow(0 0px 4px rgba(0,0,0,0.25));
+
+  @media (max-width: 768px) {
+    top: $nav_height_base + $map_height_tablet;
+  }
+  @media (max-width: 480px) {
+    top: $nav_height_base + $map_height_phone;
+  }
+
+  ol {
+    z-index: -1;
+    li {
+      color: #565656;
+      // height: 50px;
+      border-top: 1px solid #565656 * 2;
+      border-bottom: 1px solid #ababab;
+      @include gradient-vertical(#e1e0e0, #d2d2d2)
+    }
+    li:first-child {
+      border-top: 1px solid #f3f3f3;
+    }
+  }
+  ol.itineraries, ol.trips {
+    clear: both;
+  }
+
+  .itineraries, .segments, .arrivals, .routes, .trips, .stops {
+    list-style: none;
+    margin: 0;
+    @include clearfix();
+    // li:last-child  { border-bottom: none; }
+  }
+  .stops > li { padding: $sidebar_margin;}
+
+  .route-list {
+    margin: 0;
+    list-style-type: none;
+    padding-left: $sidebar_margin;
+    padding-right: $sidebar_margin;
+    li { 
+      display: inline-block; 
+      margin: 5px 5px 0 0; 
+    }
+  }
+
+  // .routes { margin: $sidebar_margin; }
+  .routes {
+    padding-left: $sidebar_margin;
+    padding-right: $sidebar_margin;
+    li {
+      float: left;
+      margin: $sidebar_margin/2 $sidebar_margin/2 0 0;
+    }
+  }
+  .routes.collapse.in { padding-bottom: $sidebar_margin /2 }
+
+  .itinerary {
+    margin: 0;
+    border-bottom: 0;
+    overflow: auto;
+    h4 {
+      padding: 5px $sidebar_margin;
+      cursor: pointer;
+      small { color: lightgrey; }
+    }
+    .summary {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin-top: -14px;
+    }
+  }
+
+  .trip {
+    padding: 8px $sidebar_margin;
+  }
+
+  .segments { z-index: 0; }
+  .segment, .arrival {
+    @include clearfix();
+    padding: 8px $sidebar_margin;
+    // border-top: 1px dashed $tableBorder;
+  }
+  .segment {
+    border-top: 1px solid #f3f3f3;
+    line-height: 30px;
+  }
+  li.segment:last-child {
+    border-bottom: 1px solid #ababab * 0.9;
+  }
+  .segment:hover {
+    background-color: $tableBackgroundHover;
+  }
+  .segment .label {
+    float: right;
+    margin-left: 5px;
+  }
+
+  .progress-striped {
+
+    margin: $sidebar_margin;
+    .bar {
+      width: 100%;
+      @include gradient-striped(#86bdcf, -45deg);
+    }
+  }
+
+  .timing {
+    display: block;
+    text-align: right;
+
+    .label {
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .real-time {
+      display: none;
+    }
+  }
+  .alert {
+    margin: $sidebar_margin;
+    strong { display:block; }
+  }
+  .alert:not(.show) { display: none; }
+  .clearfix {
+    height: $title_height;
+  }
+}

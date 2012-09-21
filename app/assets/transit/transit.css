@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree ./stylesheets
+ *= require ./stylesheets/transit.scss
  *= require_tree ./vendor
- *= require_tree .
 */
