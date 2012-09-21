@@ -4,7 +4,7 @@
 </span>
 
 <div class="">
-	Take <a class="btn btn-route" href="/routes/<%= @segment.agencyId %>/<%= @segment.route %>"><%= @segment.route %></a> 
+	Take <a class="btn btn-small btn-route" href="/routes/<%= @segment.agencyId %>/<%= @segment.route %>"><%= @segment.route %></a> 
 	to <a class="btn btn-stop" href="/stops/<%= @segment.to.stopId.agencyId %>/<%= @segment.to.stopId.id %>"><%= @segment.to.name %>
 		<span class="safety" style="display:none;">
 			<i class="icon-warning-sign" title="Be aware of your surroundings at this stop"></i>

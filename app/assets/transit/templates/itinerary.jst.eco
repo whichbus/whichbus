@@ -1,6 +1,6 @@
 <header class="gray">
 	<i class="affordance icon-caret-right"></i>
-	<h4 >
+	<h4>
 		<span class="summary pull-right"><%- @trip.summaryHTML() %></span>
 		<%= @trip.timing() %><br/>
 		<small><%= @trip.duration() %></small>
