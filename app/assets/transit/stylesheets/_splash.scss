@@ -1,0 +1,68 @@
+#splash {
+  @include clearfix();
+
+  .logo {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+.directions {
+  @include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
+  @include border-radius(10px);
+  border: 1px solid #adaca1;
+  background: image-url("background/directions.png") repeat #cdcabf;
+
+  h2 {
+    font-weight: normal;
+    text-align: center;
+    font-size: 24px;
+    margin: 20px auto 15px;
+    color: white;
+    @include shadow-black(0.20);
+  }
+
+  table {
+    tr { margin-bottom: 15px; }
+    tr:last-child { margin-bottom: 0; }
+    td { padding: 0;}
+
+    input.location {
+      @include size(43px, 98%);
+      @include border-radius($borderRadius 0 0 $borderRadius);
+      border: 1px solid #adaca1;
+      margin: 0;
+      padding: 0 1%;
+      font-size: 18px;
+      line-height: 1.3em;
+      vertical-align: middle;
+    }
+    button.geolocate {
+      @include size(45px, 47px);
+      margin-left: -1px;
+      border: 1px solid #adaca1;
+      @include border-radius(0 $borderRadius $borderRadius 0);
+      font-size: 2em;
+      line-height: 0;
+    }
+  }
+
+  form .row-fluid {
+    margin-bottom: 15px;
+  }
+
+  .input-append {
+    position: relative;
+    height: 45px;
+    input, button {
+      display: inline !important;
+      float: none !important;
+    }
+  }
+
+  input.location:focus {
+    // border-color: rgba(82, 168, 236, 0.8);
+    // @include box-shadow(0px 2px 8px 0px rgba(82, 168, 236, 0.15) inset);
+  }
+}
+
