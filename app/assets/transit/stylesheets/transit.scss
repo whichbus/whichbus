@@ -1,3 +1,6 @@
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600,700|Pacifico);
+
 /* Here are our lovely colors: */
 $wbGreen: #bbefce;
 $wbGreenDark: #a1d0b1;
@@ -14,64 +17,7 @@ $navbarBackgroundHighlight: $wbGreen;
 $linkColor: $wbBlueDark;
 $linkColorHover: darken($wbBlue, 5%);
 
-
-// Core variables and mixins
-@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
-@import "bootstrap/mixins";
-
-// CSS Reset
-@import "bootstrap/reset";
-
-// Grid system and page structure
-@import "bootstrap/scaffolding";
-@import "bootstrap/grid";
-@import "bootstrap/layouts";
-
-// Base CSS
-@import "bootstrap/type";
-//@import "bootstrap/code";
-@import "bootstrap/forms";
-@import "bootstrap/tables";
-
-// Components: common
-// @import "bootstrap/sprites";
-@import "bootstrap/dropdowns";
-@import "bootstrap/wells";
-@import "bootstrap/component-animations";
-@import "bootstrap/close";
-
-// Components: Buttons & Alerts
-@import "bootstrap/buttons";
-@import "bootstrap/button-groups";
-@import "bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
-
-// Components: Nav
-@import "bootstrap/navs";
-@import "bootstrap/navbar";
-//@import "bootstrap/breadcrumbs";
-//@import "bootstrap/pagination";
-//@import "bootstrap/pager";
-
-// Components: Popovers
-@import "bootstrap/modals";
-@import "bootstrap/tooltip";
-//@import "bootstrap/popovers";
-
-// Components: Misc
-//@import "bootstrap/thumbnails";
-@import "bootstrap/labels-badges";
-@import "bootstrap/progress-bars";
-@import "bootstrap/accordion";
-//@import "bootstrap/carousel";
-//@import "bootstrap/hero-unit";
-
-// Utility classes
-@import "bootstrap/utilities"; // Has to be last to override when necessary
-
-
-
-/* Open Sans Font as requested by @paigepauli */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600,700);
+@import "./bootstrap";
 
 @mixin shadow-black($opacity) {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, $opacity);
@@ -420,23 +366,11 @@ $nav_height_base: $navbar_height + $title_height + 1;
   }
 }
 
-/*Pacifico Font setup for WhichBus */
-@font-face {
-  font-family: 'PacificoRegular';
-  src: url('/pacifico/Pacifico-webfont.eot');
-  src: url('/pacifico/Pacifico-webfont.eot?#iefix') format('embedded-opentype'), 
-       url('/pacifico/Pacifico-webfont.woff') format('woff'), 
-       url('/pacifico/Pacifico-webfont.ttf') format('truetype'), 
-       url('/pacifico/Pacifico-webfont.svg#PacificoRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 
-.pacifico {
-  font-family: 'PacificoRegular', Arial, sans-serif;
+
+#text-logo, #splash h2, .pacifico {
+  font-family: 'Pacifico', cursive, sans-serif;
   line-height: 2rem;
-  letter-spacing: 0;
-  font-weight: normal;
 }
 
 #whichbus {
