@@ -58,3 +58,144 @@
   }
 }
 
+.settings {
+  a {
+    color: #333;
+  }
+  i {
+    opacity: 0.99;
+  }
+}
+
+#settings-button.settings.active{
+  background-color:#9bd5d3;
+  border-radius:5px 5px 0px 0px;
+  background-position:center;
+  width:34px;
+  height:34px;
+  z-index: 9999;
+}
+
+#settings-menu{
+  display: none;
+  position: fixed;
+  right: 4px;
+  background-color: #fff;
+  z-index: 9999;
+  margin-top: -5px;
+  color: dimgrey;
+  font-size: 1.2em;
+  border-radius: 10px 5px 5px 5px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.55);
+  overflow:auto;
+  width: $settings_menu_width;
+
+  header {
+    border-top: none;
+    padding: 14px 16px;
+    border-radius: 10px 0px 0px 0px;
+    vertical-align: middle;
+
+     h3 {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+
+  #settings-search {
+    background-color: #ced1d1;
+    height: 15%;
+    padding: 10px;
+    border-bottom: 1px solid #bfbfbf;
+    border-top: 1px solid #dadada;
+
+    input {
+      @include size(34px, 76%);
+      font-size: 14px;
+      height: 30px;
+      vertical-align: top;
+      box-sizing: border-box;
+      margin: 0;
+
+    }
+    input::-webkit-input-placeholder {
+      font-style: italic;
+    }
+    input:-moz-placeholder {
+      font-style: italic;
+    }
+    input:-ms-input-placeholder {
+      font-style: italic;
+    }
+    button {
+      color: #fff;
+      @include size(34px, 40px);
+      padding: 5px 8px;
+      margin-left: 5px;
+      //@include border-radius(0 $borderRadius $borderRadius 0);
+    }
+  }
+
+  .blocked {
+    position: relative;
+    opacity: 0.6;
+    .label {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -8px;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+  }
+
+  li {
+    padding: 10px 20px;
+
+    span {
+      margin-left: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    i {
+      font-size: 1.4em;
+      color: #bbb;
+      vertical-align: middle;
+    }
+
+    // hide border on menu links
+    a { border-bottom: none; }
+    // show link border on interior span (just the text)
+    a:hover span { border-bottom: 1px dotted; }
+  }
+
+  // put a 1px border between list items, but not on outsides
+  li + li {
+    border-top: 1px solid #bfbfbf;
+  }
+
+  #settings-list{
+    background-color:#fff;
+    border-radius: 0 0 10px 10px;
+
+    small.label.label-info{
+      margin-left:5px;
+    }
+  }
+}
+
+//For the black background thing
+#settings-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: none;
+}
+
+
