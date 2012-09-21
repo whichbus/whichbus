@@ -1,11 +1,7 @@
-Transit.format_date = (input) ->
-  date = if input not instanceof Date then new Date(input) else input
-  month = date.getMonth() + 1
-  padded_month = "#{if month < 10 then '0' else ''}#{month}"
-  day = date.getDate()
-  padded_day = "#{if day < 10 then '0' else ''}#{day}"
-  year = date.getFullYear()
-  "#{year}-#{padded_month}-#{padded_day}"
+Transit.parse_date = (input) ->
+  parts = input.match(/(\d+)-(\d+)-(\d+) (\d+):(\d+)\s*(pm|am){0,1}/i)
+  hours = if parts[6]?.toLowerCase() == 'pm' then parseInt(parts[4]) + 12 else parts[4]
+  new Date(parts[1], parts[2]-1, parts[3], hours, parts[5])
 
 Transit.format_time = (input) ->
   date = if input not instanceof Date then new Date(input) else input
@@ -18,18 +14,18 @@ Transit.format_time = (input) ->
 Transit.format_otp_date = (input) ->
   date = if input not instanceof Date then new Date(input) else input
   month = date.getMonth() + 1
+  padded_month = "#{if month < 10 then '0' else ''}#{month}"
   day = date.getDate()
+  padded_day = "#{if day < 10 then '0' else ''}#{day}"
   year = date.getFullYear()
-  "#{month}-#{day}-#{year}"
+  "#{year}-#{padded_month}-#{padded_day}"
 
 Transit.format_otp_time = (input) ->
   date = if input not instanceof Date then new Date(input) else input
   hours = date.getHours()
   minutes = date.getMinutes()
-  seconds = date.getSeconds()
   padded_minutes = "#{if minutes < 10 then '0' else ''}#{minutes}"
-  padded_seconds = "#{if seconds < 10 then '0' else ''}#{seconds}"
-  "#{hours}:#{padded_minutes}:#{padded_seconds}"
+  "#{hours}:#{padded_minutes}"
 
 Transit.format_duration = (seconds, minimize) ->
   # if no second parameter specified then auto-minimize if time > 1 hour

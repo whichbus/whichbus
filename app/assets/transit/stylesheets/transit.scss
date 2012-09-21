@@ -103,7 +103,7 @@ a:not(.btn):not(.close):hover {
   border-bottom: 1px dotted;
 }
 
-input {
+input.location {
   @include size(43px, 98%);
   margin: 0px;
   padding: 0px 1%;
@@ -772,15 +772,6 @@ $nav_height_base: $navbar_height + $title_height + 1;
   margin: 0;
   padding: 10px; 
   display: none;
-
-  input {
-    height: auto;
-    font-size: inherit;
-    padding: 4px 8px;
-  }
-  .date {
-    width: 120px;
-  }
 }
 
 .btn.btn-route {
