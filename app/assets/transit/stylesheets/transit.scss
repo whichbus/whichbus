@@ -1,6 +1,10 @@
 /* Fonts */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600,700|Pacifico);
 
+/* Media sizes */
+$phones: 480px;
+$tablets: 768px;
+
 /* Here are our lovely colors: */
 $wbGreen: #bbefce;
 $wbGreenDark: #a1d0b1;
@@ -137,7 +141,7 @@ header.green, .gradient.green {
   i {
     cursor: pointer;
   }
-  @media (max-width: 768px) {
+  @media (max-width: $tablets) {
     width: 100%;
   }
 }
@@ -162,15 +166,13 @@ $nav_height_base: $navbar_height + $title_height + 1;
 
 // title is at the top of the page with a fixed height. it contains an h3 for text
 #title {
+  display: none;
+
   position: absolute;
   top: $navbar_height;
   header {
     height: $title_height;
-    // white-space: normal;
-    // @media (max-width: 768px) { 
-    //   height: $title_height; 
-    //   white-space: nowrap;
-    // }
+
     h3 {
       line-height: $title_height;
       overflow: hidden;
@@ -179,8 +181,8 @@ $nav_height_base: $navbar_height + $title_height + 1;
     }
 
   }
-  @media (min-width:480px){
-    z-index:1;
+  @media (min-width: $phones) {
+    z-index: 1;
     @include box-shadow(2px 0px 4px rgba(0,0,0,0.25));
   }
 }
@@ -193,7 +195,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
   width: $sidebar_width;
   float: left;
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablets) {
     width: 100%;
   }
 }
@@ -379,11 +381,11 @@ $nav_height_base: $navbar_height + $title_height + 1;
       color: #333;
       font-weight: normal;
       font-size: 15px;
-      @media (max-width: 480px) { display: block; }
+      @media (max-width: $phones) { display: block; }
     }
   }
   // shrink the dialog on phones so it looks nice
-  @media (max-width: 767px) {
+  @media (max-width: $tablets) {
     max-height: 90%;
     left: 5%;
     top: 5%;
@@ -391,7 +393,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
     width: 90% !important;
     .modal-body { max-height: 160px; }
   }
-  @media (max-width: 480px) {
+  @media (max-width: $phones) {
   }
 }
 
@@ -399,7 +401,6 @@ $nav_height_base: $navbar_height + $title_height + 1;
 #disambiguate {
   width: 480px;
   margin-left: -240px;
-  // @media (max-width: 767px) { top: 5%; }
   .modal-body {
     // buttons aligned vertically separated by small margin
     .btn {

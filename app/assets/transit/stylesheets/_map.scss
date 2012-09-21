@@ -11,13 +11,13 @@
     max-width: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablets) {
     top: $nav_height_base;
     left: 0;
     height: $map_height_tablet;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: $phones) {
     height: $map_height_phone;
   }
 }

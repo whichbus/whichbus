@@ -7,10 +7,10 @@
   overflow: auto;
   @include box-shadow(0 0px 4px rgba(0,0,0,0.25));
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablets) {
     top: $nav_height_base + $map_height_tablet;
   }
-  @media (max-width: 480px) {
+  @media (max-width: $phones) {
     top: $nav_height_base + $map_height_phone;
   }
 
