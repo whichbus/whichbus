@@ -71,8 +71,8 @@ class Transit.Views.Plan extends Backbone.View
     date = $('input[name="trip_date"]').val()
     time = $('input[name="trip_time"]').val()
     @model.set({
-      date: new Date(Date.parse("#{date} #{time}")),
-      arrive_by: if $('select[name="arrive_or_depart"]').val() == 'by' then true else false
+      date: Transit.parse_date("#{date} #{time}"),
+      arrive_by: if $('input[name="arrive_or_depart"]:checked').val() == 'by' then true else false
     }, { silent: true })
     # TODO: See if this can be bound to a model date change event.
     @model.trigger 'fetch'
