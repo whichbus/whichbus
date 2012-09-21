@@ -19,17 +19,9 @@ $linkColorHover: darken($wbBlue, 5%);
 
 @import "./bootstrap";
 
-@mixin shadow-black($opacity) {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, $opacity);
-}
+@import "mixins";
 
-@mixin stretch($offset-top: 0, $offset-right: 0, $offset-bottom: 0, $offset-left: 0) {
-  position: absolute;
-  @if $offset-top { top: $offset-top; }
-  @if $offset-bottom { bottom: $offset-bottom; }
-  @if $offset-left { left: $offset-left; }
-  @if $offset-right { right: $offset-right; }
-}
+
 
 $navbar_height: 40px;
 $title_height: 30px;
@@ -195,29 +187,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
   }
 }
 
-// then comes the map. on desktop the map is absolute positioned to fill the area to the
-// right of the sidebar. on phone/tablet it fits neatly between title and navigation.
-#map {
-  // stretch to fill the entire right side of the screen
-  @include stretch($navbar_height, 0, 0, $sidebar_width);
 
-  a:hover {
-    border-bottom: none;
-  }
-  img {
-    max-width: none;
-  }
-
-  @media (max-width: 768px) {
-    top: $nav_height_base;
-    left: 0;
-    height: $map_height_tablet;
-  }
-
-  @media (max-width: 480px) {
-    height: $map_height_phone;
-  }
-}
 
 // on desktop title and navigation fill the sidebar but no more
 #title, #navigation {
@@ -230,143 +200,9 @@ $nav_height_base: $navbar_height + $title_height + 1;
   }
 }
 
-// requires absolute positioning for overflow scroll
-#navigation {
-  position: absolute;
-  top: $nav_height_base;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  @include box-shadow(0 0px 4px rgba(0,0,0,0.25));
+@import "map";
 
-  @media (max-width: 768px) {
-    top: $nav_height_base + $map_height_tablet;
-  }
-  @media (max-width: 480px) {
-    top: $nav_height_base + $map_height_phone;
-  }
-
-  ol {
-    z-index: -1;
-    li {
-      color: #565656;
-      // height: 50px;
-      border-top: 1px solid #565656 * 2;
-      border-bottom: 1px solid #ababab;
-      @include gradient-vertical(#e1e0e0, #d2d2d2)
-    }
-    li:first-child {
-      border-top: 1px solid #f3f3f3;
-    }
-  }
-  ol.itineraries, ol.trips {
-    clear: both;
-  }
-
-  .itineraries, .segments, .arrivals, .routes, .trips, .stops {
-    list-style: none;
-    margin: 0;
-    @include clearfix();
-    // li:last-child  { border-bottom: none; }
-  }
-  .stops > li { padding: $sidebar_margin;}
-
-  .route-list {
-    margin: 0;
-    list-style-type: none;
-    padding-left: $sidebar_margin;
-    padding-right: $sidebar_margin;
-    li { 
-      display: inline-block; 
-      margin: 5px 5px 0 0; 
-    }
-  }
-
-  // .routes { margin: $sidebar_margin; }
-  .routes {
-    padding-left: $sidebar_margin;
-    padding-right: $sidebar_margin;
-    li {
-      float: left;
-      margin: $sidebar_margin/2 $sidebar_margin/2 0 0;
-    }
-  }
-  .routes.collapse.in { padding-bottom: $sidebar_margin /2 }
-
-  .itinerary {
-    margin: 0;
-    border-bottom: 0;
-    overflow: auto;
-    h4 {
-      padding: 5px $sidebar_margin;
-      cursor: pointer;
-      small { color: lightgrey; }
-    }
-    .summary {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      margin-top: -14px;
-    }
-  }
-
-  .trip {
-    padding: 8px $sidebar_margin;
-  }
-
-  .segments { z-index: 0; }
-  .segment, .arrival {
-    @include clearfix();
-    padding: 8px $sidebar_margin;
-    // border-top: 1px dashed $tableBorder;
-  }
-  .segment {
-    border-top: 1px solid #f3f3f3;
-    line-height: 30px;
-  }
-  li.segment:last-child {
-    border-bottom: 1px solid #ababab * 0.9;
-  }
-  .segment:hover {
-    background-color: $tableBackgroundHover;
-  }
-  .segment .label {
-    float: right;
-    margin-left: 5px;
-  }
-
-  .progress-striped {
-
-    margin: $sidebar_margin;
-    .bar {
-      width: 100%;
-      @include gradient-striped(#86bdcf, -45deg);
-    }
-  }
-
-  .timing {
-    display: block;
-    text-align: right;
-
-    .label {
-      display: inline-block;
-      margin-bottom: 2px;
-    }
-    .real-time {
-      display: none;
-    }
-  }
-  .alert {
-    margin: $sidebar_margin;
-    strong { display:block; }
-  }
-  .alert:not(.show) { display: none; }
-  .clearfix {
-    height: $title_height;
-  }
-}
-
-
+@import "navigation";
 
 #text-logo, #splash h2, .pacifico {
   font-family: 'Pacifico', cursive, sans-serif;
@@ -380,65 +216,8 @@ $nav_height_base: $navbar_height + $title_height + 1;
   border: none;
   @include shadow-black(0.25);
 }
-.whichbus-nav{
-  text-align: center;
-  a { 
-    border: none !important; 
-    color: white;
-    label { display: none; }
-  }
-  a:hover { color: #F5F5F2; }
-  // group of navbar items
-  .block {
-    font-size: 1.8em;
-    line-height: 1.3em;
-    margin: 0 10px;
-    a + a { margin-left: 10px; }
-  }
-  // position block on left or right edge of screen
-  .block.right { @include stretch(0, 0, false, false); }
-  .block.left  { @include stretch(0, false, false, 0); }
-  // style icons in navbar
-  .icon {
-    display: inline-block;
-    @include square(34px);
-    line-height: 34px;
-    cursor: pointer;
-    text-decoration: none;
-    vertical-align: middle;
-    @include shadow-black(0.25);
-    opacity: 0.99;
-  }
-  .icon:hover, .icon.active {
-    // invert border on hover or active
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-  }
-  .icon.bus {
-    // whichbus font requires special sizing
-    width: auto;
-    font-size: 24px;
-    i { font-size: 22px; }
-    .phone { display: none; }
-    @media (max-width: 480px) { 
-      .desktop { display: none; }
-      .phone { display: inline; }
-    }
-  }
 
-  // special directions icon has two map markers slightly offset
-  #directions {
-    .icon-map-marker { 
-      position: relative;
-      font-size: 20px; 
-      left: 1px;
-    }
-    // move the first marker up and left a bit
-    .icon-map-marker:first-child {
-      top: -5px;
-      left: -1px;
-    }
-  }
-}
+@import "header";
 
 #menu-btn {
   margin-left:-40px;
