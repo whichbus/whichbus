@@ -3,9 +3,15 @@ class Transit.Models.Itinerary extends Backbone.Model
 		_.pluck(_.filter(@get('legs'), (leg) -> leg.mode not in ['WALK', 'BIKE']), 'route').join(', ')
 
 	summaryHTML: =>
-		_.map(_.filter(@get('legs'), (leg) -> leg.mode not in ['WALK', 'BIKE']), (leg) -> 
-			"<span class='btn btn-route'>#{if leg.mode == 'FERRY' then 'FERRY' else leg.route}</span>"
+		index = 0
+		stops = _.map(_.filter(@get('legs'), (leg) -> leg.mode not in ['WALK', 'BIKE']), (leg) -> 
+			index++
+			expandable = if index > 2 then ' expandable' else ''
+			route = if leg.mode == 'FERRY' then 'FERRY' else leg.route
+			"<span class='btn btn-route#{expandable}'>#{route}</span>"
 		).join(' ')
+		stops = "#{stops} <span class='btn btn-route expand'>+#{index-2}</span>" if index > 2
+		return stops
 
 	timing: =>
 		start = Transit.format_time(@get('startTime'))

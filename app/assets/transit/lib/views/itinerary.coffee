@@ -9,6 +9,7 @@ class Transit.Views.Itinerary extends Backbone.View
 	events:
 		'mouseover h4': 'render_map'
 		'mouseout h4': 'clean_up'
+		'click .expand': 'expand_routes'
 		'click h4': 'toggle'
 
 	initialize: =>
@@ -53,3 +54,9 @@ class Transit.Views.Itinerary extends Backbone.View
 		$(@el).toggleClass 'active'
 		@$('.affordance').toggleClass('icon-caret-down').toggleClass('icon-caret-right')
 		@$('.segments').collapse 'toggle'
+
+	expand_routes: (event) =>
+		event.stopPropagation()
+		@$('.expandable').show()
+		@$('.expand').remove()
+
