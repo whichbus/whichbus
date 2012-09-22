@@ -1,10 +1,8 @@
 <header class="options subnav teal">
-<div class="row-fluid">
     <h3>
-        <i class="span1 icon-reorder pull-right"></i>
-        <span id="title" class="span11">Suggested Itineraries</span>
+        <i class="icon-reorder pull-right"></i>
+        <span id="title">Suggested Itineraries</span>
     </h3>
-</div>
 </header>
 
 <div id="tripOptions" class="collapse">
