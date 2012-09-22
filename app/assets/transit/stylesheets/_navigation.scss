@@ -116,7 +116,10 @@
     line-height: 30px;
   }
   li.segment:last-child {
-    border-bottom: 1px solid #ababab * 0.8;
+    border-bottom: none;
+  }
+  li.itinerary:last-child li.segment:last-child {
+    border-bottom: 1px solid #ababab;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
