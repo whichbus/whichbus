@@ -10,14 +10,12 @@
   }
 
   @media #{$desktop} {
-    // stretch to fill the entire right side of the screen
-    @include stretch(0, 0, 0, $sidebar_width);
+    position: relative;
+    margin-left: $sidebar_width;
+    height: 100%;
   }
 
   @media #{$tablet} {
-    position: relative;
-    top: auto; bottom: auto;
-    left: 0; right: 0;
     height: $map_height_tablet;
   }
 
