@@ -1,8 +1,6 @@
 // then comes the map. on desktop the map is absolute positioned to fill the area to the
 // right of the sidebar. on phone/tablet it fits neatly between title and navigation.
 #map {
-  // stretch to fill the entire right side of the screen
-  @include stretch($navbar_height, 0, 0, $sidebar_width);
 
   a:hover {
     border-bottom: none;
@@ -11,13 +9,19 @@
     max-width: none;
   }
 
-  @media (max-width: $tablets) {
-    top: $nav_height_base;
-    left: 0;
+  @media #{$desktop} {
+    // stretch to fill the entire right side of the screen
+    @include stretch(0, 0, 0, $sidebar_width);
+  }
+
+  @media #{$tablet} {
+    position: relative;
+    top: auto; bottom: auto;
+    left: 0; right: 0;
     height: $map_height_tablet;
   }
 
-  @media (max-width: $phones) {
+  @media #{$phone} {
     height: $map_height_phone;
   }
 }

@@ -1,30 +1,43 @@
 // requires absolute positioning for overflow scroll
 #navigation {
-  position: absolute;
-  top: $nav_height_base;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
+  min-width: 320px;
+
   @include box-shadow(0 0px 4px rgba(0,0,0,0.25));
 
-  @media (max-width: $tablets) {
-    top: $nav_height_base + $map_height_tablet;
+  @media #{$desktop} {
+    @include stretch(0, auto, 0, 0);
+    overflow: auto;
+    width: $sidebar_width;
   }
-  @media (max-width: $phones) {
-    top: $nav_height_base + $map_height_phone;
+
+  @media #{$tablet} {
+    position: relative;
+    top: auto; bottom: auto;
+    left: 0; right: 0;
+    width: auto;
+  }
+  @media #{$phone} {
+  }
+
+  .options {
+    @include clearfix();
+    i {
+      text-align: right;
+      cursor: pointer;
+    }
+  }
+  .trip-options {
+    margin: 0;
+    padding: 10px; 
   }
 
   ol {
     z-index: -1;
     li {
       color: #565656;
-      // height: 50px;
       border-top: 1px solid #565656 * 2;
       border-bottom: 1px solid #ababab;
       @include gradient-vertical(#e1e0e0, #d2d2d2)
-    }
-    li:first-child {
-      border-top: 1px solid #f3f3f3;
     }
   }
   ol.itineraries, ol.trips {
@@ -35,7 +48,6 @@
     list-style: none;
     margin: 0;
     @include clearfix();
-    // li:last-child  { border-bottom: none; }
   }
   .stops > li { padding: $sidebar_margin;}
 
@@ -93,7 +105,7 @@
     line-height: 30px;
   }
   li.segment:last-child {
-    border-bottom: 1px solid #ababab * 0.9;
+    border-bottom: 1px solid #ababab * 0.8;
   }
   .segment:hover {
     background-color: $tableBackgroundHover;
@@ -129,7 +141,4 @@
     strong { display:block; }
   }
   .alert:not(.show) { display: none; }
-  .clearfix {
-    height: $title_height;
-  }
 }

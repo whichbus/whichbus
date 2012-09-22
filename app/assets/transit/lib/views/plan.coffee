@@ -64,7 +64,7 @@ class Transit.Views.Plan extends Backbone.View
 
 
   display_trip_options: =>
-    @$('#tripOptions').slideToggle()
+    @$('#tripOptions').collapse 'toggle'
 
   change_trip_options: (event) =>
     event.preventDefault()

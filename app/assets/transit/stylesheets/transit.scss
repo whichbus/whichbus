@@ -2,8 +2,9 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600,700|Pacifico);
 
 /* Media sizes */
-$phones: 480px;
-$tablets: 768px;
+$desktop: "(min-width: 769px)";
+$phone: "(max-width: 480px)";
+$tablet: "(max-width: 768px)";
 
 /* Here are our lovely colors: */
 $wbGreen: #bbefce;
@@ -28,6 +29,7 @@ $linkColorHover: darken($wbBlue, 5%);
 
 
 $navbar_height: 40px;
+$nav_height_base: $navbar_height;
 $title_height: 30px;
 $sidebar_width: 400px;
 $sidebar_margin: 12px;
@@ -58,8 +60,7 @@ input.location {
 }
 
 body > .container-fluid, #container {
-  margin-top: $navbar_height;
-  clear: both;
+  @include stretch($navbar_height, 0, 0, 0);
   overflow: auto;
 }
 .container-fluid {
@@ -123,9 +124,17 @@ header.gray, .gradient.gray {
 }
 header.blue, .gradient.blue {
   border-bottom: 1px solid;
-  border-color: #5E9B99;
+  border-color: #5e9b99;
   @include gradient-vertical(#93d2d0, #679a98);
   background-color: darken(#679a98, 1%);
+}
+header.teal, .gradient.teal {
+  $light: #93d2d0;
+  $dark: #679a98;
+  border-top: 1px solid lighten($light, 10%);
+  border-bottom: 1px solid darken($dark, 10%);
+  @include gradient-vertical($light, $dark);
+  background-color: darken($dark, 1%);
 }
 header.green, .gradient.green {
   border-top: 1px solid $wbGreenDark;
@@ -133,21 +142,8 @@ header.green, .gradient.green {
   @include gradient-vertical($wbGreen, $wbGreenDark);
   background-color: darken($wbGreenDark, 1%);
 }
-.subnav {
-  position: fixed;
-  z-index: 10;
-  width: $sidebar_width;
-  height: 32px;
-  i {
-    cursor: pointer;
-  }
-  @media (max-width: $tablets) {
-    width: 100%;
-  }
-}
-.subnav + ul, .subnav + ol {
-  padding-top: $title_height;
-}
+
+
 
 .cozy { padding: 10px 20px; }
 .compact { padding: 5px 10px; }
@@ -162,49 +158,25 @@ header.green, .gradient.green {
 ////////
 /* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
 ////////
-$nav_height_base: $navbar_height + $title_height + 1;
 
-// title is at the top of the page with a fixed height. it contains an h3 for text
 #title {
-  display: none;
-
-  position: absolute;
-  top: $navbar_height;
-  header {
-    height: $title_height;
-
-    h3 {
-      line-height: $title_height;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-  }
-  @media (min-width: $phones) {
-    z-index: 1;
-    @include box-shadow(2px 0px 4px rgba(0,0,0,0.25));
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
-
-// on desktop title and navigation fill the sidebar but no more
-#title, #navigation {
-  min-width: 320px;
-  width: $sidebar_width;
-  float: left;
-
-  @media (max-width: $tablets) {
-    width: 100%;
-  }
-}
 
 @import "map";
 
 @import "navigation";
 
-#text-logo, #splash h2, .pacifico {
+#text-logo {
+  font-family: 'Pacifico', cursive, sans-serif;
+  line-height: $navbar_height;
+}
+
+#splash h2, .pacifico {
   font-family: 'Pacifico', cursive, sans-serif;
   line-height: 2rem;
 }
@@ -276,11 +248,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
 
 .disabled { color: #aaa; text-shadow: none; }
 
-.trip-options {
-  margin: 0;
-  padding: 10px; 
-  display: none;
-}
+
 
 .btn.btn-route {
   color: white;
@@ -289,10 +257,14 @@ $nav_height_base: $navbar_height + $title_height + 1;
   padding: 4px 8px;
   min-width: 30px;
   vertical-align: baseline;
-  border: 1px solid #748c7d;
   @include shadow-black(0.25);
-  @include gradientBar(#bfe4cd, #90b89f);
-  background-color: darken(#90b89f, 1%);
+  $dark: #90b89f;
+  $light: lighten($dark, 20%);
+  @include gradientBar($light, $dark);
+  background-color: darken($dark, 1%);
+  border: 1px solid lighten($dark, 5%);
+  border-top-color: lighten($light, 10%);
+  border-bottom-color: darken($dark, 10%);
 }
 .btn-route.btn-small {
   font-size: 14px;
@@ -381,11 +353,11 @@ $nav_height_base: $navbar_height + $title_height + 1;
       color: #333;
       font-weight: normal;
       font-size: 15px;
-      @media (max-width: $phones) { display: block; }
+      @media #{$phone} { display: block; }
     }
   }
   // shrink the dialog on phones so it looks nice
-  @media (max-width: $tablets) {
+  @media #{$tablet} {
     max-height: 90%;
     left: 5%;
     top: 5%;
@@ -393,7 +365,7 @@ $nav_height_base: $navbar_height + $title_height + 1;
     width: 90% !important;
     .modal-body { max-height: 160px; }
   }
-  @media (max-width: $phones) {
+  @media #{$phone} {
   }
 }
 

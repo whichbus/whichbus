@@ -67,11 +67,8 @@ Transit.storage_set = (key, value) ->
 Transit.storage_clear = (key) ->
   localStorage.removeItem key
 
-Transit.setTitle = (title) =>
-  $("#title h3").text(title)
-
 Transit.setTitleHTML = (contents...) =>
-  title = $("#title h3").html('')
+  title = $("#title").html('')
   title.append(content) for content in contents
 
 Transit.errorMessage = (title, message) =>
