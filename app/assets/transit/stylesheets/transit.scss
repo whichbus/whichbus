@@ -256,13 +256,7 @@ header.green, .gradient.green {
   padding: 4px 8px;
   vertical-align: baseline;
   @include shadow-black(0.25);
-  $dark: #90b89f;
-  $light: lighten($dark, 20%);
-  @include gradientBar($light, $dark);
-  background-color: darken($dark, 1%);
-  border: 1px solid lighten($dark, 5%);
-  border-top-color: lighten($light, 10%);
-  border-bottom-color: darken($dark, 10%);
+  @include colorize(#90b89f);
 }
 .btn-route.btn-small {
   font-size: 14px;
@@ -272,13 +266,7 @@ header.green, .gradient.green {
   display: none;
 }
 .btn-route.expand {
-  $dark: $wbBlueDark;
-  $light: lighten($dark, 20%);
-  @include gradientBar($light, $dark);
-  background-color: darken($dark, 1%);
-  border: 1px solid lighten($dark, 5%);
-  border-top-color: lighten($light, 10%);
-  border-bottom-color: darken($dark, 10%);
+  @include colorize($wbBlueDark);
 }
 
 .btn.btn-stop {
