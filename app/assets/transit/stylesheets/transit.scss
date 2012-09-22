@@ -160,13 +160,6 @@ header.green, .gradient.green {
 /* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
 ////////
 
-#title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-
 
 @import "map";
 
