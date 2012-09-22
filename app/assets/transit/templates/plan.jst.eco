@@ -1,25 +1,30 @@
-<header class="blue options subnav">
+<header class="options subnav teal">
+<div class="row-fluid">
     <h3>
-        <i class="icon-reorder pull-right"></i>
-        Suggested Itineraries
+        <i class="span1 icon-reorder pull-right"></i>
+        <span id="title" class="span11">Suggested Itineraries</span>
     </h3>
+</div>
 </header>
-<div class="clearfix"></div>
-<form class="well trip-options" id="tripOptions">
-    <label class="radio">
-        <input type="radio" name="arrive_or_depart" value="at"<%= ' checked' if not @plan.get('arrive_by') %>> Depart at
-    </label>
-    <label class="radio">
-        <input type="radio" name="arrive_or_depart" value="by"<%= ' checked' if @plan.get('arrive_by') %>> Arrive by
-    </label>
-    <div class="row-fluid">
-    <input type="date" class="span7 date" name="trip_date"
-            value="<%= Transit.format_otp_date @plan.get('date') %>">
-    <input type="time" class="span5 time" name="trip_time"
-            value="<%= Transit.format_otp_time @plan.get('date') %>">
-    </div>
-    <button type="submit" class="btn btn-inverse">Map my bus!</button>
-</form>
+
+<div id="tripOptions" class="collapse">
+    <form class="well trip-options">
+        <label class="radio">
+            <input type="radio" name="arrive_or_depart" value="at"<%= ' checked' if not @plan.get('arrive_by') %>> Depart at
+        </label>
+        <label class="radio">
+            <input type="radio" name="arrive_or_depart" value="by"<%= ' checked' if @plan.get('arrive_by') %>> Arrive by
+        </label>
+        <div class="row-fluid">
+        <input type="date" class="span7 date" name="trip_date"
+                value="<%= Transit.format_otp_date @plan.get('date') %>">
+        <input type="time" class="span5 time" name="trip_time"
+                value="<%= Transit.format_otp_time @plan.get('date') %>">
+        </div>
+        <button type="submit" class="btn btn-inverse">Map my bus!</button>
+    </form>
+</div>
+
 <ol class="itineraries" id="itineraries"></ol>
 <div class="progress progress-striped active"><div class="bar"></div></div>
 <div class="alert alert-error"></div>
