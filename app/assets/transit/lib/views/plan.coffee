@@ -28,10 +28,8 @@ class Transit.Views.Plan extends Backbone.View
   render: =>
     $(@el).html(@template(plan: @model))
     @$('#options').tooltip placement: 'bottom' unless $.browser.mobile
-    @$('#options').popout
-      parent: @$('a.popout')
-      title: 'customize journey'
-      content: JST['templates/partials/options']
+    # @$('#options').popout
+    #   params: plan: @model
     this
 
   # update the plan when markers are dragged

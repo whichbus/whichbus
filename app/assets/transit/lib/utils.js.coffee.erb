@@ -210,9 +210,10 @@ $.fn.popout = (options) ->
     unless active
       console.log "popout #{source.attr('id')} opened"
       # make a new popout and append it to body of page
-      @popout = new Transit.Views.Popout
+      defaults = 
         parent: source
         title: source.data('original-title')
-        content: JST['templates/partials/' + source.attr('id')]()
+        content: JST['templates/partials/' + source.attr('id')]
+      @popout = new Transit.Views.Popout _.extend(defaults, options)
       $('body').append @popout.render().el
 
