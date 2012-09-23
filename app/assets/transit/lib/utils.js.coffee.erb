@@ -23,9 +23,10 @@ Transit.format_otp_date = (input) ->
 Transit.format_otp_time = (input) ->
   date = if input not instanceof Date then new Date(input) else input
   hours = date.getHours()
+  zone = if hours > 11 then 'pm' else 'am'
   minutes = date.getMinutes()
   padded_minutes = "#{if minutes < 10 then '0' else ''}#{minutes}"
-  "#{hours}:#{padded_minutes}"
+  "#{hours % 12}:#{padded_minutes} #{zone}"
 
 Transit.format_duration = (seconds, minimize) ->
   # if no second parameter specified then auto-minimize if time > 1 hour

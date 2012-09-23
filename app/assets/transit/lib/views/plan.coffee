@@ -1,6 +1,6 @@
 class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
-  
+
   className: 'plan'
 
   events:
@@ -8,6 +8,9 @@ class Transit.Views.Plan extends Backbone.View
     'click header.options': 'display_trip_options'
     'click .btn.cancel': 'display_trip_options'
     'submit form.options': 'change_trip_options'
+    'click .btn.up': 'increaseTime'
+    'click .btn.down': 'decreaseTime'
+    'blur input.time': 'validateTime'
 
   initialize: =>
     @map = Transit.map
@@ -127,3 +130,35 @@ class Transit.Views.Plan extends Backbone.View
     @off()
     event.preventDefault()
     Transit.router.navigate '', trigger: true
+
+  # adds the given amount of minutes to the current time
+  increaseTime: (event, amt=30) ->
+    time = @parseTime()
+    # convert time to mimutes and add amt
+    minutes = parseInt(time[1]) * 60 + parseInt(time[2]) + amt
+    if time[3] == 'pm' and time[1] < 12 then minutes += 12 * 60
+    # convert back to string and use validate to correct the display
+    @$('input.time').val("#{parseInt(minutes / 60)}:#{if minutes % 60 < 10 then '0' else ''}#{minutes % 60}")
+    @validateTime()
+
+  decreaseTime: (event) -> @increaseTime event, -30
+
+  parseTime: ->
+    # time can be hh:mmzz, hh:mm zz, hhzz, hh zz, hhz, ...
+    time = @$('input.time').val()
+    /^([12]?[0-9])(?::(\d{2}))?\s*([pa]m?)?$/.exec time
+
+  validateTime: ->
+    match = @parseTime()
+    if match?
+      hrs = match[1]
+      unless match[3] == undefined
+        match[3] += 'm' unless /m$/.test match[3]
+      # adjust for am/pm if given in 24-hr time
+      if hrs >= 12
+        hrs %= 12 if hrs > 12
+        match[3] = 'pm'
+      @$('input.time').val("#{hrs}:#{match[2] ? '00'} #{match[3] ? 'am'}")
+      # return match.slice(1)
+    else
+      @$('input.time').val('')
