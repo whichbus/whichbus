@@ -1,7 +1,6 @@
 class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
-  # el: "#navigation"
-  # tagName: 'div'
+  
   className: 'plan'
 
   events:
@@ -35,10 +34,6 @@ class Transit.Views.Plan extends Backbone.View
 
   # update the plan when markers are dragged
   update_plan: =>
-    console.log "UPDATING PLAN..."
-    # clean up the existing views when markers are dragged
-    view.clean_up(true) for view in @views
-    
     # set the model from/to locations from the marker positions
     @model.set
       from: @map.get('from').position.toHash()
@@ -52,6 +47,8 @@ class Transit.Views.Plan extends Backbone.View
 
   fetch_plan: =>
     @render()
+    # remove old itineraries from the map before fetching new ones
+    @remove_itineraries()
     # move the from/to markers to geocoded locations
     Transit.map.moveMarker 'from', @model.get('from')
     Transit.map.moveMarker 'to', @model.get('to')
@@ -69,7 +66,6 @@ class Transit.Views.Plan extends Backbone.View
 
   display_trip_options: =>
     @$('form.options').slideToggle()
-    console.log 'showing popover'
 
   change_trip_options: (event) =>
     event.preventDefault()
@@ -111,6 +107,9 @@ class Transit.Views.Plan extends Backbone.View
       view
     @fit_bounds()
 
+  # remove all itineraries from the map
+  remove_itineraries: =>
+    view?.clean_up(true) for view in @views if @views?
 
   fit_bounds: =>
     if @map.get('fit_bounds')
