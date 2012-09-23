@@ -85,6 +85,21 @@ Transit.toggleMenu = () =>
   $('#settings-menu').toggle()
   $('#settings-button').toggleClass('active')
 
+Transit.loadDirections = (form) ->
+  console.log form, arguments
+  from = $(form).siblings('input[name=from]').val().replace(/\s/g, '+')
+  to = $(form).siblings('input[name=to]').val().replace(/\s/g, '+')
+
+  # if to.length <= 3 then $('#to-location').addClass('btn-danger')
+  # else $$('#to-location').removeClass('btn-danger')
+  
+  # if from.length <=3 then $('#from-location').addClass('btn-danger')
+  # else $('#from-location').removeClass('btn-danger')
+  
+  if (to? and from? and to.length > 3 and from.length > 3)
+      # @remove()
+      Transit.router.navigate "plan/#{from}/#{to}", trigger: true
+
 # Transit.Markers =
 #   Start: L.Icon.extend
 #     iconSize: new L.Point(33, 35)
