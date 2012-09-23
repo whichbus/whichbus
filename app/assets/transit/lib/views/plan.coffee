@@ -7,7 +7,8 @@ class Transit.Views.Plan extends Backbone.View
   events:
     'click .go-back': 'go_to_splash'
     'click header.options': 'display_trip_options'
-    'submit .trip-options': 'change_trip_options'
+    'click .btn.cancel': 'display_trip_options'
+    'submit form.options': 'change_trip_options'
 
   initialize: =>
     @map = Transit.map
@@ -67,17 +68,23 @@ class Transit.Views.Plan extends Backbone.View
 
 
   display_trip_options: =>
-    @$('#tripOptions').slideToggle()
+    @$('form.options').slideToggle()
     console.log 'showing popover'
 
   change_trip_options: (event) =>
     event.preventDefault()
     date = $('input[name="trip_date"]').val()
     time = $('input[name="trip_time"]').val()
-    @model.set({
+    modes = @$('.mode .btn.active').map((i, item) -> item.getAttribute 'title').get()
+    optimize = @$('.optimize .btn.active').attr('title')
+    console.log "Update plan options:", date, time, modes, optimize
+
+    @model.set
       date: Transit.parse_date("#{date} #{time}"),
-      arrive_by: if $('input[name="arrive_or_depart"]:checked').val() == 'by' then true else false
-    }, { silent: true })
+      arrive_by: $('input[name="arrive_or_depart"]:checked').val() == 'by'
+      modes: modes
+      optimize: optimize
+    , silent: true
     # TODO: See if this can be bound to a model date change event.
     @model.trigger 'fetch'
 
