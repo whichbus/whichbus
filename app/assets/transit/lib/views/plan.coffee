@@ -27,6 +27,11 @@ class Transit.Views.Plan extends Backbone.View
 
   render: =>
     $(@el).html(@template(plan: @model))
+    @$('#options').tooltip placement: 'bottom' unless $.browser.mobile
+    @$('#options').popout
+      parent: @$('a.popout')
+      title: 'customize journey'
+      content: JST['templates/partials/options']
     this
 
   # update the plan when markers are dragged
@@ -65,6 +70,7 @@ class Transit.Views.Plan extends Backbone.View
 
   display_trip_options: =>
     @$('#tripOptions').slideToggle()
+    console.log 'showing popover'
 
   change_trip_options: (event) =>
     event.preventDefault()
