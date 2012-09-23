@@ -181,6 +181,18 @@ $.fn.popout = (options) ->
   @view = options.view
   @.click (event) ->
     event.preventDefault()
-    view = new @view()
-    view.render()
+    source = $(event.currentTarget)
+    active = source.hasClass('active')
+    # get rid of tooltip and any pre-existing popout
+    source.tooltip('hide')
+    @popout?.close()
+    # if this popout was not already opened...
+    unless active
+      console.log "popout #{source.attr('id')} opened"
+      # make a new popout and append it to body of page
+      @popout = new Transit.Views.Popout
+        parent: source
+        title: source.data('original-title')
+        content: JST['templates/partials/' + source.attr('id')]()
+      $('body').append @popout.render().el
 

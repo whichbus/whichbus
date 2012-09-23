@@ -18,7 +18,11 @@ class Transit.Views.Popout extends Backbone.View
     # actual right edge of popout, constrained by @margin property:
     right = Math.max(@margin, offset - @width / 2)
     # create the popout itself, applying calculated CSS styles
-    $(@el).css(right: right, width: @width).html @template(
+    $(@el).css(
+      top: @options.parent.offset().top + @options.parent.height() + @margin
+      right: right
+      width: @width
+    ).html @template(
       left: (offset - @margin) / @width
       title: @options.title
       content: @options.content
@@ -64,8 +68,13 @@ class Transit.Views.Popout extends Backbone.View
   loadSearch: (evt) ->
     evt.preventDefault()
     @resetForm()
-    query = @$('form').find('input[name=query]').val()
-    console.log "search for #{query}"
+    query = @$('form').find('input[name=query]')
+    # ensure fields are not empty before navigating
+    if query.val().length < 3
+      query.focus().parent().addClass 'error'
+    else
+      @close()
+      Transit.router.navigate "search/#{encodeURIComponent query.val()}", trigger: true
 
   resetForm: ->
     @$('form .control-group').removeClass('error')
