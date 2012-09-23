@@ -10,7 +10,7 @@ class Transit.Views.Segment extends Backbone.View
 
 	render: =>
 		template = if @options.segment.mode == 'WALK' then @walk_template else @bus_template
-		$(@el).html(template(segment: @options.segment))
+		$(@el).html(template(segment: @options.segment)).attr('data-index', @options.index)
 		this
 
 	fetch_prediction: =>
