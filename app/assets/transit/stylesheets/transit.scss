@@ -1068,7 +1068,8 @@ form.options {
     width: auto;
     vertical-align: baseline; 
   }
-  input.date, input.time { @include size(30px, 128px) }
+  input.date { @include size(30px, 128px) }
+  input.time { @include size(30px, 80px) }
   .btn-group { 
     padding-left: 6px;
     .btn {
@@ -1076,4 +1077,8 @@ form.options {
       padding: 4px 0;
     }
   }
+  .time ~ .btn {
+    width: 26px;
+    padding: 4px 0;
+  } 
 }

@@ -18,9 +18,11 @@
 	    <label class="radio span3 inline">
 	        <input type="radio" name="arrive_or_depart" value="by" <%= 'checked' if @plan.get('arrive_by') %>> Arrive by
 	    </label>
-	    <span class="input-prepend span5">
+	    <span class="input-prepend input-append span5">
 	    	<i class="add-on icon-time"></i>
 	    	<input type="time" class="time" name="trip_time" value="<%= Transit.format_otp_time @plan.get('date') %>">
+	    	<button type="button" class="btn down"><i class="icon-minus"></i></button>
+	    	<button type="button" class="btn up"><i class="icon-plus"></i></button>
 	    </span>
 	    <span class="span4 btn-group mode" data-toggle="buttons-checkbox">
 	    	<button type="button" class="btn compact <%= 'active' if 'WALK' in @plan.get('modes') %>" title="WALK"><i class="icon-user"></i></button>
