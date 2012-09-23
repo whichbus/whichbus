@@ -10,6 +10,7 @@ class Transit.Views.Popout extends Backbone.View
     'click .search .btn-go': 'loadSearch'
     'click .directions .btn-go': 'loadDirections'
     'click .directions .btn.here': 'geolocate'
+    'click .options .btn-go': 'updateTrip'
 
   render: () ->
     @options.parent.addClass('active')
@@ -25,13 +26,16 @@ class Transit.Views.Popout extends Backbone.View
     ).html @template(
       left: (offset - @margin) / @width
       title: @options.title
-      content: @options.content
+      content: @options.content @params()
     )
     $(@el).addClass(@options.parent.attr('id'))
     # add the arrow to the popout. positioned separately beneath parent
     $(@el).prepend arrow = HTML.div('top-arrow')
     arrow.css('right': offset - @margin) if right <= @margin
     @
+
+  params: ->
+    if _.isFunction @options.params then @options.params() else @options.params
 
   clicked: (evt) ->
     evt.preventDefault()
@@ -79,4 +83,7 @@ class Transit.Views.Popout extends Backbone.View
   resetForm: ->
     @$('form .control-group').removeClass('error')
 
-  search: ->
+  updateTrip: (evt) ->
+    evt.preventDefault()
+    console.log 'updating trip'
+    console.log @params.plan
