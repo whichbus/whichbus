@@ -1,6 +1,6 @@
 <header class="blue options subnav">
     <h3>
-        <i class="icon-reorder pull-right"></i>
+        <i class="icon-reorder pull-right" id="options" title="customize journey"></i>
         Suggested Itineraries
     </h3>
 </header>

@@ -1,0 +1,12 @@
+
+<form class="well form-inline">
+	<div class="row-fluid input-prepend input-append">
+	    <select class="span3" name="arrive_or_depart">
+	        <option value="at">At</option>
+	        <option value="by">By</option>
+	    </select>
+	    <input type="text" class="span5" name="trip_date">
+	    <input type="text" class="span4" name="trip_time">
+	</div>
+    <button type="submit" class="btn">OK</button>
+</form>
