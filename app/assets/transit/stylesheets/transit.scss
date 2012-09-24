@@ -219,6 +219,13 @@ header.green, .gradient.green {
   z-index: 2000;
 }
 
+.unselectable {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 // style icons in navbar
 a.icon {
   display: inline-block;
