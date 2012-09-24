@@ -1,13 +1,16 @@
 class Transit.Views.Plan extends Backbone.View
   template: JST['templates/plan']
-  # el: "#navigation"
-  # tagName: 'div'
+
   className: 'plan'
 
   events:
     'click .go-back': 'go_to_splash'
     'click header.options': 'display_trip_options'
-    'submit .trip-options': 'change_trip_options'
+    'click .btn.cancel': 'display_trip_options'
+    'submit form.options': 'change_trip_options'
+    'click .btn.up': 'increaseTime'
+    'click .btn.down': 'decreaseTime'
+    'blur input.time': 'validateTime'
 
   initialize: =>
     @map = Transit.map
@@ -27,14 +30,13 @@ class Transit.Views.Plan extends Backbone.View
 
   render: =>
     $(@el).html(@template(plan: @model))
+    @$('#options').tooltip placement: 'bottom' unless $.browser.mobile
+    # @$('#options').popout
+    #   params: plan: @model
     this
 
   # update the plan when markers are dragged
   update_plan: =>
-    console.log "UPDATING PLAN..."
-    # clean up the existing views when markers are dragged
-    view.clean_up(true) for view in @views
-    
     # set the model from/to locations from the marker positions
     @model.set
       from: @map.get('from').position.toHash()
@@ -48,6 +50,8 @@ class Transit.Views.Plan extends Backbone.View
 
   fetch_plan: =>
     @render()
+    # remove old itineraries from the map before fetching new ones
+    @remove_itineraries()
     # move the from/to markers to geocoded locations
     Transit.map.moveMarker 'from', @model.get('from')
     Transit.map.moveMarker 'to', @model.get('to')
@@ -64,16 +68,22 @@ class Transit.Views.Plan extends Backbone.View
 
 
   display_trip_options: =>
-    @$('#tripOptions').collapse 'toggle'
+    @$('form.options').collapse 'toggle'
 
   change_trip_options: (event) =>
     event.preventDefault()
     date = $('input[name="trip_date"]').val()
     time = $('input[name="trip_time"]').val()
-    @model.set({
+    modes = @$('.mode .btn.active').map((i, item) -> item.getAttribute 'title').get()
+    optimize = @$('.optimize .btn.active').attr('title')
+    console.log "Update plan options:", date, time, modes, optimize
+
+    @model.set
       date: Transit.parse_date("#{date} #{time}"),
-      arrive_by: if $('input[name="arrive_or_depart"]:checked').val() == 'by' then true else false
-    }, { silent: true })
+      arrive_by: $('input[name="arrive_or_depart"]:checked').val() == 'by'
+      modes: modes
+      optimize: optimize
+    , silent: true
     # TODO: See if this can be bound to a model date change event.
     @model.trigger 'fetch'
 
@@ -100,6 +110,9 @@ class Transit.Views.Plan extends Backbone.View
       view
     @fit_bounds()
 
+  # remove all itineraries from the map
+  remove_itineraries: =>
+    view?.clean_up(true) for view in @views if @views?
 
   fit_bounds: =>
     if @map.get('fit_bounds')
@@ -117,3 +130,37 @@ class Transit.Views.Plan extends Backbone.View
     @off()
     event.preventDefault()
     Transit.router.navigate '', trigger: true
+
+  # adds the given amount of minutes to the current time
+  increaseTime: (event, amt=30) ->
+    time = @parseTime()
+    # convert time to mimutes and add amt
+    minutes = parseInt(time[1]) * 60 + parseInt(time[2]) + amt
+    if time[3] == 'PM' and time[1] < 12 then minutes += 12 * 60
+    # convert back to string and use validate to correct the display
+    @$('input.time').val("#{parseInt(minutes / 60)}:#{if minutes % 60 < 10 then '0' else ''}#{minutes % 60}")
+    @validateTime()
+
+  decreaseTime: (event) -> @increaseTime event, -30
+
+  parseTime: ->
+    # time can be hh:mmzz, hh:mm zz, hhzz, hh zz, hhz, ...
+    time = @$('input.time').val()
+    /^([12]?[0-9])(?::(\d{2}))?\s*([pa]m?)?$/i.exec time
+
+  validateTime: ->
+    # do not validate times on mobile browsers -- most have special time and calendar entry tools
+    return if $.browser.mobile
+    match = @parseTime()
+    if match?
+      hrs = match[1]
+      unless match[3] == undefined
+        match[3] += 'm' unless /m$/i.test match[3]
+      # adjust for am/pm if given in 24-hr time
+      if hrs >= 12
+        hrs %= 12 if hrs > 12
+        match[3] = 'pm'
+      @$('input.time').val("#{hrs}:#{match[2] ? '00'} #{match[3] ? 'am'}".toUpperCase())
+      # return match.slice(1)
+    else
+      @$('input.time').val('')

@@ -4,6 +4,8 @@ class Transit.Models.Plan extends Backbone.Model
     itineraries: []
     desired_itineraries: 3
     arrive_by: false
+    modes: ['TRANSIT','WALK']
+    optimize: 'QUICK'
 
   initialize: =>
     # create a local storage for the geocode data
@@ -29,6 +31,8 @@ class Transit.Models.Plan extends Backbone.Model
     date: Transit.format_otp_date(@get('date'))
     time: Transit.format_otp_time(@get('date'))
     arriveBy: @get('arrive_by')
+    mode: @get('modes').join()
+    optimize: @get('optimize')
     fromPlace: "#{@get('from').lat},#{@get('from').lon}"
     toPlace: "#{@get('to').lat},#{@get('to').lon}"
     numItineraries: @get('desired_itineraries')

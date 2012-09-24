@@ -8,14 +8,12 @@
 			<table class="row-fluid">
 				<tr class="span11 centered">
 					<td style="width:100%">
-						<input type="hidden" name="from"></input>
 						<input class="location" type="text" placeholder="Where ya at?" id="from_query" onfocus="this.select()" autocomplete="on">
 					</td>
 					<td style="width:0"><button class="btn btn-large geolocate" type="button" id="from-location"><i class="icon-map-marker"></i></button></td>
 				</tr>
 				<tr class="span11 centered">
 					<td style="width:100%">
-						<input type="hidden" name="to"></input>
 						<input class="location" type="text" placeholder="Where ya headed?" id="to_query" onfocus="this.select()" autocomplete="on">
 					</td>
 					<td style="width:0"><button class="btn btn-large geolocate" type="button" id="to-location"><i class="icon-map-marker"></i></button></td>
