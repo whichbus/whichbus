@@ -17,7 +17,7 @@ class Transit.Models.Itinerary extends Backbone.Model
 		start = Transit.format_time(@get('startTime'))
 		end   = Transit.format_time(@get('endTime'))
 		total = Transit.format_duration(@get('duration') / 1000)
-		"#{start} - #{end} (#{total})"
+		"#{start}–#{end} (#{total})"
 
 	duration: =>
 		walk = Transit.format_duration(@get('walkTime'), true)
