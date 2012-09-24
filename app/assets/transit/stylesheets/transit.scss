@@ -198,6 +198,9 @@ a.icon:hover, a.icon.active {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  h3:first-letter {
+    text-transform: uppercase;
+  }
 
   @media #{$desktop} {
     position: absolute;
