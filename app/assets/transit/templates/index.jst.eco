@@ -1,2 +1,7 @@
+<div id="title">
+    <header class="gray">
+        <h3>Loading&hellip;</h3>
+    </header>
+</div>
 <div id="map"></div>
 <div id="navigation"></div>

@@ -3,18 +3,16 @@
   min-width: 320px;
 
   @media #{$desktop} {
-    @include stretch(0, auto, 0, 0);
+    @include stretch($title_height, auto, 0, 0);
     overflow: auto;
     width: $sidebar_width;
-    @include box-shadow(0 0px 4px rgba(0,0,0,0.25));
+    @include box-shadow(0 0 4px rgba(0,0,0,0.25));
   }
 
   @media #{$tablet} {
   }
   @media #{$phone} {
   }
-
-
 
   header {
     text-transform: none;

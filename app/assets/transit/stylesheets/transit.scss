@@ -187,6 +187,23 @@ a.icon:hover, a.icon.active {
 /* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
 ////////
 
+#title {
+  min-width: 320px;
+  @include box-shadow(0 0 4px rgba(0,0,0,0.25));
+  z-index: 1;
+
+  h3 {
+    text-transform: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @media #{$desktop} {
+    position: absolute;
+    width: $sidebar_width;
+  }
+}
 
 @import "map";
 
@@ -284,6 +301,7 @@ a.icon:hover, a.icon.active {
   @include colorize(#90b89f);
 }
 .btn-route.btn-small {
+  border-top-color: #90b89f;
   font-size: 14px;
   min-width: 20px;
 }
@@ -565,7 +583,7 @@ header.options {
   z-index: 10;
 }
 form.options {
-  background-color: #e6e6e6;
+  background-color: whiteSmoke;
   margin: 0;
   box-sizing: border-box;
   fieldset {
@@ -580,13 +598,10 @@ form.options {
   }
   input.date { @include size(30px, 88%) }
   input.time { @include size(30px, 62%) }
-  label { 
-    text-transform: uppercase; 
+  label {
     @media (max-width: 480px) { width: 40% !important; }
   }
-  .btn-group { 
-    padding-left: 6px;
-    padding-right: 10px;
+  .btn-group {
     .btn {
       width: 36px;
       padding: 4px 0;
