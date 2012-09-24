@@ -136,7 +136,7 @@ class Transit.Views.Plan extends Backbone.View
     time = @parseTime()
     # convert time to mimutes and add amt
     minutes = parseInt(time[1]) * 60 + parseInt(time[2]) + amt
-    if time[3] == 'pm' and time[1] < 12 then minutes += 12 * 60
+    if time[3] == 'PM' and time[1] < 12 then minutes += 12 * 60
     # convert back to string and use validate to correct the display
     @$('input.time').val("#{parseInt(minutes / 60)}:#{if minutes % 60 < 10 then '0' else ''}#{minutes % 60}")
     @validateTime()
@@ -146,19 +146,21 @@ class Transit.Views.Plan extends Backbone.View
   parseTime: ->
     # time can be hh:mmzz, hh:mm zz, hhzz, hh zz, hhz, ...
     time = @$('input.time').val()
-    /^([12]?[0-9])(?::(\d{2}))?\s*([pa]m?)?$/.exec time
+    /^([12]?[0-9])(?::(\d{2}))?\s*([pa]m?)?$/i.exec time
 
   validateTime: ->
+    # do not validate times on mobile browsers -- most have special time and calendar entry tools
+    return if $.browser.mobile
     match = @parseTime()
     if match?
       hrs = match[1]
       unless match[3] == undefined
-        match[3] += 'm' unless /m$/.test match[3]
+        match[3] += 'm' unless /m$/i.test match[3]
       # adjust for am/pm if given in 24-hr time
       if hrs >= 12
         hrs %= 12 if hrs > 12
         match[3] = 'pm'
-      @$('input.time').val("#{hrs}:#{match[2] ? '00'} #{match[3] ? 'am'}")
+      @$('input.time').val("#{hrs}:#{match[2] ? '00'} #{match[3] ? 'am'}".toUpperCase())
       # return match.slice(1)
     else
       @$('input.time').val('')
