@@ -10,6 +10,7 @@ class Transit.Views.Popout extends Backbone.View
     'click .search .btn-go': 'loadSearch'
     'click .directions .btn-go': 'loadDirections'
     'click .directions .btn.here': 'geolocate'
+    'click .options .btn-go': 'updateTrip'
 
   render: () ->
     @options.parent.addClass('active')
@@ -18,16 +19,23 @@ class Transit.Views.Popout extends Backbone.View
     # actual right edge of popout, constrained by @margin property:
     right = Math.max(@margin, offset - @width / 2)
     # create the popout itself, applying calculated CSS styles
-    $(@el).css(right: right, width: @width).html @template(
+    $(@el).css(
+      top: @options.parent.offset().top + @options.parent.height() + @margin
+      right: right
+      width: @width
+    ).html @template(
       left: (offset - @margin) / @width
       title: @options.title
-      content: @options.content
+      content: @options.content @params()
     )
     $(@el).addClass(@options.parent.attr('id'))
     # add the arrow to the popout. positioned separately beneath parent
     $(@el).prepend arrow = HTML.div('top-arrow')
     arrow.css('right': offset - @margin) if right <= @margin
     @
+
+  params: ->
+    if _.isFunction @options.params then @options.params() else @options.params
 
   clicked: (evt) ->
     evt.preventDefault()
@@ -64,10 +72,18 @@ class Transit.Views.Popout extends Backbone.View
   loadSearch: (evt) ->
     evt.preventDefault()
     @resetForm()
-    query = @$('form').find('input[name=query]').val()
-    console.log "search for #{query}"
+    query = @$('form').find('input[name=query]')
+    # ensure fields are not empty before navigating
+    if query.val().length < 3
+      query.focus().parent().addClass 'error'
+    else
+      @close()
+      Transit.router.navigate "search/#{encodeURIComponent query.val()}", trigger: true
 
   resetForm: ->
     @$('form .control-group').removeClass('error')
 
-  search: ->
+  updateTrip: (evt) ->
+    evt.preventDefault()
+    console.log 'updating trip'
+    console.log @params.plan

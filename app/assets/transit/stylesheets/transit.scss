@@ -156,6 +156,33 @@ header.green, .gradient.green {
   z-index: 2000;
 }
 
+.unselectable {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+// style icons in navbar
+a.icon {
+  display: inline-block;
+  @include size(100%, 34px);
+  // line-height: 34px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: baseline;
+  @include shadow-black(0.25);
+  opacity: 0.99;
+  color: white;
+  border: none !important;
+}
+a.icon:hover { color: #F5F5F2; }
+a.icon:hover, a.icon.active {
+  // invert border on hover or active
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
 ////////
 /* MAIN LAYOUT COMPONENTS: #TITLE, #MAP, #NAVIGATION */
 ////////
@@ -246,8 +273,6 @@ header.green, .gradient.green {
 }
 
 .disabled { color: #aaa; text-shadow: none; }
-
-
 
 .btn.btn-route {
   color: white;
@@ -532,4 +557,44 @@ div.popout {
     border-width: 11px;
     margin-left: -11px;
   }
+}
+
+header.options {
+  @include clearfix();
+  @include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
+  z-index: 10;
+}
+form.options {
+  background-color: #e6e6e6;
+  margin: 0;
+  box-sizing: border-box;
+  fieldset {
+    padding: 10px;
+  }
+  div { margin-bottom: 8px; }
+  input {
+    box-sizing: border-box;
+    width: auto;
+    vertical-align: baseline;
+    @media (max-width: 480px) { width: auto !important; }
+  }
+  input.date { @include size(30px, 88%) }
+  input.time { @include size(30px, 62%) }
+  label { 
+    text-transform: uppercase; 
+    @media (max-width: 480px) { width: 40% !important; }
+  }
+  .btn-group { 
+    padding-left: 6px;
+    padding-right: 10px;
+    .btn {
+      width: 36px;
+      padding: 4px 0;
+    }
+  }
+  .time ~ .btn {
+    width: 30px;
+    padding: 4px 0;
+    @media (max-width: 480px) { display: none; }
+  } 
 }

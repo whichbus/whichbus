@@ -23,9 +23,10 @@ Transit.format_otp_date = (input) ->
 Transit.format_otp_time = (input) ->
   date = if input not instanceof Date then new Date(input) else input
   hours = date.getHours()
+  zone = if hours > 11 then 'pm' else 'am'
   minutes = date.getMinutes()
   padded_minutes = "#{if minutes < 10 then '0' else ''}#{minutes}"
-  "#{hours}:#{padded_minutes}"
+  "#{hours % 12}:#{padded_minutes} #{zone}"
 
 Transit.format_duration = (seconds, minimize) ->
   # if no second parameter specified then auto-minimize if time > 1 hour
@@ -86,6 +87,21 @@ Transit.toggleMenu = () =>
   $('#settings-bg').toggle()
   $('#settings-menu').toggle()
   $('#settings-button').toggleClass('active')
+
+Transit.loadDirections = (form) ->
+  console.log form, arguments
+  from = $(form).siblings('input[name=from]').val().replace(/\s/g, '+')
+  to = $(form).siblings('input[name=to]').val().replace(/\s/g, '+')
+
+  # if to.length <= 3 then $('#to-location').addClass('btn-danger')
+  # else $$('#to-location').removeClass('btn-danger')
+  
+  # if from.length <=3 then $('#from-location').addClass('btn-danger')
+  # else $('#from-location').removeClass('btn-danger')
+  
+  if (to? and from? and to.length > 3 and from.length > 3)
+      # @remove()
+      Transit.router.navigate "plan/#{from}/#{to}", trigger: true
 
 # Transit.Markers =
 #   Start: L.Icon.extend
@@ -183,6 +199,19 @@ $.fn.popout = (options) ->
   @view = options.view
   @.click (event) ->
     event.preventDefault()
-    view = new @view()
-    view.render()
+    source = $(event.currentTarget)
+    active = source.hasClass('active')
+    # get rid of tooltip and any pre-existing popout
+    source.tooltip('hide')
+    @popout?.close()
+    # if this popout was not already opened...
+    unless active
+      console.log "popout #{source.attr('id')} opened"
+      # make a new popout and append it to body of page
+      defaults = 
+        parent: source
+        title: source.data('original-title')
+        content: JST['templates/partials/' + source.attr('id')]
+      @popout = new Transit.Views.Popout _.extend(defaults, options)
+      $('body').append @popout.render().el
 

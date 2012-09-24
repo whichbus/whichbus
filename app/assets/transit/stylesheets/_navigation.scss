@@ -14,26 +14,7 @@
   @media #{$phone} {
   }
 
-  .options {
-    @include clearfix();
-    @include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
-    z-index: 10;
-    i {
-      text-align: right;
-      cursor: pointer;
-      opacity: 0.99;
-    }
-    span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: block;
-    }
-  }
-  .trip-options {
-    margin: 0;
-    padding: 10px;
-  }
+
 
   header {
     text-transform: none;
