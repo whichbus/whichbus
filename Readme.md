@@ -51,7 +51,7 @@ WhichBus was created at the January 2012 Startup Weekend in Seattle where it rec
 * Kim Manis, *UX Design*
 * Daniel Miller, *Developer*
 * Paige Pauli, *UX/UI Design/Front-End Development*
-* Farrin Reid, *Developer
+* Farrin Reid, *Developer*
 * Dave Rigotti, *Business/Marketing*
 * Joe Schulman, *Developer/UX Designer*
 
