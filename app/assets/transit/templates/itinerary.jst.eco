@@ -6,4 +6,4 @@
 		<small><%= @trip.duration() %></small>
 	</h4>
 </header>
-<ol class="segments collapse" id="trip<%= @index %>"></ol>
+<ol class="segments" id="trip<%= @index %>"></ol>

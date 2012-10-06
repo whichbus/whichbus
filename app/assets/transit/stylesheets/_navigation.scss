@@ -18,6 +18,44 @@
     text-transform: none;
   }
 
+  header.options {
+    @include clearfix();
+    @include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
+    z-index: 10;
+  }
+  form.options {
+    display: none;
+    background-color: whiteSmoke;
+    margin: 0;
+    box-sizing: border-box;
+    fieldset {
+      padding: 10px;
+    }
+    div { margin-bottom: 8px; }
+    input {
+      box-sizing: border-box;
+      width: auto;
+      vertical-align: baseline;
+      @media #{$phone} { width: auto !important; }
+    }
+    input.date { @include size(30px, 88%) }
+    input.time { @include size(30px, 62%) }
+    label {
+      @media #{$phone} { width: 40% !important; }
+    }
+    .btn-group {
+      .btn {
+        width: 36px;
+        padding: 4px 0;
+      }
+    }
+    .time ~ .btn {
+      width: 30px;
+      padding: 4px 0;
+      @media #{$phone} { display: none; }
+    }
+  }
+
   ol {
     z-index: -1;
     li {
@@ -29,6 +67,9 @@
   }
   ol.itineraries, ol.trips {
     clear: both;
+  }
+  ol.segments {
+    display: none;
   }
 
   .itineraries, .segments, .arrivals, .routes, .trips, .stops {
@@ -49,7 +90,6 @@
     }
   }
 
-  // .routes { margin: $sidebar_margin; }
   .routes {
     padding-left: $sidebar_margin;
     padding-right: $sidebar_margin;

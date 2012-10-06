@@ -68,7 +68,7 @@ class Transit.Views.Plan extends Backbone.View
 
 
   display_trip_options: =>
-    @$('form.options').collapse 'toggle'
+    @$('form.options').slideToggle('fast')
 
   change_trip_options: (event) =>
     event.preventDefault()

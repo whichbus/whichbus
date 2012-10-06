@@ -580,39 +580,3 @@ div.popout {
   }
 }
 
-header.options {
-  @include clearfix();
-  @include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
-  z-index: 10;
-}
-form.options {
-  background-color: whiteSmoke;
-  margin: 0;
-  box-sizing: border-box;
-  fieldset {
-    padding: 10px;
-  }
-  div { margin-bottom: 8px; }
-  input {
-    box-sizing: border-box;
-    width: auto;
-    vertical-align: baseline;
-    @media (max-width: 480px) { width: auto !important; }
-  }
-  input.date { @include size(30px, 88%) }
-  input.time { @include size(30px, 62%) }
-  label {
-    @media (max-width: 480px) { width: 40% !important; }
-  }
-  .btn-group {
-    .btn {
-      width: 36px;
-      padding: 4px 0;
-    }
-  }
-  .time ~ .btn {
-    width: 30px;
-    padding: 4px 0;
-    @media (max-width: 480px) { display: none; }
-  } 
-}
