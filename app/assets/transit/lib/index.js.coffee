@@ -17,6 +17,3 @@ window.Transit =
     Transit.events = _.clone(Backbone.Events)
     Transit.router = new Transit.Router
     Backbone.history.start(pushState: true)
-
-$(document).ready ->
-  Transit.init()
