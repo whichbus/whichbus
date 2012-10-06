@@ -70,7 +70,7 @@ class Transit.Views.Itinerary extends Backbone.View
 		# indicate that this itinerary is active
 		$(@el).toggleClass 'active'
 		@$('.affordance').toggleClass('icon-caret-down').toggleClass('icon-caret-right')
-		@$('.segments').collapse 'toggle'
+		@$('.segments').slideToggle('fast')
 
 		# determine map overlay appearance based on active state
 		active = $(@el).hasClass 'active'
