@@ -17,4 +17,3 @@
 //= require_tree ./vendor
 //
 //= require ./lib/index
-//= require_tree .
