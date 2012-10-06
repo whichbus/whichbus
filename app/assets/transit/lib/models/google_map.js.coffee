@@ -20,7 +20,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
       zoomControlOptions:
         style: google.maps.ZoomControlStyle.DEFAULT
     @map = new G.Map(@get('el'), mapOptions)
-    
+
     @on 'change:from change:to', @update_markers
     @fetch()
 
@@ -131,11 +131,11 @@ class Transit.Models.GoogleMap extends Backbone.Model
     if _.isArray mapLayer
       item.setMap @map for item in mapLayer
     else
-      mapLayer.setMap @map
+      mapLayer?.setMap @map
 
   # removes an item or array of items from the map
   removeLayer: (mapLayer) ->
     if _.isArray mapLayer
       item.setMap null for item in mapLayer
     else
-      mapLayer.setMap null
+      mapLayer?.setMap null
