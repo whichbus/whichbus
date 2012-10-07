@@ -17,7 +17,14 @@ class Transit.Views.Application extends Backbone.View
     this
 
   toggleFavorite: (evt) =>
-    $(evt.currentTarget).toggleClass('active')
+    fav = $(evt.currentTarget)
+    fav.toggleClass 'active'
+    # add or remove favorite based on active state
+    if fav.hasClass 'active'
+      Transit.Favorites.add Transit.mainView.favorite()
+    else
+      Transit.Favorites.remove Transit.mainView.favorite().name
+
 
   # gracefully navigates to the route page when a route button is clicked
   # way smoother and faster than standard link behavior!

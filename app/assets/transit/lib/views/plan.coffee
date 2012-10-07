@@ -28,6 +28,11 @@ class Transit.Views.Plan extends Backbone.View
       # begin the geocoding process!
       @model.geocode_from_to(@options.from, @options.to)
 
+  favorite: ->
+    name: "#{Transit.unescape @options.from} &rarr; #{Transit.unescape @options.to}"
+    type: 'plan'
+    url: "plan/#{@options.from}/#{@options.to}"
+
   render: =>
     $(@el).html(@template(plan: @model))
     @$('#options').tooltip placement: 'bottom' unless $.browser.mobile
@@ -96,7 +101,7 @@ class Transit.Views.Plan extends Backbone.View
     # reset UI, set title of directions
     console.log "Plan completed", plan
     @reset()
-    Transit.setTitleHTML(HTML.icon('heart', 'favorite'), "#{plan.get('from').name} to #{plan.get('to').name}")
+    Transit.setTitleHTML(Transit.Favorites.icon(@favorite().name), "#{plan.get('from').name} to #{plan.get('to').name}")
     # @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
     index = 0
     # store the views in a local variable so we can clean them up when markers are dragged

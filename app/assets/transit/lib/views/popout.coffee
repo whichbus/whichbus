@@ -11,6 +11,7 @@ class Transit.Views.Popout extends Backbone.View
     'click .directions .btn-go': 'loadDirections'
     'click .directions .btn.here': 'geolocate'
     'click .options .btn-go': 'updateTrip'
+    'click .favorites a': 'navigateFavorite'
 
   render: () ->
     @options.parent.addClass('active')
@@ -87,3 +88,7 @@ class Transit.Views.Popout extends Backbone.View
     evt.preventDefault()
     console.log 'updating trip'
     console.log @params.plan
+
+  navigateFavorite: (evt) ->
+    evt.preventDefault()
+    Transit.router.navigate $(evt.currentTarget).attr('href'), trigger: true

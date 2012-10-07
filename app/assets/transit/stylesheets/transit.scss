@@ -2,9 +2,9 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,600,700|Pacifico);
 
 /* Media sizes */
-$desktop: "(min-width: 769px)";
-$phone: "(max-width: 480px)";
-$tablet: "(max-width: 768px)";
+$desktop: '(min-width: 769px)';
+$phone: '(max-width: 480px)';
+$tablet: '(max-width: 768px)'; // '
 
 /* Here are our lovely colors: */
 $wbGreen: #bbefce;
@@ -277,7 +277,7 @@ a.icon:hover, a.icon.active {
 }
 
 .favorite {
-  display: none;
+  // display: none;
   @include size(15px, 20px);
   float: right;
   line-height: 30px;
@@ -490,6 +490,9 @@ div.popout {
     background: #F5F5F2;
     border: 1px solid #ccc;
     border-radius: 0 0 6px 6px;
+    max-height: 250px;
+    overflow: auto;
+
     form {
       padding: 15px;
       text-align: right;
@@ -539,6 +542,9 @@ div.popout {
       // show link border on interior span (just the text)
       a:hover span { border-bottom: 1px dotted; }
     }
+    li.inline { display: inline-block; }
+
+    ul.favorites li { text-align: center; }
 
     // put a 1px border between list items, but not on outsides
     li + li {

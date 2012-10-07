@@ -17,9 +17,15 @@ class Transit.Views.Route extends Backbone.View
 		@tripTimer = setInterval (=> @trips.fetch(success: @showTrips)), 30000
 		# Transit.events.on 'route:complete', @render
 
+	favorite: -> {
+		name: "#{@model.get('name')}"
+		type: 'route'
+		url: "routes/#{@model.get('oba_id')}"
+	}
+
 	render: =>
 		$(@el).html(@template(route: @model))
-		Transit.setTitleHTML HTML.btn('btn-route', @model.get('name')), @model.get('description')
+		Transit.setTitleHTML Transit.Favorites.icon(@model.get('name')), HTML.btn('btn-route', @model.get('name')), @model.get('description')
 		@polylines = Transit.map.create_multi_polyline(@model.get('polylines').split(','), '#025d8c')
 		Transit.map.addLayer @polylines
 
