@@ -14,10 +14,15 @@ class Transit.Views.Stop extends Backbone.View
 		@arrivals.fetch
 			success: @showArrivals
 
+	favorite: ->
+		name: "#{@model.get('name')}"
+		type: 'stop'
+		url: "stops/#{@model.get('oba_id')}"
+
 	render: =>
 		console.log @model
 		$(@el).html(@template(stop: @model))
-		Transit.setTitleHTML @model.get('name')
+		Transit.setTitleHTML Transit.Favorites.icon(@model.get('name')), @model.get('name')
 		stopLocation = new G.LatLng(@model.get('lat'), @model.get('lon'))
 		@marker = Transit.map.create_marker @model.get('name'), stopLocation, Transit.GMarkers.Start, false
 		Transit.map.addLayer(@marker) 

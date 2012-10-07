@@ -1,5 +1,15 @@
 <ul class="favorites">
-	<li style="text-align:center">
-		<small class="label label-info">COMING SOON</small>
-	</li>
+	<% for type, group of Transit.Favorites.groups(): %>
+		<% for favorite in group: %>
+		<li class="<%= 'inline' if type == 'route' %>">
+			<% if type == 'route': %>
+				<a class="btn btn-route" href="<%= favorite.url %>"><%- favorite.name %></a>
+			<% else if type == 'stop': %>
+				<a class="btn" href="<%= favorite.url %>"><%- favorite.name %></a>
+			<% else: %>
+				<a class="btn btn-go" href="<%= favorite.url %>"><%- favorite.name %></a>
+			<% end %>
+		</li>
+		<% end %>
+	<% end %>
 </ul>
