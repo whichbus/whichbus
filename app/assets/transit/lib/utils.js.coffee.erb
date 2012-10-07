@@ -90,8 +90,8 @@ Transit.toggleMenu = () =>
 
 Transit.loadDirections = (form) ->
   console.log form, arguments
-  from = $(form).siblings('input[name=from]').val().replace(/\s/g, '+')
-  to = $(form).siblings('input[name=to]').val().replace(/\s/g, '+')
+  from = Transit.escape $(form).siblings('input[name=from]').val()
+  to = Transit.escape $(form).siblings('input[name=to]').val()
 
   # if to.length <= 3 then $('#to-location').addClass('btn-danger')
   # else $$('#to-location').removeClass('btn-danger')
@@ -102,6 +102,9 @@ Transit.loadDirections = (form) ->
   if (to? and from? and to.length > 3 and from.length > 3)
       # @remove()
       Transit.router.navigate "plan/#{from}/#{to}", trigger: true
+
+Transit.escape = (string) -> escape string.replace(/\s/g, '+')
+Transit.unescape = (string) -> unescape string.replace(/\+/g, ' ')
 
 # Transit.Markers =
 #   Start: L.Icon.extend
