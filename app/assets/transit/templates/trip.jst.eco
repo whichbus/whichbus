@@ -7,5 +7,5 @@
 	</span>
 
 	<h4><%= @trip.get('headsign') %></h4>
-	<%= @trip.get('nextStopName') %>
+	<a class="btn btn-stop" href="/stops/<%= @trip.get('nextStop') %>"><%= @trip.get('nextStopName') %></a>
 </li>

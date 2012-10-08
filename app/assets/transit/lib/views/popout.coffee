@@ -92,3 +92,4 @@ class Transit.Views.Popout extends Backbone.View
   navigateFavorite: (evt) ->
     evt.preventDefault()
     Transit.router.navigate $(evt.currentTarget).attr('href'), trigger: true
+    @close()
