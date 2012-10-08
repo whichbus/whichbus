@@ -45,8 +45,9 @@ test 'Fetch plan after geocode, geolocate and fetch events.', ->
 test 'Add start and end markers after the map is completely loaded.', ->
   Transit.map.trigger 'complete'
   ok Transit.map.addMarker.calledTwice, 'called for start and end markers'
-  ok Transit.map.addMarker.firstCall.calledWith('from')
-  ok Transit.map.addMarker.secondCall.calledWith('to')
+  # TODO: the order should't really matter
+  ok Transit.map.addMarker.firstCall.calledWith('from'), 'from marker'
+  ok Transit.map.addMarker.secondCall.calledWith('to'), 'to marker'
 
 
 test 'Geocode starting and ending locations once map is loaded.', ->

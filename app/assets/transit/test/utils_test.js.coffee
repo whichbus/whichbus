@@ -1,12 +1,18 @@
 module 'Utilities'
 
 test 'parse dates', ->
-  expected_date = new Date(2012, 6, 13, 17, 30)
-  notDeepEqual Transit.parse_date '2012-07-13 05:30 pm', expected_date
-  notDeepEqual Transit.parse_date '2012-7-13 5:30 pm', expected_date
-  notDeepEqual Transit.parse_date '2012-07-13 5:30pm', expected_date
-  notDeepEqual Transit.parse_date '2012-07-13 5:30 PM', expected_date
-  notDeepEqual Transit.parse_date '2012-07-13 17:30', expected_date
+  actual = (value) -> Transit.parse_date value
+  expected = new Date(2012, 6, 13, 17, 30)
+  notDeepEqual actual '2012-07-13 05:30 pm', expected, 'zero padded'
+  notDeepEqual actual '2012-7-13 5:30 pm', expected, 'without zero padding'
+  notDeepEqual actual '2012-07-13 5:30pm', expected, 'no space after time'
+  notDeepEqual actual '2012-07-13 5:30 PM', expected, 'upper case period'
+  notDeepEqual actual '2012-07-13 17:30', expected, '24 hour format'
+
+  expected = new Date(2012, 6, 13, 2, 30)
+  notDeepEqual actual '2012-07-13 2:30', expected, 'before noon in 24 hour format'
+  notDeepEqual actual '2012-07-13 2:30 am', expected, 'lower case before noon'
+  notDeepEqual actual '2012-07-13 2:30 AM', expected, 'upper case before noon'
 
 
 test 'format time', ->
