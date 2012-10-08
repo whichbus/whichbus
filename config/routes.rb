@@ -101,8 +101,10 @@ WhichbusSpine::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'application#index'
 
-
-  match '/test', to: 'application#test'
+  # Add a test page for non-production environments.
+  if not Rails.env.production?
+    match '/test', to: 'application#test'
+  end
 
   # Catch all route for the Backbone
   match '*path', to: 'application#index'
