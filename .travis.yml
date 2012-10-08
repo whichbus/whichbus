@@ -1,9 +1,11 @@
 language: ruby
 rvm:
   - 1.9.3
-  - 1.9.2
 env:
   - DB=sqlite
-
+before_script:
+  - bundle exec rackup
+  - sleep 3
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - phantomjs app/assets/transit/test/runner.js http://localhost:9292/test
