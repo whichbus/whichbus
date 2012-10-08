@@ -11,7 +11,7 @@ class Transit.Views.Popout extends Backbone.View
     'click .directions .btn-go': 'loadDirections'
     'click .directions .btn.here': 'geolocate'
     'click .options .btn-go': 'updateTrip'
-    'click .favorites a': 'navigateFavorite'
+    'click .favorites li a': 'navigateFavorite'
 
   render: () ->
     @options.parent.addClass('active')
