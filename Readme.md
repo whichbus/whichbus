@@ -40,6 +40,12 @@ If you already have the updated `db/crime_seed.csv`, then you only need to run `
 
 `bundle rake`
 
+Client-side tests [localhost:3000/test](http://localhost:3000/test) in the `development` or `test` environment.
+
+### Headless
+
+`phantomjs app/assets/transit/test/runner.js http://localhost:3000/test`
+
 
 ## About 
 
