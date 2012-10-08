@@ -58,4 +58,8 @@ class ApplicationController < ActionController::Base
 	def oba
 		api_page API.one_bus_away(params[:method], params[:id], params)
 	end
+
+	def test
+		render :layout => 'qunit', :text => ''
+	end
 end
