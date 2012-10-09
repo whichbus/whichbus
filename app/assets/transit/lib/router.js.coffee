@@ -22,27 +22,27 @@ class Transit.Router extends Backbone.Router
 
   nearby: (query) ->
     @view.render()
-    map = new Transit.Views.Map()
+    map = new Transit.Views.MapView()
 
     Transit.mainView = new Transit.Views.Nearby(query: query)
     @view.$('#navigation').append(Transit.mainView.render().el)
 
   plan: (from_query, to_query, params) ->
     @view.render()
-    map = new Transit.Views.Map()
+    map = new Transit.Views.MapView()
 
     Transit.mainView = new Transit.Views.Plan(model: Transit.plan, from: from_query, to: to_query)
     @view.$('#navigation').append(Transit.mainView.render().el)
 
   showStop: (id, code) ->
     @view.render()
-    map = new Transit.Views.Map()
+    map = new Transit.Views.MapView()
 
     Transit.mainView = new Transit.Views.Stop(model: new Transit.Models.Stop(id: id, agency: id, code: code))
 
   showRoute: (id, code) ->
     console.log code
     @view.render()
-    map = new Transit.Views.Map()
+    map = new Transit.Views.MapView()
 
     Transit.mainView = new Transit.Views.Route(model: new Transit.Models.Route(id: id, agency: id, code: code))

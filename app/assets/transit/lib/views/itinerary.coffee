@@ -42,16 +42,17 @@ class Transit.Views.Itinerary extends Backbone.View
 			poly = Transit.map.create_polyline(leg.legGeometry.points, @segmentColors[leg.mode] ? 'black')
 			@polylines.push(poly)
 			# create a circle marker at the start of the segment
-			marker = Transit.map.create_marker(leg.mode + " " + leg.route, new G.LatLng(leg.from.lat, leg.from.lon),
-				# use built-in circle Symbol for the marker (a vector circle)
-				path: G.SymbolPath.CIRCLE
-				fillColor: @segmentColors[leg.mode] ? 'black'
-				fillOpacity: 0.8
-				strokeColor: 'black'
-				strokeWeight: 1
-				scale: 5.5
-			)
-			@markers.push(marker)
+			if GOOGLE?	 # Leaflet doesn't support SVG markers...
+				marker = Transit.map.create_marker(leg.mode + " " + leg.route, new G.LatLng(leg.from.lat, leg.from.lon),
+					# use built-in circle Symbol for the marker (a vector circle)
+					path: G.SymbolPath.CIRCLE
+					fillColor: @segmentColors[leg.mode] ? 'black'
+					fillOpacity: 0.8
+					strokeColor: 'black'
+					strokeWeight: 1
+					scale: 5.5
+				)
+				@markers.push(marker)
 
 	clean_up: (forced) ->
 		# leave polylines on map if this itinerary is active.
@@ -74,10 +75,18 @@ class Transit.Views.Itinerary extends Backbone.View
 
 		# determine map overlay appearance based on active state
 		active = $(@el).hasClass 'active'
-		if active then options = strokeWeight: 4, strokeOpacity: 0.8
-		else options = strokeWeight: 6, strokeOpacity: 0.5
-		for line in @polylines
-			line.setOptions options
+		if GOOGLE?
+			if active then options = strokeWeight: 4, strokeOpacity: 0.8
+			else options = strokeWeight: 6, strokeOpacity: 0.5
+			line.setOptions options for line in @polylines
+		else
+			# if active then options = weight: 4, opacity: 0.8
+			# else options = weight: 6, opacity: 0.5
+			# line.setStyle options 
+			for line in @polylines
+				line.setWeight if active then 4 else 6
+				line.seOpacity if active then 0.8 else 0.5
+
 
 	expand_routes: (event) =>
 		event.stopPropagation()
@@ -88,4 +97,7 @@ class Transit.Views.Itinerary extends Backbone.View
 		# toggle opacity of hovered segment to highlight it
 		# TODO: make this more noticeable
 		index = $(event.currentTarget).data('index')
-		@polylines[index].setOptions strokeOpacity: if @polylines[index].strokeOpacity == 1 then 0.8 else 1
+		if GOOGLE?
+			@polylines[index].setOptions strokeOpacity: if @polylines[index].strokeOpacity == 1 then 0.8 else 1
+		else
+			@polylines[index].opacity = if @polylines[index].opacity == 1 then 0.8 else 1

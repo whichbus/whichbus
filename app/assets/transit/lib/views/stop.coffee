@@ -23,8 +23,8 @@ class Transit.Views.Stop extends Backbone.View
 		console.log @model
 		$(@el).html(@template(stop: @model))
 		Transit.setTitleHTML Transit.Favorites.icon(@model.get('name')), @model.get('name')
-		stopLocation = new G.LatLng(@model.get('lat'), @model.get('lon'))
-		@marker = Transit.map.create_marker @model.get('name'), stopLocation, Transit.GMarkers.Start, false
+		stopLocation = Transit.map.latlng(@model.get('lat'), @model.get('lon'))
+		@marker = Transit.map.create_marker @model.get('name'), stopLocation, Transit.Markers.Start, false
 		Transit.map.addLayer(@marker) 
 		Transit.map.map.panTo stopLocation
 		this
