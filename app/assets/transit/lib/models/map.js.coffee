@@ -9,28 +9,29 @@ class Transit.Models.Map extends Backbone.Model
     fit_bounds: true
 
   initialize: (attributes) =>
-    @leaflet = @map = new L.Map attributes.element,
+    # create map and add tile layer using Mapbox API above
+    @map = new L.Map attributes.el,
       center: new L.LatLng(47.62167,-122.349072)
       zoom: 13
       maxZoom: 17
     tiles = new L.TileLayer(@get('api_url'), attribution: @get('attribution'))
     @map.attributionControl.setPrefix('')
     @map.addLayer(tiles)
-
-    @map.addLayer @create_marker('from', new L.LatLng(0,0), Transit.Markers.Start)
-    @map.addLayer @create_marker('to', new L.LatLng(0,0), Transit.Markers.End)
-
-    @on 'change:south_west change:north_east', @set_max_bounds
-    @on 'change', @update_markers
+    # basic map events for updating boundaries and markers
+    @on 'change:coverage', @set_max_bounds
+    @on 'change:from change:to', @update_markers
     @fetch()
 
   parse: (data) =>
-    @set
-      south_west: new L.LatLng data.lowerLeftLatitude, data.lowerLeftLongitude
-      north_east: new L.LatLng data.upperRightLatitude, data.upperRightLongitude
+    # parse the result of call to otp/metadata -- service boundary
+    southWest = @latlng(data.lowerLeftLatitude, data.lowerLeftLongitude)
+    northEast = @latlng(data.upperRightLatitude, data.upperRightLongitude)
+    @set 'coverage',  new L.LatLngBounds(southWest, northEast)
+    # once we have the metadata then we're ready to roll so trigger 'complete'
+    @trigger 'complete'
 
   set_max_bounds: =>
-    @map.setMaxBounds new L.LatLngBounds(@get('south_west'), @get('north_east'))
+    @map.setMaxBounds @get('coverage')
 
   update_marker: (attribute) =>
     marker_name = "#{attribute}_marker"
@@ -57,30 +58,32 @@ class Transit.Models.Map extends Backbone.Model
     # or as a hash { lat:?, lon:? }
     else if _.isObject param then new L.LatLng param.lat, param.lon
     # or as two parameters latlng(lat, lon)
-    else new L.LatLng(arguments[0], arguments[1] ? arguments[0])
+    else new L.LatLng(arguments[0] ? 0, arguments[1] ? (arguments[0] ? 0))
 
   create_polyline: (points, color='#000', weight=5, opacity=0.8) ->
-    points = decodeLine(points)
-    latlngs = (new L.LatLng(point[0], point[1]) for point in points)
-    new L.Polyline(latlngs, color: color, opacity: opacity, clickable: false)
+    # using Leaflet Polyline encoder from L.PolylineUtil (see leaflet.js)
+    L.Polyline.fromEncoded points, 
+      color: color
+      opacity: opacity
+      clickable: false
   
   create_multi_polyline: (pointsArray, color) ->
     latlngs = []
     for points in pointsArray
-      points = decodeLine(points)
-      latlngs.push(new L.LatLng(point[0], point[1]) for point in points)
+      points = L.PolylineUtil.decode(points)
+      latlngs.push points #(new L.LatLng(point[0], point[1]) for point in points)
     new L.MultiPolyline(latlngs, color: color, opacity: 0.6, clickable: false)
 
   create_marker: (name, position, icon, draggable=true, clickable=false) ->
-    marker = new L.Marker position,
+    new L.Marker position,
       title: name
       clickable: clickable
       draggable: draggable
-      icon: new icon()
-    marker
+      icon: icon
 
   addMarker: (key, name, position, icon, draggable=true, clickable=false) ->
-    marker = @create_marker(position, title: name, clickable: clickable, draggable: draggable, icon: new icon())
+    marker = @create_marker(name, position, icon, draggable, clickable)
+    @addLayer marker
     @set key, marker, silent: true
 
     console.log "new marker: #{key} => #{name}", marker
@@ -89,15 +92,12 @@ class Transit.Models.Map extends Backbone.Model
     marker.on 'dragstart', =>
       @trigger "drag drag:start drag:start:#{name}"
     marker.on 'dragend', =>
-      # @set(name, lat: marker.getLatLng().lat, lon: marker.getLatLng().lng)
       @trigger "drag drag:end drag:end:#{name}"
-    # add marker to map and model
-    # @map.addLayer(marker)
-    # @set "#{name}_marker", marker, silent: true
     return marker
 
   moveMarker: (key, position) ->
     marker = @get key
+    console.log "moving '#{key}' marker", marker, "to", position
     marker.setLatLng @latlng(position)
 
   removeMarker: (key) ->

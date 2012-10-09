@@ -106,46 +106,52 @@ Transit.loadDirections = (form) ->
 Transit.escape = (string) -> escape string.replace(/\s/g, '+')
 Transit.unescape = (string) -> unescape string.replace(/\+/g, ' ')
 
-# Transit.Markers =
-#   Start: L.Icon.extend
-#     iconSize: new L.Point(33, 35)
-#     iconAnchor: new L.Point(11, 35)
-#     iconUrl: '<%= image_path("icons/icon-start-location.png") %>'
-#     shadowUrl: null
-#   End: L.Icon.extend
-#     iconSize: new L.Point(33, 35)
-#     iconAnchor: new L.Point(11, 35)
-#     iconUrl: '<%= image_path("icons/icon-end-location.png") %>'
-#     shadowUrl: null
-#   Stop: L.Icon.extend
-#     iconSize: new L.Point(20, 20)
-#     iconAnchor: new L.Point(10, 20)
-#     iconUrl: '<%= image_path("icons/icon-busstop.png") %>'
-#     shadowUrl: null
-#   StopDot: L.Icon.extend
-#     iconSize: new L.Point(12, 12)
-#     iconAnchor: new L.Point(6, 6)
-#     iconUrl: '<%= image_path("icons/bus/dot.png") %>'
-#     shadowUrl: null
-#   Bus: L.Icon.extend
-#     iconSize: new L.Point(20, 20)
-#     iconAnchor: new L.Point(10, 20)
-#     iconUrl: '<%= image_path("icons/bus/bus.png") %>'
-#     shadowUrl: null
-#   Walk: L.Icon.extend
-#     iconSize: new L.Point(20, 20)
-#     iconAnchor: new L.Point(10, 20)
-#     iconUrl: '<%= image_path("icons/plan-walking.png") %>'
-#     shadowUrl: null
-#   # dot markers with arrows for compass direction of stop.
-#   # expects empty or N NE E SE S SW W NW
-#   StopArrow: _.memoize (direction) ->
-#     return Transit.Markers.StopDot if direction.length == 0
-#     L.Icon.extend
-#       iconSize: new L.Point(16, 16)
-#       iconAnchor: new L.Point(8, 8)
-#       iconUrl: "<%= image_path('icons/bus/dot-arrow-#{direction}.png') %>"
-#       shadowUrl: null
+Transit.Markers = if GOOGLE?
+  Start: new G.MarkerImage('<%= image_path("icons/icon-start-location.png") %>', new G.Size(33, 35), new G.Point(0, 0), new G.Point(11, 35))
+  End: new G.MarkerImage('<%= image_path("icons/icon-end-location.png") %>', new G.Size(33, 35), new G.Point(0, 0), new G.Point(11, 35))
+  Stop: '<%= image_path("icons/icon-busstop.png") %>'
+  StopDot: new G.MarkerImage('<%= image_path("icons/bus/dot.png") %>', new G.Size(17, 17), new G.Point(0, 0), new G.Point(6, 6), new G.Size(12, 12))
+  Bus: '<%= image_path("icons/icon-busstop.png") %>'
+else
+  Start: new L.Icon
+    iconUrl: '<%= image_path("icons/icon-start-location.png") %>'
+    iconSize: [33, 35]
+    iconAnchor: [11, 35]
+    shadowUrl: null
+  End: new L.Icon
+    iconUrl: '<%= image_path("icons/icon-end-location.png") %>'
+    iconSize: [33, 35]
+    iconAnchor: [11, 35]
+    shadowUrl: null
+  Stop: new L.Icon
+    iconUrl: '<%= image_path("icons/icon-busstop.png") %>'
+    iconSize: [20, 20]
+    iconAnchor: [10, 20]
+    shadowUrl: null
+  StopDot: new L.Icon
+    iconUrl: '<%= image_path("icons/bus/dot.png") %>'
+    iconSize: [12, 12]
+    iconAnchor: [6, 6]
+    shadowUrl: null
+  Bus: new L.Icon
+    iconUrl: '<%= image_path("icons/bus/bus.png") %>'
+    iconSize: [20, 20]
+    iconAnchor: [10, 20]
+    shadowUrl: null
+  Walk: new L.Icon
+    iconUrl: '<%= image_path("icons/plan-walking.png") %>'
+    iconSize: [20, 20]
+    iconAnchor: [10, 20]
+    shadowUrl: null
+  # dot markers with arrows for compass direction of stop.
+  # expects empty or N NE E SE S SW W NW
+  StopArrow: _.memoize (direction) ->
+    return Transit.Markers.StopDot if direction.length == 0
+    new L.Icon
+      iconUrl: "<%= image_path('icons/bus/dot-arrow-#{direction}.png') %>"
+      iconSize: [16, 16]
+      iconAnchor: [8, 8]
+      shadowUrl: null
 
 headings = ['N', 'NE','E', 'SE', 'S', 'SW', 'W', 'NW']
 Transit.degreesToHeading = (degrees) ->

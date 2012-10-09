@@ -38,7 +38,14 @@ Transit.Geocode =
       # finally, call the Google geocoding service
       else  
         # @query = query
-        @geocoder.geocode {address: query, bounds: Transit.map.get('coverage') }, (results, status) =>
+        coverage = Transit.map.get('coverage') 
+        # translate to google.maps.LatLngBounds unless already using Google
+        unless GOOGLE?
+          sw = coverage.getSouthWest()
+          ne = coverage.getNorthEast()
+          coverage = new G.LatLngBounds(new G.LatLng(sw.lat, sw.lng), new G.LatLng(ne.lat, ne.lng))
+        # kick off the request
+        @geocoder.geocode {address: query, bounds: coverage }, (results, status) =>
           if status == google.maps.GeocoderStatus.OK
             console.log "GEOCODE RESULTS (#{results.length}):", results
             results = _.map results, (item) ->

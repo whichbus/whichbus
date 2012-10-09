@@ -1,4 +1,4 @@
-class Transit.Views.Map extends Backbone.View
+class Transit.Views.MapView extends Backbone.View
   el: 'div#map'
 
   initialize: =>
@@ -7,3 +7,7 @@ class Transit.Views.Map extends Backbone.View
     else
     	Transit.map = new Transit.Models.Map(el: @el)
 
+###
+# Flip this switch to toggle which map implementation is used.
+###
+window.GOOGLE = true

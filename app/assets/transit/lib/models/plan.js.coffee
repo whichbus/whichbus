@@ -50,8 +50,8 @@ class Transit.Models.Plan extends Backbone.Model
             # geocode method returns one result instead of array
             if from? and to?
               @set
-                from: lat: from.lat, lon: from.lon
-                to: lat: to.lat, lon: to.lon
+                from: from 
+                to: to 
               @trigger 'geocode'
             else 
               message = ""

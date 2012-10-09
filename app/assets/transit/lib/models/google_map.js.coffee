@@ -25,6 +25,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
     @fetch()
 
   parse: (data) =>
+    # parse the result of call to otp/metadata -- service boundary
     southWest = new G.LatLng(data.lowerLeftLatitude, data.lowerLeftLongitude)
     northEast = new G.LatLng(data.upperRightLatitude, data.upperRightLongitude)
     @set

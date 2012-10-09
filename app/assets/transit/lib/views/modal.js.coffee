@@ -12,6 +12,6 @@ class Transit.Views.Modal extends Backbone.View
   handleClick: (event) ->
     event.preventDefault()
     # call the success callback if present
-    if @success? then @success $(event.toElement)
+    if @success? then @success $(event.currentTarget)
     # close the modal
     $(@el).modal 'hide'

@@ -31,9 +31,9 @@ class Transit.Views.Route extends Backbone.View
 
 		@stopMarkers = []
 		for stop in @model.get('stops')
-			pos = new G.LatLng(stop['lat'], stop['lon'])
-			@stopMarkers.push Transit.map.create_marker(stop['name'] + " (#{stop['direction']})", pos, Transit.GMarkers.StopDot, false, true)
-			if bounds? then bounds.extend(pos) else bounds = new G.LatLngBounds(pos) 
+			pos = Transit.map.latlng(stop['lat'], stop['lon'])
+			@stopMarkers.push Transit.map.create_marker(stop['name'] + " (#{stop['direction']})", pos, Transit.Markers.StopDot, false, true)
+			if bounds? then bounds.extend(pos) else bounds = new L.LatLngBounds(pos) 
 		Transit.map.map.fitBounds(bounds)
 		Transit.map.addLayer(@stopMarkers)
 		this
@@ -45,5 +45,5 @@ class Transit.Views.Route extends Backbone.View
 			key = "vehicle#{item.get('vehicleId')}"
 			pos = Transit.map.latlng item.get('position')
 			if Transit.map.hasMarker key then Transit.map.moveMarker key, pos
-			else Transit.map.addMarker key, "Vehicle #{item.get('vehicleId')}", pos, Transit.GMarkers.Bus, false, true, G.Animation.DROP
+			else Transit.map.addMarker key, "Vehicle #{item.get('vehicleId')}", pos, Transit.Markers.Bus, false, true, G.Animation.DROP
 
