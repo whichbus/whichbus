@@ -50,13 +50,19 @@ class Transit.Models.Map extends Backbone.Model
       # trigger a single custom event when from and/or to change
       @trigger 'change:markers'
 
-  latlng: (lat, lng) ->
-    new L.LatLng(lat, lng)
+  latlng: (param) -> 
+    if param instanceof L.LatLng then param
+    # create as an array [lat, lon]
+    else if _.isArray param then new L.LatLng param[0], param[1]
+    # or as a hash { lat:?, lon:? }
+    else if _.isObject param then new L.LatLng param.lat, param.lon
+    # or as two parameters latlng(lat, lon)
+    else new L.LatLng(arguments[0], arguments[1] ? arguments[0])
 
-  create_polyline: (points, color) ->
+  create_polyline: (points, color='#000', weight=5, opacity=0.8) ->
     points = decodeLine(points)
     latlngs = (new L.LatLng(point[0], point[1]) for point in points)
-    new L.Polyline(latlngs, color: color, opacity: 0.6, clickable: false)
+    new L.Polyline(latlngs, color: color, opacity: opacity, clickable: false)
   
   create_multi_polyline: (pointsArray, color) ->
     latlngs = []
@@ -66,14 +72,52 @@ class Transit.Models.Map extends Backbone.Model
     new L.MultiPolyline(latlngs, color: color, opacity: 0.6, clickable: false)
 
   create_marker: (name, position, icon, draggable=true, clickable=false) ->
-    marker = new L.Marker(position, title: name, clickable: clickable, draggable: draggable, icon: new icon())
+    marker = new L.Marker position,
+      title: name
+      clickable: clickable
+      draggable: draggable
+      icon: new icon()
+    marker
+
+  addMarker: (key, name, position, icon, draggable=true, clickable=false) ->
+    marker = @create_marker(position, title: name, clickable: clickable, draggable: draggable, icon: new icon())
+    @set key, marker, silent: true
+
+    console.log "new marker: #{key} => #{name}", marker
+
     # update location after the drag, trigger a drag event on a drag
-    # TODO: leaflet event code
-    # google.maps.event.addListener marker, 'dragstart', =>
-    #   @trigger "drag drag:start drag:start:#{name}"
-    # google.maps.event.addListener marker, 'dragend', (event) =>
-    #   @set(name, lat: event.latLng.lat(), lon: event.latLng.lng())
-    #   @trigger "drag drag:end drag:end:#{name}"
+    marker.on 'dragstart', =>
+      @trigger "drag drag:start drag:start:#{name}"
+    marker.on 'dragend', =>
+      # @set(name, lat: marker.getLatLng().lat, lon: marker.getLatLng().lng)
+      @trigger "drag drag:end drag:end:#{name}"
     # add marker to map and model
-    @set "#{name}_marker", marker, silent: true
+    # @map.addLayer(marker)
+    # @set "#{name}_marker", marker, silent: true
     return marker
+
+  moveMarker: (key, position) ->
+    marker = @get key
+    marker.setLatLng @latlng(position)
+
+  removeMarker: (key) ->
+    marker = @get key
+    if marker?
+      @unset key
+      @removeLayer marker
+      marker
+
+  hasMarker: (key) -> @get(key)?
+
+  addLayer: (mapLayer) ->
+    if _.isArray mapLayer
+      @addLayer(item) for item in mapLayer
+    else
+      @map.addLayer mapLayer
+
+  removeLayer: (mapLayer) ->
+    if _.isArray mapLayer
+      @removeLayer(item) for item in mapLayer
+    else
+      @map.removeLayer mapLayer
+
