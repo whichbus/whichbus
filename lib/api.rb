@@ -13,7 +13,7 @@ module API
 
 	def open_trip_planner(method, params)
 		method = "transit/#{method}" unless method == 'plan' or method == 'metadata'
-		get_json("http://kasper.hoard.li/otp/#{method}?#{query_string params}")
+		get_json("http://api.whichbus.org/otp/#{method}?#{query_string params}")
 	end
 
 	# quick and easy way to query the OneBusAway API
