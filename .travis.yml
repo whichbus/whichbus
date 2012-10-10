@@ -9,3 +9,4 @@ before_script:
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
   - phantomjs app/assets/transit/test/vendor/runner.js http://localhost:9292/test
+  - ./app/assets/transit/test/vendor/bin/casperjs test ./app/assets/transit/test/functional
