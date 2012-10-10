@@ -8,4 +8,4 @@ before_script:
   - sleep 3
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
-  - phantomjs app/assets/transit/test/runner.js http://localhost:9292/test
+  - phantomjs app/assets/transit/test/vendor/runner.js http://localhost:9292/test

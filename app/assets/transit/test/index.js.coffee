@@ -1,8 +1,7 @@
-#= require ./qunit
-#= require ./sinon
-#= require ./sinon-qunit
+#= require ./vendor/qunit
+#= require ./vendor/sinon
+#= require ./vendor/sinon-qunit
 #
 #= require ../transit
 #
-#= require ./utils_test
-#= require ./plan_view_test
+#= require_tree ./unit
