@@ -4,6 +4,8 @@ rvm:
 env:
   - DB=sqlite
 before_script:
+  - phantomjs --version
+  - ./app/assets/transit/test/vendor/bin/casperjs --version
   - bundle exec rackup &
   - sleep 3
 script:
