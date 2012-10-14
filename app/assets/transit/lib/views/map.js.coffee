@@ -10,4 +10,4 @@ class Transit.Views.MapView extends Backbone.View
 ###
 # Flip this switch to toggle which map implementation is used.
 ###
-# window.GOOGLE = true
+window.GOOGLE = true
