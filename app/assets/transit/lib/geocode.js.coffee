@@ -2,8 +2,28 @@
 Transit.Geocode =
   # the cache object for storing saved geocodes
   geocache: Transit.storage_get('geocode')
+
   # the geocoder itself! thanks Google
   geocoder: new google.maps.Geocoder()
+
+  initialize: (map) ->
+    # initalize Places service using Google map object (tricky Google!)
+    @places = new google.maps.places.PlacesService(map)
+
+  # performs geocode request using Google Places if available with automatic
+  # fallback to Google Geocoder.
+  geocode: (query, callback) ->
+    # @query = query
+    coverage = Transit.map.get('coverage') 
+    # translate to google.maps.LatLngBounds unless already using Google
+    unless GOOGLE?
+      sw = coverage.getSouthWest()
+      ne = coverage.getNorthEast()
+      coverage = new G.LatLngBounds(new G.LatLng(sw.lat, sw.lng), new G.LatLng(ne.lat, ne.lng))
+    if @places?
+      @places.search { keyword: query, bounds: coverage }, callback
+    else
+      @geocoder.geocode { address: query, bounds: coverage }, callback
 
   # This method handles three query cases:
   #   1. latitude,longitude pair => return it
@@ -36,34 +56,22 @@ Transit.Geocode =
       else if @cache(query)?
         options.success @cache(query)
       # finally, call the Google geocoding service
-      else  
-        # @query = query
-        coverage = Transit.map.get('coverage') 
-        # translate to google.maps.LatLngBounds unless already using Google
-        unless GOOGLE?
-          sw = coverage.getSouthWest()
-          ne = coverage.getNorthEast()
-          coverage = new G.LatLngBounds(new G.LatLng(sw.lat, sw.lng), new G.LatLng(ne.lat, ne.lng))
+      else
         # kick off the request
-        @geocoder.geocode {address: query, bounds: coverage }, (results, status) =>
+        @geocode query, (results, status) =>
           if status == google.maps.GeocoderStatus.OK
             console.log "GEOCODE RESULTS (#{results.length}):", results
             results = _.map results, (item) ->
               # trim zip code and country from formatted address
-              address: /^(.+)\d{5}/.exec(item.formatted_address)?[1] ? item.formatted_address
+              address: item.name or (/^(.+)\d{5}/.exec(item.formatted_address)?[1] ? item.formatted_address)
+              vicinity: item.vicinity
               lat: item.geometry.location.lat()
               lon: item.geometry.location.lng()
             if options.modal and results.length > 1
-              disambiguate query, _.sortBy(results, (item) -> item.address.length), options.success
-            else
-            # save to geocode storage - TODO: disabled for now b/c disambiguation is just better
-            # if options.save
-            #   geocode_storage[query] = geocoded
-            #   Transit.storage_set('geocode', geocode_storage)
-            # process callback
-              return options.success results[0]
+              disambiguate query, results, options.success
+            else return options.success results[0]
           else
-            console.error "Failed to geocode #{query}: #{status}"
+            console.error "Failed to geocode #{query}: #{status}", results
             # callback with undefined parameter means there was an error
             if options.error? then options.error(status) else options.success()
     # if query does not exist then use current position
@@ -93,7 +101,6 @@ Transit.Geocode =
       @geocache = {}
       console.log "GEOCACHE RESET"
     Transit.storage_set 'geocode', @geocache
-
 
 # allow user to disambiguate multiple results through modal dialog.
 disambiguate = (query, results, callback) ->

@@ -21,6 +21,8 @@ class Transit.Models.GoogleMap extends Backbone.Model
         style: google.maps.ZoomControlStyle.DEFAULT
     @map = new G.Map(@get('el'), mapOptions)
 
+    Transit.Geocode.initialize @map
+
     @on 'change:from change:to', @update_markers
     @fetch()
 
