@@ -114,7 +114,7 @@ class Transit.Views.Plan extends Backbone.View
       view.render_map().toggle() if index == 1
       view
     # TODO: implement this for Leaflet
-    # @fit_bounds()
+    @fit_bounds()
 
   # remove all itineraries from the map
   remove_itineraries: =>
