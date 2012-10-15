@@ -5,7 +5,9 @@
 	<div class="modal-body gradient light-gray">
 		<% index = 0 %>
 		<% for item in @options.results: %>
-			<a href="#<%=index++%>" class="btn btn-large"><%= item.address %></a>
+			<a href="#<%=index++%>" class="btn btn-large">
+				<strong><%= item.address %></strong><br/><%= item.vicinity %>
+			</a>
 		<% end %>
 	</div>
 	<div class="modal-footer gradient gray">
