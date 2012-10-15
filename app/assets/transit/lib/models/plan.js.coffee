@@ -40,11 +40,11 @@ class Transit.Models.Plan extends Backbone.Model
   geocode_from_to: (from_query, to_query) =>
     # TODO: It would be nice to batch this instead of doing 2 queries.
     Transit.Geocode.lookup
-      query: unescape(from_query)
+      query: Transit.unescape(from_query)
       modal: true
       success: (from) =>
         Transit.Geocode.lookup
-          query: unescape(to_query)
+          query: Transit.unescape(to_query)
           modal: true
           success: (to) =>
             # geocode method returns one result instead of array
@@ -55,8 +55,8 @@ class Transit.Models.Plan extends Backbone.Model
               @trigger 'geocode'
             else 
               message = ""
-              message += "Unable to understand starting point '#{unescape(from_query)}.'<br/>" unless from?
-              message += "Unable to understand destination '#{unescape(to_query)}.'<br/>" unless to?
+              message += "Unable to understand starting point '#{Transit.unescape(from_query)}.'<br/>" unless from?
+              message += "Unable to understand destination '#{Transit.unescape(to_query)}.'<br/>" unless to?
               message += "Please provide a specific address or neighborhood. Intersections are not supported and businesses are flaky at this time."
               @trigger 'geocode:error', message
 
