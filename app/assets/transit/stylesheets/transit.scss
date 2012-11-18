@@ -100,8 +100,8 @@ header {
   }
 }
 
-header, .gradient, header:hover, .gradient:hover { 
-  color: white; 
+header, .gradient, header:hover, .gradient:hover {
+  color: white;
   @include shadow-black(0.25);
 }
 header.red, .gradient.red {
@@ -360,6 +360,16 @@ a.icon:hover, a.icon.active {
   }
   .content {
     margin: 15px;
+    padding:15px;
+
+    h2 {
+      font-size:1.5rem;
+      font-family:'Open Sans', sans-serif;
+      text-transform:uppercase;
+    }
+    .buttons{
+      margin-top:30px;
+    }
   }
 }
 
@@ -387,8 +397,8 @@ a.icon:hover, a.icon.active {
 // some generic styling changes for all modals
 .modal {
   background: transparent;
-  .modal-header { 
-    border-radius: 6px 6px 0 0; 
+  .modal-header {
+    border-radius: 6px 6px 0 0;
     h3 {
       text-align: center;
       font-size: 18px;
@@ -428,14 +438,14 @@ a.icon:hover, a.icon.active {
     }
     .btn:last-child  { margin-bottom: 0; }
   }
-  input {height: auto; } 
+  input {height: auto; }
   label {margin-bottom: 0; }
 }
 
 .input-container {
   position: relative;
   margin-bottom: 8px;
-  input { 
+  input {
     margin-bottom: 0;
   }
   i {
@@ -467,7 +477,7 @@ a.icon:hover, a.icon.active {
     background: rgba(255, 255, 255, 0.8);
     color: #333;
   }
-  .tooltip-arrow { 
+  .tooltip-arrow {
     border-bottom-color: rgba(255, 255, 255, 0.8) !important;
   }
 }
@@ -481,7 +491,7 @@ div.popout {
   z-index: 1050;
   box-shadow: 0 0 10px 0px #999;
   border-radius: 6px;
-  header { 
+  header {
     border-width: 1px;
     border-style: solid;
     border-radius: 6px 6px 0 0;
