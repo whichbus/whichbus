@@ -8,6 +8,7 @@ gem 'thin'
 
 group :development do
 	gem 'sqlite3'
+	gem 'newrelic_rpm'
 end
 group :production do
 	gem 'pg'
