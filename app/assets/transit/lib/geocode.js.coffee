@@ -21,8 +21,15 @@ Transit.Geocode =
       ne = coverage.getNorthEast()
       coverage = new G.LatLngBounds(new G.LatLng(sw.lat, sw.lng), new G.LatLng(ne.lat, ne.lng))
     if @places?
-      @places.search { keyword: query, bounds: coverage }, callback
+      location = if Transit.currentPosition then Transit.map.latlng(Transit.currentPosition) else coverage.getCenter()
+      console.log "PLACES query '#{query}' near", location
+      @places.nearbySearch 
+        keyword: query
+        location: location
+        radius: 10000
+      , callback
     else
+      console.log "GEOCODER query '#{query}'"
       @geocoder.geocode { address: query, bounds: coverage }, callback
 
   # This method handles three query cases:
@@ -75,12 +82,18 @@ Transit.Geocode =
             # callback with undefined parameter means there was an error
             if options.error? then options.error(status) else options.success()
     # if query does not exist then use current position
-    else
-      navigator.geolocation.getCurrentPosition (position) ->
-        options.success
+    else @getCurrentPosition options.success
+
+  getCurrentPosition: (callback) ->
+    navigator.geolocation.getCurrentPosition (position) ->
+      Transit.currentPosition =
+        lat: position.coords.latitude.toFixed(7)
+        lng: position.coords.longitude.toFixed(7)
+      if callback
+        callback
           address: 'Current Location'
-          lat: position.coords.latitude.toFixed(7)
-          lon: position.coords.longitude.toFixed(7)
+          lat: Transit.currentPosition.lat
+          lon: Transit.currentPosition.lng
 
   # convenient method to get or set a value in the geocode cache.
   # if value is provided then it is saved in cache. otherwise value of key is returned.

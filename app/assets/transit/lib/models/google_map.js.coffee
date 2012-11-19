@@ -30,8 +30,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
     # parse the result of call to otp/metadata -- service boundary
     southWest = new G.LatLng(data.lowerLeftLatitude, data.lowerLeftLongitude)
     northEast = new G.LatLng(data.upperRightLatitude, data.upperRightLongitude)
-    @set
-      coverage: new G.LatLngBounds(southWest, northEast)
+    @set 'coverage', new G.LatLngBounds(southWest, northEast)
     @trigger 'complete'
 
   update_marker: (attribute) =>
@@ -57,7 +56,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
     # create as an array [lat, lon]
     if _.isArray param then new G.LatLng param[0], param[1]
     # or as a hash { lat:?, lon:? }
-    else if _.isObject param then new G.LatLng param.lat, param.lon
+    else if _.isObject param then new G.LatLng param.lat, param.lon or param.lng
     # or as two parameters latlng(lat, lon)
     else new G.LatLng(arguments[0], arguments[1] ? arguments[0])
 
