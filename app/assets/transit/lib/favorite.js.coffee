@@ -39,7 +39,8 @@ Transit.Favorites =
 
 	# helper for the heart icon with correct active state
 	icon: (name) ->
-		HTML.icon('heart', "favorite #{if @exists(name) then 'active' else ''}")
+		# TODO: removed for the time being until we can really rock this feature
+		# HTML.icon('heart', "favorite #{if @exists(name) then 'active' else ''}")
 
 	# groups favorites by type for easy display
 	groups: -> _.groupBy @storage, (item) -> item.type
