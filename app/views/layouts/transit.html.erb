@@ -91,7 +91,7 @@
 	$(function() { Transit.init(); });
 </script>
 
-<% if Rails.env.production? %>
+<% if ENV['ENABLE_GA'] %>
 <script>
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', 'UA-28348026-3']);
