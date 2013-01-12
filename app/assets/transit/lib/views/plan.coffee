@@ -23,8 +23,8 @@ class Transit.Views.Plan extends Backbone.View
     # this event is triggered after loading OTP coverage boundaries which is used to bias geocoding results.
     Transit.map.on 'complete', =>
       # create from/to markers, position will be updated later
-      Transit.map.addMarker 'from', 'Starting Point', Transit.map.latlng(), Transit.Markers.Start 
-      Transit.map.addMarker 'to', 'Ending Point', Transit.map.latlng(), Transit.Markers.End
+      Transit.map.addMarker 'from', 'Starting Point', Transit.map.latlng(), Transit.Markers.Start, true
+      Transit.map.addMarker 'to', 'Ending Point', Transit.map.latlng(), Transit.Markers.End, true
       # begin the geocoding process!
       @model.geocode_from_to(@options.from, @options.to)
 
