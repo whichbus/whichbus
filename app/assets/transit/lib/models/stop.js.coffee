@@ -5,7 +5,6 @@ class Transit.Models.Stop extends Backbone.Model
 		if method == 'read'
 			stopUrl = if @get('code')? then "#{@urlRoot}/#{@get('agency')}/#{@get('code')}" else @url()
 			$.getJSON stopUrl, (response) =>
-				console.log "#{stopUrl} response:", response
 				# OTP returns status 200 for everything, so handle response manually
 				if response == null
 					options.error "The requested stop does not exist."

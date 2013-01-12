@@ -1,11 +1,14 @@
 class Transit.Models.Plan extends Backbone.Model
   urlRoot: '/api/otp/plan'
   defaults:
-    itineraries: []
-    desired_itineraries: 3
-    arrive_by: false
+    numItineraries: 3
+    arriveBy: false
     modes: ['TRANSIT','WALK']
     optimize: 'QUICK'
+
+  defaultOptions:
+    maxWalkDistance: 1200
+    transferPenalty: 200
 
   initialize: =>
     # create a local storage for the geocode data
@@ -27,7 +30,7 @@ class Transit.Models.Plan extends Backbone.Model
         else options.success response.plan
     else options.error 'Plan is read-only.'
 
-  request: =>
+  request: => $.extend {}, @defaultOptions,
     date: Transit.format_otp_date(@get('date'))
     time: Transit.format_otp_time(@get('date'))
     arriveBy: @get('arrive_by')

@@ -26,7 +26,7 @@ Transit.Geocode =
       @places.nearbySearch 
         keyword: query
         location: location
-        radius: 10000
+        radius: 50000
       , callback
     else
       console.log "GEOCODER query '#{query}'"
@@ -48,8 +48,7 @@ Transit.Geocode =
   lookup: (options) ->
     # TODO: TEST what happens if no callbacks are given / empty hash?
     # if query exists and is not the string "here"...
-    if options.query? and options.query != "here"
-      # BUG: query title is not being
+    if options.query? and options.query isnt "here"
       query = unescape(options.query.replace(/\+/g, '  '))
       
       # HACK SAUCE FISH PARTY! geocoder returns something ridiculous for 'space needle' w/o city
