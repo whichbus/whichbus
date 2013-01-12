@@ -10,5 +10,8 @@
 			<i class="icon-warning-sign" title="Be aware of your surroundings at this stop"></i>
 		</span>
 	</a>
+	<div class="details">
+		<i class="icon-arrow-right"></i>Ride for <%= @segment.to.stopIndex - @segment.from.stopIndex %> stops (<%= Transit.format_duration @segment.duration / 1000 %>)
+	</div>
 </div>
 <!-- <div class="description"><%= @segment.headsign %> for <%= Transit.format_duration(@segment.duration / 1000) %></div> -->
