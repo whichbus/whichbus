@@ -48,7 +48,7 @@ Transit.format_deviation = (seconds) ->
     "#{minutes} minute#{if minutes > 1 then 's' else ''} early"
   else if minutes < 0
     "#{Math.abs(minutes)} minute#{if minutes < -1 then 's' else ''} late"
-  else if minutes == 0 
+  else if minutes == 0
     'on time'
   else null
 
@@ -95,10 +95,10 @@ Transit.loadDirections = (form) ->
 
   # if to.length <= 3 then $('#to-location').addClass('btn-danger')
   # else $$('#to-location').removeClass('btn-danger')
-  
+
   # if from.length <=3 then $('#from-location').addClass('btn-danger')
   # else $('#from-location').removeClass('btn-danger')
-  
+
   if (to? and from? and to.length > 3 and from.length > 3)
       # @remove()
       Transit.router.navigate "plan/#{from}/#{to}", trigger: true
@@ -179,7 +179,7 @@ HTML.li = (classes, body...) ->
 HTML.link = (href, classes, body...) ->
   # if body array is empty then assume classes is body content
   unless body? and body.length > 0
-    body = [classes] 
+    body = [classes]
     classes = undefined
   HTML.tag("<a>", classes, body...).attr("href", href)
 HTML.btn = (classes, text, href=null) ->
@@ -196,9 +196,9 @@ $.fn.str = () -> @prop('outerHTML')
 
 # nice little jQuery copyright line
 Transit.copyright = HTML.div('copyright',
-  HTML.span('copy', '&copy;'), '2012 WhichBus - ',
+  HTML.span('copy', '&copy;'), '2013 WhichBus, LLC - ',
   HTML.link('/about', 'About'), ' - '
-  HTML.link('/about/terms', 'Terms'), ' - ', 
+  HTML.link('/about/terms', 'Terms'), ' - ',
   HTML.link('/about/privacy', '', 'Privacy')
 ).str()
 
@@ -217,7 +217,7 @@ $.fn.popout = (options) ->
     unless active
       console.log "popout #{source.attr('id')} opened"
       # make a new popout and append it to body of page
-      defaults = 
+      defaults =
         parent: source
         title: source.data('original-title')
         content: JST['templates/partials/' + source.attr('id')]
