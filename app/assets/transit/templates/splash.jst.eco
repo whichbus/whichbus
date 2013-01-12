@@ -4,7 +4,7 @@
 <div class="row-fluid">
 	<div class="span11 centered directions">
 		<h2 class="row">We'll get you there!</h2>
-		<form class="">
+		<form id="splash-form" class="">
 			<table class="row-fluid">
 				<tr class="span11 centered">
 					<td style="width:100%">
