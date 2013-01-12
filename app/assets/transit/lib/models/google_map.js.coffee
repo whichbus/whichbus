@@ -77,7 +77,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
     polylines
 
   # create a marker with the five most common options
-  create_marker: (name, position, icon, draggable=true, clickable=false) ->
+  create_marker: (name, position, icon, draggable=false, clickable=false) ->
     marker = new G.Marker
       title: name
       position: position
@@ -89,7 +89,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
 
   # creates marker, saves it in the map's attributes using the key, and adds it to the map.
   # also adds dragstart and dragend events that trigger drag:event:key Backbone events.
-  addMarker: (key, name, position, icon, draggable=true, clickable=false, animation) ->
+  addMarker: (key, name, position, icon, draggable=false, clickable=false, animation) ->
     marker = @create_marker name, position, icon, draggable, clickable
     @set key, marker, silent: true
     marker.setAnimation(animation) if animation? 
