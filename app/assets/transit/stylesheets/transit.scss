@@ -214,6 +214,7 @@ a.icon:hover, a.icon.active {
 
 #text-logo {
   font-family: 'Pacifico', cursive, sans-serif;
+  font-weight: normal;
   line-height: $navbar_height;
   @include shadow-black(0.25);
   opacity: 0.99;
@@ -225,6 +226,7 @@ a.icon:hover, a.icon.active {
 #splash h2, .pacifico {
   font-family: 'Pacifico', cursive, sans-serif;
   line-height: 2rem;
+  font-weight: normal;
 }
 
 #whichbus {
@@ -371,7 +373,34 @@ a.icon:hover, a.icon.active {
       margin-top:30px;
     }
   }
+  @media #{$phone}, #{$tablet}{
+    .content {
+
+      padding:10px;
+
+      h1 {
+        font-size: 27px;
+      }
+      h2{
+        font-size: 1.2rem;
+        padding-top:12px;
+        line-height:30px;
+      }
+      .buttons .btn{
+        font-size: 14px;
+        float:left;
+        width:100%;
+        margin:6px 0px;
+      }
+      .buttons{
+        margin-bottom:70px;
+        margin-top:10px;
+      }
+    }
+  }
 }
+
+
 
 // constrain the width of the issues google form
 .issues iframe {
