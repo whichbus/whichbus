@@ -26,7 +26,8 @@ Transit.format_otp_time = (input) ->
   zone = if hours > 11 then 'pm' else 'am'
   minutes = date.getMinutes()
   padded_minutes = "#{if minutes < 10 then '0' else ''}#{minutes}"
-  "#{hours % 12}:#{padded_minutes} #{zone}"
+  # "#{hours % 12}:#{padded_minutes} #{zone}" - no longer valid for Chrome input:time field
+  "#{hours}:#{padded_minutes}"
 
 Transit.format_duration = (seconds, minimize) ->
   # if no second parameter specified then auto-minimize if time > 1 hour
@@ -193,6 +194,8 @@ HTML.icon = (icon, classes) ->
 # and enables the HTMLpers to be used in javascript templates through
 # eco's raw output tag
 $.fn.str = () -> @prop('outerHTML')
+# pad a number with leading zeroes
+HTML.pad = (num, width) -> (1e15+num+"").slice(-width)
 
 # nice little jQuery copyright line
 Transit.copyright = HTML.div('copyright',

@@ -139,34 +139,38 @@ class Transit.Views.Plan extends Backbone.View
 
   # adds the given amount of minutes to the current time
   increaseTime: (event, amt=30) ->
-    time = @parseTime()
-    # convert time to mimutes and add amt
-    minutes = parseInt(time[1]) * 60 + parseInt(time[2]) + amt
-    if time[3] == 'PM' and time[1] < 12 then minutes += 12 * 60
-    # convert back to string and use validate to correct the display
-    @$('input.time').val("#{parseInt(minutes / 60)}:#{if minutes % 60 < 10 then '0' else ''}#{minutes % 60}")
-    @validateTime()
+    [hour, minute] = @parseTime()
+    # increase minutes, update hour accordingly
+    minute += amt
+    if minute >= 60
+      hour++
+      minute %= 60
+    else if minute < 0
+      hour--
+      minute += 60
+    if hour > 23 then hour = 0
+    else if hour < 0 then hour = 23
+  
+    @$('input.time').val "#{HTML.pad(hour, 2)}:#{HTML.pad(minute, 2)}"
 
   decreaseTime: (event) -> @increaseTime event, -30
 
   parseTime: ->
     # time can be hh:mmzz, hh:mm zz, hhzz, hh zz, hhz, ...
     time = @$('input.time').val()
-    /^([12]?[0-9])(?::(\d{2}))?\s*([pa]m?)?$/i.exec time
+    match = /^([012]?[0-9])(?::(\d{2}))?\s*([pa]m?)?$/i.exec time
+    if match?
+      # if user types pm, make it an afternoon time
+      if /p/i.test(match[3]) then match[1] = (match[1] % 12) + 12
+      # return array [hr, min] in 24hr format
+      [parseInt(match[1]), parseInt(match[2] or 0)]
+    else []
 
   validateTime: ->
     # do not validate times on mobile browsers -- most have special time and calendar entry tools
     return if $.browser.mobile
-    match = @parseTime()
-    if match?
-      hrs = match[1]
-      unless match[3] == undefined
-        match[3] += 'm' unless /m$/i.test match[3]
-      # adjust for am/pm if given in 24-hr time
-      if hrs >= 12
-        hrs %= 12 if hrs > 12
-        match[3] = 'pm'
-      @$('input.time').val("#{hrs}:#{match[2] ? '00'} #{match[3] ? 'am'}".toUpperCase())
-      # return match.slice(1)
+    [hour, minute] = @parseTime()
+    if hour?
+      @$('input.time').val "#{HTML.pad(hour, 2)}:#{HTML.pad(minute, 2)}"
     else
-      @$('input.time').val('')
+      @$('input.time').val(Transit.format_otp_time(new Date()))
