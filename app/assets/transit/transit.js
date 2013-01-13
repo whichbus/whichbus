@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require bootstrap
+//= require ./vendor/console
 //= require_tree ./vendor/leaflet
 //= require ./vendor/underscore
 //= require ./vendor/backbone
