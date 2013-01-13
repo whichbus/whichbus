@@ -18,6 +18,7 @@ class Transit.Views.Plan extends Backbone.View
 
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'geocode:error', @geocode_error
+    @model.on 'plan:timeout', @timeout_warn
 
     # add markers and geocode locations once the map is finished.
     # this event is triggered after loading OTP coverage boundaries which is used to bias geocoding results.
@@ -71,6 +72,11 @@ class Transit.Views.Plan extends Backbone.View
     @$('.progress').hide()
     Transit.errorMessage("Sorry, don't know that place.", message)
 
+  timeout_warn: (message) =>
+    # request taking a while, give 'em a nice message with a link home
+    Transit.errorMessage(
+      HTML.span '', "We're having some trouble planning your trip right now. But it doesn't have to be like this.<br/><br/>",
+        HTML.link '/', '', 'Go home and try again?')
 
   display_trip_options: =>
     @$('form.options').slideToggle('fast')
