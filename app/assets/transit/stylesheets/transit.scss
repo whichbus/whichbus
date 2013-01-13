@@ -213,7 +213,7 @@ a.icon:hover, a.icon.active {
 @import "navigation";
 
 #text-logo {
-  font-family: 'Pacifico', cursive, sans-serif;
+  font-family: 'Pacifico', sans-serif;
   font-weight: normal;
   line-height: $navbar_height;
   @include shadow-black(0.25);
@@ -224,7 +224,7 @@ a.icon:hover, a.icon.active {
 }
 
 #splash h2, .pacifico {
-  font-family: 'Pacifico', cursive, sans-serif;
+  font-family: 'Pacifico', sans-serif;
   line-height: 2rem;
   font-weight: normal;
 }

@@ -7,11 +7,17 @@ class Transit.Views.Splash extends Backbone.View
     'submit form': 'go_to_plan'
     'click #from-location': 'from_current_location'
     'click #to-location': 'to_current_location'
-    'focusin input.location': 'select_all'
+    # 'focusin input.location': 'select_all'
 
   render: =>
     $(@el).html(@template())
+    @fillFromUrl()
     this
+
+  fillFromUrl: =>
+    params = Transit.urlParams()
+    @$("#from_query").val(params.from)
+    @$("#to_query").val(params.to)
 
   go_to_plan: (event) =>
     event.preventDefault()
@@ -29,14 +35,8 @@ class Transit.Views.Splash extends Backbone.View
         @remove()
         Transit.router.navigate "plan/#{from}/#{to}", trigger: true
 
-  from_current_location: =>
-    @$("#from_query").val('here')
-    # Transit.plan.current_location @$('input[name=from]'), 'from'
+  from_current_location: -> @$("#from_query").val('here')
 
-  to_current_location: =>
-    @$("#to_query").val('here')
-    # Transit.plan.current_location @$('input[name=to]'), 'to'
+  to_current_location: -> @$("#to_query").val('here')
 
-  select_all: (evt) =>
-    console.log "focus", evt
-    $(evt.currentTarget).select()
+  select_all: (evt) -> $(evt.currentTarget).select()

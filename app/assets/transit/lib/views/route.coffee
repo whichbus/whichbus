@@ -6,6 +6,7 @@ class Transit.Views.Route extends Backbone.View
 	className: 'route'
 
 	initialize: =>
+		_.bindAll @, 'render', 'showTrips'
 		@model.fetch
 			success: @render
 			error: (model, message) =>
@@ -23,7 +24,7 @@ class Transit.Views.Route extends Backbone.View
 		url: "routes/#{@model.get('oba_id')}"
 	}
 
-	render: =>
+	render: ->
 		$(@el).html(@template(route: @model))
 		Transit.setTitleHTML Transit.Favorites.icon(@model.get('name')), HTML.btn('btn-route', @model.get('name')), @model.get('description')
 		@polylines = Transit.map.create_multi_polyline(@model.get('polylines').split(','), '#025d8c')
@@ -33,12 +34,12 @@ class Transit.Views.Route extends Backbone.View
 		for stop in @model.get('stops')
 			pos = Transit.map.latlng(stop['lat'], stop['lon'])
 			@stopMarkers.push Transit.map.create_marker(stop['name'] + " (#{stop['direction']})", pos, Transit.Markers.StopDot, false, true)
-			if bounds? then bounds.extend(pos) else bounds = new L.LatLngBounds(pos) 
+			if bounds? then bounds.extend(pos) else bounds = new G.LatLngBounds(pos) 
 		Transit.map.map.fitBounds(bounds)
 		Transit.map.addLayer(@stopMarkers)
 		this
 
-	showTrips: =>
+	showTrips: ->
 		list = $("#trips").html('')
 		@trips.forEach (item) =>
 			list.append(@tripTemplate(trip: item))

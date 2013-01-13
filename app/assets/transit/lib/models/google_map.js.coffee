@@ -95,8 +95,6 @@ class Transit.Models.GoogleMap extends Backbone.Model
     marker.setAnimation(animation) if animation? 
     @addLayer marker
 
-    console.log "new marker: #{key} => #{name}", marker
-
     # update location after the drag, trigger a drag event on a drag
     G.event.addListener marker, 'dragstart', =>
       @trigger "drag:start drag:start:#{key}"

@@ -1,2 +1,4 @@
 Walk to <a class="btn btn-stop" <%= if @segment.to.stopId? then "href='/stops/#{@segment.to.stopId.agencyId}/#{@segment.to.stopId.id}'" %>><%= @segment.to.name %></a>
-<span class="duration label"><%= Transit.format_time @segment.startTime %></span>
+<span class="timing pull-right">
+	<span class="duration label"><%= Transit.format_time @segment.startTime %></span>
+</span>

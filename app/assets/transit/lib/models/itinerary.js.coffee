@@ -1,8 +1,8 @@
 class Transit.Models.Itinerary extends Backbone.Model
-	summary: =>
+	summary: ->
 		_.pluck(_.filter(@get('legs'), (leg) -> leg.mode not in ['WALK', 'BIKE']), 'route').join(', ')
 
-	summaryHTML: =>
+	summaryHTML: ->
 		index = 0
 		stops = _.map(_.filter(@get('legs'), (leg) -> leg.mode not in ['WALK', 'BIKE']), (leg) -> 
 			index++
@@ -13,14 +13,24 @@ class Transit.Models.Itinerary extends Backbone.Model
 		stops = "#{stops} <span class='btn btn-route expand'>+#{index-2}</span>" if index > 2
 		return stops
 
-	timing: =>
+	timing: ->
 		start = Transit.format_time(@get('startTime'))
 		end   = Transit.format_time(@get('endTime'))
 		total = Transit.format_duration(@get('duration') / 1000)
 		"#{start}–#{end} (#{total})"
 
-	duration: =>
+	duration: ->
 		walk = Transit.format_duration(@get('walkTime'), true)
 		wait = Transit.format_duration(@get('waitingTime'), true)
 		bus = Transit.format_duration(@get('transitTime'), true)
 		"#{walk} walking, #{bus} transit"
+
+	bounds: ->
+		# create and cache bounds surrounding all points in leg geometry
+		unless @get 'bounds'
+			bounds = new google.maps.LatLngBounds()
+			for leg in @get('legs')
+				for point in google.maps.geometry.encoding.decodePath(leg.legGeometry.points)
+					bounds.extend(point)
+			@set 'bounds', bounds
+		@get 'bounds'

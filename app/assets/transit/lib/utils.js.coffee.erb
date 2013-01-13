@@ -104,8 +104,8 @@ Transit.loadDirections = (form) ->
       # @remove()
       Transit.router.navigate "plan/#{from}/#{to}", trigger: true
 
-Transit.escape = (string) -> escape string.replace(/\s/g, '+')
-Transit.unescape = (string) -> unescape string.replace(/\+/g, ' ')
+Transit.escape = (string) -> encodeURIComponent string.replace(/\s/g, '+')
+Transit.unescape = (string) -> decodeURIComponent string.replace(/\+/g, ' ')
 
 Transit.Markers = if GOOGLE?
   Start: new G.MarkerImage('<%= image_path("icons/icon-start-location.png") %>', new G.Size(33, 35), new G.Point(0, 0), new G.Point(11, 35))
@@ -227,7 +227,6 @@ $.fn.popout = (options) ->
     @popout?.close()
     # if this popout was not already opened...
     unless active
-      console.log "popout #{source.attr('id')} opened"
       # make a new popout and append it to body of page
       defaults =
         parent: source
@@ -244,3 +243,10 @@ Transit.wrapStopButtons = ->
       #       make btn-stop max-width: 40%
       btn.innerHTML = "#{match[1]}<br/>#{match[2]}"
 
+Transit.urlParams = ->
+  output = {}
+  if window.location.search.length > 1
+    for pair in window.location.search.substr(1).split('&')
+      keyValue = pair.split('=')
+      output[keyValue[0]] = if keyValue.length > 1 then Transit.unescape(keyValue[1]) else ''
+  output
