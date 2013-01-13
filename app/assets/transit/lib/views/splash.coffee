@@ -11,7 +11,13 @@ class Transit.Views.Splash extends Backbone.View
 
   render: =>
     $(@el).html(@template())
+    @fillFromUrl()
     this
+
+  fillFromUrl: =>
+    params = Transit.urlParams()
+    @$("#from_query").val(params.from)
+    @$("#to_query").val(params.to)
 
   go_to_plan: (event) =>
     event.preventDefault()

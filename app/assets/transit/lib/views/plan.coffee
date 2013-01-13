@@ -68,8 +68,9 @@ class Transit.Views.Plan extends Backbone.View
         @$('.progress').hide()
         Transit.errorMessage('Whoops, something went wrong!', message)
 
-  geocode_error: (message) =>
+  geocode_error: (message, location) =>
     @$('.progress').hide()
+    message += "<br><a href=\"/?from=#{location.from}&to=#{location.to}\">Go home and try another address?</a>"
     Transit.errorMessage("Sorry, don't know that place.", message)
 
   timeout_warn: (message) =>
