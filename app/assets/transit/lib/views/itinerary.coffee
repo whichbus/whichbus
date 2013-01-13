@@ -18,19 +18,19 @@ class Transit.Views.Itinerary extends Backbone.View
 		'click h4': 'toggle'
 		'hover li.segment': 'segmentHover'
 
-	initialize: =>
+	initialize: ->
 		Transit.map.on 'drag:start', @clean_up
 		Transit.events.on 'plan:complete', @clean_up
 		@polylines = []
 		@markers =[]
 
-	render: =>
+	render: ->
 		$(@el).html(@template({ trip: @model, index: @index }))
 		@add_segments()
 		@toggle() if @index == 0
 		@
 
-	add_segments: =>
+	add_segments: ->
 		index = 0
 		for leg in @model.get('legs')
 			# create a view for the segment
@@ -62,19 +62,22 @@ class Transit.Views.Itinerary extends Backbone.View
 			Transit.map.removeLayer @markers
 		@
 
-	render_map: =>
+	render_map: ->
 		Transit.map.addLayer @polylines
 		Transit.map.addLayer @markers
 		@
 
-	toggle: =>
+	toggle: ->
 		# indicate that this itinerary is active
 		$(@el).toggleClass 'active'
 		@$('.affordance').toggleClass('icon-caret-down').toggleClass('icon-caret-right')
 		@$('.segments').slideToggle('fast')
 
-		# determine map overlay appearance based on active state
 		active = $(@el).hasClass 'active'
+		# fit map bounds to itinerary when expanded
+		Transit.map.map.fitBounds(@model.bounds()) if active
+
+		# determine map overlay appearance based on active state
 		if GOOGLE?
 			if active then options = strokeWeight: 4, strokeOpacity: 0.8
 			else options = strokeWeight: 6, strokeOpacity: 0.5
@@ -88,7 +91,7 @@ class Transit.Views.Itinerary extends Backbone.View
 				line.seOpacity if active then 0.8 else 0.5
 
 
-	expand_routes: (event) =>
+	expand_routes: (event) ->
 		event.stopPropagation()
 		@$('.expandable').show()
 		@$('.expand').remove()

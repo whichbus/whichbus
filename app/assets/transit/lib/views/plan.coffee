@@ -113,21 +113,10 @@ class Transit.Views.Plan extends Backbone.View
       # automatically show the first itinerary
       view.render_map().toggle() if index == 1
       view
-    # TODO: implement this for Leaflet
-    @fit_bounds()
 
   # remove all itineraries from the map
   remove_itineraries: =>
     view?.clean_up(true) for view in @views if @views?
-
-  fit_bounds: =>
-    if @map.get('fit_bounds')
-      bounds = new google.maps.LatLngBounds()
-      for leg in @model.get('itineraries').first().get('legs')
-        for point in google.maps.geometry.encoding.decodePath(leg.legGeometry.points)
-          bounds.extend(point)
-      @map.map.fitBounds(bounds)
-    @map.set 'fit_bounds': @map.defaults.fit_bounds?, { silent: true }
 
   go_to_splash: (event) =>
     # TODO: Place this to the topbar.

@@ -226,7 +226,6 @@ $.fn.popout = (options) ->
     @popout?.close()
     # if this popout was not already opened...
     unless active
-      console.log "popout #{source.attr('id')} opened"
       # make a new popout and append it to body of page
       defaults =
         parent: source
