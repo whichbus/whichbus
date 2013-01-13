@@ -23,11 +23,13 @@ class Transit.Models.Plan extends Backbone.Model
 
   sync: (method, model, options) =>
     if method == 'read'
-      $.get @url(), @request(), (response) =>
+      @req = $.get @url(), @request(), (response) =>
+        clearTimeout @time
         # OTP returns status 200 for everything, so handle response manually
         if response.error?
           options.error response.error.msg
         else options.success response.plan
+      @time = setTimeout (=> @trigger('plan:timeout')), 7000
     else options.error 'Plan is read-only.'
 
   request: => $.extend {}, @defaultOptions,

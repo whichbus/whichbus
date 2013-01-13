@@ -18,6 +18,7 @@ class Transit.Views.Plan extends Backbone.View
 
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'geocode:error', @geocode_error
+    @model.on 'plan:timeout', @timeout_warn
 
     # add markers and geocode locations once the map is finished.
     # this event is triggered after loading OTP coverage boundaries which is used to bias geocoding results.
@@ -71,6 +72,11 @@ class Transit.Views.Plan extends Backbone.View
     @$('.progress').hide()
     Transit.errorMessage("Sorry, don't know that place.", message)
 
+  timeout_warn: (message) =>
+    # request taking a while, give 'em a nice message with a link home
+    Transit.errorMessage(
+      HTML.span '', "We're having some trouble planning your trip right now. But it doesn't have to be like this.<br/><br/>",
+        HTML.link '/', '', 'Go home and try again?')
 
   display_trip_options: =>
     @$('form.options').slideToggle('fast')
@@ -113,21 +119,10 @@ class Transit.Views.Plan extends Backbone.View
       # automatically show the first itinerary
       view.render_map().toggle() if index == 1
       view
-    # TODO: implement this for Leaflet
-    @fit_bounds()
 
   # remove all itineraries from the map
   remove_itineraries: =>
     view?.clean_up(true) for view in @views if @views?
-
-  fit_bounds: =>
-    if @map.get('fit_bounds')
-      bounds = new google.maps.LatLngBounds()
-      for leg in @model.get('itineraries').first().get('legs')
-        for point in google.maps.geometry.encoding.decodePath(leg.legGeometry.points)
-          bounds.extend(point)
-      @map.map.fitBounds(bounds)
-    @map.set 'fit_bounds': @map.defaults.fit_bounds?, { silent: true }
 
   go_to_splash: (event) =>
     # TODO: Place this to the topbar.
