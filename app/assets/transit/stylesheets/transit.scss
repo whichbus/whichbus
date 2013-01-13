@@ -270,12 +270,31 @@ a.icon:hover, a.icon.active {
 }
 
 .copyright {
+  float:left;
   padding: 15px 0 5px 5px;
   font-size: 11px;
   text-align: center;
+  margin-left:38px;
   .copy {
     font-size: 12px;
   }
+}
+
+.social-media {
+  float:right;
+  padding: 10px 0 5px 5px;
+  text-align: center;
+  margin-right:44px;
+
+  a {
+    margin-right:8px;
+    &:last-child{
+    margin-right:0px;
+    }
+  }
+
+
+
 }
 
 .favorite {

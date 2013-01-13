@@ -183,6 +183,9 @@ HTML.link = (href, classes, body...) ->
     body = [classes]
     classes = undefined
   HTML.tag("<a>", classes, body...).attr("href", href)
+HTML.img = (src, alt, classes) ->
+  HTML.tag("<img>", classes).attr("src", src)
+
 HTML.btn = (classes, text, href=null) ->
   if href?
     HTML.link href, "btn #{classes}", text
@@ -204,6 +207,12 @@ Transit.copyright = HTML.div('copyright',
   HTML.link('/about/terms', 'Terms'), ' - ',
   HTML.link('/about/privacy', '', 'Privacy')
 ).str()
+
+Transit.social_media = HTML.div('social-media',
+  HTML.link('http://whichbus.tumblr.com/', HTML.img('http://placehold.it/30x30/b0e2c2/white', 'social-media-icon')).attr('target', '_BLANK'),
+  HTML.link('https://twitter.com/whichbus', HTML.img('http://placehold.it/30x30/b0e2c2/white', 'social-media-icon')).attr('target', '_BLANK'),
+  HTML.link('https://www.facebook.com/whichbus', HTML.img('http://placehold.it/30x30/b0e2c2/white', 'social-media-icon')).attr('target', '_BLANK')
+  ).str()
 
 $.fn.popout = (options) ->
   window.opt = options

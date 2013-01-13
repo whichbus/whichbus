@@ -27,3 +27,4 @@
 </div>
 
 <%- Transit.copyright %>
+<%- Transit.social_media %>
