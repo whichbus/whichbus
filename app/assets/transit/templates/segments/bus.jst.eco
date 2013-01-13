@@ -14,4 +14,3 @@
 		<i class="icon-arrow-right"></i>Ride for <%= @segment.to.stopIndex - @segment.from.stopIndex %> stops (<%= Transit.format_duration @segment.duration / 1000 %>)
 	</div>
 </div>
-<!-- <div class="description"><%= @segment.headsign %> for <%= Transit.format_duration(@segment.duration / 1000) %></div> -->

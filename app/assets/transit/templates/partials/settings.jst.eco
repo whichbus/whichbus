@@ -1,5 +1,5 @@
 <ul class="unstyled">
-    <li id="settings-favorites" class="blocked">
+    <!-- <li id="settings-favorites" class="blocked">
         <i class="icon-heart"></i>
         <span>Favorites</span>
         <small class="label label-info">COMING SOON</small></li>
@@ -7,16 +7,16 @@
         <i class="icon-user"></i>
         <span>My Account</span>
         <small class="label label-info">WAIT FOR IT</small>
-    </li>
+    </li> -->
     <li>
         <a href="#" id="clearCache">
             <i class="icon-refresh"></i>
-            <span>Clear Geocache</span>
+            <span>Clear Cached Locations</span>
         </a>
     </li>
     <li>
         <a href="http://whichbus.uservoice.com/forums/181861-feedback" target="_BLANK">
-            <i class="icon-comment"></i>
+            <i class="icon-bullhorn"></i>
             <span>Send Us Feedback</span>
         </a>
     </li>

@@ -1,6 +1,6 @@
 class Transit.Views.Popout extends Backbone.View
   template: JST['templates/partials/popout']
-  className: 'popout'
+  className: 'popout unselectable'
   # default sizing options
   width: 250
   margin: 10
@@ -12,6 +12,7 @@ class Transit.Views.Popout extends Backbone.View
     'click .directions .btn.here': 'geolocate'
     'click .options .btn-go': 'updateTrip'
     'click .favorites li a': 'navigateFavorite'
+    'click #clearCache': 'clearCache'
 
   render: () ->
     @options.parent.addClass('active')
@@ -88,6 +89,16 @@ class Transit.Views.Popout extends Backbone.View
     evt.preventDefault()
     console.log 'updating trip'
     console.log @params.plan
+
+  # clear the geocode cache from the settings menu
+  clearCache: (evt) ->
+    evt.preventDefault()
+    # make a message listing all the cached locations
+    msg = ""; size = 0
+    for key,value of Transit.Geocode.geocache
+      msg += "- #{key}\n"
+      size++
+    Transit.Geocode.cacheClear() if confirm("You have these #{size} locations cached:\n#{msg}\nAre you sure you want to clear your geocache?")
 
   navigateFavorite: (evt) ->
     evt.preventDefault()
