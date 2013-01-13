@@ -26,5 +26,7 @@
 	</div>
 </div>
 
-<%- Transit.copyright %>
-<%- Transit.social_media %>
+<div id="splash-footer">
+	<%- Transit.copyright %>
+	<%- Transit.social_media %>
+</div>

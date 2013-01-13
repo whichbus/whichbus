@@ -13,4 +13,7 @@
 <div class="progress progress-striped active"><div class="bar"></div></div>
 <div class="alert alert-error"></div>
 
-<%- Transit.copyright %>
+<div id="plan-footer">
+    <%- Transit.copyright %>
+    <%- Transit.social_media %>
+</div>
