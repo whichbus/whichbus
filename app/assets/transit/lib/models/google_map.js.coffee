@@ -46,7 +46,7 @@ class Transit.Models.GoogleMap extends Backbone.Model
   update_markers: =>
     # create or update markers from given coordinates
     # if @hasChanged('from') or @hasChanged('to')
-    console.log 'GoogleMap plan changed:', @get('from'), @get('to')
+
     @update_marker('from') if @hasChanged('from')
     @update_marker('to') if @hasChanged('to')
     # trigger a single custom event when from and/or to change

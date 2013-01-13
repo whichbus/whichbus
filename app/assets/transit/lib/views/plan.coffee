@@ -99,7 +99,7 @@ class Transit.Views.Plan extends Backbone.View
 
   add_itineraries: (plan) =>
     # reset UI, set title of directions
-    console.log "Plan completed", plan
+
     @reset()
     Transit.setTitleHTML(Transit.Favorites.icon(@favorite().name), "#{plan.get('from').name} to #{plan.get('to').name}")
     # @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
