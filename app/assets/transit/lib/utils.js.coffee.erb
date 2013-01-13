@@ -238,10 +238,11 @@ $.fn.popout = (options) ->
 Transit.wrapStopButtons = ->
   # wrap text in each btn-stop after the '&' if above a certain length
   $('.btn-stop').each (index, btn) ->
-    if btn.clientWidth > 200 and match = /(.+(?:&|and))(.+)/i.exec btn.text
+    if btn.text.length > 24 and match = /(.+(?:&|and))(.+)/i.exec btn.text
       # TODO: make threshold based on entire line (Walk to <btn>) instead of just button size.
       #       make btn-stop max-width: 40%
       btn.innerHTML = "#{match[1]}<br/>#{match[2]}"
+      btn.style.verticalAlign = 'middle'
 
 Transit.urlParams = ->
   output = {}

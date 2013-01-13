@@ -43,7 +43,7 @@ class Transit.Views.Itinerary extends Backbone.View
 			@polylines.push(poly)
 			# create a circle marker at the start of the segment
 			if GOOGLE?	 # Leaflet doesn't support SVG markers...
-				marker = Transit.map.create_marker(leg.mode + " " + leg.route, new G.LatLng(leg.from.lat, leg.from.lon),
+				marker = Transit.map.create_marker(leg.mode + " " + leg.route, Transit.map.latlng(leg.from),
 					# use built-in circle Symbol for the marker (a vector circle)
 					path: G.SymbolPath.CIRCLE
 					fillColor: @segmentColors[leg.mode] ? 'black'
@@ -74,8 +74,10 @@ class Transit.Views.Itinerary extends Backbone.View
 		@$('.segments').slideToggle('fast')
 
 		active = $(@el).hasClass 'active'
-		# fit map bounds to itinerary when expanded
-		Transit.map.map.fitBounds(@model.bounds()) if active
+		# when expanded, fit map bounds to itinerary and wrap long stop buttons
+		if active
+			Transit.map.map.fitBounds(@model.bounds()) 
+			@wrapStopButtons() unless @wrapped
 
 		# determine map overlay appearance based on active state
 		if GOOGLE?
@@ -104,3 +106,15 @@ class Transit.Views.Itinerary extends Backbone.View
 			@polylines[index].setOptions strokeOpacity: if @polylines[index].strokeOpacity == 1 then 0.8 else 1
 		else
 			@polylines[index].opacity = if @polylines[index].opacity == 1 then 0.8 else 1
+
+	wrapStopButtons: ->
+		# wrap text in each btn-stop after the '&' if above a certain length
+		@$('.btn-stop').each (index, btn) ->
+			# WALK segments can be a little wider before wrapping
+			wider = btn.parentElement.classList.contains('walk')
+			if btn.clientWidth > (if wider then 250 else 200)
+				# insert line break after &, middle-align
+				btn.innerHTML = btn.innerHTML.replace('&amp;', '&amp;<br/>')
+				btn.style.verticalAlign = 'middle'
+		# remember that we don't need to do this again
+		@wrapped = true
