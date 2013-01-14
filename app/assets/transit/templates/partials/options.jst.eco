@@ -16,7 +16,7 @@
 		<span class="span5 optimize">
 			<div class="btn-group pull-right" data-toggle="buttons-radio">
 				<button type="button" class="btn compact <%= 'active' if 'QUICK' == @plan.get('optimize') %>" title="QUICK"><i class="icon-bolt"></i></button>
-				<button type="button" style="margin-top:-2px" class="btn compact <%= 'active' if 'TRANSFERS' == @plan.get('optimize') %>" title="TRANSFERS"><i class="icon-wb-transfers"></i></button>
+				<button type="button" class="btn compact <%= 'active' if 'TRANSFERS' == @plan.get('optimize') %>" title="TRANSFERS"><i class="icon-wb-transfers"></i></button>
 				<!-- <button type="button" class="btn compact <%= 'active' if 'SAFE' == @plan.get('optimize') %>" title="SAFE" disabled><i class="icon-warning-sign"></i></button> -->
 			</div>
 		</span>

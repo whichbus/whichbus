@@ -711,6 +711,7 @@ div.popout {
 
 [class^="icon-wb-"], [class*=" icon-wb-"] {
   background: url('/assets/icons/tripselection.png') no-repeat;
+  background-position: 30px 30px;
   @include size(19px, 14px);
   display: block;
   margin: 5px auto;
@@ -720,7 +721,7 @@ div.popout {
   background-position: -9px 0;
 }
 .icon-wb-transit {
-  background-position: -35px 0;
+  background-position: -33px 0;
 }
 .icon-wb-transfers {
   background-position: -60px 0;
