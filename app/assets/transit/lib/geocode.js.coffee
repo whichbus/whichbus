@@ -3,6 +3,8 @@ Transit.Geocode =
   # the cache object for storing saved geocodes
   geocache: Transit.storage_get('geocode')
 
+  defaultLocation: new G.LatLng(47.6097, 122.3331)
+
   # the geocoder itself! thanks Google
   geocoder: new google.maps.Geocoder()
 
@@ -14,14 +16,14 @@ Transit.Geocode =
   # fallback to Google Geocoder.
   geocode: (query, callback) ->
     # @query = query
-    coverage = Transit.map.get('coverage') 
+    # coverage = Transit.map.get('coverage') 
     # translate to google.maps.LatLngBounds unless already using Google
-    unless GOOGLE?
-      sw = coverage.getSouthWest()
-      ne = coverage.getNorthEast()
-      coverage = new G.LatLngBounds(new G.LatLng(sw.lat, sw.lng), new G.LatLng(ne.lat, ne.lng))
+    # unless GOOGLE?
+    #   sw = coverage.getSouthWest()
+    #   ne = coverage.getNorthEast()
+    #   coverage = new G.LatLngBounds(new G.LatLng(sw.lat, sw.lng), new G.LatLng(ne.lat, ne.lng))
     if @places?
-      location = if Transit.currentPosition then Transit.map.latlng(Transit.currentPosition) else coverage.getCenter()
+      location = if Transit.currentPosition then Transit.map.latlng(Transit.currentPosition) else @defaultLocation
       console.log "PLACES query '#{query}' near", location
       @places.nearbySearch 
         keyword: query
@@ -84,7 +86,7 @@ Transit.Geocode =
     else @getCurrentPosition options.success
 
   getCurrentPosition: (callback) ->
-    navigator.geolocation.getCurrentPosition (position) ->
+    success = (position) ->
       Transit.currentPosition =
         lat: position.coords.latitude.toFixed(7)
         lng: position.coords.longitude.toFixed(7)
@@ -93,6 +95,8 @@ Transit.Geocode =
           address: 'Current Location'
           lat: Transit.currentPosition.lat
           lon: Transit.currentPosition.lng
+    # error = -> callback()
+    navigator.geolocation.getCurrentPosition success, -> Transit.events.trigger('geocode:fail')
 
   # convenient method to get or set a value in the geocode cache.
   # if value is provided then it is saved in cache. otherwise value of key is returned.

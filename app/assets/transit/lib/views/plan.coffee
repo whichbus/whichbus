@@ -19,6 +19,7 @@ class Transit.Views.Plan extends Backbone.View
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'geocode:error', @geocode_error
     @model.on 'plan:timeout', @timeout_warn
+    Transit.events.on 'geocode:fail', @geocode_fail
 
     # add markers and geocode locations once the map is finished.
     # this event is triggered after loading OTP coverage boundaries which is used to bias geocoding results.
@@ -73,9 +74,13 @@ class Transit.Views.Plan extends Backbone.View
     message += "<br><a href=\"/?from=#{location.from}&to=#{location.to}\">Go home and try another address?</a>"
     Transit.errorMessage("Sorry, don't know that place.", message)
 
+  geocode_fail: =>
+    @$('.progress').hide()
+    Transit.errorMessage("Geolocation Fail!", "Unable to get your current location. Did you disable location sharing on WhichBus? Because that's not going to work...")
+
   timeout_warn: (message) =>
     # request taking a while, give 'em a nice message with a link home
-    Transit.errorMessage(
+    Transit.errorMessage("This is taking a long time..."
       HTML.span '', "We're having some trouble planning your trip right now. But it doesn't have to be like this.<br/><br/>",
         HTML.link '/', '', 'Go home and try again?')
 
@@ -86,8 +91,8 @@ class Transit.Views.Plan extends Backbone.View
     event.preventDefault()
     date = $('input[name="trip_date"]').val()
     time = $('input[name="trip_time"]').val()
-    modes = @$('.mode .btn.active').map((i, item) -> item.getAttribute 'title').get()
-    optimize = @$('.optimize .btn.active').attr('title')
+    modes = @$('.mode .btn.active:not([disabled])').map((i, item) -> item.getAttribute 'title').get()
+    optimize = @$('.optimize .btn.active:not([disabled])').attr('title')
     console.log "Update plan options:", date, time, modes, optimize
 
     @model.set
