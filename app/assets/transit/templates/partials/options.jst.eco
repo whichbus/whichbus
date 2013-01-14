@@ -16,8 +16,8 @@
 		<span class="span5 optimize">
 			<div class="btn-group pull-right" data-toggle="buttons-radio">
 				<button type="button" class="btn compact <%= 'active' if 'QUICK' == @plan.get('optimize') %>" title="QUICK"><i class="icon-bolt"></i></button>
-				<button type="button" class="btn compact <%= 'active' if 'TRANSFERS' == @plan.get('optimize') %>" title="TRANSFERS"><i class="icon-money"></i></button>
-				<button type="button" class="btn compact <%= 'active' if 'SAFE' == @plan.get('optimize') %>" title="SAFE" disabled><i class="icon-warning-sign"></i></button>
+				<button type="button" style="margin-top:-2px" class="btn compact <%= 'active' if 'TRANSFERS' == @plan.get('optimize') %>" title="TRANSFERS"><i class="icon-wb-transfers"></i></button>
+				<!-- <button type="button" class="btn compact <%= 'active' if 'SAFE' == @plan.get('optimize') %>" title="SAFE" disabled><i class="icon-warning-sign"></i></button> -->
 			</div>
 		</span>
 	</div>
@@ -30,9 +30,9 @@
 		</span>
 		<span class="span5 mode">
 			<div class="btn-group pull-right" data-toggle="buttons-checkbox">
-				<button type="button" class="btn compact <%= 'active' if 'WALK' in @plan.get('modes') %>" title="WALK"><i class="icon-user"></i></button>
-				<button type="button" class="btn compact <%= 'active' if 'TRANSIT' in @plan.get('modes') %>" title="TRANSIT"><i class="icon-truck"></i></button>
-				<button type="button" class="btn compact <%= 'active' if 'BIKE' in @plan.get('modes') %>" title="BIKE" disabled><i class="icon-plane"></i></button>
+				<button type="button" class="btn compact <%= 'active' if 'WALK' in @plan.get('modes') %>" title="WALK"><i class="icon-wb-walking"></i></button>
+				<button type="button" class="btn compact <%= 'active' if 'TRANSIT' in @plan.get('modes') %>" title="TRANSIT"><i class="icon-wb-transit"></i></button>
+				<!-- <button type="button" class="btn compact <%= 'active' if 'BIKE' in @plan.get('modes') %>" title="BIKE" disabled><i class="icon-wb-bicycle"></i></button> -->
 			</div>
 		</span>
 	</div>
