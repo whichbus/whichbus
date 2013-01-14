@@ -11,6 +11,6 @@
 		</span>
 	</a>
 	<div class="details">
-		<i class="icon-arrow-right"></i>Ride for <%= @segment.to.stopIndex - @segment.from.stopIndex %> stops (<%= Transit.format_duration @segment.duration / 1000 %>)
+		<i class="icon-arrow-right"></i>Ride for <%= @segment.intermediateStops.length %> stops (<%= Transit.format_duration @segment.duration / 1000 %>)
 	</div>
 </div>

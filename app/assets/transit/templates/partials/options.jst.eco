@@ -17,7 +17,7 @@
 			<div class="btn-group pull-right" data-toggle="buttons-radio">
 				<button type="button" class="btn compact <%= 'active' if 'QUICK' == @plan.get('optimize') %>" title="QUICK"><i class="icon-bolt"></i></button>
 				<button type="button" class="btn compact <%= 'active' if 'TRANSFERS' == @plan.get('optimize') %>" title="TRANSFERS"><i class="icon-money"></i></button>
-				<button type="button" class="btn compact <%= 'active' if 'SAFE' == @plan.get('optimize') %>" title="SAFE"><i class="icon-warning-sign"></i></button>
+				<button type="button" class="btn compact <%= 'active' if 'SAFE' == @plan.get('optimize') %>" title="SAFE" disabled><i class="icon-warning-sign"></i></button>
 			</div>
 		</span>
 	</div>
@@ -32,7 +32,7 @@
 			<div class="btn-group pull-right" data-toggle="buttons-checkbox">
 				<button type="button" class="btn compact <%= 'active' if 'WALK' in @plan.get('modes') %>" title="WALK"><i class="icon-user"></i></button>
 				<button type="button" class="btn compact <%= 'active' if 'TRANSIT' in @plan.get('modes') %>" title="TRANSIT"><i class="icon-truck"></i></button>
-				<button type="button" class="btn compact <%= 'active' if 'BIKE' in @plan.get('modes') %>" title="BIKE"><i class="icon-plane"></i></button>
+				<button type="button" class="btn compact <%= 'active' if 'BIKE' in @plan.get('modes') %>" title="BIKE" disabled><i class="icon-plane"></i></button>
 			</div>
 		</span>
 	</div>

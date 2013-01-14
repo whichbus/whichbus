@@ -8,7 +8,10 @@ class Transit.Models.Plan extends Backbone.Model
 
   defaultOptions:
     maxWalkDistance: 1200
-    transferPenalty: 200
+    transferPenalty: 300
+    maxTransfers: 1
+    # reverseOptimizeOnTheFly: true
+    showIntermediateStops: true
 
   initialize: =>
     # create a local storage for the geocode data
