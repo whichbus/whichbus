@@ -269,8 +269,10 @@ a.icon:hover, a.icon.active {
     @include shadow-black(0.15);
   }
 }
-#splash-footer, #plan-footer > .social-media {
+#splash-footer > .social-media {
+
   a{
+
     background-position: 0, 0px;
     height: 25px;
     width: 25px;
@@ -289,6 +291,43 @@ a.icon:hover, a.icon.active {
       border:none;
     }
   }
+
+  .tumblr-icon{
+    background:url('/assets/tumblr.png') no-repeat;
+  }
+  .twitter-icon{
+    background:url('/assets/twitter.png') no-repeat;
+  }
+  .facebook-icon{
+    background:url('/assets/facebook.png') no-repeat;
+  }
+  .email-icon{
+    background:url('/assets/email.png') no-repeat;
+  }
+}
+#plan-footer > .social-media {
+
+  a{
+
+    background-position: 0, 0px;
+    height: 25px;
+    width: 25px;
+    zoom:1;
+    display:inline-block;
+    text-decoration:none;
+
+    &:hover{
+      background-position: 0 -25px;
+      text-decoration:none;
+      border:none;
+    }
+    &:active{
+      background-position: 0 -25px;
+      text-decoration:none;
+      border:none;
+    }
+  }
+
   .tumblr-icon{
     background:url('/assets/tumblr.png') no-repeat;
   }
@@ -303,6 +342,13 @@ a.icon:hover, a.icon.active {
   }
 }
 
+#splash-footer, #plan-footer > .copyright {
+  display:inline;
+}
+
+#splash-footer, #plan-footer{
+  display:inline;
+}
 
 #splash-footer{
   .copyright {
