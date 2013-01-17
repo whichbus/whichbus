@@ -3,7 +3,7 @@ Transit.Geocode =
   # the cache object for storing saved geocodes
   geocache: Transit.storage_get('geocode')
 
-  defaultLocation: new G.LatLng(47.6097, 122.3331)
+  defaultLocation: new G.LatLng(47.6097, -122.3331)
 
   # the geocoder itself! thanks Google
   geocoder: new google.maps.Geocoder()
