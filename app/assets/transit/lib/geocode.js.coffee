@@ -83,20 +83,24 @@ Transit.Geocode =
             # callback with undefined parameter means there was an error
             if options.error? then options.error(status) else options.success()
     # if query does not exist then use current position
-    else @getCurrentPosition options.success
+    else if Transit.currentPosition?
+      options.success Transit.currentPosition
+    else 
+      @getCurrentPosition options.success
 
-  getCurrentPosition: (callback) ->
-    success = (position) ->
+  getCurrentPosition: (success, error) ->
+    callback = (position) ->
       Transit.currentPosition =
         lat: position.coords.latitude.toFixed(7)
         lng: position.coords.longitude.toFixed(7)
-      if callback
-        callback
+      if success
+        success
           address: 'Current Location'
           lat: Transit.currentPosition.lat
           lon: Transit.currentPosition.lng
     # error = -> callback()
-    navigator.geolocation.getCurrentPosition success, -> Transit.events.trigger('geocode:fail')
+    navigator.geolocation.getCurrentPosition callback, 
+      error or (-> Transit.events.trigger('geocode:fail'))
 
   # convenient method to get or set a value in the geocode cache.
   # if value is provided then it is saved in cache. otherwise value of key is returned.

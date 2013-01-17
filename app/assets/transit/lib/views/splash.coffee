@@ -35,8 +35,13 @@ class Transit.Views.Splash extends Backbone.View
         @remove()
         Transit.router.navigate "plan/#{from}/#{to}", trigger: true
 
-  from_current_location: -> @$("#from_query").val('here')
+  from_current_location: -> 
+    Transit.Geocode.getCurrentPosition (-> @$("#from_query").val('here')), ->
+      $('button.geolocate').attr('disabled', true)
 
-  to_current_location: -> @$("#to_query").val('here')
+
+  to_current_location: -> 
+    Transit.Geocode.getCurrentPosition (-> @$("#to_query").val('here')), ->
+      $('button.geolocate').attr('disabled', true)
 
   select_all: (evt) -> $(evt.currentTarget).select()
