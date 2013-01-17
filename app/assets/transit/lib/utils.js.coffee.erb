@@ -251,3 +251,12 @@ Transit.urlParams = ->
       keyValue = pair.split('=')
       output[keyValue[0]] = if keyValue.length > 1 then Transit.unescape(keyValue[1]) else ''
   output
+
+Transit.Errors =
+  GeolocateFail: """
+Did you disable location sharing on WhichBus? That's ok, we understand. 
+We're just looking to help you ride the bus and sharing your location makes 
+that a heck of a lot easier. Until then, you'll have to stick to real places 
+and addresses.
+"""
+  AddressFail: "We understand anything you can Google around Seattle. Let's try this again, but better."

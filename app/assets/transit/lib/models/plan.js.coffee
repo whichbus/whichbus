@@ -63,10 +63,10 @@ class Transit.Models.Plan extends Backbone.Model
               @trigger 'geocode'
             else 
               message = ""
-              message += "Unable to understand starting point '#{Transit.unescape(from_query)}.'<br/>" unless from?
-              message += "Unable to understand destination '#{Transit.unescape(to_query)}.'<br/>" unless to?
-              message += "Please provide a specific address or neighborhood. Intersections are not supported and businesses are flaky at this time."
-              @trigger 'geocode:error', message, { from: from_query, to: to_query }
+              message += "<p>Is \"#{from_query}\" a real place?</p>" unless from?
+              message += "<p>Does \"#{to_query}\" actually exist?</p>" unless to?
+              message += Transit.Errors.AddressFail
+              @trigger 'geocode:error', message, { from: not from, to: not to }
 
 
   current_location: (selector, target) =>

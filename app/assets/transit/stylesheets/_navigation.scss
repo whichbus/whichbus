@@ -185,4 +185,14 @@
     strong { display:block; }
   }
   .alert:not(.show) { display: none; }
+
+  .btn-update {
+    @extend .btn-go;
+    display: block;
+    margin: 10px auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    // float: right;
+  }
 }

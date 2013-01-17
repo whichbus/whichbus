@@ -1,0 +1,11 @@
+<p><%- @message %></p>
+<form class="update">
+	<% if @showFrom: %>
+	<input class="location" type="text" placeholder="Where ya at?" id="from_query" name="from" onfocus="this.select()" autocomplete="on" autofocus>
+	<% end %>
+	<% if @showTo: %>
+	<input class="location" type="text" placeholder="Where ya headed?" id="to_query" name="to" onfocus="this.select()" autocomplete="on" autofocus>
+	<% end %>
+
+	<button class="btn btn-update" type="submit">Update that bus!</button>
+</form>

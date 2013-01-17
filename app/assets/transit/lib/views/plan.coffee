@@ -11,10 +11,11 @@ class Transit.Views.Plan extends Backbone.View
     'click .btn.up': 'increaseTime'
     'click .btn.down': 'decreaseTime'
     'blur input.time': 'validateTime'
+    'submit form.update': 'update_plan'
 
   initialize: =>
     @map = Transit.map
-    @map.on 'drag:end', @update_plan
+    @map.on 'drag:end', @drag_plan
 
     @model.on 'geocode geolocate fetch', @fetch_plan
     @model.on 'geocode:error', @geocode_error
@@ -43,7 +44,7 @@ class Transit.Views.Plan extends Backbone.View
     this
 
   # update the plan when markers are dragged
-  update_plan: =>
+  drag_plan: =>
     # set the model from/to locations from the marker positions
     @model.set
       from: @map.get('from').position.toHash()
@@ -51,9 +52,20 @@ class Transit.Views.Plan extends Backbone.View
     # update the url and history with new locations
     from_url = @map.get('from').position.toUrlValue()
     to_url = @map.get('to').position.toUrlValue()
+    # update the URL but don't trigger, purely cosmetic :)
     Transit.router.navigate "plan/#{from_url}/#{to_url}"
-    # then load the new plan
+    # then load the new plan by hand
     @model.trigger 'fetch'
+
+  # updates plan from geocode fail form
+  update_plan: (evt) ->
+    evt.preventDefault()
+    # update endpoints using form or URL params (from router)
+    @model.set 
+      from: Transit.escape $('#from_query').val() or @options.from
+      to: Transit.escape $('#to_query').val() or @options.to
+    # navigate to new plan URL and trigger reload
+    Transit.router.navigate "plan/#{@model.get('from')}/#{@model.get('to')}", true
 
   fetch_plan: =>
     @render()
@@ -71,12 +83,20 @@ class Transit.Views.Plan extends Backbone.View
 
   geocode_error: (message, location) =>
     @$('.progress').hide()
-    message += "<br><a href=\"/?from=#{location.from}&to=#{location.to}\">Go home and try another address?</a>"
-    Transit.errorMessage("Sorry, don't know that place.", message)
+    # message += "<br><a href=\"/?from=#{location.from}&to=#{location.to}\">Go home and try another address?</a>"
+    Transit.errorMessage("Sorry, don't know that place.", JST['templates/partials/geocode-fail']( 
+      showFrom: location.from
+      showTo: location.to
+      message: message
+    ))
 
   geocode_fail: =>
     @$('.progress').hide()
-    Transit.errorMessage("Geolocation Fail!", "Unable to get your current location. Did you disable location sharing on WhichBus? Because that's not going to work...")
+    Transit.errorMessage "Unable to Locate You!", JST['templates/partials/geocode-fail']( 
+      showFrom: @options.from is 'here'
+      showTo: @options.to is 'here' 
+      message: Transit.Errors.GeolocateFail 
+    )
 
   timeout_warn: (message) =>
     # request taking a while, give 'em a nice message with a link home
@@ -111,7 +131,6 @@ class Transit.Views.Plan extends Backbone.View
 
   add_itineraries: (plan) =>
     # reset UI, set title of directions
-
     @reset()
     Transit.setTitleHTML(Transit.Favorites.icon(@favorite().name), "#{plan.get('from').name} to #{plan.get('to').name}")
     # @$('.subnav h3').text("#{plan.get('from').name} to #{plan.get('to').name}")
@@ -128,6 +147,7 @@ class Transit.Views.Plan extends Backbone.View
 
   # remove all itineraries from the map
   remove_itineraries: =>
+    @$('#itineraries').html('')
     view?.clean_up(true) for view in @views if @views?
 
   go_to_splash: (event) =>
