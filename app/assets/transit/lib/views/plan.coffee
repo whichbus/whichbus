@@ -17,7 +17,7 @@ class Transit.Views.Plan extends Backbone.View
     @map = Transit.map
     @map.on 'drag:end', @drag_plan
 
-    @model.on 'geocode geolocate fetch', @fetch_plan
+    @model.on 'geocode geolocate', @fetch_plan
     @model.on 'geocode:error', @geocode_error
     @model.on 'plan:timeout', @timeout_warn
     Transit.events.on 'geocode:fail', @geocode_fail
@@ -48,24 +48,28 @@ class Transit.Views.Plan extends Backbone.View
     # set the model from/to locations from the marker positions
     @model.set
       from: @map.get('from').position.toHash()
-      to: @map.get('to').position.toHash()
+      to: @map.get('to').position.toHash(),
+    { silent: true }
     # update the url and history with new locations
     from_url = @map.get('from').position.toUrlValue()
     to_url = @map.get('to').position.toUrlValue()
     # update the URL but don't trigger, purely cosmetic :)
     Transit.router.navigate "plan/#{from_url}/#{to_url}"
     # then load the new plan by hand
-    @model.trigger 'fetch'
+    @fetch_plan()
 
   # updates plan from geocode fail form
   update_plan: (evt) ->
     evt.preventDefault()
     # update endpoints using form or URL params (from router)
-    @model.set 
-      from: Transit.escape $('#from_query').val() or @options.from
-      to: Transit.escape $('#to_query').val() or @options.to
+    from = $('#from_query').val() or Transit.unescape @options.from
+    to = $('#to_query').val() or Transit.unescape @options.to
     # navigate to new plan URL and trigger reload
-    Transit.router.navigate "plan/#{@model.get('from')}/#{@model.get('to')}", true
+    @remove_itineraries()
+    @remove()
+    Transit.router.navigate "plan/#{from}/#{to}", true
+
+    # @fetch_plan()
 
   fetch_plan: =>
     @render()
@@ -126,7 +130,7 @@ class Transit.Views.Plan extends Backbone.View
 
   reset: =>
     @$('.progress').hide()
-    @$('.itineraries').html('')
+    remove_itineraries()
     Transit.errorMessage(null)  # clear the error message
 
   add_itineraries: (plan) =>
@@ -147,8 +151,10 @@ class Transit.Views.Plan extends Backbone.View
 
   # remove all itineraries from the map
   remove_itineraries: =>
+    for view in @views if @views?
+      view?.clean_up(true) 
+      view.remove()
     @$('#itineraries').html('')
-    view?.clean_up(true) for view in @views if @views?
 
   go_to_splash: (event) =>
     # TODO: Place this to the topbar.
