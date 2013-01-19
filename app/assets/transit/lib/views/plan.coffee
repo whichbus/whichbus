@@ -130,7 +130,7 @@ class Transit.Views.Plan extends Backbone.View
 
   reset: =>
     @$('.progress').hide()
-    remove_itineraries()
+    @remove_itineraries()
     Transit.errorMessage(null)  # clear the error message
 
   add_itineraries: (plan) =>
@@ -151,7 +151,7 @@ class Transit.Views.Plan extends Backbone.View
 
   # remove all itineraries from the map
   remove_itineraries: =>
-    for view in @views if @views?
+    if @views? then for view in @views 
       view?.clean_up(true) 
       view.remove()
     @$('#itineraries').html('')
