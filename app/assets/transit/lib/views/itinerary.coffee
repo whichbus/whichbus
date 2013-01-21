@@ -113,8 +113,10 @@ class Transit.Views.Itinerary extends Backbone.View
 			# WALK segments can be a little wider before wrapping
 			wider = btn.parentElement.classList.contains('walk')
 			if btn.clientWidth > (if wider then 250 else 200)
-				# insert line break after &, middle-align
-				btn.innerHTML = btn.innerHTML.replace('&amp;', '&amp;<br/>')
+				if btn.innerHTML.indexOf('&amp;') >= 0
+					# insert line break after &, middle-align
+					btn.innerHTML = btn.innerHTML.replace('&amp;', '&amp;<br/>')
+				else btn.style.maxWidth = '50%'
 				btn.style.verticalAlign = 'middle'
 		# remember that we don't need to do this again
 		@wrapped = true

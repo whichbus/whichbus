@@ -83,8 +83,6 @@ Transit.Geocode =
             # callback with undefined parameter means there was an error
             if options.error? then options.error(status) else options.success()
     # if query does not exist then use current position
-    else if Transit.currentPosition?
-      options.success Transit.currentPosition
     else 
       @getCurrentPosition options.success
 
