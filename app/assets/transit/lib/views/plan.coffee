@@ -96,7 +96,7 @@ class Transit.Views.Plan extends Backbone.View
 
   geocode_fail: =>
     @$('.progress').hide()
-    Transit.errorMessage "Unable to Locate You!", JST['templates/partials/geocode-fail']( 
+    Transit.errorMessage "What's This \"Here\" Business?", JST['templates/partials/geocode-fail']( 
       showFrom: @options.from is 'here'
       showTo: @options.to is 'here' 
       message: Transit.Errors.GeolocateFail 
