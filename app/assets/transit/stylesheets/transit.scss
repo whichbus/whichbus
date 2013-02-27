@@ -271,6 +271,9 @@ a.icon:hover, a.icon.active {
   }
 }
 #splash-footer > .social-media {
+  @media #{$phone}, #{$tablet}{
+    display:none;
+  }
 
   a{
 
@@ -307,6 +310,10 @@ a.icon:hover, a.icon.active {
   }
 }
 #plan-footer > .social-media {
+
+  @media #{$phone}{
+    display:none;
+  }
 
   a{
 
