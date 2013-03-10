@@ -126,7 +126,7 @@ class Transit.Views.Plan extends Backbone.View
       optimize: optimize
     , silent: true
     # TODO: See if this can be bound to a model date change event.
-    @model.trigger 'fetch'
+    @fetch_plan()
 
   reset: =>
     @$('.progress').hide()
